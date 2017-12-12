@@ -8,11 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-하잇jnjnjjasdfasdfasfsadfsadfasdfsadfNEW!sadfsadasdfsdafasdfsadfsadfdsfscc
-cccccccccccccccccccccccccccccccccccc
-test
+규하씨 정신차리고 똑바로하세요 안그러면 뚝배깁니다. 이제 뭐고치는지 다나와요.
 </body>
-=======
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
