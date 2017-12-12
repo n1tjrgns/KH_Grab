@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-규하씨 정신차리고 똑바로하세요 안그러면 뚝배깁니다. 이제 뭐고치는지 다나와요.
+범진이형 정신차리고 똑바로하세요 안그러면 뚝배깁니다. 이제 뭐고치는지 다나와요.
+
 </body>
 
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
