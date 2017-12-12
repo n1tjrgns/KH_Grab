@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 馬責lklkけいしかいぉaしけいしぉいぉsdfasdfasdfけしいぉい
+=======たったた
+馬責jnjnjjasdfasdfasfsadfsadfasdfsadfNEW!sadfsadasdfsdafasdfsadfsadf
+>>>>>>> branch 'master' of https://github.com/jjin9/KH_Grab.git
 </body>
 </html>
