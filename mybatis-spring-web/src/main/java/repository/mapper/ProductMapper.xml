@@ -17,16 +17,13 @@
 		<result column="c_email" jdbcType="VARCHAR" property="cEmail" />
 	</resultMap>
 
-	<select id="selectProductByCondition" parameterType="Product"
+	<select id="selectProductListByCondition" parameterType="Product"
 		resultMap="BaseResultMap">
 		SELECT
 			prod_name,
 			prod_category,
-			prod_stock,
-			prod_content,
 			prod_price,
-			prod_pic,
-			c_email
+			prod_pic
 		FROM product
 	</select>
 
