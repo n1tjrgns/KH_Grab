@@ -51,7 +51,7 @@ public class CommentController {
 	@RequestMapping(value="/Main_shop_cotent", method = RequestMethod.GET)
 	public String handleStep4_1(Model model) {
 		model.addAttribute("product",new Product());
-		return "cotent";
+		return "content";
 	}
 	
 	@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
