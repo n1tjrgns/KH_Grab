@@ -13,5 +13,8 @@
 	<bean class="controller.CommentController">
 	</bean>	
 	
+	<bean class="controller.LoginController">
+	</bean>	
+	
 
 </beans>
