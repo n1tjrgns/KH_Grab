@@ -46,8 +46,8 @@ public class CommentController {
 	
 	@RequestMapping(value="/Main_shop", method = RequestMethod.GET)
 	public String handleStep4(Product product, Model model) {
-		List<Product> result = productSessionRepository.selectProduct(product);
-		model.addAttribute("product",new Product());
+		List<Product> result = productSessionRepository.selectProduct();
+		model.addAttribute("product", result);
 		return "shop";
 	}
 	

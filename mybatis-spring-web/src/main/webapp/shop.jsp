@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="java.io.*,java.util.*,javax.servlet.*"%>
+<%@page import="repository.*, model.*"%>
 <html lang="en">
 <head>
 	<title>Grab</title>
@@ -22,11 +24,15 @@
 <body >
 	 <jsp:include page="navi-header.jsp"/>
 	
+	<%
 
+		ProductSessionRepository  psr = new ProductSessionRepository();
+		List<Product> product = psr.selectProduct();
+	%>
 <!-- 	<section class="search">
 		<div class="wrapper">
 			<form action="#" method="post">
-				<input type="text" id="search" name="search" placeholder="무엇을 찾고 계신가요?"  autocomplete="off"/>
+				<input type="text" id="search" name="search" pla ceholder="무엇을 찾고 계신가요?"  autocomplete="off"/>
 				<input type="submit" id="submit_search" name="submit_search"/>
 			</form>
 			<a href="#" class="advanced_search_icon" id="advanced_search_btn"></a>

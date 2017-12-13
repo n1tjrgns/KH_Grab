@@ -12,11 +12,10 @@ public class ProductSessionRepository extends AbstractRepository {
 	
 	private final String nameSpace = "repository.mapper.ProductMapper";
 	
-	public List<Product> selectProduct(Product product) {
+	public List<Product> selectProduct() {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
-		String statment = nameSpace+".selectCommentByCondition";
-									
-		return sqlSession.selectList(statment,product);
+		String statment = nameSpace+".selectProductByCondition";							
+		return sqlSession.selectList(statment);
 	}
 	
 
