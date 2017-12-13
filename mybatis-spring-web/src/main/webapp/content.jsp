@@ -73,7 +73,7 @@
 							</div>
 						</div> <!-- Botones de compra -->
 						<div class="section" style="padding-bottom: 20px;">
-							<button class="btn btn-success" onclick="location.href='./pay.html'">
+							<button class="btn btn-success" onclick="location.href='./pay.jsp'">
 								<span style="margin-right: 20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 								구매하기
 							</button>
