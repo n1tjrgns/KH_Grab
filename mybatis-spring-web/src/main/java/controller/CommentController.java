@@ -16,9 +16,9 @@ import repository.ProductSessionRepository;
 @Controller
 public class CommentController {
 	@Autowired
-	private CommentSessionRepository commentSessionRepository;
+	CommentSessionRepository commentSessionRepository;
 	@Autowired
-	private ProductSessionRepository productSessionRepository;
+	ProductSessionRepository productSessionRepository;
 	//마이바티스와 DB 정보를 받아서  
 	
 	@RequestMapping(value="/Main", method = RequestMethod.GET)
