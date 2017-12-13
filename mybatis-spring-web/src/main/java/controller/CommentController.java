@@ -17,6 +17,7 @@ import repository.ProductSessionRepository;
 public class CommentController {
 	@Autowired
 	private CommentSessionRepository commentSessionRepository;
+	@Autowired
 	private ProductSessionRepository productSessionRepository;
 	//마이바티스와 DB 정보를 받아서  
 	

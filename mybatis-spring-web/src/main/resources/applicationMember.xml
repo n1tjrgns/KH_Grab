@@ -6,5 +6,5 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="commentSessionRepository" class="repository.CommentSessionRepository"/>		
-		
+	<bean id="productSessionRepository" class="repository.ProductSessionRepository"/>		
 </beans>
