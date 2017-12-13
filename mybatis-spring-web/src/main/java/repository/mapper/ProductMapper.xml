@@ -25,6 +25,22 @@
 			prod_price,
 			prod_pic
 		FROM product
+		
+	</select>
+	
+	<select id="selectProductContentByCondition" parameterType="Product"
+		resultMap="BaseResultMap">
+		SELECT
+			prod_name,
+			prod_category,
+			prod_price,
+			prod_pic
+		FROM product
+		<where>
+			<if test="prodName != null">
+				prod_name = #{prodName}
+			</if>
+		</where>
 	</select>
 
 
