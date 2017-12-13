@@ -29,6 +29,10 @@
 		ProductSessionRepository  psr = new ProductSessionRepository();
 		List<Product> products = psr.selectProduct();
 		System.out.println("List num : "+ products.size());
+		for(int i=0; i<products.size();i++){
+			System.out.println("물품 이름:"+products.get(i).getProdName());
+			System.out.println("물품 내용:"+products.get(i).getProdContent());
+		}
 	%>
 <!-- 	<section class="search">
 		<div class="wrapper">
@@ -63,24 +67,27 @@
 			</div>
 		</div><!--  end advanced search section  -->
 	</section><!--  end search section  -->
- -->
 
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
+			<%
+				for(int i=0; i<products.size();i++){
+			%>
 				<li>
 					<a href="./content.jsp">
 						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
 						<h1>
-							canon selphy 포토 용지 RP-54
+						<%= products.get(i).getProdName()%>
 						</h1>
-						<h2>포토프린터에 필요한 포토 용지 </h2>
-						<h2><span class="property_size">2000원</span></h2>
+						<h2><%= products.get(i).getProdContent() %></h2>
+						<h2><span class="property_size"><%= products.get(i).getProdPrice()%>원</span></h2>
 					</div>
 					</a>
 				</li>
+			<%} %>
 				<li>
 					<a href="#">
 						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>

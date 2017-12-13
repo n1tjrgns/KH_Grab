@@ -28,7 +28,6 @@
 			prod_pic,
 			c_email
 		FROM product
-
 	</select>
 
 

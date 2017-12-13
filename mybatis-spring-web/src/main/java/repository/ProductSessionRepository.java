@@ -14,7 +14,7 @@ public class ProductSessionRepository extends AbstractRepository {
 	
 	public List<Product> selectProduct() {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
-		String statment = nameSpace+".selectProductByCondition";							
+		String statment = nameSpace+".selectProductByCondition";
 		return sqlSession.selectList(statment);
 	}
 	
