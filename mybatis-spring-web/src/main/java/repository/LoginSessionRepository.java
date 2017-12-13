@@ -11,7 +11,7 @@ public class LoginSessionRepository extends AbstractRepository {
 	
 	public member selectLogin() {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
-		String statment = nameSpace+".selectMemberByLoginCheck";
-		return sqlSession.selectOne(statment);
+		String statement = nameSpace+".selectMemberByLoginCheck";
+		return sqlSession.selectOne(statement);
 	}
 }
