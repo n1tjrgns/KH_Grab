@@ -23,8 +23,8 @@
       <result column="account" jdbcType="VARCHAR2" property="account"/>
    </resultMap>
 
-	<select id="selectMemberByLoginCheck" parameterType="long"
-	resultMap="BaseResultMap">
+	<select id="selectMemberByLoginCheck" parameterType="string"
+	resultMap="MemberResultMap">
 		SELECT * FROM member
 		<where>
 			<if test="mEmail != null">
