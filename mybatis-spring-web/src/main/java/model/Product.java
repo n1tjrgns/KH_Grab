@@ -1,6 +1,8 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
+
 
 public class Product {
 	private String prodName;
@@ -10,6 +12,9 @@ public class Product {
 	private int prodPrice;
 	private String prodPic;
 	private String cEmail;
+	private List<Product> products;
+
+
 
 	public Product(String prodName, String prodCategory, int prodStock, String prodContent, int prodPrice,
 			String prodPic, String cEmail) {
@@ -82,5 +87,12 @@ public class Product {
 		this.cEmail = cEmail;
 	}
 
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 	
 }

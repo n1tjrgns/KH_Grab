@@ -27,7 +27,8 @@
 	<%
 
 		ProductSessionRepository  psr = new ProductSessionRepository();
-		List<Product> product = psr.selectProduct();
+		List<Product> products = psr.selectProduct();
+		out.println("List num : "+ products.size());
 	%>
 <!-- 	<section class="search">
 		<div class="wrapper">
