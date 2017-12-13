@@ -28,6 +28,7 @@
 
 
 <link href="_resource/css/discover.css" rel="stylesheet" />
+<link href="_resource/css/discover.library.css" rel="stylesheet" />
 <link href="_resource/css/discover.featured.css" rel="stylesheet" />
 <title>Grab Bucket List : 버킷 리스트를 발견하고 삶에 색을 더하다.</title>
 
@@ -772,7 +773,7 @@ function goMyBucket(){
 </div>
 
  
- 
+ 	<jsp:include page="navi-footer.jsp"></jsp:include> 
 
  
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
