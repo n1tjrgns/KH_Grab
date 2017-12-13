@@ -35,6 +35,7 @@
 		</where>
 	</select>
 
+
 	<insert id="insertCommentByCondition" parameterType="Comment">
 		INSERT INTO comment1(comment_no,
 		user_id,

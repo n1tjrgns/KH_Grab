@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import model.Comment;
 import model.Product;
 import repository.CommentSessionRepository;
+import repository.ProductSessionRepository;
 
 @Controller
 public class CommentController {
 	@Autowired
 	private CommentSessionRepository commentSessionRepository;
+	private ProductSessionRepository productSessionRepository;
 	//마이바티스와 DB 정보를 받아서  
 	
 	@RequestMapping(value="/Main", method = RequestMethod.GET)
@@ -43,15 +45,16 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value="/Main_shop", method = RequestMethod.GET)
-	public String handleStep4(Model model) {
-		model.addAttribute("comment",new Comment());
+	public String handleStep4(Product product, Model model) {
+		List<Product> result = productSessionRepository.selectProduct(product);
+		model.addAttribute("product",new Product());
 		return "shop";
 	}
 	
 	@RequestMapping(value="/Main_shop_cotent", method = RequestMethod.GET)
 	public String handleStep4_1(Model model) {
-		model.addAttribute("product",new Product());
-		return "content";
+		model.addAttribute("comment",new Comment());
+		return "shop_content";
 	}
 	
 	@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
