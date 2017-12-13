@@ -3,115 +3,112 @@ package model;
 import java.util.Date;
 
 public class member {
-   private String m_email;
-   private String m_pw;
-   private String m_name;
-   private String m_tel;
-   private Date m_birth;
-   private String m_gen;
-   private String m_addr;
-   private int m_attendcount;
-   private String m_profile;
-   private int m_license;
-   private String m_authority;
+   private String mEmail;
+   private String mPw;
+   private String mName;
+   private String mTel;
+   private Date mBirth;
+   private String mGen;
+   private String mAddr;
+   private int mAttendcount;
+   private String mProfile;
+   private int mLicense;
+   private String mAuthority;
    private String bank;
    private String account;
    
-public member(String m_email) {
-   this.m_email = m_email;    
+public member(String mEmail) {
+   this.mEmail = mEmail;    
 }
    
-public member() {
-      
+public String getmEmail() {
+	return mEmail;
 }
 
-public String getM_email() {
-	return m_email;
+public void setmEmail(String mEmail) {
+	this.mEmail = mEmail;
 }
 
-public void setM_email(String m_email) {
-	this.m_email = m_email;
+public String getmPw() {
+	return mPw;
 }
 
-public String getM_pw() {
-	return m_pw;
+public void setmPw(String mPw) {
+	this.mPw = mPw;
 }
 
-public void setM_pw(String m_pw) {
-	this.m_pw = m_pw;
+public String getmName() {
+	return mName;
 }
 
-public String getM_name() {
-	return m_name;
+public void setmName(String mName) {
+	this.mName = mName;
 }
 
-public void setM_name(String m_name) {
-	this.m_name = m_name;
+public String getmTel() {
+	return mTel;
 }
 
-public String getM_tel() {
-	return m_tel;
+public void setmTel(String mTel) {
+	this.mTel = mTel;
 }
 
-public void setM_tel(String m_tel) {
-	this.m_tel = m_tel;
+public Date getmBirth() {
+	return mBirth;
 }
 
-public Date getM_birth() {
-	return m_birth;
+public void setmBirth(Date mBirth) {
+	this.mBirth = mBirth;
 }
 
-public void setM_birth(Date m_birth) {
-	this.m_birth = m_birth;
+public String getmGen() {
+	return mGen;
 }
 
-public String getM_gen() {
-	return m_gen;
+public void setmGen(String mGen) {
+	this.mGen = mGen;
 }
 
-public void setM_gen(String m_gen) {
-	this.m_gen = m_gen;
+public String getmAddr() {
+	return mAddr;
 }
 
-public String getM_addr() {
-	return m_addr;
+public void setmAddr(String mAddr) {
+	this.mAddr = mAddr;
 }
 
-public void setM_addr(String m_addr) {
-	this.m_addr = m_addr;
+public int getmAttendcount() {
+	return mAttendcount;
 }
 
-public int getM_attendcount() {
-	return m_attendcount;
+public void setmAttendcount(int mAttendcount) {
+	this.mAttendcount = mAttendcount;
 }
 
-public void setM_attendcount(int m_attendcount) {
-	this.m_attendcount = m_attendcount;
+public String getmProfile() {
+	return mProfile;
 }
 
-public String getM_profile() {
-	return m_profile;
+public void setmProfile(String mProfile) {
+	this.mProfile = mProfile;
 }
 
-public void setM_profile(String m_profile) {
-	this.m_profile = m_profile;
+public int getmLicense() {
+	return mLicense;
 }
 
-public int getM_license() {
-	return m_license;
+public void setmLicense(int mLicense) {
+	this.mLicense = mLicense;
 }
 
-public void setM_license(int m_license) {
-	this.m_license = m_license;
+public String getmAuthority() {
+	return mAuthority;
 }
 
-public String getM_authority() {
-	return m_authority;
+public void setmAuthority(String mAuthority) {
+	this.mAuthority = mAuthority;
 }
 
-public void setM_authority(String m_authority) {
-	this.m_authority = m_authority;
-}
 
 public String getBank() {
 	return bank;
@@ -128,5 +125,9 @@ public String getAccount() {
 public void setAccount(String account) {
 	this.account = account;
 }
-   
+
+public member() {
+      
+}
+
 }
