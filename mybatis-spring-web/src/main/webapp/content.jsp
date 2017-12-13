@@ -82,7 +82,7 @@
 								<a href="#"><span class="glyphicon glyphicon-heart-empty"
 									style="cursor: pointer;"></span> 장바구니담기</a>
 							</h6>
-							<a href="./shop.html"><button class="btn btn-default">목록으로</button></a>
+							<a href="./shop.jsp"><button class="btn btn-default">목록으로</button></a>
 						</div>
 
 					</td>
