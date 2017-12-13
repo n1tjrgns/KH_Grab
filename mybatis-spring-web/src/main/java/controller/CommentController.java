@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Comment;
+import model.Login;
 import repository.CommentSessionRepository;
 
 @Controller
@@ -102,17 +103,28 @@ public class CommentController {
 		return "memberDrop";
 	}
 	
-	@RequestMapping(value="/Buket_mypage_complite", method = RequestMethod.GET)
+	@RequestMapping(value="/Bucket_mypage_complite", method = RequestMethod.GET)
 	public String handleStep12_1(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "My_bucket";
 	}
 	
-	@RequestMapping(value="/Buket_mypage_wish", method = RequestMethod.GET)
+	@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
 	public String handleStep12_2(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "My_bucket2";
 	}
+	
+	
+	
+	@RequestMapping(value="/login.do", method = RequestMethod.POST)
+	public String login(Login login ,Model model) {
+		//commentSessionRepository = new  CommentSessionRepository(); spring 없을 때
+		Login result=commentSessionRepository.selectlogin(login);
+		model.addAttribute("result",result);
+		return "/process/login";
+	}	
+	
 	
 	@RequestMapping(value="/comment_select", method = RequestMethod.POST)
 	public String commentSelect(Comment comment ,Model model) {

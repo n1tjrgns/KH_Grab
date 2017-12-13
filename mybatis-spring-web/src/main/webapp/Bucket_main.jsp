@@ -13,15 +13,7 @@
 </script>
 		
 
-    <meta property="fb:app_id" content="803062869828098" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Grab Bucket List" /><!-- 2017-03-13 -->
-    <meta property="og:url" content="http://www.lifeplusbucket.com/discover/featured.do" />
-    <meta property="og:description" content="라이프플러스 버킷리스트, 당신의 삶에 최고의 경험을 더해보세요." />
-    <meta property="og:image" content="http://www.lifeplusbucket.com/_resource/images/common/sns_share_1200.jpg"  />
-    <meta name="title" content="Grab Bucket List"><!-- 2017-03-13 -->
-    <meta name="description" content="Grab 버킷리스트, 당신의 삶에 최고의 경험을 더해보세요.">
-    <meta name="image" content="http://www.lifeplusbucket.com/_resource/images/common/sns_share_1200.jpg">
+  
     <link rel="shortcut icon" type="image/x-icon" href="_resource/_web/images/favicon.ico.png">
  
     <link href="_resource/css/common.css" rel="stylesheet" />
@@ -40,7 +32,7 @@
 <title>Grab Bucket List : 버킷 리스트를 발견하고 삶에 색을 더하다.</title>
 
 <script>
-isLogin = false;
+isLogin = true;
 </script>
 
 
@@ -56,7 +48,7 @@ isLogin = false;
 
 
 <script>
-	var isLogin = false;
+	var isLogin = true;
     var resourcePath = "_resource";
     var webDomain = "http://localhost:8088/Grap_UI"; 
     var domainName = "lifeplusbucket.com"; 
@@ -91,7 +83,7 @@ isLogin = false;
             <p>
                아직 Grab 회원이 아니신가요?
             </p>
-            <span>회원 가입하시고 당신의 삶에 버킷 리스트를 더해 보세요.</span> <a href="/member/email_register.do" class="btn_register mot2" onclick='eventTrack("", "login_btn_register"); NTrackObj.callTrackTag("29443", callbackFn, 11979);'>회원가입</a>
+            <span>회원 가입하시고 당신의 삶에 버킷 리스트를 더해 보세요.</span> <a href="Main_login_regist1" class="btn_register mot2" onclick='eventTrack("", "login_btn_register"); NTrackObj.callTrackTag("29443", callbackFn, 11979);'>회원가입</a>
         </div>
    
     </div>
@@ -113,7 +105,7 @@ function loginInputCheck(){
 		$.ajax( // 화면의 데이타를 조회한다.
 				{
 					 
-					url:"https://www.lifeplusbucket.com/member/login.do",
+					url:"Main_login",
 					dataType:"jsonp",
 					jsonp:"callback",
 					type:"POST",
@@ -185,7 +177,7 @@ function checkLoginPassswordKeyPress(event){
                             <a href="/member/register.do" class="regist" onclick="eventTrack(&quot;&quot;, &quot;gnb_register&quot;);">회원가입</a>
  							-->                            
                             <a href="/member/logout.do" class="login">로그아웃</a>
-                            <a href="/ln/member/member_info.do" class="regist">회원정보관리</a>
+                            <a href="Main_info" class="regist">회원정보관리</a>
                             
                             
                             
@@ -208,15 +200,7 @@ function checkLoginPassswordKeyPress(event){
                 </a>
                 <div class="gnb_menu">
                     <ul class="gnb_menu_ul">
-                        <li>
-                            <a href="Bucket_main" class="gnb1 mot2" onclick='eventTrack("", "menu_discover");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Discover</span><br>
-                                    당신의 버킷 리스트를 찾아보세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
+                    	
                         <li>
                             <a href="javascript:goMyBucket();" class="gnb2 mot2" onclick='eventTrack("", "menu_mypage");'>
                                 <div class="text mot2">
@@ -226,15 +210,7 @@ function checkLoginPassswordKeyPress(event){
                                 <div class="ico mot2"></div>
                             </a>
                         </li>
-                        <li>
-                            <a href="/notice/notice_list.do" class="gnb3 mot2" onclick='eventTrack("", "menu_event");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Event</span><br>
-                                    다양한 혜택과 이벤트를 놓치지 마세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
+        
                         <li>
                             <a href="Main_bucket" class="gnb4 mot2" onclick='eventTrack("", "menu_about");'>
                                 <div class="text mot2">
@@ -299,9 +275,9 @@ function checkLoginPassswordKeyPress(event){
 function goMyBucket(){
 	
 	if(!isLogin){
-		login.showPop('pop_login',"","http://www.lifeplusbucket.com/ln/mypage/bucket.do");
+		login.showPop('pop_login',"","Bucket_mypage_");
 	}else{
-		location.href="/ln/mypage/bucket.do";
+		location.href="Bucket_mypage_complite";
 	}
 }
 </script>
@@ -491,7 +467,7 @@ function goMyBucket(){
                 MY<br>
                 BUCKET LIST
             </div>
-            <a href="/ln/mypage/bucket.do" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
+            <a href="Bucket_mypage_complite" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
         </li>
         <li class="arrow-btn-l arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></a></li>
         <li class="lists">
