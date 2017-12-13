@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   				
+ <mapper namespace="repository.mapper.CommentMapper">
+	<cache />
+
+   <resultMap type="Member" id="MemberResultMap">
+      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+      <id column="m_email" jdbcType="VARCHAR2" property="mEmail"/>
+      <result column="m_pw" jdbcType="VARCHAR2" property="mPw"/>
+      <result column="m_name" jdbcType="VARCHAR2" property="mName"/>
+      <result column="m_tel" jdbcType="VARCHAR2" property="mTel"/>
+      <result column="m_birth" jdbcType="DATE" property="mBirth"/>
+      <result column="m_gen" jdbcType="VARCHAR2" property="mGen"/>
+      <result column="m_addr" jdbcType="VARCHAR2" property="mAddr"/>
+      <result column="m_attendcount" jdbcType="NUMBER" property="mAttendcount"/>
+      <result column="m_profile" jdbcType="VARCHAR2" property="mProfile"/>
+      <result column="m_license" jdbcType="NUMBER" property="mLicense"/>
+      <result column="m_authority" jdbcType="VARCHAR2" property="mAuthority"/>
+      <result column="bank" jdbcType="VARCHAR2" property="Bank"/>
+      <result column="account" jdbcType="VARCHAR2" property="Account"/>
+   </resultMap>
+
+	<select id="selectCommentByCondition" parameterType="long"
+	resultMap="BaseResultMap">
+	SELECT 
+   			comment_no,
+	   		user_id,
+	   		comment_content,
+	   		reg_date
+	   	FROM comment1
+		<where>
+			<if test="commentNo != null">
+				comment_no = #{commentNo}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertCommentByCondition" parameterType="Comment" >
+		INSERT INTO comment1(comment_no,
+	   		user_id,
+	   		comment_content,
+	   		reg_date)
+	   	VALUES(#{commentNo},#{userId},#{commentContent},#{regDate})
+	</insert>
+	
+	<update id="updateCommentByCondition" parameterType="Comment" >
+		UPDATE comment1
+			<set >
+				<if test="commentContent !=null">
+					comment_content=#{commentContent},
+				</if>
+				<if test="commentContent !=null">
+					user_id=#{userId},
+				</if>
+				<if test="commentContent !=null">
+					reg_date=#{regDate}
+				</if>
+			</set>
+			<where>
+				comment_no =#{commentNo}
+			</where>
+	</update>
+</mapper>
