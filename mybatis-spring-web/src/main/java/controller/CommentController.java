@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Comment;
+import model.Product;
 import repository.CommentSessionRepository;
 
 @Controller
@@ -45,6 +46,12 @@ public class CommentController {
 	public String handleStep4(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "shop";
+	}
+	
+	@RequestMapping(value="/Main_shop_cotent", method = RequestMethod.GET)
+	public String handleStep4_1(Model model) {
+		model.addAttribute("product",new Product());
+		return "cotent";
 	}
 	
 	@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
