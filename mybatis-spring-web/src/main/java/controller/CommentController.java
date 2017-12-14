@@ -45,18 +45,6 @@ public class CommentController {
 		return "Main_bucket";
 	}
 	
-	@RequestMapping(value="/Main_shop", method = RequestMethod.GET)
-	public String handleStep4(Product product, Model model) {
-		List<Product> result = productSessionRepository.selectProductList();
-		model.addAttribute("product", result);
-		return "shop";
-	}
-	
-	@RequestMapping(value="/Main_shop_cotent", method = RequestMethod.GET)
-	public String handleStep4_1(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "shop_content";
-	}
 	
 	@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
 	public String handleStep5(Model model) {
