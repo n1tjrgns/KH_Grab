@@ -17,58 +17,58 @@ public class CommentController {
 	CommentSessionRepository commentSessionRepository;
 	@Autowired
 	ProductSessionRepository productSessionRepository;
-	//마이바티스와 DB 정보를 받아서  
-	
+	//마이바티스와 DB 정보를 받아서
+
 	@RequestMapping(value="/Main", method = RequestMethod.GET)
 	public String handleStep0(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "main";
 	}
-	
+
 	@RequestMapping(value="/Main_graph", method = RequestMethod.GET)
-	public String handleStep1(Model model) {
+	public String handleStep1(Model model, HttpServletRequest request) {
 		model.addAttribute("comment",new Comment());
 		return "graph";
 	}
-	
+
 	/* 분할 to BucketController.java
 	 * @RequestMapping(value="/Bucket_main", method = RequestMethod.GET)
 	public String handleStep2(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "Bucket_main";
 	} */
-	
+
 	@RequestMapping(value="/Main_bucket", method = RequestMethod.GET)
 	public String handleStep3(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "Main_bucket";
 	}
-	
-	
+
+
 	@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
 	public String handleStep5(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "CS";
 	}
-	
+
 	@RequestMapping(value="/Main_login", method = RequestMethod.GET)
 	public String handleStep6(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "login";
 	}
-	
+
 	@RequestMapping(value="/Main_login_regist1", method = RequestMethod.GET)
 	public String handleStep7_1(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "register2";
 	}
-	
+
 	@RequestMapping(value="/Main_login_regist2", method = RequestMethod.GET)
 	public String handleStep7_2(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "registerEnter";
 	}
-	
+
 	@RequestMapping(value="/Main_login_find", method = RequestMethod.GET)
 	public String handleStep8(Model model) {
 		model.addAttribute("comment",new Comment());
@@ -80,71 +80,72 @@ public class CommentController {
 		model.addAttribute("comment",new Comment());
 		return "info";
 	}
-	
+
 	@RequestMapping(value="/Main_info_enter", method = RequestMethod.GET)
 	public String handleStep9_1(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "infoEnter";
 	}
-	
+
 	@RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.GET)
 	public String handleStep10(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "changePw";
 	}
-	
+
 	@RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
 	public String handleStep11(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "memberDrop";
 	}
-	
+
 	@RequestMapping(value="/Bucket_mypage_complite", method = RequestMethod.GET)
 	public String handleStep12_1(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "My_bucket";
 	}
-	
+
 	@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
 	public String handleStep12_2(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "My_bucket2";
 	}
-	
-	
-	
-	@RequestMapping(value="/login.do", method = RequestMethod.POST)
-	public String login(Login login ,Model model) {
-		//commentSessionRepository = new  CommentSessionRepository(); spring 없을 때
-		Login result=commentSessionRepository.selectlogin(login);
-		model.addAttribute("result",result);
-		return "/process/login";
-	}	
-	
-	
+
+
+
+	// @RequestMapping(value="/login.do", method = RequestMethod.POST)
+	// public String login(Login login ,Model model) {
+	// 	//commentSessionRepository = new  CommentSessionRepository(); spring 없을 때
+	// 	Login result=commentSessionRepository.selectlogin(login);
+	// 	model.addAttribute("result",result);
+	// 	return "/process/login";
+	// }
+
+
 	@RequestMapping(value="/comment_select", method = RequestMethod.POST)
 	public String commentSelect(Comment comment ,Model model) {
 		//commentSessionRepository = new  CommentSessionRepository(); spring 없을 때
 		List<Comment> result=commentSessionRepository.selectComment(comment);
 		model.addAttribute("result",result);
 		return "/comment_select";
-	}	
-	
-	
+	}
+
+
 	@RequestMapping(value="/comment_insert", method = RequestMethod.POST)
-	public String commentInsert(Comment comment ,Model model) {
+	public String commentInsert(Model model) {
+		Comment comment = new Comment();
 		//commentSessionRepository = new  CommentSessionRepository(); spring 없을 때
 		Integer result=commentSessionRepository.insertComment(comment);
 		model.addAttribute("result",result);
 		return "/comment_insert";
 	}
-	
+
 	@RequestMapping(value="/comment_update", method = RequestMethod.POST)
 	public String commentUpdate(Comment comment ,Model model) {
 		//commentSessionRepository = new  CommentSessionRepository(); spring 없을 때
 		Integer result=commentSessionRepository.updateComment(comment);
 		model.addAttribute("result",result);
 		return "/comment_update";
-	}	
+	}
 
 }

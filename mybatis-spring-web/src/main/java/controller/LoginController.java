@@ -22,22 +22,22 @@ public class LoginController {
 	CommentSessionRepository commentSessionRepository;
 	@Autowired
 	LoginSessionRepository loginSessionRepository;
-	
+
 	@RequestMapping(value="/login_process.do", method = RequestMethod.POST)
 	public String loginProcess(Member member, Model model, HttpServletRequest request) {
 		Member result =loginSessionRepository.selectLogin(member);
 		HttpSession session = request.getSession(false);
-		if(result!=null) {			
+		if(result!=null) {
 			if(session != null) {
 				session.invalidate();
 			}
 			session = request.getSession(true);
 			System.out.println("로그인성공 result != null");
 			session.setAttribute("loginInfo", result);
-		}else if(result==null){
-			System.out.println("로그인실패 result = null");
-		}		
-		model.addAttribute("member",result);		
-		return "process/login_pro";
+			return "redirect:Main";
+		}
+
+		model.setAttribute('loginResult', 'fail');
+		return "login";
 	}
 }

@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%
+  Session session = request.getSession(true);
+  Member member = session.getAttribute('loginInfo');
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>GRAB</title>
-<link rel="shortcut icon" type="image/x-icon" 
+<link rel="shortcut icon" type="image/x-icon"
 	href=" " />
 <link rel="stylesheet" type="text/css"
 	href="_resource/_web/css/common.css">

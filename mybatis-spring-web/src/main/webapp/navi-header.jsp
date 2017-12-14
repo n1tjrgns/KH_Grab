@@ -45,11 +45,13 @@
 					<div class="border3"></div>
 					<div class="border4"></div>
 
-							
+
 				</div>
 			</li>
 			<li class="sub">
+        <%if (!member) {%>
 				<a href="Main_login" class="mot2" onclick="">Login/Sign up</a>
+        <% } %>
 				<div class="sub_link mot3">
 					<div class="border1"></div>
 					<div class="border2"></div>
@@ -57,7 +59,7 @@
 					<div class="border4"></div>
 
 					<a href="Main_mypage" onclick="" class="sub_a mot2">MY PAGE</a>
-				
+
 				</div>
 			</li>
 		</ul>

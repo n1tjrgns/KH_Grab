@@ -2,7 +2,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-   				
+
  <mapper namespace="repository.mapper.LoginMapper">
 	<cache />
 
@@ -33,5 +33,15 @@
 		</where>
 	</select>
 
-	
+  <select id="selectMemberByLogin" parameterType="Member"
+	resultMap="MemberResultMap">
+		SELECT * FROM member
+		<where>
+      m_email = #{mEmail}
+      AND
+      m_pw = #{m_pw}
+		</where>
+	</select>
+
+
 </mapper>
