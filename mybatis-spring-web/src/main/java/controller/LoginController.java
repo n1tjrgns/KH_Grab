@@ -37,7 +37,7 @@ public class LoginController {
 			return "redirect:Main";
 		}
 
-		model.setAttribute('loginResult', 'fail');
+		model.addAttribute("loginResult", "fail");
 		return "login";
 	}
 }

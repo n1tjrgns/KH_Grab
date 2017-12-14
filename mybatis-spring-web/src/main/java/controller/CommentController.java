@@ -26,7 +26,7 @@ public class CommentController {
 	}
 
 	@RequestMapping(value="/Main_graph", method = RequestMethod.GET)
-	public String handleStep1(Model model, HttpServletRequest request) {
+	public String handleStep1(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "graph";
 	}
