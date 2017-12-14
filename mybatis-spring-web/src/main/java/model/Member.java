@@ -34,6 +34,9 @@ public Member(String mEmail,String mPw,String mName,String mTel,
 	   this.bank = bank;
 	   this.account = account;
 }
+public Member() {
+
+}
    
 public String getmEmail() {
 	return mEmail;
@@ -138,10 +141,6 @@ public String getAccount() {
 
 public void setAccount(String account) {
 	this.account = account;
-}
-
-public Member() {
-      
 }
 
 }
