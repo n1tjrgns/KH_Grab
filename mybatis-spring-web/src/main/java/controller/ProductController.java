@@ -2,6 +2,8 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,17 +25,21 @@ public class ProductController {
 	
 	
 	
-	@RequestMapping(value="/Main_shop", method = RequestMethod.GET)
-	public String handleStep4(Product product, Model model) {
+	@RequestMapping(value="/Main_shop")
+	public String shopStep1(Product product, Model model) {
 		List<Product> result = productSessionRepository.selectProductList();
 		model.addAttribute("product", result);
 		return "shop";
 	}
 	
-	@RequestMapping(value="/Main_shop_cotent", method = RequestMethod.GET)
-	public String handleStep4_1(Model model) {
+	@RequestMapping(value="/shop_content", method = RequestMethod.POST)
+	public String shopStep2(HttpServletRequest httpServletRequest, Model model) {
+		String p_name = httpServletRequest.getParameter("p_name");
+		System.out.println("p_name:"+p_name);
+		Product result = productSessionRepository.selectProduct(p_name);
+		System.out.println("result:"+result);
 		model.addAttribute("comment",new Comment());
-		return "shop_content";
+		return "content";
 	}
 	
 }

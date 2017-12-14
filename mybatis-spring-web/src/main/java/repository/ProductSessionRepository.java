@@ -18,6 +18,12 @@ public class ProductSessionRepository extends AbstractRepository {
 		return sqlSession.selectList(statment);
 	}
 	
+	public Product selectProduct(String p_name) {
+		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		String statment = nameSpace+".selectProductByCondition";
+		return sqlSession.selectOne(statment,p_name);
+	}
+	
 
 	public Integer insertProduct(Product product) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();

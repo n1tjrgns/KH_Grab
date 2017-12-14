@@ -28,7 +28,7 @@
 		
 	</select>
 	
-	<select id="selectProductContentByCondition" parameterType="Product"
+	<select id="selectProductByCondition" parameterType="Product"
 		resultMap="BaseResultMap">
 		SELECT
 			prod_name,
@@ -37,8 +37,8 @@
 			prod_pic
 		FROM product
 		<where>
-			<if test="prodName != null">
-				prod_name = #{prodName}
+			<if test="p_name != null">
+				prod_name = #{p_name}
 			</if>
 		</where>
 	</select>

@@ -71,11 +71,13 @@
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
+			<form action = "shop_content" id= "contentForm"method = "POST">
+				<input type="hidden" name="p_name" value=''>
 			<%
 				for(int i=0; i<products.size();i++){
 			%>
 				<li>
-					<a href="./content.jsp">
+					<a href="#" onclick="document.getElementById('contentForm').p_name.value='<%= products.get(i).getProdName()%>';contentForm.submit();">
 						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
@@ -88,6 +90,7 @@
 					</a>
 				</li>
 			<%} %>
+			</form>
 				<li>
 					<a href="#">
 						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>
