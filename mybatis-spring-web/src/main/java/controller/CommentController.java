@@ -8,8 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import model.Comment;
-import model.Product;
+import model.*;
 import repository.CommentSessionRepository;
 import repository.ProductSessionRepository;
 

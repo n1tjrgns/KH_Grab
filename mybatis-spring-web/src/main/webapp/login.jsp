@@ -20,10 +20,10 @@
                 <div class="input_area">
                     <form action="login_process.do" id="__loginForm__" method="post">
                         <div class="input_box email login_email">
-                            <input type="text" placeholder="이메일 주소" name="_login_email_" id="_login_email_" value="" maxlength="35">
+                            <input type="text" placeholder="이메일 주소" name="mEmail" id="_login_email_" value="" maxlength="35">
                         </div>
                         <div class="input_box password login_password">
-                            <input type="password" placeholder="비밀번호" name="_login_passwd_" id="_login_passwd_" onkeypress="checkLoginPassswordKeyPress(event);" maxlength="25">
+                            <input type="password" placeholder="비밀번호" name="mPw" id="_login_passwd_" onkeypress="checkLoginPassswordKeyPress(event);" maxlength="25">
                         </div>
                         <div class="input_box loginbtn">
                         	<input type="submit" value="로그인">

@@ -1,6 +1,8 @@
 package repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -11,9 +13,16 @@ import model.Member;
 public class LoginSessionRepository extends AbstractRepository {
 	private final String nameSpace = "repository.mapper.LoginMapper";
 	
-	public List<Member> selectLogin() {
+	public Member selectLogin(Member member) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		String statement = nameSpace+".selectMemberByLoginCheck";
-		return sqlSession.selectList(statement);
+		Member dbMember =  new Member();
+		dbMember =sqlSession.selectOne(statement);
+		if( dbMember.getmPw().equals(member.getmPw())){
+			return dbMember;
+		}else {
+			return null;
+		}		
+		
 	}
 }
