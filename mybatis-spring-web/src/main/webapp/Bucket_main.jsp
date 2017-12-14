@@ -84,7 +84,8 @@ isLogin = true;
             <p>
                아직 Grab 회원이 아니신가요?
             </p>
-            <span>회원 가입하시고 당신의 삶에 버킷 리스트를 더해 보세요.</span> <a href="Main_login_regist1" class="btn_register mot2" onclick='eventTrack("", "login_btn_register"); NTrackObj.callTrackTag("29443", callbackFn, 11979);'>회원가입</a>
+            <span>회원 가입하시고 당신의 삶에 버킷 리스트를 더해 보세요.</span> 
+              <a href="Main_login_regist1" class="btn_register mot2" onclick='eventTrack("", "login_btn_register"); NTrackObj.callTrackTag("29443", callbackFn, 11979);'>회원가입</a>
         </div>
    
     </div>
@@ -152,7 +153,6 @@ function checkLoginPassswordKeyPress(event){
 </script>
 
 
-
         <div class="dumpBannerBox"></div>
         <div id="facebook-banner" class="fixed-group">
             <a href="https://www.lifeplus.co.kr/lifeplusxlcd/" class="banner-copy" target="_blank" onclick='eventTrack("", "clublibday_banner_head");'><!-- 20171109 -->
@@ -162,6 +162,7 @@ function checkLoginPassswordKeyPress(event){
         </div>
         <div id="header" class="fixed-group">
             <div class="dumpBannerBox"></div>
+    
             <div class="h-members-container">
                 <div class="h-members">
                     <div class="h-members-btns">
@@ -179,9 +180,6 @@ function checkLoginPassswordKeyPress(event){
  							-->                            
                             <a href="/member/logout.do" class="login">로그아웃</a>
                             <a href="Main_info" class="regist">회원정보관리</a>
-                            
-                            
-                            
                         </div>
                     </div>
                 </div>
@@ -191,7 +189,6 @@ function checkLoginPassswordKeyPress(event){
                 <a href="Bucket_main" class="h-logo">
                     <span>
                         <img src="_resource/_web/images/common/Blogo.png" alt="?"/>
-                 
                     </span>
                 </a>
                 <a href="javascript:void(0);" class="h-menu">
@@ -201,12 +198,11 @@ function checkLoginPassswordKeyPress(event){
                 </a>
                 <div class="gnb_menu">
                     <ul class="gnb_menu_ul">
-                    	
                         <li>
                             <a href="javascript:goMyBucket();" class="gnb2 mot2" onclick='eventTrack("", "menu_mypage");'>
                                 <div class="text mot2">
                                     <span class="en mot2">My Bucket</span><br>
-                                    나의 버킷 리스트를 모아보세요.
+                                	    나의 버킷 리스트를 모아보세요.
                                 </div>
                                 <div class="ico mot2"></div>
                             </a>
@@ -216,7 +212,7 @@ function checkLoginPassswordKeyPress(event){
                             <a href="Main_bucket" class="gnb4 mot2" onclick='eventTrack("", "menu_about");'>
                                 <div class="text mot2">
                                     <span class="en mot2">About</span><br>
-                                    <strong>Lifeplus</strong> Bucket List를 소개합니다. <!-- 2017-03-13 -->
+                                    <strong>Grab</strong> Bucket List 를 소개합니다.
                                 </div>
                                 <div class="ico mot2"></div>
                             </a>
@@ -454,62 +450,413 @@ function goMyBucket(){
         </a>
     </div>
 
-				<div id="list-loaing" style="display: none;">
-				</div>
-				<div id="list-container" class="use_gpu">
-
-    </div>
-
- 
-<div id="bucket-list" class="fixed-group">
-    <ul class="bucket-list-box">
-        <li class="bucket-list-title">
-            <div class="title en">
-                MY<br>
-                BUCKET LIST
+	<div id="list-container">
+	
+	<div class="list-box seq-I0032" style="transform-origin: 50% 50% 0px; transform: translate(0px, 0px); opacity: 1;">
+            <div class="list-bg" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+                <img src="_resource/images/discover/library/list-empty-box.png" alt="">
+                <img class="list-img" src="http://images.hwlife.hscdn.com//library/i0032_thumb.jpg" 
+                shareimage="http://images.hwlife.hscdn.com//library/i0032_share.jpg" alt ="x" 
+                onload="Popular.listImgLoadComplete(this)" style="opacity: 1;">
+                <img class="list-shadow" src="_resource/images/discover/bucket_shadow.png" alt="x">
             </div>
-            <a href="Bucket_mypage_complite" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
-        </li>
-        <li class="arrow-btn-l arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></a></li>
-        <li class="lists">
-            <ul class="lists-container">
-                <!--<li><a href="javascript:alert('알럿')"><img src="/_resource/images/discover/bucket-list-none-image.png" alt="" /></a></li>-->
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-            </ul>
-        </li>
-        <li class="arrow-btn-r arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-r.png" alt="" /></a></li>
-        <li class="bucket-share">
-            <a href="#" onclick='eventTrack("", "discover_board_share");'>
-                <div class="copy">
-                    친구들과<br>
-                    공유하기
+            <div class="winner-count en top3">3</div>
+            <div class="list-contents">
+                <ul class="list-contents-ul">
+                    <li class="category-name en travel">TRAVEL</li>
+                    <li class="title">스위스 체르마트에서 <br>마테호른 감상하기</li>
+                
+                    <li class="add-btn" key-value="I0032">
+            
+                            <div class="list-add-checked change-add-check" style="display:none"><img src="_resource/images/discover/library/checked.png" alt=""></div>
+
+                            <a href="#" class="en change-add-btn" key-value="I0032" style="display:inline-block">
+                                <div class="plus"><img src="_resource/images/discover/library/list-icon-plus.png" alt=""></div>
+                                <span>ADD</span>
+                            </a>
+                    </li>
+
+                    <li class="share-btns" style="height: 0px;">
+                        
+
+                        
+                        <div class="dibs-checked change-like-check" style="display:none">
+                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
+                            <span>찜하기</span>
+                        </div>
+                        <a href="#" class="dibs change-like-btn" key-value="I0032" style="display:inline-block">
+                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
+                            <span>찜하기</span>
+                        </a>
+
+
+                        <a href="#" class="share">
+                            <img src="_resource/images/discover/library/list-icon2.png" alt="">
+                            <span>공유하기</span>
+                        </a>
+                        <div class="small-share-btns" key-value="I0032">
+                            <a href="javascript:;"><img src="_resource/images/discover/library/btn_share_facebook.png" alt="페이스북 공유하기"></a>
+                            <a href="#"><img src="_resource/images/discover/library/btn_share_kakao.png" alt="카카오스토리 공유하기"></a>
+                            <a href="#"><img src="_resource/images/discover/library/btn_share_twitter.png" alt="트위터 공유하기"></a>
+                            <a href="#" class="small-share-close-btn"><img src="_resource/images/discover/library/btn_share_close.png" alt="공유하기 닫기"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-add-popup">
+                <div class="list-add-container">
+                    <ul class="list-add-box">
+                        <li class="list-add-icon"><img src="_resource/images/discover/library/list-icon3.png" alt=""></li>
+                        <li class="list-add-title en">ADD BUCKET LIST</li>
+                        <li class="list-add-desc">버킷 리스트가 추가되었습니다.</li>
+                    </ul>
                 </div>
-                <div class="icon"><img src="_resource/images/discover/bucket-list-icon3.png" alt="" /></div>
-            </a>
-        </li>
-    </ul>
-    <div class="bucket-list-close-btn"><a href="#"><img src="_resource/images/discover/bucket-list-closebtn.png" alt="[X]" /></a></div>
-    <div class="bucket-floating-menu"><a href="#" onclick='eventTrack("", "discover_btn_board");'><div class="over-mot"></div><img src="_resource/images/discover/floating-icon.png" alt="icon!" /></a></div>
+            </div>
+        </div>
+	
+	
+<div id="popups" class="fixed-group" style="left: 0px; display: none;">
+
+    
+    <div id="detail-popup" class="detail-popup popup-group" style="display: inline-block;">
+        <div class="detail-container seq-I1935 seq-I1596">
+            <div class="img-container">
+                <div class="detail-bg"><img src="_resource/images/discover/library/popup/img-bg.png" alt=""></div>
+
+                <ul id="detail-img-contents">
+                    
+                    <li><div class="simple_loading" style="display: none;"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></li>
+                    <li class="img-box" bucketimage="http://images.hwlife.hscdn.com//library/i1596_thumb.jpg" style="background-image: url(&quot;http://images.hwlife.hscdn.com//library/i1596_view_01.jpg&quot;);"></li>
+                    <li class="detail-img-shadow"></li>
+                    <li class="detail-img-top-shadow"><img src="_resource/images/discover/popup-top-shadow.png" alt=""></li>
+                    <li class="detail-arrow-btns">
+                        <a href="javascript:;"><img src="_resource/images/discover/etc/arrow-btn-l.png" alt=""></a>
+                        <a href="javascript:;"><img src="_resource/images/discover/etc/arrow-btn-r.png" alt=""></a>
+                    </li>
+                    <li class="detail-title">
+                        <p class="category en travel" id="popup_detail_category">TRAVEL</p>
+                        <p class="title" id="popup_detail_title">빙하특급열차 타고
+<br>스위스의 풍경 즐기기</p>
+                    </li>
+                    <li class="detail-share-btns">
+                        <div class="checked-detail-add-btn change-add-check" style="display: none;"><img src="_resource/images/discover/etc/add-btn-checked.png" alt=""></div>
+                        <a href="#" class="detail-add-btn change-add-btn" style="display: inline;"><img src="_resource/images/discover/etc/add-btn.png" alt=""></a>
+
+                        <div class="checked-detail-like-btn change-like-check" style="display: none;"><img src="_resource/images/discover/etc/like-btn-checked.png" alt=""></div>
+                        <a href="#" class="detail-like-btn change-like-btn" style="display: inline;"><img src="_resource/images/discover/etc/like-btn.png" alt=""></a>
+
+                        <a href="#" class="detail-share-btn"><img src="_resource/images/discover/etc/share-btn.png" alt=""></a>
+                        <div class="detail-small-share-btns" key-value="I1596">
+                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_twitter.png" alt=""></a>
+                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_kakao.png" alt=""></a>
+                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_facebook.png" alt=""></a>
+                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_close.png" alt=""></a>
+                        </div>
+                    </li>
+                    <li class="detail-top-btns">
+                        <div class="dots">
+                            <a href="#" class="active" style="display: block;"></a>
+                            <a href="#" style="display: block;" class=""></a>
+                            <a href="#" style="display: none;"></a>
+                        </div>
+                        <a href="#" class="detail-popup-close"><img src="_resource/images/discover/library/popup/close-btn.png" alt=""></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="info-container">
+                <div id="info-left">
+                    <ul class="info-left-ul">
+                        <li class="tags tag-btns-group" id="popup_detail_tags"><a href="javascript:Search.directSearch('#유레일패스')"><span>#</span>유레일패스</a>
+<a href="javascript:Search.directSearch('#스위스')"><span>#</span>스위스</a>
+<a href="javascript:Search.directSearch('#빙하특급열차')"><span>#</span>빙하특급열차</a>
+<a href="javascript:Search.directSearch('#체르마트에서생모리츠까지')"><span>#</span>체르마트에서생모리츠까지</a>
+<a href="javascript:Search.directSearch('#경치즐기기')"><span>#</span>경치즐기기</a>
+</li>
+                        <li class="desc" id="popup_detail_desc">체르마트에서 생 모리츠를 횡단하는 빙하특급열차는 세계에서 가장 유명한 열차 중 하나다. 91개의 터널, 291개의 구름다리, 7개의 터널을 8시간에 걸쳐 운행한다. 한 번의 열차 여행으로 알프스의 산과 숲, 계곡 등 스위스의 모든 절경을 여유롭게 감상할 수 있어 열차 여행객을 더욱 행복하게 한다. 이름은 특급이지만 빠르지 않은 속도로 운행해서 '세상에서 가장 느린 특급열차'로 불린다고, 유레일 패스 소지자는 빙하특급열차 무료 탑승 혜택이 주어지니 놓치지 말자. 사전 예약은 필수.</li>
+                        <li class="links">
+                            <dl id="popup_detail_urls"><dt>관련링크</dt><dd>빙하특급열차 <a href="http://www.glacierexpress.ch/en/Pages/default.aspx" target="_blank">바로가기</a></dd>
+<dd>버킷리스트저축 계산하기  <a href="https://www.onsure.co.kr/m/HOME/osc_quick_adgate.jsp?adcode=M_life002" target="_blank">바로가기</a></dd>
+</dl>
+                        </li>
+                    </ul>
+                </div>
+                <div id="info-right">
+                    <ul>
+                        <li class="title"><span id="popup_detail_bucket_cnt">0</span>개의 리뷰가 존재합니다.</li>
+                        <li class="person-list" id="popup_detail_bucket_list" style="">
+ 
+        
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170719B000008871');" class="" style="">
+                                
+								<div style="background:url(&quot;https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13102696_576304315885397_713167357367521753_n.jpg?oh=e912702436e18ec42538c91d5cdb22c4&amp;oe=59F87A07&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170806B000009032');" class="" style="">
+                                
+								<div style="background:url(&quot;https://ssl.pstatic.net/static/pwe/address/img_profile.png&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170811B000009090');" class="" style="">
+                                
+								<div style="background:url(&quot;https://ssl.pstatic.net/static/pwe/address/img_profile.png&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170813B000009101');" class="" style="">
+                                
+								<div style="background:url(&quot;https://scontent.xx.fbcdn.net/v/t1.0-1/s200x200/17523253_1360864640626088_7677205970926316515_n.jpg?oh=6a3ee056cc52c080d58eb6971add2eb1&amp;oe=59F00995&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170816B000009140');" class="last" style="">
+                                
+								<div style="background:url(&quot;https://phinf.pstatic.net/contact/20170607_232/1496842104110l0ivb_JPEG/image.jpg&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170825B000009238');" class="" style="">
+                                
+								<div style="background:url(&quot;http://mud-kage.kakao.co.kr/dn/h3OPP/btqg64mLK9x/BwRtFWxe3asVlyzkvDgKy0/profile_640x640s.jpg&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170827B000009247');" class="" style="">
+                                
+								<div style="background:url(&quot;https://ssl.pstatic.net/static/pwe/address/img_profile.png&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170915B000009434');" class="" style="">
+                                
+								<div style="background:url(&quot;https://phinf.pstatic.net/contact/20170104_106/1483493476138QehHD_PNG/image.png&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170618B000008773');" class="" style="">
+                                
+								<div style="background:url(&quot;_resource/images/discover/library/popup/sample-person.jpg&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+                             
+                            <a href="javascript:Popup.openMemberBucketList('20170904B000009307');" class="last" style="">
+                                
+								<div style="background:url(&quot;https://scontent.xx.fbcdn.net/v/t1.0-1/s200x200/1379841_10150004552801901_469209496895221757_n.jpg?oh=a727fee4935f5df7c99f0b1a9f719eb6&amp;oe=5A55D1F8&quot;) center center no-repeat; background-size:cover;"></div>
+								<img src="_resource/images/discover/etc/person-over.png">
+                            </a>
+   
+   
+ </li>
+                        <li class="zero-person-info" style="display: block;">
+                            <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="">
+                            <div class="desc1">이 버킷 리스트의</div>
+                            <div class="desc2">리뷰를 작성한<span>최초의 1인</span>이 되어 보세요!</div>
+                        </li>
+                        <li class="info-prev-next">
+                            <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>이전</span></a>
+                            <div class="info-count en" id="popup_detail_bucket_list_page"><span>1</span> / 9</div>
+                            <a href="javascript:Popup.detailBucketList('next');" class="info-next"><span>다음</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <div id="person-bucket-popup" class="person-bucket-popup popup-group" style="display: none;">
+        <div class="person-bucket-container">
+             
+        </div>
+    </div>
+    
+
+    
+    <div id="featured-gate-popup" class="featured-gate-popup popup-group" style="display: none;">
+        <div class="gate-popup-box">
+            <div class="gate-bg"><img src="_resource/images/discover/featured/popup/img-bg.png" alt=""></div>
+            <div class="gate-container">
+
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <div id="featured-detail-popup" class="featured-detail-popup popup-group" style="display: none;">
+        <div class="f-detail-popup-box">
+            <div class="f-detail-bg"><img src="_resource/images/discover/featured/popup/img-bg.png" alt=""></div>
+            <div class="f-detail-container">
+
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <div id="share-popup" class="share-popup popup-group" style="display: none;">
+     	<input type="hidden" id="SNS_SHARE_KEY" value="I1596">
+     	<input type="hidden" id="SNS_SHARE_MEM_KEY" value="">
+     	<input type="hidden" id="SAVE_SNS_SHARE_KEY">
+     	<input type="hidden" id="SAVE_SNS_SHARE_CTGR">
+     	<input type="hidden" id="SAVE_SNS_SHARE_TEXT">
+     	<input type="hidden" id="SAVE_SNS_SHARE_IMAGE">
+     	
+        <ul class="share-popup-ul">
+            <li class="share-popup-title"><span></span> 님의<br> 버킷리스트를 SNS에 공유해보세요.</li>
+            <li class="share-popup-info"><span>ㆍ</span> 아래 이미지가 SNS에 공유됩니다.</li>
+            <li class="share-popup-img">
+                
+                <div class="share-popup-contents">
+                    <img src="http://images.hwlife.hscdn.com//library/i1596_share.jpg" id="SNS_SHARE_IMAGE">
+                    <div class="share-popup-dimmed"></div>
+                    <div class="share-popup-contents-copy">
+                        <p class="en" id="SNS_SHARE_CTGR">Travel</p>
+                        	<span id="SNS_SHARE_TEXT">빙하특급열차 타고
+스위스의 풍경 즐기기</span>
+                    </div>
+                </div>
+            </li>
+            <li class="share-popup-btns">
+                <a href="#" class="share-fb">
+                    <div>
+                        <img src="_resource/images/discover/etc/fb-icon.png">
+                        <img src="_resource/images/discover/etc/fb-icon_on.png" class="on">
+                    </div>
+                    페이스북 공유
+                </a>
+                <a href="#" class="share-tw">
+                    <div>
+                        <img src="_resource/images/discover/etc/tw-icon.png">
+                        <img src="_resource/images/discover/etc/tw-icon_on.png" class="on">
+                    </div>
+                    트위터 공유
+                </a>
+                <a href="#" class="share-ks">
+                    <div>
+                        <img src="_resource/images/discover/etc/ks-icon.png">
+                        <img src="_resource/images/discover/etc/ks-icon_on.png" class="on">
+                    </div>
+                    카카오스토리 공유
+                </a>
+            </li>
+            <li class="share-popup-close"><a href="#"><img src="_resource/images/discover/share-popup-close.png"></a></li>
+        </ul>
+    </div>
+    
+    
+    <div id="user-guide-popup" class="user-guide-popup popup-group" style="display: none;">
+        <div class="left-contents">
+            <div class="title">
+                USER<br>
+                <span>GUIDE</span>
+            </div>
+            <div class="desc">
+                당신의 가슴을 뛰게 할<br>
+                Bucket List를 발견하고,<br>
+                삶에 색을 더해보세요.
+            </div>
+        </div>
+        <ul>
+            <li>
+                <span>01</span>
+                <div><img src="_resource/images/discover/etc/popup-user-guide-icon1.png"></div>
+                <dt>탐색해보세요</dt>
+                <dd>
+                    Lifeplus Bucket List가 제안하는<br>
+                    다양한 아이디어들을 탐색해보고
+                </dd>
+            </li>
+            <li>
+                <span>02</span>
+                <div><img src="_resource/images/discover/etc/popup-user-guide-icon2.png"></div>
+                <dt>발견해보세요</dt>
+                <dd>
+                    나의 가슴을 뛰게 만드는<br>
+                    Bucket List를 발견해보세요.
+                </dd>
+            </li>
+            <li>
+                <span>03</span>
+                <div><img src="_resource/images/discover/etc/popup-user-guide-icon3.png"></div>
+                <dt>공유해보세요</dt>
+                <dd>
+                    자랑하고 싶고, 함께하고 싶은<br>
+                    Bucket List를 친구들과 공유해보고
+                </dd>
+            </li>
+            <li>
+                <span>04</span>
+                <div><img src="_resource/images/discover/etc/popup-user-guide-icon4.png"></div>
+                <dt>삶에 더해보세요</dt>
+                <dd>
+                    나의 Bucket List에 +Add하는 순간,<br>
+                    Lifeplus는 시작됩니다.
+                </dd>
+            </li>
+        </ul>
+        <div class="user-guide-popup-close">
+            <a href="#"><img src="_resource/images/discover/etc/popup-user-guide-close.png"></a>
+        </div>
+    </div>
+    
+    
+    <script>
+    	function setSnsShareData( sns_share_key,sns_share_ctgr, sns_share_text, sns_share_image){
+    	 
+    		$("#SNS_SHARE_KEY").val(sns_share_key);
+    		$("#SNS_SHARE_CTGR").text(sns_share_ctgr);
+    		$("#SNS_SHARE_TEXT").text(sns_share_text);
+    		$("#SNS_SHARE_IMAGE").attr("src",sns_share_image);
+    		
+    		
+    	}
+    	
+    	function setSnsSareSaveData(sns_share_key,sns_share_ctgr, sns_share_text, sns_share_image ){
+    		$("#SAVE_SNS_SHARE_KEY").val(sns_share_key);
+    		$("#SAVE_SNS_SHARE_CTGR").val(sns_share_ctgr);
+    		$("#SAVE_SNS_SHARE_TEXT").val(sns_share_text);
+    		$("#SAVE_SNS_SHARE_IMAGE").val(sns_share_image);
+    	}
+    	function loadSnsShareData(  ){
+       	 
+    		$("#SNS_SHARE_KEY").val($("#SAVE_SNS_SHARE_KEY").val());
+    		$("#SNS_SHARE_CTGR").html($("#SAVE_SNS_SHARE_CTGR").val());
+    		$("#SNS_SHARE_TEXT").html($("#SAVE_SNS_SHARE_TEXT").val());
+    		$("#SNS_SHARE_IMAGE").attr("src",$("#SAVE_SNS_SHARE_IMAGE").val());
+    		
+    		
+    	}   	
+    </script>
+    
 </div>
+
 </div>
-<div id="black-dimmed"></div>
 
-
-
+<div id="black-dimmed1"></div>
 
 
 <div id="popups" class="fixed-group">
 
     
     <div id="detail-popup" class="detail-popup popup-group">
-        <div class="detail-container">
+        <div class="detail-container" >
             <div class="img-container">
                 <div class="detail-bg"><img src="_resource/images/discover/library/popup/img-bg.png" alt="img-bg.png" /></div>
 
-                <ul id="detail-img-contents">
+                <ul id="detail-img-contents" >
                     
                     <li><div class="simple_loading"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></li>
                     <li class="img-box" bucketimage=""></li>
@@ -588,64 +935,12 @@ function goMyBucket(){
                                 </svg>
                             </a>
                             
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="last">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="last">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
+                  
                          -->   
                         </li>
                         <li class="zero-person-info" style="display: none;">
                             <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
-                            <div class="desc1">이 버킷 리스트를</div>
+                            <div class="desc1">이 버킷 리스트스트 리뷰를</div>
                             <div class="desc2">추가한 <span>최초의 1인</span>이 되어 보세요!</div>
                         </li>
                         <li class="info-prev-next">
@@ -659,7 +954,7 @@ function goMyBucket(){
         </div>
     </div>
     
-
+</div>
     
     <div id="person-bucket-popup" class="person-bucket-popup popup-group">
         <div class="person-bucket-container">
@@ -763,19 +1058,15 @@ function goMyBucket(){
     		
     	}   	
     </script>
-    
+		</div>
+		</div>
+   
+      
 </div>
 
+ <!-- 	<jsp:include page="navi-footer.jsp"></jsp:include> -->
 
 
-        
-    </div>
-</div>
-
- 
- 	<jsp:include page="navi-footer.jsp"></jsp:include> 
-
- 
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
 <script src="_resource/js/vendor/jquery.cookie.js"></script>
 <script src="_resource/js/vendor/spin.min.js"></script>
@@ -784,6 +1075,8 @@ function goMyBucket(){
 <script src="_resource/js/common.js"></script>
 <script src="_resource/js/login.js"></script>
 <script src="_resource/js/common_biz.js"></script>
+
+
 
 </body>
 </html>

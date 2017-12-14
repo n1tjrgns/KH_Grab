@@ -67,6 +67,5 @@ public class CommentSessionRepository extends AbstractRepository {
 			sqlSession.close();
 		}
 	}
-	
-	
+
 }

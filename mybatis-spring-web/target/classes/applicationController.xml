@@ -12,6 +12,6 @@
 
 	<bean class="controller.CommentController">
 	</bean>	
-	
-
+	<bean class="controller.BucketController">
+	</bean>	
 </beans>

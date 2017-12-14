@@ -18,8 +18,6 @@
             <div class="email_box">
                 <h3>정보 입력</h3>
                 <div class="input_area">
-               
-              
                     <form action="login.do" id="__loginForm__" method="post">
   
                         <div class="input_box email login_email">

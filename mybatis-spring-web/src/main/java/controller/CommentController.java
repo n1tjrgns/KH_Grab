@@ -30,11 +30,12 @@ public class CommentController {
 		return "graph";
 	}
 	
-	@RequestMapping(value="/Bucket_main", method = RequestMethod.GET)
+	/* 분할 to BucketController.java
+	 * @RequestMapping(value="/Bucket_main", method = RequestMethod.GET)
 	public String handleStep2(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "Bucket_main";
-	}
+	} */
 	
 	@RequestMapping(value="/Main_bucket", method = RequestMethod.GET)
 	public String handleStep3(Model model) {

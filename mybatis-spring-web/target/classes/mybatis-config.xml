@@ -23,5 +23,6 @@
    <mappers>
       <mapper resource="repository/mapper/CommentMapper.xml"/>
       <mapper resource="repository/mapper/ProductMapper.xml"/>
+      <mapper resource="repository/mapper/BucketMapper.xml"/>
    </mappers>
 </configuration>
