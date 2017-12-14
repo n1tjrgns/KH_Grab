@@ -10,15 +10,29 @@ public class member {
    private Date mBirth;
    private String mGen;
    private String mAddr;
-   private int mAttendcount;
+   private Long mAttendcount;
    private String mProfile;
-   private int mLicense;
+   private Long mLicense;
    private String mAuthority;
    private String bank;
    private String account;
    
-public member(String mEmail) {
-   this.mEmail = mEmail;    
+public member(String mEmail,String mPw,String mName,String mTel,
+		Date mBirth,String mGen,String mAddr,Long mLicense, String mAuthority, Long mAttendcount
+		,String mProfile,String bank,String account) {
+	   this.mEmail = mEmail; 
+	   this.mPw = mPw;
+	   this.mName = mName;
+	   this.mTel = mTel;
+	   this.mBirth = mBirth;
+	   this.mGen = mGen;
+	   this.mAddr = mAddr;
+	   this.mAttendcount = mAttendcount;
+	   this.mProfile = mProfile;
+	   this.mLicense = mLicense;
+	   this.mAuthority = mAuthority;
+	   this.bank = bank;
+	   this.account = account;
 }
    
 public String getmEmail() {
@@ -77,11 +91,11 @@ public void setmAddr(String mAddr) {
 	this.mAddr = mAddr;
 }
 
-public int getmAttendcount() {
+public Long getmAttendcount() {
 	return mAttendcount;
 }
 
-public void setmAttendcount(int mAttendcount) {
+public void setmAttendcount(Long mAttendcount) {
 	this.mAttendcount = mAttendcount;
 }
 
@@ -93,11 +107,11 @@ public void setmProfile(String mProfile) {
 	this.mProfile = mProfile;
 }
 
-public int getmLicense() {
+public Long getmLicense() {
 	return mLicense;
 }
 
-public void setmLicense(int mLicense) {
+public void setmLicense(Long mLicense) {
 	this.mLicense = mLicense;
 }
 

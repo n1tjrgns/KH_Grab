@@ -27,11 +27,11 @@
 	<%
 
 		ProductSessionRepository  psr = new ProductSessionRepository();
-		List<Product> products = psr.selectProduct();
+		List<Product> products = psr.selectProductList();
 		System.out.println("List num : "+ products.size());
 		for(int i=0; i<products.size();i++){
 			System.out.println("물품 이름:"+products.get(i).getProdName());
-			System.out.println("물품 내용:"+products.get(i).getProdContent());
+			System.out.println("물품 내용:"+products.get(i).getProdCategory());
 		}
 	%>
 <!-- 	<section class="search">
@@ -82,7 +82,7 @@
 						<h1>
 						<%= products.get(i).getProdName()%>
 						</h1>
-						<h2><%= products.get(i).getProdContent() %></h2>
+						<h2><%= products.get(i).getProdCategory() %></h2>
 						<h2><span class="property_size"><%= products.get(i).getProdPrice()%>원</span></h2>
 					</div>
 					</a>
