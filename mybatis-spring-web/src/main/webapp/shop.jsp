@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="java.io.*,java.util.*,javax.servlet.*"%>
+<%@page import="repository.*, model.*"%>
 <html lang="en">
 <head>
 	<title>Grab</title>
@@ -22,11 +24,20 @@
 <body >
 	 <jsp:include page="navi-header.jsp"/>
 	
+	<%
 
+		ProductSessionRepository  psr = new ProductSessionRepository();
+		List<Product> products = psr.selectProductList();
+		System.out.println("List num : "+ products.size());
+		for(int i=0; i<products.size();i++){
+			System.out.println("물품 이름:"+products.get(i).getProdName());
+			System.out.println("물품 내용:"+products.get(i).getProdCategory());
+		}
+	%>
 <!-- 	<section class="search">
 		<div class="wrapper">
 			<form action="#" method="post">
-				<input type="text" id="search" name="search" placeholder="무엇을 찾고 계신가요?"  autocomplete="off"/>
+				<input type="text" id="search" name="search" pla ceholder="무엇을 찾고 계신가요?"  autocomplete="off"/>
 				<input type="submit" id="submit_search" name="submit_search"/>
 			</form>
 			<a href="#" class="advanced_search_icon" id="advanced_search_btn"></a>
@@ -56,24 +67,27 @@
 			</div>
 		</div><!--  end advanced search section  -->
 	</section><!--  end search section  -->
- -->
 
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
+			<%
+				for(int i=0; i<products.size();i++){
+			%>
 				<li>
 					<a href="./content.jsp">
 						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
 						<h1>
-							canon selphy 포토 용지 RP-54
+						<%= products.get(i).getProdName()%>
 						</h1>
-						<h2>포토프린터에 필요한 포토 용지 </h2>
-						<h2><span class="property_size">2000원</span></h2>
+						<h2><%= products.get(i).getProdCategory() %></h2>
+						<h2><span class="property_size"><%= products.get(i).getProdPrice()%>원</span></h2>
 					</div>
 					</a>
 				</li>
+			<%} %>
 				<li>
 					<a href="#">
 						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>

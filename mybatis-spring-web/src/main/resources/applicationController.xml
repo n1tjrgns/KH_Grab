@@ -12,5 +12,6 @@
 
 	<bean class="controller.CommentController">
 	</bean>	
+	
 
 </beans>

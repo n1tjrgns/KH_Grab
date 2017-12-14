@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   				
+ <mapper namespace="repository.mapper.CommentMapper">
+	<cache />
+
+   <resultMap type="Member" id="MemberResultMap">
+      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+      <id column="m_email" jdbcType="VARCHAR2" property="mEmail"/>
+      <result column="m_pw" jdbcType="VARCHAR2" property="mPw"/>
+      <result column="m_name" jdbcType="VARCHAR2" property="mName"/>
+      <result column="m_tel" jdbcType="VARCHAR2" property="mTel"/>
+      <result column="m_birth" jdbcType="DATE" property="mBirth"/>
+      <result column="m_gen" jdbcType="VARCHAR2" property="mGen"/>
+      <result column="m_addr" jdbcType="VARCHAR2" property="mAddr"/>
+      <result column="m_attendcount" jdbcType="NUMBER" property="mAttendcount"/>
+      <result column="m_profile" jdbcType="VARCHAR2" property="mProfile"/>
+      <result column="m_license" jdbcType="NUMBER" property="mLicense"/>
+      <result column="m_authority" jdbcType="VARCHAR2" property="mAuthority"/>
+      <result column="bank" jdbcType="VARCHAR2" property="bank"/>
+      <result column="account" jdbcType="VARCHAR2" property="account"/>
+   </resultMap>
+
+	<select id="selectMemberByLoginCheck" parameterType="long"
+	resultMap="BaseResultMap">
+		SELECT * FROM member
+		<where>
+			<if test="mEmail != null">
+				m_email = #{mEmail}
+			</if>
+		</where>
+	</select>
+
+	
+</mapper>

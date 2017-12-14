@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="repository.mapper.ProductMapper">
+	<cache />
+
+	<resultMap type="Product" id="BaseResultMap">
+		<!-- id : primary, key 속성명, jdbcType : 데이터베이스 자료형 -->
+		<id column="prod_name" jdbcType="VARCHAR" property="prodName" />
+		<result column="prod_category" jdbcType="VARCHAR" property="prodCategory" />
+		<result column="prod_stock" jdbcType="BIGINT" property="prodStock" />
+		<result column="prod_content" jdbcType="VARCHAR" property="prodContent" />
+		<result column="prod_price" jdbcType="BIGINT" property="prodPrice" />
+		<result column="prod_pic" jdbcType="VARCHAR" property="prodPic" />
+		<result column="c_email" jdbcType="VARCHAR" property="cEmail" />
+	</resultMap>
+
+	<select id="selectProductListByCondition" parameterType="Product"
+		resultMap="BaseResultMap">
+		SELECT
+			prod_name,
+			prod_category,
+			prod_price,
+			prod_pic
+		FROM product
+		
+	</select>
+	
+	<select id="selectProductContentByCondition" parameterType="Product"
+		resultMap="BaseResultMap">
+		SELECT
+			prod_name,
+			prod_category,
+			prod_price,
+			prod_pic
+		FROM product
+		<where>
+			<if test="prodName != null">
+				prod_name = #{prodName}
+			</if>
+		</where>
+	</select>
+
+
+	<insert id="insertCommentByCondition" parameterType="Comment">
+		INSERT INTO comment1(comment_no,
+		user_id,
+		comment_content,
+		reg_date)
+		VALUES(#{commentNo},#{userId},#{commentContent},#{regDate})
+	</insert>
+
+	<update id="updateCommentByCondition" parameterType="Comment">
+		UPDATE comment1
+		<set>
+			<if test="commentContent !=null">
+				comment_content=#{commentContent},
+			</if>
+			<if test="commentContent !=null">
+				user_id=#{userId},
+			</if>
+			<if test="commentContent !=null">
+				reg_date=#{regDate}
+			</if>
+		</set>
+		<where>
+			comment_no =#{commentNo}
+		</where>
+	</update>
+
+</mapper>
