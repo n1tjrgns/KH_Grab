@@ -22,7 +22,7 @@ public class ProductController {
 	@Autowired
 	ProductSessionRepository productSessionRepository;
 	//마이바티스와 DB 정보를 받아서  
-	
+	//정보들
 	
 	
 	@RequestMapping(value="/Main_shop")
