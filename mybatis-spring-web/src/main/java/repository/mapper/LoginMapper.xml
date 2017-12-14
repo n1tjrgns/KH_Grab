@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    				
- <mapper namespace="repository.mapper.CommentMapper">
+ <mapper namespace="repository.mapper.LoginMapper">
 	<cache />
 
    <resultMap type="Member" id="MemberResultMap">
@@ -23,7 +23,7 @@
       <result column="account" jdbcType="VARCHAR2" property="account"/>
    </resultMap>
 
-	<select id="selectMemberByLoginCheck" parameterType="string"
+	<select id="selectMemberByLoginCheck" parameterType="Member"
 	resultMap="MemberResultMap">
 		SELECT * FROM member
 		<where>

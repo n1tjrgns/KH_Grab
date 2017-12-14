@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class member {
+public class Member {
    private String mEmail;
    private String mPw;
    private String mName;
@@ -17,8 +17,8 @@ public class member {
    private String bank;
    private String account;
    
-public member(String mEmail,String mPw,String mName,String mTel,
-		Date mBirth,String mGen,String mAddr,Long mLicense, String mAuthority, Long mAttendcount
+public Member(String mEmail,String mPw,String mName,String mTel,
+		Date mBirth,String mGen,String mAddr,Long mAttendcount, String mAuthority, Long mLicense
 		,String mProfile,String bank,String account) {
 	   this.mEmail = mEmail; 
 	   this.mPw = mPw;
@@ -140,7 +140,7 @@ public void setAccount(String account) {
 	this.account = account;
 }
 
-public member() {
+public Member() {
       
 }
 

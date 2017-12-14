@@ -3,15 +3,17 @@ package repository;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
-import model.member;
+import model.Member;
 
+@Repository
 public class LoginSessionRepository extends AbstractRepository {
-	private final String nameSpace = "repository.mapper.CommentMapper";
+	private final String nameSpace = "repository.mapper.LoginMapper";
 	
-	public member selectLogin() {
+	public List<Member> selectLogin() {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		String statement = nameSpace+".selectMemberByLoginCheck";
-		return sqlSession.selectOne(statement);
+		return sqlSession.selectList(statement);
 	}
 }
