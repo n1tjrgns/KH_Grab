@@ -14,4 +14,9 @@
 	</bean>	
 	<bean class="controller.BucketController">
 	</bean>	
+	<bean class="controller.LoginController">
+	</bean>	
+	<bean class="controller.ProductController">
+	</bean>	
+
 </beans>
