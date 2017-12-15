@@ -24,11 +24,11 @@
 
 <body>
 	<%
-		System.out.println("p_name(web) : "+request.getParameter("p_name"));
-		ProductSessionRepository  psr = new ProductSessionRepository();
+		System.out.println("p_name(web) : " + request.getParameter("p_name"));
+		ProductSessionRepository psr = new ProductSessionRepository();
 		Product product = psr.selectProduct(request.getParameter("p_name"));
-		System.out.println("이름:"+product.getProdName());
-		System.out.println("가격:"+product.getProdPrice());
+		System.out.println("이름:" + product.getProdName());
+		System.out.println("가격:" + product.getProdPrice());
 	%>
 	<jsp:include page="navi-header.jsp"></jsp:include>
 	<div class="blank">??</div>
@@ -40,15 +40,16 @@
 						src="./img/property_1.jpg" /></td>
 					<td style="width: 40%;">
 						<!-- Datos del vendedor y titulo del producto -->
-						<h2><%=product.getProdName() %></h2>
+						<h2><%=product.getProdName()%></h2>
 						<h5 style="color: #337ab7">
-							<%=product.getProdCategory() %>
+							<%=product.getProdCategory()%>
 						</h5> <!-- Precios -->
 						<h6 class="title-price">
 							<small>가격</small>
 						</h6>
-						<h3 style="margin-top: 0px;"><%=product.getProdPrice() %> 원</h3> <!-- Detalles especificos del producto -->
-						<!-- 
+						<h3 style="margin-top: 0px;"><%=product.getProdPrice()%>
+							원
+						</h3> <!-- Detalles especificos del producto --> <!-- 
 						<div class="section">
 							<h6 class="title-attr" style="margin-top: 15px;">
 								<small>색상</small>
@@ -68,35 +69,39 @@
 							</div>
 						</div>
 						 -->
-						<div class="section" style="padding-bottom: 20px;">
-							<h6 class="title-attr">
-								<small>수량</small>
-							</h6>
-							<div>
-								<div class="btn-minus">
-									<span class="glyphicon glyphicon-minus"></span>
-								</div>
-								<input value="1" />
-								<div class="btn-plus">
-									<span class="glyphicon glyphicon-plus"></span>
+						<form action="shop_payment" id="paymentForm" method="POST">
+							<div class="section" style="padding-bottom: 20px;">
+								<h6 class="title-attr">
+									<small>수량</small>
+								</h6>
+								<div>
+									<div class="btn-minus">
+										<span class="glyphicon glyphicon-minus"></span>
+									</div>
+									<input id="p_payStock"value="1" />
+									<div class="btn-plus">
+										<span class="glyphicon glyphicon-plus"></span>
+									</div>
 								</div>
 							</div>
-						</div> <!-- Botones de compra -->
-						<div class="section" style="padding-bottom: 20px;">
-							<button class="btn btn-success"
-								onclick="location.href='./pay.jsp'">
-								<span style="margin-right: 20px"
-									class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-								구매하기
-							</button>
+							<!-- Botones de compra -->
+							<div class="section" style="padding-bottom: 20px;">
 
-							<h6>
-								<a href="#"><span class="glyphicon glyphicon-heart-empty"
-									style="cursor: pointer;"></span> 장바구니담기</a>
-							</h6>
-							<a href="./shop.jsp"><button class="btn btn-default">목록으로</button></a>
-						</div>
+								<input type="hidden" name="p_name"
+									value='<%=product.getProdName()%>'>
+								<button class="btn btn-success" onclick="paymentForm.submit();">
+									<span style="margin-right: 20px"
+										class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+									구매하기
+								</button>
 
+								<h6>
+									<a href="#"><span class="glyphicon glyphicon-heart-empty"
+										style="cursor: pointer;"></span> 장바구니담기</a>
+								</h6>
+								<a href="./shop.jsp"><button class="btn btn-default">목록으로</button></a>
+							</div>
+						</form>
 					</td>
 				</tr>
 			</table>
@@ -112,7 +117,8 @@
 				</ul>
 				<div style="width: 100%; border-top: 1px solid silver">
 					<p style="padding: 15px;">
-						<small> <%= product.getProdContent() %> </small>
+						<small> <%=product.getProdContent()%>
+						</small>
 					</p>
 					<!-- 
 					<small>

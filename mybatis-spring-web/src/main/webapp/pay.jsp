@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.io.*,java.util.*,javax.servlet.*"%>
+<%@page import="repository.*, model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -111,6 +113,14 @@ function sample4_execDaumPostcode() {
 	
 <!-- 오른쪽 콘텐츠 영역 -->
 <div class="right_area page_order_form"> 
+	<%
+		System.out.println("p_name(web) : " + request.getParameter("p_name"));
+		ProductSessionRepository psr = new ProductSessionRepository();
+		Product product = psr.selectProduct(request.getParameter("p_name"));
+		System.out.println("이름:" + product.getProdName());
+		System.out.println("가격:" + product.getProdPrice());
+		System.out.println("p_payStock(web):"+request.getParameter("p_payStock"))
+	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->
 	<div class="pagenation">
@@ -166,21 +176,13 @@ function sample4_execDaumPostcode() {
 							</div>
 							<div class="article_info connect_info">
 								<div class="box_product">
-									<strong> 
-									<span	style="color: #f00;"> </span> [Canon]
-										</strong> <span class="list_info"> Canon 포토 용지 </span>
-									</div>
-									<div class="order_option_box">
-										<p>
-											옵션 : 50매
-										</p>
-									</div>
+									<span class="list_info"> <%=product.getProdName() %> </span>
+								</div>
 							</div>
 						</td>
-						<td><strong>1 개</strong></td>
-						<td class="price"><strong>299,000 원</strong></td>
+						<td><strong><%=request.getParameter("p_payStock") %> 개</strong></td>
+						<td class="price"><strong><%=Integer.parseInt(request.getParameter("p_payStock"))*product.getProdPrice() %> 원</strong></td>
 						<td rowspan="1"><strong>무료</strong>
-						<td><strong>299,000 원</strong></td>
 					</tr>
 				</tbody>
 			</table>

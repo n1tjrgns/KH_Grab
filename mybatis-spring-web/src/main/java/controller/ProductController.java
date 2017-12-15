@@ -42,4 +42,16 @@ public class ProductController {
 		return "content";
 	}
 	
+	@RequestMapping(value="/shop_payment", method = RequestMethod.POST)
+	public String shopStep3(HttpServletRequest httpServletRequest, Model model) {
+		String p_name = httpServletRequest.getParameter("p_name");
+		String p_payStock = httpServletRequest.getParameter("p_payStock");
+		System.out.println("p_name:"+p_name);
+		System.out.println("p_payStock:"+p_payStock);
+		Product result = productSessionRepository.selectProduct(p_name);
+		System.out.println("result:"+result);
+		model.addAttribute("product",result);
+		return "pay";
+	}
+	
 }

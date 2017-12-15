@@ -33,8 +33,11 @@
 		SELECT
 			prod_name,
 			prod_category,
+			prod_stock,
+			prod_content,
 			prod_price,
-			prod_pic
+			prod_pic,
+			c_email
 		FROM product
 		<where>
 			<if test="value != null">
