@@ -38,7 +38,7 @@ public class ProductController {
 		System.out.println("p_name:"+p_name);
 		Product result = productSessionRepository.selectProduct(p_name);
 		System.out.println("result:"+result);
-		model.addAttribute("comment",new Comment());
+		model.addAttribute("product",result);
 		return "content";
 	}
 	

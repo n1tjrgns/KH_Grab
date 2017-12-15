@@ -37,8 +37,8 @@
 			prod_pic
 		FROM product
 		<where>
-			<if test="p_name != null">
-				prod_name = #{p_name}
+			<if test="value != null">
+				prod_name = #{value}
 			</if>
 		</where>
 	</select>
