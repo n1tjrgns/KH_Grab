@@ -119,7 +119,7 @@ function sample4_execDaumPostcode() {
 		Product product = psr.selectProduct(request.getParameter("p_name"));
 		System.out.println("이름:" + product.getProdName());
 		System.out.println("가격:" + product.getProdPrice());
-		System.out.println("p_payStock(web):"+request.getParameter("p_payStock"))
+		System.out.println("p_payStock(web):"+request.getParameter("p_payStock"));
 	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->

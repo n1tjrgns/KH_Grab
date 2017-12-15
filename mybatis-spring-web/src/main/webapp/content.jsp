@@ -78,7 +78,7 @@
 									<div class="btn-minus">
 										<span class="glyphicon glyphicon-minus"></span>
 									</div>
-									<input id="p_payStock"value="1" />
+									<input id="p_payStock" value="1" />
 									<div class="btn-plus">
 										<span class="glyphicon glyphicon-plus"></span>
 									</div>
