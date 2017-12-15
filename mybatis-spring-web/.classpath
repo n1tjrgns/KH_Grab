@@ -29,8 +29,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Java/mybatis-3.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Java/activation.jar"/>
 	<classpathentry kind="lib" path="C:/Java/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Java/activation.jar"/>
 	<classpathentry kind="lib" path="C:/Java/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="C:/Java/smtp.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
