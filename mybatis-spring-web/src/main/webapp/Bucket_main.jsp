@@ -40,7 +40,7 @@
 <title>Grab Bucket List : 버킷 리스트를 발견하고 삶에 색을 더하다.</title>
 
 <script>
-isLogin = false;
+isLogin = true;
 </script>
 
 
@@ -56,7 +56,7 @@ isLogin = false;
 
 
 <script>
-	var isLogin = false;
+	var isLogin = true;
     var resourcePath = "_resource";
     var webDomain = "http://localhost:8088/Grap_UI"; 
     var domainName = "lifeplusbucket.com"; 
@@ -226,15 +226,7 @@ function checkLoginPassswordKeyPress(event){
                                 <div class="ico mot2"></div>
                             </a>
                         </li>
-                        <li>
-                            <a href="/notice/notice_list.do" class="gnb3 mot2" onclick='eventTrack("", "menu_event");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Event</span><br>
-                                    다양한 혜택과 이벤트를 놓치지 마세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
+                     
                         <li>
                             <a href="Main_bucket" class="gnb4 mot2" onclick='eventTrack("", "menu_about");'>
                                 <div class="text mot2">
