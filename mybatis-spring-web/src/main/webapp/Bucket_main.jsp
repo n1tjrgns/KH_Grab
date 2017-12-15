@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+     <%@page import="java.io.*,javax.servlet.*,java.util.*" %>
+    <%@page import="model.*,org.springframework.context.*" %>
+    <%@page import="org.springframework.context.support.*" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -469,6 +472,18 @@ function goMyBucket(){
             </div>
             <p>Lifestyle</p>
         </a>
+        
+        <c:forEach var="bucketlist" items="${bucketlist}" varStatus="status">
+			${status.index +1 }번 <br/>
+			댓글번호: ${bucketlist.bkName } <br>
+			작성자아이디:${bucketlist.bkContent}<br>
+			작성일시:${bucketlist.bkName }<br>
+			덧글내용 : ${bucketlist.bkDue }<br><br>
+			덧글내용 : ${bucketlist.bkDate }<br><br>
+			덧글내용 : ${bucketlist.bkSort }<br><br>
+			덧글내용 : ${bucketlist.bkMax }<br><br>
+		</c:forEach>
+        
     </div>
 			
 	<div id="list-container" class="use_gpu">

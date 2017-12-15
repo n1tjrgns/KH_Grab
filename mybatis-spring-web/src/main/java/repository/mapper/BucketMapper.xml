@@ -6,7 +6,7 @@
  <mapper namespace="repository.mapper.BucketMapper">
 	<cache />
 
-	  <resultMap type="Bucketlist" id="BaseResultMap">
+	<resultMap type="Bucketlist" id="BaseResultMap">
       <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
       <id column="bk_name" jdbcType="VARCHAR" property="bkName"/>
       <id column="c_email" jdbcType="VARCHAR" property="cEmail"/>
