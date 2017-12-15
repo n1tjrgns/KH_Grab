@@ -9,17 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Comment;
-import model.Product;
 import repository.CommentSessionRepository;
-import repository.ProductSessionRepository;
 
 @Controller
 public class CommentController {
 	@Autowired
 	CommentSessionRepository commentSessionRepository;
-	@Autowired
-	ProductSessionRepository productSessionRepository;
-	//마이바티스와 DB 정보를 받아서  
 	
 	@RequestMapping(value="/Main", method = RequestMethod.GET)
 	public String handleStep0(Model model) {
@@ -33,11 +28,7 @@ public class CommentController {
 		return "graph";
 	}
 	
-	@RequestMapping(value="/Bucket_main", method = RequestMethod.GET)
-	public String handleStep2(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "Bucket_main";
-	}
+
 	
 	@RequestMapping(value="/Main_bucket", method = RequestMethod.GET)
 	public String handleStep3(Model model) {

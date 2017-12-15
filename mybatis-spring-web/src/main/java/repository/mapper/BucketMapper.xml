@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   				
+ <mapper namespace="repository.mapper.BucketMapper">
+	<cache />
+
+	  <resultMap type="Bucketlist" id="BaseResultMap">
+      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+      <id column="bk_name" jdbcType="VARCHAR" property="bkName"/>
+      <id column="c_email" jdbcType="VARCHAR" property="cEmail"/>
+      <result column="bk_content" jdbcType="CLOB" property="bkContent"/>
+      <result column="bk_max" jdbcType="BIGINT" property="bkMax"/>
+      <result column="bk_purpose" jdbcType="VARCHAR" property="bkPurpose"/>
+      <result column="bk_date" jdbcType="TIMESTAMP" property="bkDate"/>
+      <result column="bk_due" jdbcType="TIMESTAMP" property="bkDue"/>
+      <result column="bk_sort" jdbcType="VARCHAR" property="bkSort"/>
+      <result column="bk_check" jdbcType="VARCHAR" property="bkCheck"/>
+   </resultMap>
+
+	<select id="selectBucketALL" 
+	resultMap="BaseResultMap">
+	SELECT 
+   			*
+	   	FROM bucket_request
+	</select>
+	
+</mapper>

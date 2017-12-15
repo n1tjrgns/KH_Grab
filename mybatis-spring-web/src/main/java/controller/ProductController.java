@@ -18,8 +18,6 @@ import repository.ProductSessionRepository;
 @Controller
 public class ProductController {
 	@Autowired
-	CommentSessionRepository commentSessionRepository;
-	@Autowired
 	ProductSessionRepository productSessionRepository;
 	//마이바티스와 DB 정보를 받아서  
 	//정보들
