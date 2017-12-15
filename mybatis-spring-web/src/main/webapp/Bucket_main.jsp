@@ -36,7 +36,9 @@
 
 
 <link href="_resource/css/discover.css" rel="stylesheet" />
+<link href="_resource/css/discover.popular.css" rel="stylesheet" />
 <link href="_resource/css/discover.featured.css" rel="stylesheet" />
+<link href="_resource/css/discover.library.css" rel="stylesheet" />
 <title>Grab Bucket List : 버킷 리스트를 발견하고 삶에 색을 더하다.</title>
 
 <script>
@@ -403,7 +405,7 @@ function goMyBucket(){
 </div>
 
 <div id="contents">
-  <div id="category">
+  <div id="category" >
         <a class="active" onclick='eventTrack("", "category_tab_all");' href="javascript:Library.changeCategory('');">
             <div class="category-bgs category-bgs1">
                 <div class="off"></div>
@@ -468,11 +470,76 @@ function goMyBucket(){
             <p>Lifestyle</p>
         </a>
     </div>
+			
+	<div id="list-container" class="use_gpu">
+		
+		<div class="list-box seq-I1596" style="transform-origin: 50% 50% 0px; transform: translate(0px, 0px); opacity: 1;">
+            <div class="list-bg" style="transform: matrix(1, 0, 0, 1, 0, 0);">
+                <img src="_resource/images/discover/library/list-empty-box.png" alt="">
+                <img class="list-img" src="http://images.hwlife.hscdn.com//library/i1596_thumb.jpg" shareimage="http://images.hwlife.hscdn.com//library/i1596_share.jpg" onload="Popular.listImgLoadComplete(this)" style="opacity: 1;">
+                <img class="list-shadow" src="_resource/images/discover/bucket_shadow.png" alt="?">
+            </div>
+            <div class="winner-count en top3">1</div>
+            <div class="list-contents">
+                <ul class="list-contents-ul">
+                    <li class="category-name en travel">TRAVEL</li>
+                    <li class="title">빙하특급열차 타고
+<br>스위스의 풍경 즐기기</li>
+                
+                    
+                    
+                    <li class="add-btn" key-value="I1596">
+                            
 
-				<div id="list-loaing" style="display: none;">
-				</div>
-				<div id="list-container" class="use_gpu">
+                            
+                            <div class="list-add-checked change-add-check" style="display:none"><img src="_resource/images/discover/library/checked.png" alt=""></div>
 
+                            <a href="#" class="en change-add-btn" key-value="I1596" style="display:inline-block">
+                                <div class="plus"><img src="_resource/images/discover/library/list-icon-plus.png" alt=""></div>
+                                <span>ADD</span>
+                            </a>
+                    </li>
+                    
+                    
+                    
+                    <li class="share-btns" style="height: 0px;">
+                        
+
+                        
+                        <div class="dibs-checked change-like-check" style="display:none">
+                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
+                            <span>찜하기</span>
+                        </div>
+                        <a href="#" class="dibs change-like-btn" key-value="I1596" style="display:inline-block">
+                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
+                            <span>찜하기</span>
+                        </a>
+
+
+                        <a href="#" class="share">
+                            <img src="_resource/images/discover/library/list-icon2.png" alt="">
+                            <span>공유하기</span>
+                        </a>
+                        <div class="small-share-btns" key-value="I1596">
+                            <a href="javascript:;"><img src="_resource/images/discover/library/btn_share_facebook.png" alt="페이스북 공유하기"></a>
+                            <a href="#"><img src="_resource/images/discover/library/btn_share_kakao.png" alt="카카오스토리 공유하기"></a>
+                            <a href="#"><img src="_resource/images/discover/library/btn_share_twitter.png" alt="트위터 공유하기"></a>
+                            <a href="#" class="small-share-close-btn"><img src="_resource/images/discover/library/btn_share_close.png" alt="공유하기 닫기"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list-add-popup">
+                <div class="list-add-container">
+                    <ul class="list-add-box">
+                        <li class="list-add-icon"><img src="_resource/images/discover/library/list-icon3.png" alt=""></li>
+                        <li class="list-add-title en">ADD BUCKET LIST</li>
+                        <li class="list-add-desc">버킷 리스트가 추가되었습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		
     </div>
 
  
@@ -488,7 +555,7 @@ function goMyBucket(){
         <li class="arrow-btn-l arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></a></li>
         <li class="lists">
             <ul class="lists-container">
-                <!--<li><a href="javascript:alert('알럿')"><img src="/_resource/images/discover/bucket-list-none-image.png" alt="" /></a></li>-->
+                <!--<li><a href="javascript:alert('알럿')"><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></a></li>-->
                 <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
                 <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
                 <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
@@ -515,11 +582,11 @@ function goMyBucket(){
 
 
 
-
-<div id="popups" class="fixed-group">
+<!--  none 되어 있는것을 block 하면 보이게 된다.  -->
+<div id="popups" class="fixed-group" style="left: 0px;display: none;">
 
     
-    <div id="detail-popup" class="detail-popup popup-group">
+    <div id="detail-popup" class="detail-popup popup-group" style="display: block;" >
         <div class="detail-container">
             <div class="img-container">
                 <div class="detail-bg"><img src="_resource/images/discover/library/popup/img-bg.png" alt="img-bg.png" /></div>
