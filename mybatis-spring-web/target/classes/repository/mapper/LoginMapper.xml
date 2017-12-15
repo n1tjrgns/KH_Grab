@@ -6,7 +6,7 @@
  <mapper namespace="repository.mapper.LoginMapper">
 	<cache />
 
-   <resultMap type="Member" id="MemberResultMap">
+   <resultMap type="member" id="MemberResultMap">
       <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
       <id column="m_email" jdbcType="VARCHAR2" property="mEmail"/>
       <result column="m_pw" jdbcType="VARCHAR2" property="mPw"/>
@@ -23,7 +23,7 @@
       <result column="account" jdbcType="VARCHAR2" property="account"/>
    </resultMap>
 
-	<select id="selectMemberByLoginCheck" parameterType="Member"
+	<select id="selectMemberByLoginCheck" parameterType="member"
 	resultMap="MemberResultMap">
 		SELECT * FROM member
 		<where>
