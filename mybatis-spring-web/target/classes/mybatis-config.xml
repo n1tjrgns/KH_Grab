@@ -6,7 +6,7 @@
    <typeAliases>
    	<typeAlias type="model.Comment" alias="Comment"/>
    	<typeAlias type="model.Product" alias="Product"/>
-   	<typeAlias type="model.member" alias="member"/>
+   	<typeAlias type="model.Member" alias="Member"/>
    </typeAliases>
    
    <environments default="development">

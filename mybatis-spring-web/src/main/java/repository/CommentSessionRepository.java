@@ -3,15 +3,15 @@ package repository;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.Comment;
 
 @Repository
 public class CommentSessionRepository extends AbstractRepository {
-	
 	private final String nameSpace = "repository.mapper.CommentMapper";
-	
+
 	public List<Comment> selectComment(Comment comment) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		String statment = nameSpace+".selectCommentByCondition";

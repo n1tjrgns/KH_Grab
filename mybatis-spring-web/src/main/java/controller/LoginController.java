@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import model.member;
+import model.Member;
 import repository.LoginSessionRepository;
 
 @Controller
@@ -18,8 +18,8 @@ public class LoginController {
 	LoginSessionRepository loginSessionRepository;
 
 	@RequestMapping(value="/loginProcess", method=RequestMethod.POST)
-	public String LoginMember(member member, Model model, HttpServletRequest request) {
-		member result = loginSessionRepository.selectLoginMember(member);
+	public String LoginMember(Member member, Model model, HttpServletRequest request) {
+		Member result = loginSessionRepository.selectLoginMember(member);
 		HttpSession session = request.getSession(false);
 		if(result != null) {
 			if(session != null) {
