@@ -18,7 +18,7 @@
             <div class="email_box">
                 <h3>정보 입력</h3>
                 <div class="input_area">
-                    <form action="" id="__loginForm__" method="post">
+                    <form action="loginProcess" id="__loginForm__" method="post">
 
                         <div class="input_box email login_email">
                             <input type="text" placeholder="이메일 주소" name="_login_email_" id="_login_email_" value="" maxlength="35">

@@ -16,5 +16,8 @@
 	<bean class="controller.ProductController">
 	</bean>	
 	
+	<bean class="controller.LoginController">
+	</bean>	
+	
 
 </beans>

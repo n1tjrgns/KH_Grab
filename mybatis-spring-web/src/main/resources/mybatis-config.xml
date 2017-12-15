@@ -6,6 +6,7 @@
    <typeAliases>
    	<typeAlias type="model.Comment" alias="Comment"/>
    	<typeAlias type="model.Product" alias="Product"/>
+   	<typeAlias type="model.member" alias="member"/>
    </typeAliases>
    
    <environments default="development">
@@ -23,5 +24,6 @@
    <mappers>
       <mapper resource="repository/mapper/CommentMapper.xml"/>
       <mapper resource="repository/mapper/ProductMapper.xml"/>
+      <mapper resource="repository/mapper/LoginMapper.xml"/>
    </mappers>
 </configuration>
