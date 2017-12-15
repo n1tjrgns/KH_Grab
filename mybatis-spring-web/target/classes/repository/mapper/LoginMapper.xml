@@ -28,10 +28,8 @@
 		SELECT * FROM member
 		<where>
 			<if test="mEmail != null">
-				m_email = #{mEmail}
+				m_email = #{mEmail} AND m_pw = #{mPw}
 			</if>
 		</where>
 	</select>
-
-	
 </mapper>
