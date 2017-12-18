@@ -20,8 +20,6 @@
 <link rel="stylesheet" type="text/css" href="./css/content.css">
 </head>
 
-
-
 <body>
 	<%
 		System.out.println("p_name(web) : " + request.getParameter("p_name"));

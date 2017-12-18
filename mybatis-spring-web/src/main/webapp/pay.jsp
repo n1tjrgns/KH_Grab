@@ -11,7 +11,11 @@
 
 
 <title>주문서 작성 | Grab STORE</title>
-
+<%
+	if (session.getAttribute("loginInfo") != null) {
+		Member member = (Member) session.getAttribute("loginInfo");
+	}
+%>
 
 <link rel="stylesheet" type="text/css"
 	href="//static.musinsa.com/skin/musinsa/css/magazine_common.css?20161230" />
@@ -50,6 +54,13 @@
 			$("#thirdAgreeDetail").hide();
 			$("#thirdBtn").text("자세히");
 			$("#thirdBtn").addClass("detail_close");
+		}
+	}
+	
+	function defaultCheck() {
+
+		if($("input[name=adress_chk]").is(":checked")){
+			$("input[name=rcvr_nm]").val("여기에 이름 넣어야돼");
 		}
 	}
 
@@ -302,9 +313,8 @@
 						<li class="cell_discount_tit">배송지 선택</li>
 						<li class="cell_discount_detail"><label
 							class="box_choice fist"> <input type="radio"
-								id="address_dongil" name="adress_chk"
-								onClick="Order.sameOrder(this);" /> 기본 배송지(구매자 정보) <input
-								type="radio" id="address_dongil" name="adress_chk"
+								id="address_dongil" name="adress_chk" onClick="defaultCheck();"/> 기본 배송지(구매자 정보)
+								<input type="radio" id="address_dongil" name="adress_chk"
 								onClick="Order.sameOrder(this);" /> 신규 배송지
 						</label></li>
 					</ul>
