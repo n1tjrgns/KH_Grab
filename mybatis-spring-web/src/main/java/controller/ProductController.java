@@ -10,15 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import model.Comment;
 import model.Product;
-import repository.CommentSessionRepository;
+
 import repository.ProductSessionRepository;
 
 @Controller
 public class ProductController {
-	@Autowired
-	CommentSessionRepository commentSessionRepository;
+
 	@Autowired
 	ProductSessionRepository productSessionRepository;
 	//마이바티스와 DB 정보를 받아서  
