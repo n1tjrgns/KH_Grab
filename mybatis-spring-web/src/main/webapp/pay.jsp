@@ -11,11 +11,18 @@
 
 
 <title>주문서 작성 | Grab STORE</title>
-<%
+<script>
 	if (session.getAttribute("loginInfo") != null) {
 		Member member = (Member) session.getAttribute("loginInfo");
+		System.out.println("세션있음");
+		var m_name = member.getmName();
+		
+		var tel1 = member.getmTel().substring(0, 3);
+		var tel2 = member.getmTel().substring(4, 8);
+		var tel3 = member.getmTel().substring(9, 13);
+		System.out.println("전화번호:"+tel1+"-"+tel2+"-"+tel3);
 	}
-%>
+</script>
 
 <link rel="stylesheet" type="text/css"
 	href="//static.musinsa.com/skin/musinsa/css/magazine_common.css?20161230" />
@@ -60,7 +67,7 @@
 	function defaultCheck() {
 
 		if($("input[name=adress_chk]").is(":checked")){
-			$("input[name=rcvr_nm]").val("여기에 이름 넣어야돼");
+			$("input[name=rcvr_nm]").attr('value', m_name);
 		}
 	}
 
