@@ -30,6 +30,7 @@ public class LoginController {
 			session = request.getSession(true);
 			System.out.println("로그인 성공시 세션만들고 메인페이지로");
 			session.setAttribute("loginInfo", result);
+			System.out.println(result.getmEmail());			
 			return "redirect:/Main";
 		}
 		return "";

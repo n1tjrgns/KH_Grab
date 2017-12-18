@@ -4,8 +4,9 @@
 <%@ page import="model.Member" %>
 <%@ page import="java.util.List" %>
 <%
-  Member member = (Member)session.getAttribute("loginInfo");
-  
+	System.out.println("세션:"+session.getAttribute("loginInfo"));
+    Member member = (Member)session.getAttribute("loginInfo");
+  	System.out.println("이름:"+member.getmName());
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

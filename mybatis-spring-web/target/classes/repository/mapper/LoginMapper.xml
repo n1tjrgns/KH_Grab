@@ -27,7 +27,7 @@
 	resultMap="MemberResultMap">
 		SELECT * FROM member
 		<where>
-			<if test="mEmail != null">
+			<if test="mEmail != null and mPw != null">
 				m_email = #{mEmail} AND m_pw = #{mPw}
 			</if>
 		</where>
