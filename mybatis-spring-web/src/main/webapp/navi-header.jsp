@@ -5,10 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>GRAB</title>
-<link rel="stylesheet" type="text/css"
-	href="_resource/_web/css/common.css">
-<link rel="stylesheet" type="text/css"
-	href="_resource/_web/css/service.css">
+<link rel="stylesheet" type="text/css" href="_resource/_web/css/common.css">
+<link rel="stylesheet" type="text/css" href="_resource/_web/css/service.css">
 <script
 	src="https://www.lifeplus.co.kr/_resource/js/vendor/jquery-1.9.1.min.js"></script>
 <script
