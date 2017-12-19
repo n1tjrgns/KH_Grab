@@ -83,29 +83,28 @@
 		if($("input[name=rcvr_nm]").val() == ""){
 			alert("수령인을 입력해주세요!");
 			$("input[name=rcvr_nm]").focus();
-			return false;
 		}else if($("#rphone1").val() == $("#rphone1 option:eq(0)")){
 			alert("전화번호를 입력해주세요!");
 			$("#rphone1").focus();
-			return false;
+
 		}else if($("#rphone2").val() == ""){
 			alert("전화번호를 모두 입력해주세요!");
 			$("#rphone2").focus();
-			return false;
+
 		}
 		else if($("#rphone3").val()== ""){
 			alert("전화번호를 모두 입력해주세요!");
 			$("#rphone3").focus();
-			return false;
+
 		}
 		else if($("input[id=sample4_postcode]").val() == "" || $("input[id=sample4_roadAddress]").val() == "" || $("input[id= roadAddress_detail]").val() == ""){
 			alert("주소를 입력해주세요!");
-			return false;
+
 		}else if(!$("input[name=agree_third]").is(":checked") || !$("input[name=agree_return]").is(":checked") || !$("input[name=pay_agree]").is(":checked")){
 			alert("주문자 동의를 확인해주세요!");
 			return false;
 		}else{
-			return true;
+			document.getElementById('payForm').submit();
 		}
 	}
 	
@@ -178,7 +177,7 @@
 <!-- 오른쪽 콘텐츠 영역 -->
 <div class="right_area page_order_form">
 	<%
-		Member member = (Member) session.getAttribute("loginInfo");
+		Member member = (Member)session.getAttribute("loginInfo");
 		ProductSessionRepository psr = new ProductSessionRepository();
 		Product product = psr.selectProduct(request.getParameter("p_name"));
 		
@@ -202,7 +201,7 @@
 	</div>
 	<!--//page nation -->
 
-	<form action="#" name="payForm" id="payForm" method="post" onsubmit="return payCheck();">
+	<form action="paying" name="payForm" id="payForm" method="post" >
 		<!--article-title-->
 		<div class="article-title">
 			<h2 class="title-page">
@@ -544,7 +543,7 @@
 			<!--p class="box_bottom_link"><span class="first"><a href="/app/cart">장바구니</a>↗</span> <span><a href="/app">스토어 메인</a>↗</span></p-->
 			<!--cart button-->
 			<div class="btn_wrap btn_type01">
-				<a href="javascript:void(0)" onclick="javascript:payForm.submit();"
+				<a href="javascript:void(0)" onclick="payCheck();"
 					class="btn_black">PAYMENT <span class="btn_side_text">결제하기</span></a>
 			</div>
 			<!--//cart button-->
