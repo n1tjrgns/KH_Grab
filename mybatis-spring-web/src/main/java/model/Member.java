@@ -18,126 +18,126 @@ public class Member {
    private String account;
    
 public Member(String mEmail,String mPw,String mName,String mTel,
-		Date mBirth,String mGen,String mAddr,Long mLicense, String mAuthority, Long mAttendcount
-		,String mProfile,String bank,String account) {
-	   this.mEmail = mEmail; 
-	   this.mPw = mPw;
-	   this.mName = mName;
-	   this.mTel = mTel;
-	   this.mBirth = mBirth;
-	   this.mGen = mGen;
-	   this.mAddr = mAddr;
-	   this.mAttendcount = mAttendcount;
-	   this.mProfile = mProfile;
-	   this.mLicense = mLicense;
-	   this.mAuthority = mAuthority;
-	   this.bank = bank;
-	   this.account = account;
+      Date mBirth,String mGen,String mAddr,Long mLicense, String mAuthority, Long mAttendcount
+      ,String mProfile,String bank,String account) {
+      this.mEmail = mEmail; 
+      this.mPw = mPw;
+      this.mName = mName;
+      this.mTel = mTel;
+      this.mBirth = mBirth;
+      this.mGen = mGen;
+      this.mAddr = mAddr;
+      this.mAttendcount = mAttendcount;
+      this.mProfile = mProfile;
+      this.mLicense = mLicense;
+      this.mAuthority = mAuthority;
+      this.bank = bank;
+      this.account = account;
 }
    
 public String getmEmail() {
-	return mEmail;
+   return mEmail;
 }
 
 public void setmEmail(String mEmail) {
-	this.mEmail = mEmail;
+   this.mEmail = mEmail;
 }
 
 public String getmPw() {
-	return mPw;
+   return mPw;
 }
 
 public void setmPw(String mPw) {
-	this.mPw = mPw;
+   this.mPw = mPw;
 }
 
 public String getmName() {
-	return mName;
+   return mName;
 }
 
 public void setmName(String mName) {
-	this.mName = mName;
+   this.mName = mName;
 }
 
 public String getmTel() {
-	return mTel;
+   return mTel;
 }
 
 public void setmTel(String mTel) {
-	this.mTel = mTel;
+   this.mTel = mTel;
 }
 
 public Date getmBirth() {
-	return mBirth;
+   return mBirth;
 }
 
 public void setmBirth(Date mBirth) {
-	this.mBirth = mBirth;
+   this.mBirth = mBirth;
 }
 
 public String getmGen() {
-	return mGen;
+   return mGen;
 }
 
 public void setmGen(String mGen) {
-	this.mGen = mGen;
+   this.mGen = mGen;
 }
 
 public String getmAddr() {
-	return mAddr;
+   return mAddr;
 }
 
 public void setmAddr(String mAddr) {
-	this.mAddr = mAddr;
+   this.mAddr = mAddr;
 }
 
 public Long getmAttendcount() {
-	return mAttendcount;
+   return mAttendcount;
 }
 
 public void setmAttendcount(Long mAttendcount) {
-	this.mAttendcount = mAttendcount;
+   this.mAttendcount = mAttendcount;
 }
 
 public String getmProfile() {
-	return mProfile;
+   return mProfile;
 }
 
 public void setmProfile(String mProfile) {
-	this.mProfile = mProfile;
+   this.mProfile = mProfile;
 }
 
 public Long getmLicense() {
-	return mLicense;
+   return mLicense;
 }
 
 public void setmLicense(Long mLicense) {
-	this.mLicense = mLicense;
+   this.mLicense = mLicense;
 }
 
 public String getmAuthority() {
-	return mAuthority;
+   return mAuthority;
 }
 
 public void setmAuthority(String mAuthority) {
-	this.mAuthority = mAuthority;
+   this.mAuthority = mAuthority;
 }
 
 
 public String getBank() {
-	return bank;
+   return bank;
 }
 
 public void setBank(String bank) {
-	this.bank = bank;
+   this.bank = bank;
 }
 
 public String getAccount() {
-	return account;
+   return account;
 }
 
 public void setAccount(String account) {
-	this.account = account;
+   this.account = account;
 }
 
 public Member() {

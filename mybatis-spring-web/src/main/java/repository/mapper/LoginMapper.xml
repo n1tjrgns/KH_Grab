@@ -23,7 +23,7 @@
       <result column="account" jdbcType="VARCHAR" property="account"/>
    </resultMap>
 
-	<select id="selectMemberByLoginCheck" parameterType="member"
+	<select id="selectMemberByLoginCheck" parameterType="Member"
 	resultMap="MemberResultMap">
 		SELECT * FROM member
 		<where>
@@ -32,4 +32,29 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="selectRegisterByCondition" parameterType="Member"
+		resultMap="BaseResultMap">
+		SELECT
+			*
+		FROM member
+		<if test ="mEmail != null"></if>		
+	</select>
+	
+	<insert id="insertRegisterByCondition" parameterType="Member">
+		INSERT INTO member(
+		m_email,
+		m_pw,
+		m_name,
+		m_tel,
+		m_birth,
+		m_gen,
+		m_addr,
+		m_attendcount,
+        m_authority)
+		VALUES(#{mEmail},#{mPw},#{mName},#{mTel},#{mBirth},#{mGen},#{mAddr},0,0)
+	</insert>
+
+	
+
 </mapper>

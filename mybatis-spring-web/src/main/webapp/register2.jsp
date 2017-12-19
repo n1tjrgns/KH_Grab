@@ -11,72 +11,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script charset="UTF-8" type="text/javascript"
 	src="http://t1.daumcdn.net/cssjs/postcode/1506320738556/170925.js"></script>
-<script>
-	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-	function sample4_execDaumPostcode() {
-		new daum.Postcode(
-				{
-					oncomplete : function(data) {
-						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-						// 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
-						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-						var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
-						var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
-						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-						if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-							extraRoadAddr += data.bname;
-						}
-						// 건물명이 있고, 공동주택일 경우 추가한다.
-						if (data.buildingName !== '' && data.apartment === 'Y') {
-							extraRoadAddr += (extraRoadAddr !== '' ? ', '
-									+ data.buildingName : data.buildingName);
-						}
-						// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-						if (extraRoadAddr !== '') {
-							extraRoadAddr = ' (' + extraRoadAddr + ')';
-						}
-						// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-						if (fullRoadAddr !== '') {
-							fullRoadAddr += extraRoadAddr;
-						}
-
-						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
-						document.getElementById('sample4_roadAddress').value = fullRoadAddr;
-						document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
-
-						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-						if (data.autoRoadAddress) {
-							//예상되는 도로명 주소에 조합형 주소를 추가한다.
-							var expRoadAddr = data.autoRoadAddress
-									+ extraRoadAddr;
-							document.getElementById('guide').innerHTML = '(예상 도로명 주소 : '
-									+ expRoadAddr + ')';
-
-						} else if (data.autoJibunAddress) {
-							var expJibunAddr = data.autoJibunAddress;
-							document.getElementById('guide').innerHTML = '(예상 지번 주소 : '
-									+ expJibunAddr + ')';
-
-						} else {
-							document.getElementById('guide').innerHTML = '';
-						}
-					}
-				}).open();
-	}
-</script>
-
 <link href="_resource/css/common.css" rel="stylesheet" />
-<script>
-	function load_google() {
-		gapi.client.setApiKey('AIzaSyBySGWNccSTO9XHnlay_kpBHAWUO1-d3L4');
-		gapi.client.load('urlshortener', 'v1', function() {
-		});
-	}
-</script>
 <script src="https://apis.google.com/js/client.js?onload=load_google"></script>
 <link href="_resource/css/register.css" rel="stylesheet" />
 <title>Grab : Grab 회원가입</title>
@@ -85,99 +20,86 @@
 	var resourcePath = "_resource";
 	var webDomain = "http://www.lifeplusbucket.com";
 </script>
+
 </head>
 <body>
 	
 	<jsp:include page="navi-header.jsp"></jsp:include> 
-	
 
-			<div id="contents">
-				<form name="joinForm" id="joinForm" class="member-form"
-					action="#"
-					method="post">
-					<input type="hidden" name="email_flg" id="email_flg" value="N">
-					<input type="hidden" name="checked_email" id="checked_email"
-						value=""> <input type="hidden" name="agree_sms"
-						id="agree_sms" value="N"> <input type="hidden"
-						name="agree_email" id="agree_email" value="N"> <input
-						type="hidden" name="checked_cellular" id="checked_cellular"
-						value="">
+		<div id="contents">
+			<form name="joinForm" id="joinForm" class="member-form" action="login.do" method="get">
+			<input type="hidden" name="email_flg" id="email_flg" value="N"> 
+			<input type="hidden" name="checked_email" id="checked_email" value=""> 
+			<input type="hidden" name="agree_sms" id="agree_sms" value="N"> 
+			<input type="hidden" name="agree_email" id="agree_email" value="N"> 
+			<input type="hidden" name="checked_cellular" id="checked_cellular" value="">
 
-					<div class="reg_content">
+			<div class="reg_content">
 						<h2>이메일 주소 회원가입</h2>
 						<br/><br/>
 						<div class="reg_box">
 								<h4><a href="Main_login_regist2">업체 회원가입</a></h4>은 이곳을 클릭하세요
 							<div class="reg_form">
 								<div class="input_box email_reg_name">
-									<input type="text" placeholder="이름" name="username"
-										maxlength="15">
+									<input type="text"  name="mName" placeholder="이름"
+										maxlength="70">
 								</div>
 								<div class="email_box">
 									<div class="input_box email_reg_email">
-										<input type="text" placeholder="이메일" name="email1"
-											maxlength="50">
+										<input type="text"  name="mEmail" placeholder ="이메일"
+											maxlength="70">
 									</div>
-									<div class="dot">@</div>
-									<div class="input_box email_reg_email2">
+									<!-- <div class="dot">@</div> 
+								<div class="input_box email_reg_email2">
 										<input type="text" name="email2" maxlength="20">
-									</div>
+									</div>  -->
 									<select id="email_reg_select" class="email_reg_select">
 										<option>직접입력</option>
 										<option>naver.com</option>
 										<option>daum.net</option>
 										<option>gmail.com</option>
-									</select> <a href="javascript:checkDupicate(2);"
-										class="btn_double_check mot2">중복확인</a>
+									</select> <!-- <a href="javascript:checkDupicate(2);"
+										class="btn_double_check mot2">중복확인</a>  -->
 								</div>
 								<a href="javascript:void(0);" class="btn_email_agree1 btn_agree">
 									<span class="ico"></span> <span>이메일 수신에 동의합니다.</span><br>
 									(문의 답변 메일, 버킷 리스트 업데이트 알림 등 꼭 필요한 메일만 발송합니다.)
 								</a>
-								<!-- 아이디 -->
-								<div class="input_box email_reg_name">
-									<input type="text" placeholder="아이디" name="userId"
-										maxlength="30"><a href="javascript:checkDupicate(2);"
-										class="btn_double_check mot2">중복확인</a>
-								</div>
+							
 								<!-- 비밀번호 -->
 								<div class="password_box">
 									<div class="input_box email_reg_password">
-										<input type="password" placeholder="비밀번호" name="passwd"
+										<input type="password" placeholder="비밀번호" name="mPw"
 											maxlength="40">
 									</div>
 									<div class="input_box email_reg_password_check">
-										<input type="password" placeholder="비밀번호 확인" maxlength="40">
+										<input type="password" placeholder="비밀번호확인" maxlength="40">
 									</div>
 								</div>
 								<p class="password_check_txt" style="display: none;">영문
 									대/소문자, 숫자, 특수문자 중 3조합 8자리</p>
 
-								<p class="txt">영문 대/소문자, 숫자, 특수문자 중 3조합 8자리</p>
+								<p class="txt">영문 대/소문자, 숫자, 특수문자 중 3조합 8자리</p> 
 
 
 								<!-- 생일 -->
-								<div class="email_box">
+								  <div class="email_box">
 									<p class="txt">생일</p>
 									<div class="input_box email_reg_email">
-										<input type="date" name="date" maxlength="50">
+										<input type="date" placeholder="생일" name="mBirth" maxlength="50">
 									</div>
-								</div>
-								<!-- 성별 -->
-								<div class="email_box">
+								</div> 
+								 <!-- 성별 -->
+								 <div class="email_box">
 									<p class="txt">성별</p>
 									<div class="input_box email_reg_email4">
-										<input type="button" value="Male" name="gender" maxlength="50">
+										<input type="text" placeholder="성별" name="mGen" maxlength="50">
 									</div>
-									<div class="input_box email_reg_email4">
-										<input type="button" value="Female" name="gender"
-											maxlength="50">
-									</div>
-								</div>
+								</div>  
 								<!-- 연락처 -->
-								<div class="phone_box">
+								  <div class="phone_box">
 									<p class="txt">연락처</p>
-									<select id="email_reg_phone" name="cell1"
+									<select id="email_reg_phone" name="mTel"
 										class="email_reg_phone">
 										<option>연락처 (선택)</option>
 										<option>010</option>
@@ -188,12 +110,12 @@
 										<option>019</option>
 									</select>
 									<div class="input_box email_reg_phone1">
-										<input type="tel" maxlength="4" name="cell2"
+										<input type="tel" maxlength="4" name="mTel"
 											onkeydown="register.numberKeyPress(event);"
 											onpaste="return false;" oncopy="return false;">
 									</div>
 									<div class="input_box email_reg_phone2">
-										<input type="tel" maxlength="4" name="cell3"
+										<input type="tel" maxlength="4" name="mTel"
 											onkeydown="register.numberKeyPress(event);"
 											onpaste="return false;" oncopy="return false;">
 									</div>
@@ -202,13 +124,13 @@
 								<a href="javascript:void(0);" class="btn_email_agree2 btn_agree">
 									<span class="ico"></span> <span>SMS 수신에 동의합니다.</span><br>
 									(경품 발송 및 마케팅을 위한 SMS만 발송합니다.)
-								</a>
+								</a> 
 
 								<!-- 주소 -->
-								<p class="txt">주소</p>
+								 <p class="txt">주소</p>
 								<div class="email_box">
 									<div class="input_box email_reg_email">
-										<input type="text" id="sample4_postcode" placeholder="우편번호">
+										<input type="text" placeholder="우편번호" id="sample4_postcode" name="mAddr">
 									</div>
 
 									<div class="input_box email_reg_email3">
@@ -218,11 +140,10 @@
 								</div>
 
 								<div class="input_box email_reg_phone1">
-									<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+									<input type="text" placeholder="도로명주소" id="sample4_roadAddress" name="mAddr">
 								</div>
 								<div class="input_box email_reg_phone2">
-									<input type="text" id="address_detail" placeholder="나머지주소">
-
+									<input type="text" placeholder="나머지주소" id="address_detail" name="mAddr"> 
 
 
 
@@ -673,16 +594,21 @@
 									</div>
 								</div>
 								<div class="all_agree_box">
-									<a href="javascript:void(0);" class="btn_all_agree btn_agree">
+									<a href="javascript:void();" class="btn_all_agree btn_agree">
 										<span class="ico"></span> <span class="title">위 약관에 전체
 											동의</span>
 									</a>
 								</div>
 								<div class="btn_area">
-									<a href="javascript:inputCheck();"
+									<a href="#"
 										class="btn_click btn_register mot2"
-										onclick='eventTrack("", "email_register_btn_complete");'>회원
-										가입</a> <a href="Main_login" class="btn_cancel mot2"
+										onclick="javascript:inputCheck();">
+										<input class="btn_click btn_register mot2" type="submit" value="회원가입"/>
+										
+										</a>
+										
+										
+										 <a href="Main" class="btn_cancel mot2"
 										onclick='eventTrack("", "email_register_btn_cancel");'>취 소</a>
 								</div>
 								<p class="bottom_txt">
@@ -691,23 +617,22 @@
 								</p>
 							</div>
 						</div>
+					</div>
 				</form>
-				<div class="pop_layer pop_complete pop_email_complete">
+				</div>
+				<!-- <div class="pop_layer pop_complete pop_email_complete">
 					<div class="pop_inner">
 						<div class="text_area">
 							<p class="text_p">
 								<span>이메일 주소 회원 가입이 완료</span>되었습니다.<br> 로그인 팝업으로 이동합니다.
 							</p>
 						</div>
-						<a href="./register.do" class="btn_confirm mot2">확인</a>
+						<a href="Main" class="btn_confirm mot2">확인</a>
 					</div>
-				</div>
-			</div>
+				</div> -->
+			
 
 
-
-		</div>
-	</div>
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="_resource/js/vendor/CustomTW.js"></script>
@@ -717,12 +642,21 @@
 	<script src="_resource/js/register.js"></script>
 	<script src="_resource/js/common_biz.js"></script>
 <script>
-	var $emailRegName = $('.email_reg_name').find('input'), $emailRegEmail = $(
-			'.email_reg_email').find('input'), $emailRegPw = $(
-			'.email_reg_password').find('input'), $emailRegPwCheck = $(
-			'.email_reg_password_check').find('input'), $emailRegPhone1 = $(
-			'.email_reg_phone1').find('input'), $emailRegPhone2 = $(
-			'.email_reg_phone2').find('input'), $emailAgree1 = $('.btn_email_agree1'), $emailAgree2 = $('.btn_email_agree2'), $emailAgree3 = $('.btn_email_agree3'), $emailAgree4 = $('.btn_email_agree4'), $emailAgree5 = $('.btn_email_agree5'), $emailAgree6 = $('.btn_email_agree6'), $allAgree = $('.btn_all_agree');
+	var $emailRegName = $('.email_reg_name').find('input'), 
+		$emailRegEmail = $('.email_reg_email').find('input'), 
+		$emailRegPw = $('.email_reg_password').find('input'), 
+		$emailRegPwCheck = $('.email_reg_password_check').find('input'),
+		$emailRegBirth = $('.email_reg_email').find('input'),
+		$emailRegGen = $('.email_reg_email4').find('input'),
+		$emailRegPhone1 = $('.email_reg_phone1').find('input'), 
+		$emailRegPhone2 = $('.email_reg_phone2').find('input'),
+		$emailAgree1 = $('.btn_email_agree1'), 
+		$emailAgree2 = $('.btn_email_agree2'), 
+		$emailAgree3 = $('.btn_email_agree3'), 
+		$emailAgree4 = $('.btn_email_agree4'), 
+		$emailAgree5 = $('.btn_email_agree5'), 
+		$emailAgree6 = $('.btn_email_agree6'),
+		$allAgree = $('.btn_all_agree');
 
 	
 
@@ -775,15 +709,21 @@
 		} else if ($emailRegEmail.val() == ''
 				|| $("input[name=email2]").val() == '') {
 			alert('이메일을 입력해주세요');
-		} else if ($email_flg.val() != 'Y') {
+		}   /* else if ($email_flg.val() != 'Y') {
 			alert('이메일 중복 체크를 해 주세요.')
-		} else if ($emailRegPw.val() == '') {
+		} */  else if ($emailRegPw.val() == '') {
 			alert('비밀번호를 입력해주세요');
 		} else if (pwCheck() == false) {
 
 		} else if ($emailRegPwCheck.val() == ''
 				|| $emailRegPw.val() != $emailRegPwCheck.val()) {
 			alert('동일한 비밀번호로 입력해주세요');
+		}else if
+			($emailRegBirth.val() == ''){
+				alert('생일을 입력해주세요');
+		}else if
+			($emailRegGen.val == ''){
+				alert('성별을 입력해주세요');
 		} else if (!$allAgree.hasClass('active')) {
 			alert('약관에 모두 동의 해주세요');
 		} else {
@@ -800,15 +740,15 @@
 			var oFORM = document.joinForm;
 			var email = oFORM.email1.value + "@" + oFORM.email2.value;
 
-			if ($("#checked_email").val() != email) {
+			 if ($("#checked_email").val() != email) {
 				alert("이메일 중복 체크를 해 주세요")
-			} else {
-				if (!emailRegForm) {
+			}  else {
+				if (!emailRegForm) { B
 					emailRegForm = true;
 					$("#joinForm").submit();
-					//register.showPop('pop_email_complete');  // 응모 완료 팝업
+					register.showPop('Main');  // 응모 완료 팝업
 				}
-			}
+			} 
 		}
 
 	}
@@ -847,7 +787,7 @@
 
 		if (schString.trim() != '') {
 			//alert(schString)
-			$.post("/member/checkDupicate.do", {
+			$.post("/member/Main_login_regist1", {
 				schType : schType,
 				schString : schString
 			}, function(result) {
@@ -877,7 +817,7 @@
 		} else if (schString.trim() == '') {
 			alert(message + "입력후 중복확인 바랍니다.");
 			return;
-		}
+		} 
 	}
 
 	function pwCheck() {
@@ -1004,10 +944,55 @@
 		return true;
 		//return true;
 	}
-</script>
+//주소
+	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+	function sample4_execDaumPostcode() {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+						// 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+						var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+						var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+							extraRoadAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if (data.buildingName !== '' && data.apartment === 'Y') {
+							extraRoadAddr += (extraRoadAddr !== '' ? ', '
+									+ data.buildingName : data.buildingName);
+						}
+						// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if (extraRoadAddr !== '') {
+							extraRoadAddr = ' (' + extraRoadAddr + ')';
+						}
+						// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+						if (fullRoadAddr !== '') {
+							fullRoadAddr += extraRoadAddr;
+						}
+
+						// 우편번호와 주소 정보를 해당 필드에 넣는다.
+						document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
+						document.getElementById('sample4_roadAddress').value = fullRoadAddr;
+
+						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+						
+					}
+				}).open();
+	}
+	
+function load_google() {
+		gapi.client.setApiKey('AIzaSyBySGWNccSTO9XHnlay_kpBHAWUO1-d3L4');
+		gapi.client.load('urlshortener', 'v1', function() {
+		});
+	}
+</script>	
 
 	<jsp:include page="navi-footer.jsp"></jsp:include> 
-</body>
-</html>
 </body>
 </html>
