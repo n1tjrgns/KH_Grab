@@ -10,11 +10,17 @@
 
 	<mvc:view-controller path="/main" view-name="main" />
 
+	
 	<bean class="controller.CommentController">
 	</bean>	
 	
 	<bean class="controller.ProductController">
 	</bean>	
 	
+	<bean class="controller.PwmailController">
+	</bean>
+
+
+
 
 </beans>

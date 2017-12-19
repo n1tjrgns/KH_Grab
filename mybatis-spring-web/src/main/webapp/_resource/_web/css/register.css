@@ -69,9 +69,9 @@ h2 {font-size:32px;line-height:32px;color:#333;font-weight:300;text-align:center
 .reg_form table td {padding:12px 24px;border-bottom:1px solid #e0e0e0;font-size:13px;color:#8a8a8a;}
 
 .reg_form.find_password {width:467px;padding:0 166px 64px;}
-.reg_form.find_password .input_box {width:465px;}
+.reg_form.find_password .input_box {width:365px; margin-left:50px;}
 .reg_form.find_password .email_box {margin-bottom:30px;}
-.reg_form.find_password .email_box .email_reg_email {width:182px;}
+.reg_form.find_password .email_box .email_reg_email {width:365px;}
 .reg_form.find_password .email_box .email_reg_email2 {width:126px;}
 .reg_form.find_password .email_box select {margin-right:0;}
 

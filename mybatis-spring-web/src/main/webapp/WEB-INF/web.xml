@@ -19,6 +19,7 @@
 				classpath:applicationContext.xml
 				classpath:applicationController.xml
 				classpath:applicationMember.xml
+<!-- 				classpath:jdbclog4j.xml -->
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

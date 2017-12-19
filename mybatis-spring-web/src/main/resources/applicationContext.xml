@@ -10,7 +10,8 @@
 		
 		
  <mvc:annotation-driven/>
-		
+
+
  <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
  
 	 <mvc:view-resolvers>

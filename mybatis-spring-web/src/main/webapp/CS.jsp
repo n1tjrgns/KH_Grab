@@ -12,6 +12,7 @@
 <%@page import="javax.mail.Authenticator"%>
 <%@page import="java.util.Properties"%>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -189,7 +190,7 @@
 					</textarea>
 						</li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-							type="submit" value="문의하기" onclick="check()"
+							type="submit" value="문의하기" onclick="check()" class="submit"
 							style="background-color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">
 							<input type="reset" value="취소"
 							style="background-color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;"></li>
@@ -201,12 +202,14 @@
 		</div>
 
 		<script>
+		$(".submit").click(
 			function check() {
 				alert("전송되었습니다.");
 				document.q.submit();
 				<%System.out.println("출력되었따미2");%>
 				
 			}
+			);
 		</script>
 	</div>
 	<jsp:include page="navi-footer.jsp"></jsp:include> 

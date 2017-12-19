@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="_resource/_web/css/common.css" rel="stylesheet" />
+<link href="_resource/_web/cs
+
+s/common.css" rel="stylesheet" />
 <link href="_resource/_web/css/register.css" rel="stylesheet" />
     <script>
 	function load_google() {
@@ -123,31 +125,25 @@ function goMyBucket(){
                 <span>이메일로 임시 비밀번호를 발송</span>해드립니다.
             </p>
             <div class="reg_form find_password">
-                <form action="/member/find_password_check.do" method="post" id="find_form">
+                <form action="find_password" method="post" id="find_form">
+                
                 <input type=hidden name="email">
                     <div class="input_box email_reg_name">
-                        <input type="text" placeholder="이름" name="username" maxlength="15">
+                        <input type="text" placeholder="이름" name="mName" maxlength="15">
                     </div>
                     <div class="email_box">
                         <div class="input_box email_reg_email">
-                            <input type="text" placeholder="이메일" name="email1" maxlength="50">
+                            <input type="text" placeholder="이메일" name="mEmail" maxlength="50">
                         </div>
-                        <div class="dot">@</div>
-                        <div class="input_box email_reg_email2">
-                            <input type="text" readonly="readonly" name="email2" maxlength="20">
-                        </div>
-                        <select id="email_reg_select" class="email_reg_select" name="_email2">
-                            <option>선택</option>
-                            <option>naver.com</option>
-                            <option>daum.net</option>
-                            <option>gmail.com</option>
-                            <option>직접입력</option>
-                        </select>
+                        
+                        
+                        
                     </div>
+                    <div class="btn_area">
+                    <input type="submit" class="btn_click btn_confirm mot2" value ="확 인">
+               	 </div>
                 </form>
-                <div class="btn_area">
-                    <a href="javascript:inputCheck();" class="btn_click btn_confirm mot2" onclick='eventTrack("", "find_password_btn_submit");'>확 인</a>
-                </div>
+                
             </div>
             <div class="btn_area2">                
                 <a href="Main_login" class="btn_login mot2">로그인</a>
