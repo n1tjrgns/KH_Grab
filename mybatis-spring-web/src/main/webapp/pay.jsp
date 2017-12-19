@@ -93,7 +93,7 @@
 			$("#rphone2").focus();
 			return false;
 		}
-		else if($("#rphone3").val())== ""){
+		else if($("#rphone3").val()== "")){
 			alert("전화번호를 모두 입력해주세요!");
 			$("#rphone3").focus();
 			return false;
