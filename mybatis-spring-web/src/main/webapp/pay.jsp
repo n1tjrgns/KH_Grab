@@ -11,18 +11,6 @@
 
 
 <title>주문서 작성 | Grab STORE</title>
-<script>
-	if (session.getAttribute("loginInfo") != null) {
-		Member member = (Member) session.getAttribute("loginInfo");
-		System.out.println("세션있음");
-		var m_name = member.getmName();
-		
-		var tel1 = member.getmTel().substring(0, 3);
-		var tel2 = member.getmTel().substring(4, 8);
-		var tel3 = member.getmTel().substring(9, 13);
-		System.out.println("전화번호:"+tel1+"-"+tel2+"-"+tel3);
-	}
-</script>
 
 <link rel="stylesheet" type="text/css"
 	href="//static.musinsa.com/skin/musinsa/css/magazine_common.css?20161230" />
@@ -35,8 +23,13 @@
 	src="//static.musinsa.com/mfile_outsrc/js/vendor/jquery-1.11.1.min.js?20160201"></script>
 <!--// 스토어, 매거진 공통 스크립트 -->
 
+
+<!--// 세션 소스 -->
+
 <!-- 다음 주소 가져오기 api-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+
 <script type="text/javascript">
 	function CheckAgree() {
 		var is_chk = $("input[name=all_agree]").is(":checked");
@@ -63,12 +56,26 @@
 			$("#thirdBtn").addClass("detail_close");
 		}
 	}
-	
-	function defaultCheck() {
 
-		if($("input[name=adress_chk]").is(":checked")){
-			$("input[name=rcvr_nm]").attr('value', m_name);
-		}
+	function defaultCheck() {
+		$("input[name=rcvr_nm]").val($("input[name=m_name]").val());
+		$("#rphone1").val($("input[name=m_tel1]").val());
+		$("input[name=rphone2]").val($("input[name=m_tel2]").val());
+		$("input[name=rphone3]").val($("input[name=m_tel3]").val());
+		
+		$("input[id=sample4_postcode]").val($("input[name=m_post]").val());
+		$("input[id=sample4_roadAddress]").val($("input[name=m_addr]").val());
+		$("input[id= roadAddress_detail]").val($("input[name=m_addr_d]").val());
+	}
+	function resetCheck() {
+		$("input[name=rcvr_nm]").val("");
+		$("#rphone1 option:eq(0)").prop("selected", true);
+		$("input[name=rphone2]").val("");
+		$("input[name=rphone3]").val("");
+		
+		$("input[id=sample4_postcode]").val("");
+		$("input[id=sample4_roadAddress]").val("");
+		$("input[id= roadAddress_detail]").val("");
 	}
 
 	function sample4_execDaumPostcode() {
@@ -134,18 +141,27 @@
 <script type="text/javascript" src="./js/main.js"></script>
 <jsp:include page="navi-header.jsp" />
 
+
 <!-- 오른쪽 콘텐츠 영역 -->
 <div class="right_area page_order_form">
 	<%
-		System.out.println("p_name(web) : " + request.getParameter("p_name"));
+		Member member = (Member) session.getAttribute("loginInfo");
 		ProductSessionRepository psr = new ProductSessionRepository();
 		Product product = psr.selectProduct(request.getParameter("p_name"));
-		System.out.println("이름:" + product.getProdName());
-		System.out.println("가격:" + product.getProdPrice());
-		System.out.println("p_payStock(web):" + request.getParameter("p_payStock"));
+		
 	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->
+	
+	<!-- 세션 회원의 정보 -->
+	<input type="hidden" name="m_name" value="<%=member.getmName() %>" />
+	<input type="hidden" name="m_tel1" value="<%=member.getmTel().substring(0, 3) %>" />
+	<input type="hidden" name="m_tel2" value="<%=member.getmTel().substring(4, 8) %>" />
+	<input type="hidden" name="m_tel3" value="<%=member.getmTel().substring(9, 13) %>" />
+	<input type="hidden" name="m_post" value="<%=member.getmPost() %>" />
+	<input type="hidden" name="m_addr" value="<%=member.getmAddr() %>" />
+	<input type="hidden" name="m_addr_d" value="<%=member.getmAddr_d() %>" />
+	
 	<div class="pagenation">
 		<div class="nav_sub">
 			<a href="/">STORE</a><span class="icon_entity">&gt;</span><span>주문서</span>
@@ -320,9 +336,9 @@
 						<li class="cell_discount_tit">배송지 선택</li>
 						<li class="cell_discount_detail"><label
 							class="box_choice fist"> <input type="radio"
-								id="address_dongil" name="adress_chk" onClick="defaultCheck();"/> 기본 배송지(구매자 정보)
-								<input type="radio" id="address_dongil" name="adress_chk"
-								onClick="Order.sameOrder(this);" /> 신규 배송지
+								id="address_dongil" name="adress_chk" onClick="defaultCheck();" />
+								기본 배송지(구매자 정보) <input type="radio" id="address_dongil"
+								name="adress_chk" onClick="resetCheck();" /> 신규 배송지
 						</label></li>
 					</ul>
 					<ul class="box_receiver_info">
@@ -336,25 +352,11 @@
 							style="cursor: default; display: none" id="baesong_title"></span>
 						</li>
 					</ul>
-					<ul class="box_receiver_info">
-						<li class="cell_discount_tit">휴대전화</li>
-						<li class="cell_discount_detail order_address_form box_phone">
-							<select name="rmobile1">
-								<option value="">선택하세요</option>
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="018">018</option>
-								<option value="019">019</option>
-						</select> <!--<input type="text" name="rmobile1" />--> - <input type="text"
-							name="rmobile2" /> - <input type="text" name="rmobile3" />
-						</li>
-					</ul>
+					
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">전화번호</li>
 						<li class="cell_discount_detail order_address_form box_tel">
-							<select name="rphone1">
+							<select name="rphone1" id="rphone1">
 								<option value="">선택하세요</option>
 								<option value="02">02</option>
 								<option value="031">031</option>
@@ -380,10 +382,7 @@
 								<option value="019">019</option>
 						</select> <!--<input type="text"  name="rphone1" />--> - <input type="text"
 							name="rphone2" /> - <input type="text" name="rphone3" />
-							<p>
-								<input type="checkbox" onClick="SetRecipientPhoneNumber(this);"
-									id="r_PhoneNumberCheckBox" name="rphonecheckbox" /> 없음
-							</p>
+							
 						</li>
 					</ul>
 					<ul class="box_receiver_info">
