@@ -24,11 +24,6 @@ public class CommentController {
 		return "main";
 	}
 	
-	@RequestMapping(value="/Main_graph", method = RequestMethod.GET)
-	public String handleStep1(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "graph";
-	}
 	
 	@RequestMapping(value="/Bucket_main", method = RequestMethod.GET)
 	public String handleStep2(Model model) {

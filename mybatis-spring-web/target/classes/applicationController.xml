@@ -19,5 +19,8 @@
 	<bean class="controller.LoginController">
 	</bean>	
 	
+	<bean class="controller.GraphController">
+	</bean>	
+	
 
 </beans>
