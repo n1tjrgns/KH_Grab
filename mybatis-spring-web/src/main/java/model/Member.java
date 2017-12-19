@@ -10,6 +10,8 @@ public class Member {
    private Date mBirth;
    private String mGen;
    private String mAddr;
+   private String mAddr_d;
+   private String mPost;
    private Long mAttendcount;
    private String mProfile;
    private Long mLicense;
@@ -17,8 +19,20 @@ public class Member {
    private String bank;
    private String account;
    
+public String getmAddr_d() {
+   return mAddr_d;
+}
+public void setmAddr_d(String mAddr_d) {
+   this.mAddr_d = mAddr_d;
+}
+public String getmPost() {
+   return mPost;
+}
+public void setmPost(String mPost) {
+   this.mPost = mPost;
+}
 public Member(String mEmail,String mPw,String mName,String mTel,
-      Date mBirth,String mGen,String mAddr,Long mLicense, String mAuthority, Long mAttendcount
+      Date mBirth,String mGen,String mPost, String mAddr,String mAddr_d, Long mAttendcount, String mAuthority, Long mLicense
       ,String mProfile,String bank,String account) {
       this.mEmail = mEmail; 
       this.mPw = mPw;
@@ -26,13 +40,18 @@ public Member(String mEmail,String mPw,String mName,String mTel,
       this.mTel = mTel;
       this.mBirth = mBirth;
       this.mGen = mGen;
+      this.mPost = mPost;
       this.mAddr = mAddr;
+      this.mAddr_d = mAddr_d;
       this.mAttendcount = mAttendcount;
       this.mProfile = mProfile;
       this.mLicense = mLicense;
       this.mAuthority = mAuthority;
       this.bank = bank;
       this.account = account;
+}
+public Member() {
+
 }
    
 public String getmEmail() {
@@ -138,10 +157,6 @@ public String getAccount() {
 
 public void setAccount(String account) {
    this.account = account;
-}
-
-public Member() {
-      
 }
 
 }

@@ -1,6 +1,5 @@
 package repository;
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -19,11 +18,11 @@ public class MemberSessionRepository extends AbstractRepository {
 //	}
 //	
 
-	public Integer insertComment(Member member) {
+	public Integer insertMember(Member member) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		try {
 		String statment = nameSpace+".insertRegisterByCondition";
-		 int result = sqlSession.insert(statment,member);
+		Integer result = sqlSession.insert(statment,member);
 		 if(result>0) {
 			 sqlSession.commit();
 		 }else {

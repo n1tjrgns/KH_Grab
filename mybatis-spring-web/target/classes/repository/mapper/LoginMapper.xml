@@ -6,7 +6,7 @@
  <mapper namespace="repository.mapper.LoginMapper">
 	<cache />
 
-   <resultMap type="member" id="MemberResultMap">
+     <resultMap type="Member" id="MemberResultMap">
       <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
       <id column="m_email" jdbcType="VARCHAR" property="mEmail"/>
       <result column="m_pw" jdbcType="VARCHAR" property="mPw"/>
@@ -14,7 +14,9 @@
       <result column="m_tel" jdbcType="VARCHAR" property="mTel"/>
       <result column="m_birth" jdbcType="DATE" property="mBirth"/>
       <result column="m_gen" jdbcType="VARCHAR" property="mGen"/>
+      <result column="m_postnum" jdbcType="VARCHAR" property="mPost"/>
       <result column="m_addr" jdbcType="VARCHAR" property="mAddr"/>
+      <result column="m_addr_detail" jdbcType="VARCHAR" property="mAddr_d"/>
       <result column="m_attendcount" jdbcType="BIGINT" property="mAttendcount"/>
       <result column="m_profile" jdbcType="VARCHAR" property="mProfile"/>
       <result column="m_license" jdbcType="BIGINT" property="mLicense"/>
@@ -50,9 +52,11 @@
 		m_birth,
 		m_gen,
 		m_addr,
+		m_addr_detail,
+		m_Postnum,
 		m_attendcount,
         m_authority)
-		VALUES(#{mEmail},#{mPw},#{mName},#{mTel},#{mBirth},#{mGen},#{mAddr},0,0)
+		VALUES(#{mEmail},#{mPw},#{mName},#{mTel},#{mBirth},#{mGen},#{mAddr},#{mAddr_d},#{mPostnum},0,0)
 	</insert>
 
 	

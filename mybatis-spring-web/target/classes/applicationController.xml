@@ -19,5 +19,7 @@
 	<bean class="controller.LoginController">
 	</bean>	
 	
+	<bean class="controller.MemberController">
+	</bean>	
 
 </beans>
