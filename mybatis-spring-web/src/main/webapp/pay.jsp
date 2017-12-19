@@ -101,7 +101,7 @@
 		else if($("input[id=sample4_postcode]").val() == "" || $("input[id=sample4_roadAddress]").val() == "" || $("input[id= roadAddress_detail]").val() == ""){
 			alert("주소를 입력해주세요!");
 			return false;
-		}else if(!$("input[name=agree_third]").is(":checked") || !$("input[name=agree_return]").is(":checked") || !$("input[name=pay_agree]").is(":checked"){
+		}else if(!$("input[name=agree_third]").is(":checked") || !$("input[name=agree_return]").is(":checked") || !$("input[name=pay_agree]").is(":checked")){
 			alert("주문자 동의를 확인해주세요!");
 			return false;
 		}else{
