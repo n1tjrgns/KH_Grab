@@ -77,6 +77,39 @@
 		$("input[id=sample4_roadAddress]").val("");
 		$("input[id= roadAddress_detail]").val("");
 	}
+	
+
+	function payCheck() {
+		if($("input[name=rcvr_nm]").val() == ""){
+			alert("수령인을 입력해주세요!");
+			$("input[name=rcvr_nm]").focus();
+			return false;
+		}else if($("#rphone1").val() == $("#rphone1 option:eq(0)")){
+			alert("전화번호를 입력해주세요!");
+			$("#rphone1").focus();
+			return false;
+		}else if($("#rphone2").val() == ""){
+			alert("전화번호를 모두 입력해주세요!");
+			$("#rphone2").focus();
+			return false;
+		}
+		else if($("#rphone3").val())== ""){
+			alert("전화번호를 모두 입력해주세요!");
+			$("#rphone3").focus();
+			return false;
+		}
+		else if($("input[id=sample4_postcode]").val() == "" || $("input[id=sample4_roadAddress]").val() == "" || $("input[id= roadAddress_detail]").val() == ""){
+			alert("주소를 입력해주세요!");
+			return false;
+		}else if(!$("input[name=agree_third]").is(":checked") || !$("input[name=agree_return]").is(":checked") || !$("input[name=pay_agree]").is(":checked"){
+			alert("주문자 동의를 확인해주세요!");
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	
 
 	function sample4_execDaumPostcode() {
 		new daum.Postcode(
@@ -169,7 +202,7 @@
 	</div>
 	<!--//page nation -->
 
-	<form name="f1" id="f1" method="post">
+	<form action="#" name="payForm" id="payForm" method="post" onsubmit="return payCheck();">
 		<!--article-title-->
 		<div class="article-title">
 			<h2 class="title-page">
@@ -403,9 +436,8 @@
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">배송 메모<br /> <!--<input type="checkbox" /> <span class="font_basic">상품별 입력</span>-->
 						</li>
-						<li class="cell_discount_detail box_memo"><textarea
-								name="dlv_msg">
-						</textarea>
+						<li class="cell_discount_detail box_memo">
+						<textarea name="dlv_msg"></textarea>
 							<p>※ 택배기사님께 전할 말씀을 남겨주세요.</p></li>
 					</ul>
 					<!--수령자 정보-->
@@ -512,7 +544,7 @@
 			<!--p class="box_bottom_link"><span class="first"><a href="/app/cart">장바구니</a>↗</span> <span><a href="/app">스토어 메인</a>↗</span></p-->
 			<!--cart button-->
 			<div class="btn_wrap btn_type01">
-				<a href="javascript:void(0)" onclick="Order.valid();"
+				<a href="javascript:void(0)" onclick="javascript:payForm.submit();"
 					class="btn_black">PAYMENT <span class="btn_side_text">결제하기</span></a>
 			</div>
 			<!--//cart button-->

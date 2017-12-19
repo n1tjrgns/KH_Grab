@@ -91,76 +91,7 @@
 				</li>
 			<%} %>
 			</form>
-				<li>
-					<a href="#">
-						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>
-					
-					<!-- <span class="price">$1000</span> -->
-					<div class="property_details">
-						<h1>
-							Fuisque dictum tortor at purus libero
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... </h2>
-						<h2><span class="property_size">2000원</span></h2>
-					</div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_3.jpg" alt="" title="" class="property_img"/>
-					
-					<!-- <span class="price">$500</span> -->
-					<div class="property_details">
-						<h1>
-							Fuisque dictum tortor at purus libero
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath...</h2>
-						<h2><span class="property_size">2000원</span></h2>
-					</div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
-					
-					<!-- <span class="price">$2500</span> -->
-					<div class="property_details">
-						<h1>
-							Fuisque dictum tortor at purus libero
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath...</h2>
-						<h2><span class="property_size">2000원</span></h2>
-					</div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_2.jpg" alt="" title="" class="property_img"/>
-					
-					<!-- <span class="price">$1000</span> -->
-					<div class="property_details">
-						<h1>
-							Fuisque dictum tortor at purus libero
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... </h2>
-						<h2><span class="property_size">2000원</span></h2>
-					</div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/property_3.jpg" alt="" title="" class="property_img"/>
-					
-					<!-- <span class="price">$500</span> -->
-					<div class="property_details">
-						<h1>
-							Fuisque dictum tortor at purus libero
-						</h1>
-						<h2>2 kitchens, 2 bed, 2 bath... </h2>
-						<h2><span class="property_size">2000원</span></h2>
-					</div>
-					</a>
-				</li>
+			
 
 			</ul>
 			<div class="more_listing">
