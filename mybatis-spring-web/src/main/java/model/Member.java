@@ -12,9 +12,9 @@ public class Member {
    private String mAddr;
    private String mAddr_d;
    private String mPost;
-   private Long mAttendcount;
+   private int mAttendcount;
    private String mProfile;
-   private Long mLicense;
+   private int mLicense;
    private String mAuthority;
    private String bank;
    private String account;
@@ -32,7 +32,7 @@ public void setmPost(String mPost) {
    this.mPost = mPost;
 }
 public Member(String mEmail,String mPw,String mName,String mTel,
-      Date mBirth,String mGen,String mPost, String mAddr,String mAddr_d, Long mAttendcount, String mAuthority, Long mLicense
+      Date mBirth,String mGen,String mPost, String mAddr,String mAddr_d, int mAttendcount, String mAuthority, int mLicense
       ,String mProfile,String bank,String account) {
       this.mEmail = mEmail; 
       this.mPw = mPw;
@@ -110,11 +110,11 @@ public void setmAddr(String mAddr) {
    this.mAddr = mAddr;
 }
 
-public Long getmAttendcount() {
+public int getmAttendcount() {
    return mAttendcount;
 }
 
-public void setmAttendcount(Long mAttendcount) {
+public void setmAttendcount(int mAttendcount) {
    this.mAttendcount = mAttendcount;
 }
 
@@ -126,11 +126,11 @@ public void setmProfile(String mProfile) {
    this.mProfile = mProfile;
 }
 
-public Long getmLicense() {
+public int getmLicense() {
    return mLicense;
 }
 
-public void setmLicense(Long mLicense) {
+public void setmLicense(int mLicense) {
    this.mLicense = mLicense;
 }
 

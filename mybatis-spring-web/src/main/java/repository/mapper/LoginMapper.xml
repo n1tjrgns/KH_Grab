@@ -35,13 +35,13 @@
 		</where>
 	</select>
 	
-	<select id="selectRegisterByCondition" parameterType="Member"
+	<!-- <select id="selectRegisterByCondition" parameterType="Member"
 		resultMap="BaseResultMap">
 		SELECT
 			*
 		FROM member
 		<if test ="mEmail != null"></if>		
-	</select>
+	</select> -->
 	
 	<insert id="insertRegisterByCondition" parameterType="Member">
 		INSERT INTO member(
@@ -51,14 +51,18 @@
 		m_tel,
 		m_birth,
 		m_gen,
+		m_Postnum,
 		m_addr,
 		m_addr_detail,
-		m_Postnum,
 		m_attendcount,
         m_authority)
-		VALUES(#{mEmail},#{mPw},#{mName},#{mTel},#{mBirth},#{mGen},#{mAddr},#{mAddr_d},#{mPostnum},0,0)
+		VALUES(#{mEmail},#{mPw},#{mName},#{mTel},#{mBirth},#{mGen},#{mPost},#{mAddr},#{mAddr_d},0,0)
 	</insert>
-
+	
+	<!-- <insert id="insertRegisterEnterByCondition" parameterType="Member">
+		
+	</insert>
+ -->
 	
 
 </mapper>

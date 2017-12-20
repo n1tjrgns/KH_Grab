@@ -29,9 +29,9 @@ public class MemberController {
 		String mPost = httpServletRequest.getParameter("mPost");
 		String mAddr = httpServletRequest.getParameter("mAddr");
 		String mAddr_d = httpServletRequest.getParameter("mAddr_d");
-		Long mAttendcount = 0L;
+		int mAttendcount = 0;
 		String mAuthority = httpServletRequest.getParameter("mAuthority");
-		Long mLicense = 0L;
+		int mLicense = 0;
 		String mProfile = "";
 		String bank = "";
 		String account = "";

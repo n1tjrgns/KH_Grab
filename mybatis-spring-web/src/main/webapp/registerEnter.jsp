@@ -40,9 +40,7 @@
 	
 
 			<div id="contents">
-				<form name="joinForm" id="joinForm" class="member-form"
-					action="https://www.lifeplusbucket.com/member/email_register_save.do"
-					method="post">
+			<form name="joinForm" id="joinForm" class="member-form" action="registingEnter"	method="post">
 					<input type="hidden" name="email_flg" id="email_flg" value="N">
 					<input type="hidden" name="checked_email" id="checked_email"
 						value=""> <input type="hidden" name="agree_sms"
@@ -52,93 +50,71 @@
 						value="">
 
 					<div class="reg_content">
+					
 						<h2>업체/단체 회원가입</h2>
 							<br/><br/>
 						<div class="reg_box">
 									<h4><a href="Main_login_regist1">개인 회원가입</a></h4>은 이곳을 클릭하세요
 							<div class="reg_form">
-								<div class="input_box email_reg_name">
+								<p class="txt">업체/단체이름</p>	
+								<div class="input_box email_reg_name" id="email_reg_name">
 									<input type="text" placeholder="업체/단체이름" name="username"
 										maxlength="15">
 								</div>
+								<p class="txt">이메일</p>	
 								<div class="email_box">
-									<div class="input_box email_reg_email">
-										<input type="text" placeholder="회원  확인 이메일" name="email1"
-											maxlength="50">
-									</div>
-									<div class="dot">@</div>
-									<div class="input_box email_reg_email2">
-										<input type="text" name="email2" maxlength="20">
-									</div>
-									<select id="email_reg_select" class="email_reg_select">
-										<option>직접입력</option>
-										<option>naver.com</option>
-										<option>daum.net</option>
-										<option>gmail.com</option>
-									</select> <a href="javascript:checkDupicate(2);"
-										class="btn_double_check mot2">중복확인</a>
+									<div class="input_box email_reg_email" id="mEmail">
+										<input type="text" placeholder="이메일" name="email1"
+											maxlength="70">
+									</div>									
+									<!--  <a href="javascript:checkDupicate(2);"
+										class="btn_double_check mot2">중복확인</a> -->
 								</div>
 								<a href="javascript:void(0);" class="btn_email_agree1 btn_agree">
 									<span class="ico"></span> <span>이메일 수신에 동의합니다.</span><br>
 									(문의 답변 메일, 버킷 리스트 업데이트 알림 등 꼭 필요한 메일만 발송합니다.)
 								</a>
-								<!-- 아이디 -->
-								<div class="input_box email_reg_name">
-									<input type="text" placeholder="아이디" name="userId"
-										maxlength="30"><a href="javascript:checkDupicate(2);"
-										class="btn_double_check mot2">중복확인</a>
-								</div>
+								
 								<!-- 비밀번호 -->
+								<p class="txt">비밀번호</p>	
 								<div class="password_box">
-									<div class="input_box email_reg_password">
-										<input type="password" placeholder="비밀번호" name="passwd"
+									<div class="input_box email_reg_password" id ="mPw">
+										<input type="password" placeholder="비밀번호(영문 대/소문자, 숫자, 특수문자 중 3조합 8자리)" name="passwd"
 											maxlength="40">
 									</div>
-									<div class="input_box email_reg_password_check">
-										<input type="password" placeholder="비밀번호 확인" maxlength="40">
+									<div class="input_box email_reg_password_check" id="mPw">
+										<input type="password" placeholder="비밀번호 확인 " maxlength="40">
 									</div>
 								</div>
-								<p class="password_check_txt" style="display: none;">영문
-									대/소문자, 숫자, 특수문자 중 3조합 8자리</p>
 
-								<p class="txt">영문 대/소문자, 숫자, 특수문자 중 3조합 8자리</p>
-									
+											
 									<div class="phone_box">
-									<select id="email_reg_phone" name="cell1"
-										class="email_reg_phone">
-										<option>연락처 (선택)</option>
-										<option>010</option>
-										<option>011</option>
-										<option>016</option>
-										<option>017</option>
-										<option>018</option>
-										<option>019</option>
-									</select>
-									<div class="input_box email_reg_phone1">
-										<input type="tel" maxlength="4" name="cell2"
-											onkeydown="register.numberKeyPress(event);"
+								<p class="txt">연락처</p>
+									<div class="input_box email_reg_phone1" id="mTel">
+										<input type="tel" maxlength="50" name="cell2" 
+											onkeydown="register.numberKeyPress(event);" 
 											onpaste="return false;" oncopy="return false;">
 									</div>
-									<div class="input_box email_reg_phone2">
+									<!-- <div class="input_box email_reg_phone2">
 										<input type="tel" maxlength="4" name="cell3"
 											onkeydown="register.numberKeyPress(event);"
 											onpaste="return false;" oncopy="return false;">
-									</div>
-								</div>
-						<!-- 업체 이름 -->
-									<div class="input_box email_reg_name">
-									<input type="text" placeholder="업체이름" name="EnterId"
-										maxlength="50">
-								</div>
+									</div> -->
+								</div>			
 					<!-- 사업자 등록번호 -->
-								<div class="input_box email_reg_name">
+							
+							<br>
+							<br>
+							<br>
+					<p class="txt">사업자 등록 번호</p>	
+							<div class="input_box email_reg_name" id="mLicense">
 									<input type="text" placeholder="사업자 등록 번호" name="EnterNum"
 										maxlength="50">
 								</div>
 					<!-- 주소 -->
 						<p class="txt">주소</p>	
 									<div class="email_box">
-									<div class="input_box email_reg_email">
+									<div class="input_box email_reg_email" id="mPost">
 									<input type="text" id="sample4_postcode" placeholder="우편번호">
 										</div>
 									
@@ -147,10 +123,10 @@
 										</div>
 									</div>
 								
-									<div class="input_box email_reg_phone1">
+									<div class="input_box email_reg_phone1" id="mAddr">
 										<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
 									</div>
-									<div class="input_box email_reg_phone2">
+									<div class="input_box email_reg_phone2" id="mAddr_d">
 										<input type="text" id="address_detail" placeholder="나머지주소">							
 								</div>
 
@@ -158,23 +134,19 @@
 									<span class="ico"></span> <span>SMS 수신에 동의합니다.</span><br>
 									(경품 발송 및 마케팅을 위한 SMS만 발송합니다.)
 								</a>
-								<div class="input_box email_reg_name">
+								<p class="txt">대표자명</p>	
+								<div class="input_box email_reg_name" id ="email_reg_entername">
 									<input type="text" placeholder="대표자명" name="userId"
 										maxlength="30">
 								</div>
+								
 								<div class="email_box">
-									<div class="input_box email_reg_email2">
+								<p class="txt">업체종류</p>	
+									<div class="input_box email_reg_email2" id="email_reg_enter_exit">
 										<input type="text" name="email2" maxlength="20"
 											placeholder="업체 종류">
 									</div>
-									<select id="email_reg_select" class="email_reg_select">
-										<option>직접입력</option>
-										<option>회원사업자</option>
-										<option>영리법인</option>
-										<option>비영리법인</option>
-										<option>기타 공식단체</option>
-										<option>비공식 단체(예:동아리)</option>
-									</select>
+								
 								</div>
 
 							</div>
@@ -701,12 +673,25 @@
 <script src="_resource/js/common_biz.js"></script>
 
 <script>
-	var $emailRegName = $('.email_reg_name').find('input'), $emailRegEmail = $(
-			'.email_reg_email').find('input'), $emailRegPw = $(
-			'.email_reg_password').find('input'), $emailRegPwCheck = $(
-			'.email_reg_password_check').find('input'), $emailRegPhone1 = $(
-			'.email_reg_phone1').find('input'), $emailRegPhone2 = $(
-			'.email_reg_phone2').find('input'), $emailAgree1 = $('.btn_email_agree1'), $emailAgree2 = $('.btn_email_agree2'), $emailAgree3 = $('.btn_email_agree3'), $emailAgree4 = $('.btn_email_agree4'), $emailAgree5 = $('.btn_email_agree5'), $emailAgree6 = $('.btn_email_agree6'), $allAgree = $('.btn_all_agree');
+	var $emailRegName = $('.email_reg_name').find('input'), 
+			$emailRegEmail = $('.email_reg_email').find('input'), 
+			$emailRegPw = $('.email_reg_password').find('input'), 
+			$emailRegPwCheck = $('.email_reg_password_check').find('input'), 
+			$emailRegPhone1 = $('.email_reg_phone1').find('input'), 
+			$emailRegPhone2 = $('.email_reg_phone2').find('input'), 
+			$emailRegEnterNum = $('.email_reg_enternum').find('input'), 
+			$emailRegAddr = $('.email_reg_addr').find('input'), 
+			$emailRegAddr1 = $('.email_reg_addr1').find('input'), 
+			$emailRegAddr2 = $('.email_reg_addr2').find('input'), 
+			$emailRegEnterName = $('.email_reg_entername').find('input'), 
+			$emailRegEnterKind = $('.email_reg_enterkind').find('input'), 
+			$emailAgree1 = $('.btn_email_agree1'), 
+			$emailAgree2 = $('.btn_email_agree2'), 
+			$emailAgree3 = $('.btn_email_agree3'), 
+			$emailAgree4 = $('.btn_email_agree4'), 
+			$emailAgree5 = $('.btn_email_agree5'), 
+			$emailAgree6 = $('.btn_email_agree6'), 
+			$allAgree = $('.btn_all_agree');
 
 
 	$('.btn_agree').click(
