@@ -18,11 +18,10 @@ public class PaymentSessionRepository extends AbstractRepository {
 		return sqlSession.selectOne(statment);
 	}
 	
-	public Integer insertPayment(int maxPayNum, int maxBuyNum, String howPay, int total_price, String dlv_msg) {
+	public Integer insertPayment(Payment payment) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		try {
 			String statment = nameSpace + ".insertPaymentByCondition";
-			Payment payment = new Payment(maxPayNum, maxBuyNum, howPay, total_price, dlv_msg);
 			int result = sqlSession.insert(statment, payment);
 			if (result > 0) {
 				sqlSession.commit();

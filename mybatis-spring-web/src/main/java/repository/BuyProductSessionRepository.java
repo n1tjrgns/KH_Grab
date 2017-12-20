@@ -22,13 +22,11 @@ public class BuyProductSessionRepository extends AbstractRepository {
 		return sqlSession.selectOne(statment);
 	}
 	
-	public Integer insertBuyProduct(int BuyNum, Date buyDate, String totalPrice, String howDeliver, String receiver, String receiAddr,
-			String mEmail) {
+	public Integer insertBuyProduct(BuyProduct buyProduct) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		try {
 			String statment = nameSpace + ".insertBuyProductByCondition";
-			BuyProduct buy = new BuyProduct(BuyNum, buyDate, totalPrice, howDeliver, receiver, receiAddr, mEmail);		
-			int result = sqlSession.insert(statment, buy);
+			int result = sqlSession.insert(statment, buyProduct);
 			if (result > 0) {
 				sqlSession.commit();
 			} else {

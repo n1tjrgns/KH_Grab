@@ -30,7 +30,7 @@
 		INTO
 			payment
 		(pay_num, buy_num, how_pay, p_total, p_comment)
-		VALUES(#{buyDate},#{totalPrice},#{howDeliver},#{receiver},#{receiAddr},#{mEmail})
+		VALUES(#{payNum},#{buyNum},#{howPay},#{pTotal},#{pComment})
 	</insert>
 
 

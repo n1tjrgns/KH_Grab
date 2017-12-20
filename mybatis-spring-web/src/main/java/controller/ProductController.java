@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.BuyList;
 import model.BuyProduct;
 import model.Payment;
 import model.Product;
@@ -77,7 +78,7 @@ public class ProductController {
 		String total_price = httpServletRequest.getParameter("p_totalprice");
 		String howPay = httpServletRequest.getParameter("kyejae");
 		String rv_name = httpServletRequest.getParameter("rcvr_nm");
-		String addr = "("+httpServletRequest.getParameter("sample4_postcode") +") "+ httpServletRequest.getParameter("sample4_roadAddress") +" "+ httpServletRequest.getParameter("roadAddress_detail");
+		String receiAddr = "("+httpServletRequest.getParameter("sample4_postcode") +") "+ httpServletRequest.getParameter("sample4_roadAddress") +" "+ httpServletRequest.getParameter("roadAddress_detail");
 		String m_email = httpServletRequest.getParameter("member_email");
 		String dlv_msg = httpServletRequest.getParameter("dlv_msg");
 		String how_del = "택배";
@@ -86,7 +87,7 @@ public class ProductController {
 		System.out.println("총액:"+total_price);
 		System.out.println("결제방법:"+howPay);
 		System.out.println("받는사람:"+rv_name);
-		System.out.println("주소:"+addr);
+		System.out.println("주소:"+receiAddr);
 		System.out.println("이메일:"+m_email); //이메일로 회원 전화번호 DB 받기
 		System.out.println("메시지:"+dlv_msg);
 		System.out.println("회원이름:"+memberName);
@@ -103,16 +104,22 @@ public class ProductController {
 		//PayNum 최대값 출력
 		Payment payment = paymentSessionRepository.selectMaxPayNum();
 		int maxPayNum = payment.getBuyNum() + 1;
+		payment.setPayNum(maxPayNum);
 		System.out.println("maxPayNum:"+maxPayNum);
 		
 		//구매 DB 넣은 결과
-		int buyResult = buyProductSessionRepository.insertBuyProduct(maxBuyNum, today, total_price, how_del, rv_name, addr, m_email);
+		BuyProduct buyProduct = new BuyProduct(maxBuyNum, today, total_price, how_del, rv_name, receiAddr, m_email);
+		int buyResult = buyProductSessionRepository.insertBuyProduct(buyProduct);
 		System.out.println("buyResult:"+buyResult);
+		
 		//결제 DB 넣은 결과
-		int payResult = paymentSessionRepository.insertPayment(maxPayNum, maxBuyNum, howPay, Integer.parseInt(total_price), dlv_msg);
+		payment = new Payment(maxPayNum, maxBuyNum, howPay, Integer.parseInt(total_price), dlv_msg);
+		int payResult = paymentSessionRepository.insertPayment(payment);
 		System.out.println("payResult:"+payResult);
+		
 		//구매리스트 DB 넣은 결과
-		int listResult = buyListSessionRepository.insertBuyList(maxBuyNum, memberName, qty);
+		BuyList buyList = new BuyList(maxBuyNum, memberName, qty);
+		int listResult = buyListSessionRepository.insertBuyList(buyList);
 		System.out.println("listResult:"+listResult);
 		model.addAttribute("result", listResult);
 

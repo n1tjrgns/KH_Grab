@@ -17,7 +17,7 @@
 		<result column="m_email" jdbcType="VARCHAR" property="mEmail" />
 	</resultMap>
 
-	<select id="selectMaxBuyNumByCondition" parameterType="int"
+	<select id="selectMaxBuyNumByCondition" parameterType="BuyProduct"
 		resultMap="BaseResultMap">
 		SELECT
 			 * 
@@ -27,12 +27,12 @@
 			buy_num = (select max(buy_num) from buy_product)
 	</select>
 
-	<insert id="insertBuyProductByCondition" parameterType="buyProduct">
+	<insert id="insertBuyProductByCondition" parameterType="BuyProduct">
 		INSERT
 		INTO
 		buy_product
-		(buy_date, total_price, how_deliver, receiver, recei_addr, m_email)
-		VALUES(#{buyDate},#{totalPrice},#{howDeliver},#{receiver},#{receiAddr},#{mEmail})
+		 (buy_num, buy_date, total_price, how_deliver, receiver, recei_addr, m_email)
+		VALUES (#{buyNum},#{buyDate},#{totalPrice},#{howDeliver},#{receiver},#{receiAddr},#{mEmail})
 	</insert>
 
 

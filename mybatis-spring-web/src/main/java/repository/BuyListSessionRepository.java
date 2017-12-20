@@ -11,11 +11,10 @@ import model.BuyList;
 public class BuyListSessionRepository extends AbstractRepository {
 	private final String nameSpace = "repository.mapper.BuyListMapper";
 
-	public Integer insertBuyList(int maxBuyNum, String memberName, int qty) {
+	public Integer insertBuyList(BuyList buyList) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		try {
 			String statment = nameSpace + ".insertBuyListByCondition";
-			BuyList buyList = new BuyList(maxBuyNum, memberName, qty);
 			int result = sqlSession.insert(statment, buyList);
 			if (result > 0) {
 				sqlSession.commit();

@@ -16,9 +16,9 @@
 	<insert id="insertBuyListByCondition" parameterType="BuyList">
 		INSERT
 		INTO
-			payment
-		(pay_num, buy_num, how_pay, p_total, p_comment)
-		VALUES(#{buyDate},#{totalPrice},#{howDeliver},#{receiver},#{receiAddr},#{mEmail})
+			buy_list
+		(buy_num, prod_name, b_quantity)
+		VALUES(#{buyNum},#{prodName},#{bQuantity})
 	</insert>
 
 
