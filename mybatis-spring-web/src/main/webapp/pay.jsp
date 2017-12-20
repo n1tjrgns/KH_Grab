@@ -555,6 +555,8 @@
 		<input type="hidden" name="p_stock" value="<%=request.getParameter("p_payStock")%>" />
 		<input type="hidden" name="p_totalprice" value="<%=Integer.parseInt(request.getParameter("p_payStock")) * product.getProdPrice()%>" />
 		<input type="hidden" name="member_email" value="<%=member.getmEmail() %>" />		
+		<input type="hidden" name="member_name" value="<%=member.getmName() %>" />
+		<input type="hidden" name="qty" value="<%=request.getParameter("p_payStock")%>" />
 		<!-- 회원의 구매 정보 끝-->
 				
 	</form>

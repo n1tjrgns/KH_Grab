@@ -9,7 +9,7 @@
    	<typeAlias type="model.Member" alias="Member"/>
    	<typeAlias type="model.BuyProdcut" alias="BuyProdcut"/>
    	<typeAlias type="model.Payment" alias="Payment"/>
-   	
+   	<typeAlias type="model.BuyList" alias="BuyList"/>
    </typeAliases>
    
    <environments default="development">
@@ -30,6 +30,6 @@
       <mapper resource="repository/mapper/LoginMapper.xml"/>
       <mapper resource="repository/mapper/BuyProductMapper.xml"/>
       <mapper resource="repository/mapper/PaymentMapper.xml"/>
-      
+      <mapper resource="repository/mapper/BuyListMapper.xml"/>
    </mappers>
 </configuration>
