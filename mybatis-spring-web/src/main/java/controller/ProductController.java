@@ -55,13 +55,14 @@ public class ProductController {
 	//수정중
 	@RequestMapping(value="/paying", method = RequestMethod.POST)
 	public String shopStep4(HttpServletRequest httpServletRequest, Model model) {
-		String p_name = httpServletRequest.getParameter("p_name");
-		String p_payStock = httpServletRequest.getParameter("p_payStock");
-		System.out.println("p_name:"+p_name);
-		System.out.println("p_payStock:"+p_payStock);
-		Product result = productSessionRepository.selectProduct(p_name);
-		System.out.println("result:"+result);
-		model.addAttribute("product",result);
-		return "pay";
+//		String p_name = httpServletRequest.getParameter("p_name");
+//		String p_payStock = httpServletRequest.getParameter("p_payStock");
+//		System.out.println("p_name:"+p_name);
+//		System.out.println("p_payStock:"+p_payStock);
+//		Product result = productSessionRepository.selectProduct(p_name);
+//		System.out.println("result:"+result);
+//		model.addAttribute("product",result);
+		System.out.println("submit완료");
+		return "shop";
 	}
 }

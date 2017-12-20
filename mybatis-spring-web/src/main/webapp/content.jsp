@@ -14,12 +14,21 @@
 	rel="stylesheet" type="text/css">
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="./js/content.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/content.css">
 </head>
 
+<script>
+	function stock() {
+		if (parseInt($("input[name=p_stock]").val()) < parseInt($(
+				"input[name=p_payStock]").val())) {
+			alert("재고를 넘었습니다.");
+		} else {
+			document.getElementById('paymentForm').submit();
+		}
+	}
+</script>
 <body>
 	<%
 		System.out.println("p_name(web) : " + request.getParameter("p_name"));
@@ -27,9 +36,18 @@
 		Product product = psr.selectProduct(request.getParameter("p_name"));
 		System.out.println("이름:" + product.getProdName());
 		System.out.println("가격:" + product.getProdPrice());
+		System.out.println("재고:" + product.getProdStock());
 	%>
 	<jsp:include page="navi-header.jsp"></jsp:include>
-	<div class="blank">??</div>
+	<div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+	</div>
 	<div class="container">
 		<div class="row">
 			<table style="width: 80%;">
@@ -67,7 +85,10 @@
 							</div>
 						</div>
 						 -->
-						<form action="shop_payment" id="paymentForm" method="POST">
+						<form action="shop_payment" id="paymentForm" method="POST"
+							onSubmit="return false;">
+							<input type="hidden" name="p_stock"
+								value="<%=product.getProdStock()%>" />
 							<div class="section" style="padding-bottom: 20px;">
 								<h6 class="title-attr">
 									<small>수량</small>
@@ -76,7 +97,7 @@
 									<div class="btn-minus">
 										<span class="glyphicon glyphicon-minus"></span>
 									</div>
-									<input name="p_payStock" value="1" />
+									<input name="p_payStock" value="1" readonly />
 									<div class="btn-plus">
 										<span class="glyphicon glyphicon-plus"></span>
 									</div>
@@ -87,7 +108,7 @@
 
 								<input type="hidden" name="p_name"
 									value='<%=product.getProdName()%>'>
-								<button class="btn btn-success" onclick="paymentForm.submit();">
+								<button class="btn btn-success" onclick="stock();">
 									<span style="margin-right: 20px"
 										class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 									구매하기

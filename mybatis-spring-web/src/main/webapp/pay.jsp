@@ -67,6 +67,7 @@
 		$("input[id=sample4_roadAddress]").val($("input[name=m_addr]").val());
 		$("input[id= roadAddress_detail]").val($("input[name=m_addr_d]").val());
 	}
+	
 	function resetCheck() {
 		$("input[name=rcvr_nm]").val("");
 		$("#rphone1 option:eq(0)").prop("selected", true);
@@ -194,6 +195,8 @@
 	<input type="hidden" name="m_addr" value="<%=member.getmAddr() %>" />
 	<input type="hidden" name="m_addr_d" value="<%=member.getmAddr_d() %>" />
 	
+	
+	
 	<div class="pagenation">
 		<div class="nav_sub">
 			<a href="/">STORE</a><span class="icon_entity">&gt;</span><span>주문서</span>
@@ -251,8 +254,8 @@
 									</span>
 								</div>
 							</div></td>
-						<td><strong><%=request.getParameter("p_payStock")%>
-								개</strong></td>
+						<td><strong><%=request.getParameter("p_payStock")%>개</strong></td>
+						
 						<td class="price"><strong><%=Integer.parseInt(request.getParameter("p_payStock")) * product.getProdPrice()%>
 								원</strong></td>
 						<td rowspan="1"><strong>무료</strong>
@@ -549,6 +552,11 @@
 			<!--//cart button-->
 		</div>
 		<!--// 컨텐츠 영역 -->
+		<!-- 회원의 구매 정보 -->
+		<input type="hidden" name="stock" value="<%=request.getParameter("p_payStock")%>" />
+		
+		<!-- 회원의 구매 정보 끝-->
+		
 	</form>
 
 </div>
