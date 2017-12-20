@@ -28,6 +28,7 @@ public class GraphController {
 		System.out.println("controller 로 전달한 세션:"+member.getmEmail());
 		List<Linkdata> linkdata=graphSessionRepository.selectLinkdata(mEmail);
 		model.addAttribute("linkdata",linkdata);
+		request.setAttribute("linkdata", linkdata);
 		return "graph";
 	}	
 }

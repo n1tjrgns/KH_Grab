@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page
-	import="javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpSession"%>
-<%@ page import="model.Member"%>
-<%@ page import="java.util.List"%>
+	import="javax.servlet.http.HttpServletRequest,
+	javax.servlet.http.HttpSession,
+	java.text.SimpleDateFormat"%>
+<%@ page import="model.*"%>
+<%@ page import="java.util.List,
+				 java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,11 +27,12 @@
 
 </head>
 <body>
+
 <jsp:include page="navi-header.jsp"/>
 	<!-- 상단바 하단 -->
 	<%
 		Member member = (Member)session.getAttribute("loginInfo");
-	System.out.println("graph : "+ member.getmEmail());
+		System.out.println("graph : "+ member.getmEmail());
 	%>
 	
 	<div id="wrap" class="service_wrap">
@@ -42,6 +47,7 @@
 				</div>
 			</div>
 <!-- Styles -->
+
 <style>
 #chartdiv {
 	width: 100%;
@@ -52,19 +58,27 @@
 		<!-- Resources -->
 		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 		<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-		<script src="https://www.amcharts.com/lib/3/gantt.js"></script>
-		<script
+	<script src="https://www.amcharts.com/lib/3/gantt.js"></script>
+	<script
 			src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-		<link rel="stylesheet"
+	<link rel="stylesheet"
 			href="https://www.amcharts.com/lib/3/plugins/export/export.css"
 			type="text/css" media="all" />
-		<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-		<link rel="stylesheet" type="text/css" href="_resource/_web/css/login.css">
+	<link rel="stylesheet" type="text/css" href="_resource/_web/css/login.css">
+	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>		
 	<script type="text/javascript" src="_resource/js/vendor/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-		
+<%!
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+%>	
+<%
+	List<Linkdata> linkdata = (List<Linkdata>)request.getAttribute("linkdata");
+	System.out.println(sdf.format(linkdata.get(0).getBkrvDate()));
+	System.out.println(linkdata.get(0).getBkrvDate());
+%>
 			<!-- Chart code -->
 <script>
+
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "gantt",
   "theme": "light",
@@ -89,106 +103,90 @@ var chart = AmCharts.makeChart( "chartdiv", {
   "colorField": "color",
   "startDateField": "start",
   "endDateField": "end",
-  "dataProvider": [ {
-    "category": "GRAB #1",
-    "segments": [ {
-      "start": "2016-01-14",
-      "end": "2016-01-15",
-      "color": "#cc4748",
-      "task": "GRAB 게시글1"
-    }, {
-      "start": "2016-01-16",
-      "end": "2016-01-27",
-      "task": "GRAB 게시글2"
-    }, {
-      "start": "2016-02-05",
-      "end": "2016-04-18",
-      "task": "GRAB 게시글3"
-    }, {
-      "start": "2016-04-18",
-      "end": "2016-04-30",
-      "task": "GRAB 게시글4"
-    } ]
-  }, {
-    "category": "KAKAO #2",
-    "segments": [ {
-      "start": "2016-01-08",
-      "end": "2016-01-10",
-      "color": "#b9783f",
-      "task": "KAKAO 게시글1"
-    }, {
-      "start": "2016-01-12",
-      "end": "2016-01-15",
-      "task": "KAKAO 게시글2"
-    }, {
-      "start": "2016-01-16",
-      "end": "2016-02-05",
-      "task": "KAKAO 게시글3"
-    }, {
-      "start": "2016-02-10",
-      "end": "2016-02-18",
-      "task": "KAKAO 게시글4"
-    } ]
-  }, {
-    "category": "INSTA #3",
-    "segments": [ {
-      "start": "2016-01-02",
-      "end": "2016-01-08",
-      "color": "#cd82ad",
-      "task": "INSTA 게시글1"
-    }, {
-      "start": "2016-01-08",
-      "end": "2016-01-16",
-      "task": "INSTA 게시글2"
-    }, {
-      "start": "2016-01-19",
-      "end": "2016-03-01",
-      "task": "INSTA 게시글3"
-    }, {
-      "start": "2016-03-12",
-      "end": "2016-04-05",
-      "task": "INSTA 게시글4"
-    } ]
-  }, {
-    "category": "FACEBOOK #4",
-    "segments": [ {
-      "start": "2016-01-01",
-      "end": "2016-01-19",
-      "color": "#2f4074",
-      "task": "FACEBOOK 게시글1"
-    }, {
-      "start": "2016-01-19",
-      "end": "2016-02-03",
-      "task": "FACEBOOK 게시글2"
-    }, {
-      "start": "2016-03-20",
-      "end": "2016-04-25",
-      "task": "FACEBOOK 게시글3"
-    }, {
-      "start": "2016-04-27",
-      "end": "2016-05-15",
-      "task": "FACEBOOK 게시글4"
-    } ]
-  }, {
-    "category": "NAVER #5",
-    "segments": [ {
-      "start": "2016-01-01",
-      "end": "2016-01-12",
-      "color": "#448e4d",
-      "task": "NAVER 게시글1"
-    }, {
-      "start": "2016-01-12",
-      "end": "2016-01-19",
-      "task": "NAVER 게시글2"
-    }, {
-      "start": "2016-01-19",
-      "end": "2016-03-01",
-      "task": "NAVER 게시글3"
-    }, {
-      "start": "2016-03-08",
-      "end": "2016-03-30",
-      "task": "NAVER 게시글4"
-    } ]
+  "dataProvider":
+
+	  
+
+ 
+[{			
+	"category": "GRAB #1",
+    "segments": [
+   <% for(int i=0;i<linkdata.size();i++){
+    	if(linkdata.get(i).getSnsSort().equals("GRAB")){
+    		%>
+    	{	
+        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
+        "end": "2017-12-14",
+        "color": "#cc4748",
+        "task": "GRAB 게시글" 
+    	},	
+    <%}//if%>    	
+ <% }//for%>
+	]},
+{				
+	"category": "KAKAO #1",
+    "segments": [
+   <% for(int i=0;i<linkdata.size();i++){
+    	if(linkdata.get(i).getSnsSort().equals("KAKAO")){
+    		%>
+    	{
+        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
+        "end": "2017-12-15",
+        "color": "#b9783f",
+        "task": "KAKAO 게시글" 
+    	},	
+    <%}//if%>    	
+ <% }//for%>
+   ]},
+{			
+	"category": "INSTA #1",
+    "segments": [
+   <% for(int i=0;i<linkdata.size();i++){
+    	if(linkdata.get(i).getSnsSort().equals("INSTAGRAM")){
+    		%>
+    	{
+        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
+        "end": "2017-12-15",
+        "color": "#cd82ad",
+        "task": "INSTA 게시글" 
+    	},	
+    <%}//if%>
+    	
+ <% }//for%>
+   ]},
+{				
+	"category": "FACEBOOK #1",
+    "segments": [
+   <% for(int i=0;i<linkdata.size();i++){
+    	if(linkdata.get(i).getSnsSort().equals("FACEBOOK")){
+    		%>
+    	{
+        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
+        "end": "2017-12-20",
+        "color": "#2f4074",
+        "task": "FACEBOOK 게시글" 
+    	},	
+    <%}//if%>
+    	
+ <% }//for%>
+   ]},
+{				
+	"category": "NAVER #1",
+    "segments": [
+   <% for(int i=0;i<linkdata.size();i++){
+    	if(linkdata.get(i).getSnsSort().equals("NAVER")){
+    		%>
+    	{
+        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
+        "end": "2017-12-20",
+        "color": "#448e4d",
+        "task": "NAVER 게시글" 
+    	},	
+    <%}//if%>
+    	
+ <% }//for%>
+   ]
+
   } ],
   "valueScrollbar": {
     "autoGridCount": true
@@ -306,7 +304,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
 		    <c:forEach var="linkdata" items="${linkdata}" varStatus="status">
 		    <tr>
 		        <td>${linkdata.snsSort}</td>
-		        <td>${linkdata.bkrvDate}</td>
+		        <td><fmt:formatDate value="${linkdata.bkrvDate}" type="both" pattern="yyyy-MM-dd"/></td>
 		        <td><a href="#" onclick="openSnsUrl('${linkdata.snsUrl}');">${linkdata.snsUrl}</a></td>
 		    </tr>		    
 		    </c:forEach>
