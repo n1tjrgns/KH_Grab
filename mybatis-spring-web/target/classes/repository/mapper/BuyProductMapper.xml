@@ -20,8 +20,11 @@
 	<select id="selectMaxBuyNumByCondition" parameterType="int"
 		resultMap="BaseResultMap">
 		SELECT
-			max(buy_num)
-		FROM buy_product
+			 * 
+		FROM
+			buy_product
+		where
+			buy_num = (select max(buy_num) from buy_product)
 	</select>
 
 	<insert id="insertBuyProductByCondition" parameterType="buyProduct">

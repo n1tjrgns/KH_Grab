@@ -12,7 +12,7 @@ public class PaymentSessionRepository extends AbstractRepository {
 	private final String nameSpace = "repository.mapper.PaymentMapper";
 
 
-	public Integer selectMaxPayNum() {
+	public Payment selectMaxPayNum() {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		String statment = nameSpace + ".selectMaxPayNumByCondition";
 		return sqlSession.selectOne(statment);
