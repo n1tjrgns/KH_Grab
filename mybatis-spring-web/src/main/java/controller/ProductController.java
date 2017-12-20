@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Product;
-
+import repository.BuyProductSessionRepository;
+import repository.PaymentSessionRepository;
 import repository.ProductSessionRepository;
 
 @Controller
@@ -19,6 +21,15 @@ public class ProductController {
 
 	@Autowired
 	ProductSessionRepository productSessionRepository;
+	
+	@Autowired
+	BuyProductSessionRepository buyProductSessionRepository;
+	
+	@Autowired
+	PaymentSessionRepository paymentSessionRepository;
+	
+	
+	
 	//마이바티스와 DB 정보를 받아서  
 	//정보들
 	
@@ -55,14 +66,41 @@ public class ProductController {
 	//수정중
 	@RequestMapping(value="/paying", method = RequestMethod.POST)
 	public String shopStep4(HttpServletRequest httpServletRequest, Model model) {
-//		String p_name = httpServletRequest.getParameter("p_name");
-//		String p_payStock = httpServletRequest.getParameter("p_payStock");
-//		System.out.println("p_name:"+p_name);
-//		System.out.println("p_payStock:"+p_payStock);
-//		Product result = productSessionRepository.selectProduct(p_name);
-//		System.out.println("result:"+result);
-//		model.addAttribute("product",result);
-		System.out.println("submit완료");
+		Date today = new Date();
+		
+		String total_price = httpServletRequest.getParameter("p_totalprice");
+		String howPay = httpServletRequest.getParameter("kyejae");
+		String rv_name = httpServletRequest.getParameter("rcvr_nm");
+		String addr = "("+httpServletRequest.getParameter("sample4_postcode") +") "+ httpServletRequest.getParameter("sample4_roadAddress") +" "+ httpServletRequest.getParameter("roadAddress_detail");
+		String m_email = httpServletRequest.getParameter("member_email");
+		String dlv_msg = httpServletRequest.getParameter("dlv_msg");
+		String how_del = "택배";
+		System.out.println("날짜:"+today);
+		System.out.println("총액:"+total_price);
+		System.out.println("결제방법:"+howPay);
+		System.out.println("받는사람:"+rv_name);
+		System.out.println("주소:"+addr);
+		System.out.println("이메일:"+m_email); //이메일로 회원 전화번호 DB 받기
+		
+		//BuyNum 최대값 출력
+		int maxBuyNum = buyProductSessionRepository.selectMaxBuyNum() + 1;
+		
+		//구매 DB 넣은 결과
+		int result = buyProductSessionRepository.insertBuyProduct(maxBuyNum, today, total_price, how_del, rv_name, addr, m_email);
+		
+		//PayNum 최대값 출력
+		int maxPayNum = paymentSessionRepository.selectMaxPayNum() + 1;
+		
+		//결제 DB 넣은 결과
+		int result1 = paymentSessionRepository.insertPayment(maxPayNum, maxBuyNum, howPay, Integer.parseInt(total_price), dlv_msg);
+		
+		
+		
+		
+		model.addAttribute("result", result);
+		
+		
+		
 		return "shop";
 	}
 }

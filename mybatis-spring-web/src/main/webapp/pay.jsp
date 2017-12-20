@@ -240,11 +240,10 @@
 				<tbody>
 					<!-- 반품여부 N : 반품불가 상품 -->
 					<tr>
+
+						
 						<td class="td_product"><input type="hidden" name="no"
-							value="49187680" /> <input type="hidden"
-							name="coupon_amt_49187680" value="0" /> <input type="hidden"
-							name="cart_info"
-							value="601276|0|BLACK 2 / 95|299000|0|0|0|N|Y|49187680" />
+							value="49187680" />
 							<div class="connect_img">
 								<img src="./img/property_1.jpg" />
 							</div>
@@ -424,13 +423,13 @@
 						<li class="cell_discount_tit">배송지 주소 <!--<input type="checkbox" /> <span class="font_basic">회원 정보 변경</span>-->
 						</li>
 						<li class="cell_discount_detail2 order_address_form box_address">
-							<input type="text" class="zipcode" id="sample4_postcode"
+							<input type="text" class="zipcode" id="sample4_postcode" name="sample4_postcode"
 							placeholder="우편번호" readonly> <a
 							class="plain-btn btn btn-zipcode"
 							onClick="sample4_execDaumPostcode()">우편번호찾기</a> <br /> <input
-							type="text" class="address" id="sample4_roadAddress"
+							type="text" class="address" id="sample4_roadAddress" name="sample4_roadAddress"
 							placeholder="도로명주소" readonly> <input type="text"
-							class="address detail" id="roadAddress_detail"
+							class="address detail" id="roadAddress_detail" name="roadAddress_detail"
 							placeholder="나머지 주소">
 
 						</li>
@@ -439,7 +438,7 @@
 						<li class="cell_discount_tit">배송 메모<br /> <!--<input type="checkbox" /> <span class="font_basic">상품별 입력</span>-->
 						</li>
 						<li class="cell_discount_detail box_memo">
-						<textarea name="dlv_msg"></textarea>
+						<textarea name="dlv_msg" id="dlv_msg"></textarea>
 							<p>※ 택배기사님께 전할 말씀을 남겨주세요.</p></li>
 					</ul>
 					<!--수령자 정보-->
@@ -462,11 +461,11 @@
 							<li class="cell_discount_tit">결제 수단</li>
 							<li class="cell_discount_detail"><label
 								class="box_choice first"> <input type="radio"
-									id="paym_01" type="radio" name="kyejae" value="card"
+									id="paym_01" type="radio" name="kyejae" value="card" checked="checked"
 									onclick="CalculateAmt(); pay_info_area_show('card'); pay_info_view('card');" />
 									신용 카드
 							</label> <label class="box_choice"> <input type="radio"
-									id="paym_05" type="radio" name="kyejae" value="virtual"
+									id="paym_02" type="radio" name="kyejae" value="virtual"
 									onclick="checkMobileCretify(this, 'Y'); CalculateAmt(); pay_info_area_show('virtual'); pay_info_view('virtual');" />
 									가상 계좌(무통장)
 							</label> <!-- 결제수수료율 설정값 출력 부분 //--> <input type="hidden"
@@ -494,9 +493,9 @@
 
 								<p class="box_detail_agree thirdAgreeDetail"
 									id="thirdAgreeDetail">
-									무신사의 회원계정으로 상품 및 서비스를 구매하고자 할 경우, 무신사((주)그랩)는 거래 당사자간 원활한 의사소통
-									및 배송, 상담 등 거래이행을 위하여 필요한 최소한의 개인정보만을 무신사 입점업체 판매자 및 배송업체에 아래와
-									같이 공유하고 있습니다.<br /> 1. 무신사((주)그랩)는 귀하께서 무신사 입점업체 판매자로부터 상품 및
+									Grab의 회원계정으로 상품 및 서비스를 구매하고자 할 경우, Grab((주)그랩)은 거래 당사자간 원활한 의사소통
+									및 배송, 상담 등 거래이행을 위하여 필요한 최소한의 개인정보만을 Grab 입점업체 판매자 및 배송업체에 아래와
+									같이 공유하고 있습니다.<br /> 1. Grab((주)그랩)은 귀하께서 무신사 입점업체 판매자로부터 상품 및
 									서비스를 구매하고자 할 경우, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제 24조의 2(개인정보 공유동의
 									등)에 따라 아래와 같은 사항은 안내하고 동의를 받아 귀하의 개인정보를 판매자에게 공유합니다. "개인정보 제3자
 									공유 동의"를 체크하시면 개인정보 공유에 대해 동의한 것으로 간주합니다.<br /> 2. 개인정보를 공유받는자
@@ -553,10 +552,11 @@
 		</div>
 		<!--// 컨텐츠 영역 -->
 		<!-- 회원의 구매 정보 -->
-		<input type="hidden" name="stock" value="<%=request.getParameter("p_payStock")%>" />
-		
+		<input type="hidden" name="p_stock" value="<%=request.getParameter("p_payStock")%>" />
+		<input type="hidden" name="p_totalprice" value="<%=Integer.parseInt(request.getParameter("p_payStock")) * product.getProdPrice()%>" />
+		<input type="hidden" name="member_email" value="<%=member.getmEmail() %>" />		
 		<!-- 회원의 구매 정보 끝-->
-		
+				
 	</form>
 
 </div>
