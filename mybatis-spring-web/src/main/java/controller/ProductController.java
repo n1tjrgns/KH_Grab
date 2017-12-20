@@ -103,8 +103,7 @@ public class ProductController {
 		int listResult = buyListSessionRepository.insertBuyList(maxBuyNum, memberName, qty);
 		
 		model.addAttribute("result", listResult);
-		
-		
+
 		return "shop";
 	}
 }
