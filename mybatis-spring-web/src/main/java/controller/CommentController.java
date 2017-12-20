@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Comment;
-import model.Product;
+import model.CustomService;
 import repository.CommentSessionRepository;
-import repository.ProductSessionRepository;
+import repository.CsSessionRepository;
 
 @Controller
 public class CommentController {
 	@Autowired
 	CommentSessionRepository commentSessionRepository;
+	
+	@Autowired
+	CsSessionRepository csSessionRepository;
 	
 	
 	@RequestMapping(value="/Main", method = RequestMethod.GET)
@@ -44,11 +47,12 @@ public class CommentController {
 	}
 	
 	
-	@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
+	/*@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
 	public String handleStep5(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "CS";
-	}
+	}*/
+	
 	
 	@RequestMapping(value="/Main_login", method = RequestMethod.GET)
 	public String handleStep6(Model model) {
@@ -135,5 +139,14 @@ public class CommentController {
 		model.addAttribute("result",result);
 		return "/comment_update";
 	}	
-
+	
+	@RequestMapping(value="/CSCS", method = RequestMethod.GET)
+	public String csSelect(Model model) {
+		System.out.println("cslist222"); 
+		List<CustomService> cslist = csSessionRepository.selectCustomService();	
+		model.addAttribute("cslist",cslist);
+		System.out.println("cslist222 : "+cslist.get(0).getCsTitle());
+		System.out.println("cslist222 : "+cslist.size());
+		return "CS";
+	}
 }

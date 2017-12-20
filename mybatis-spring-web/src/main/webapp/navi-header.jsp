@@ -34,7 +34,7 @@
 			<li><a href="Main_bucket" class="mot2" onclick=""><span class="en">BUCKET LIST</span></a></li>
 			<li><a href="Main_shop" class="mot2" onclick=""><span class="en">SHOP</span></a></li>
 			<li class="sub">
-				<a href="Main_cs" class="mot2" onclick="">
+				<a href="CSCS" class="mot2" onclick="">
 					<span class="en">CUSTOM SERVICE</span>
 				</a>
 				<div class="sub_link mot3">

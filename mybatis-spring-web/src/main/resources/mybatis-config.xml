@@ -8,6 +8,7 @@
    	<typeAlias type="model.Comment" alias="Comment"/>
    	<typeAlias type="model.Product" alias="Product"/>
    	<typeAlias type="model.Member" alias="Member"/>
+   	<typeAlias type="model.CustomService" alias="CustomService"/>
    	
    </typeAliases>
    
@@ -27,6 +28,6 @@
       <mapper resource="repository/mapper/CommentMapper.xml"/>
       <mapper resource="repository/mapper/ProductMapper.xml"/>
       <mapper resource="repository/mapper/PwmailMapper.xml"/>
-      
+      <mapper resource="repository/mapper/CsMapper.xml"/>
    </mappers>
 </configuration>

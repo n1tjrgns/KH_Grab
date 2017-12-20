@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   				
+ <mapper namespace="repository.mapper.CsMapper">
+	<cache />
+
+	  <resultMap type="CustomService" id="CsResultMap">
+      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+      <id column="cs_num" jdbcType="BIGINT" property="csNum"/>
+      <result column="cs_sort" jdbcType="VARCHAR" property="csSort"/>
+      <result column="cs_title" jdbcType="VARCHAR" property="csTitle"/>
+      <result column="cs_content" jdbcType="VARCHAR" property="csContent"/>
+      <result column="cs_date" jdbcType="DATE" property="csDate"/>
+      <result column="a_email" jdbcType="VARCHAR" property="aEmail"/>
+   </resultMap>
+				
+	<select id="selectcsservice"  resultMap="CsResultMap">
+	SELECT  *
+   			
+	   	FROM CS
+		
+	</select>
+
+	
+</mapper>

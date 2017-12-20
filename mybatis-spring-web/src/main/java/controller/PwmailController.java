@@ -1,5 +1,6 @@
 package controller;
 
+
 import java.util.Properties;
 import java.util.Random;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import model.Member;
 import qna.SMTPAuthenticator;
@@ -55,6 +57,8 @@ public class PwmailController {
 		
 		return "mail";
 	}
+	
+	
 	
 		public void mailing(Member member) {
 			String username = member.getmName();
