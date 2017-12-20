@@ -7,7 +7,7 @@
    	<typeAlias type="model.Comment" alias="Comment"/>
    	<typeAlias type="model.Product" alias="Product"/>
    	<typeAlias type="model.Member" alias="Member"/>
-   	<typeAlias type="model.BuyProdcut" alias="BuyProdcut"/>
+   	<typeAlias type="model.BuyProduct" alias="BuyProduct"/>
    	<typeAlias type="model.Payment" alias="Payment"/>
    	<typeAlias type="model.BuyList" alias="BuyList"/>
    </typeAliases>
