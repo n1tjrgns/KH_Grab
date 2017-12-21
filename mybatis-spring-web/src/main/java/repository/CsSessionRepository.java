@@ -18,11 +18,40 @@ public class CsSessionRepository extends AbstractRepository{
 	}
 	
 	
-	public List<CustomService> insertCustomService(CustomService customservice) {
+	public Integer insertCustomService(CustomService customservice) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		try {
 		String statment = nameSpace+".insertcsservice";
 		System.out.println(statment);							
-		return sqlSession.selectList(statment,customservice);
+		int result = sqlSession.insert(statment,customservice);
+		if(result>0) {
+			 sqlSession.commit();
+		 }else {
+			 sqlSession.rollback();
+		 }
+		 return result;
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer deleteCustomService(CustomService customservice) {
+		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		try {
+		String statment = nameSpace+".deletecsservice";
+		System.out.println(statment);							
+		int result = sqlSession.delete(statment,customservice);
+		if(result>0) {
+			 sqlSession.commit();
+		 }else {
+			 sqlSession.rollback();
+		 }
+		 return result;
+		}finally {
+			sqlSession.close();
+		}
+		
 	}
 	
 	

@@ -26,11 +26,17 @@
 	<insert id="insertcsservice" parameterType="CustomService">
 	
 	insert into CS
-	values (CS_SEQ.NEXTVAL, #{cs_sort}, #{cs_title}, #{cs_content}, SYSDATE, 'admin')
+	values (CS_SEQ.NEXTVAL, #{csSort}, #{csTitle}, #{csContent}, SYSDATE, 'admin')
 	
 	
 	
 	</insert>
-
 	
+	<delete id="deletecsservice" parameterType="CustomService">
+	delete from CS
+	
+	where trim(cs_num)=#{csNum}
+	
+	</delete>
+
 </mapper>
