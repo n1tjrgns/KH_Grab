@@ -594,7 +594,7 @@ function eventAJAX(num){
  						 $("#contents").css("display","none");
  						 $("#contents2").css("display","block");
  					}else{
- 						alert("누르지마");
+ 						alert("준비중입니다.");
  					}
 }
 </script>
