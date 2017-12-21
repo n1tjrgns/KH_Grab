@@ -10,6 +10,14 @@ public class Bucketlist {
 	private String bkDue;
 	private String bkSort;
 	private String bkCheck;
+	private String photoURL;
+	
+	public String getPhotoURL() {
+		return photoURL;
+	}
+	public void setPhotoURL(String photoURL) {
+		this.photoURL = photoURL;
+	}
 	public String getBkName() {
 		return bkName;
 	}

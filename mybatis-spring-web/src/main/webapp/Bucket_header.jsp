@@ -1,31 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@page import="java.io.*,javax.servlet.*,java.util.*" %>
-    <%@page import="model.*,org.springframework.context.*" %>
-    <%@page import="org.springframework.context.support.*" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<!DOCTYPE html>
-
-<html lang="ko">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="image" content="http://www.lifeplusbucket.com/_resource/images/common/sns_share_1200.jpg">
-    <link rel="shortcut icon" type="image/x-icon" href="_resource/_web/images/favicon.ico.png">
-    <link href="_resource/css/common.css" rel="stylesheet" />
-   
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
 <link href="_resource/css/discover.css" rel="stylesheet" />
+<link rel="shortcut icon" type="image/x-icon" href="_resource/_web/images/favicon.ico.png">
+<link href="_resource/css/common.css" rel="stylesheet" />
 <link href="_resource/css/discover.popular.css" rel="stylesheet" />
 <link href="_resource/css/discover.featured.css" rel="stylesheet" />
 <link href="_resource/css/discover.library.css" rel="stylesheet" />
-<title>Grab Bucket List : 버킷 리스트를 발견하고 삶에 색을 더하다.</title>
-
-<script>
-isLogin = true;
-</script>
 
 
-</head>
 <body>
 <div role="status" class="skip-content">
     <p><a href="javascript:void(0);" class="skip-contents">본문 바로가기</a></p>
@@ -269,7 +257,20 @@ function goMyBucket(){
 	}
 }
 </script>
- 
+   <script src="_resource/js/vendor/makePCookie.js"></script>
+
+<!--NSmart Track Tag Script-->
+<script type='text/javascript'>
+    callbackFn = function() {};
+    var _nsmart = _nsmart || [];
+    _nsmart.host = _nsmart.host || (('https:' == document.location.protocol) ? 'https://' : 'http://');
+    _nsmart.push([11979, 29407]); // 캠페인 번호와 페이지 번호를 배열 객체로 전달
+    document.write(unescape("%3Cscript src='" + _nsmart.host + "n00.nsmartad.com/etc?id=10' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!--NSmart Track Tag Script End..-->
+
+
+
 <div id="h-empty-box"></div>
 <div id="md-discover">
     <div class="md-bg">
@@ -289,10 +290,9 @@ function goMyBucket(){
     <div class="dumpBannerBox dumpBannerBox-subNavi"></div>
     <div class="sub-navi-container">
         <div class="sub-navi-btns en">
-            
-            <a href="#" onclick='eventAJAX("1");' class="">POPULAR</a>
-            <a href="#" onclick='eventAJAX("2");' class="">FEATURED</a>
-            <a href="#" onclick='eventAJAX("3");' class="">LIBRARY</a>
+            <a href="library.do" onclick='eventTrack("", "discover_tab_library");'>LIBRARY</a>
+            <!-- <a href="featured.do" onclick='eventTrack("", "discover_tab_featured");'>FEATURED</a> -->
+            <a href="/discover/popular.do" onclick='eventTrack("", "discover_tab_popular");'>POPULAR</a>
         </div>
         <div class="sub-navi-search">
             <a href="#" class="en" onclick='eventTrack("", "discover_btn_search");'>
@@ -306,6 +306,8 @@ function goMyBucket(){
             </a>
         </div>
     </div>
+    
+
 
 <div id="search">
     <div class="search-container">
@@ -361,202 +363,9 @@ function goMyBucket(){
 </div>
 
 
-<div id="contents" style="display:none;">
-  <div id="category" >
-        <a class="active" onclick='eventTrack("", "category_tab_all");' href="javascript:Library.changeCategory('');">
-            <div class="category-bgs category-bgs1">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>All</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_travel");' href="javascript:Library.changeCategory('L0301');">
-            <div class="category-bgs category-bgs2">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>Travel</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_sports");' href="javascript:Library.changeCategory('L0302');">
-            <div class="category-bgs category-bgs3">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>Sport</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_food");' href="javascript:Library.changeCategory('L0303');">
-            <div class="category-bgs category-bgs4">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>Food</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_newskill");' href="javascript:Library.changeCategory('L0304');">
-            <div class="category-bgs category-bgs5">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>New Skill</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_culture");' href="javascript:Library.changeCategory('L0305');">
-            <div class="category-bgs category-bgs6">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>Culture</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_outdoor");' href="javascript:Library.changeCategory('L0306');">
-            <div class="category-bgs category-bgs7">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>Outdoor</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_shopping");' href="javascript:Library.changeCategory('L0307');">
-            <div class="category-bgs category-bgs8">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>Shopping</p>
-        </a>
-        <a onclick='eventTrack("", "category_tab_lifestyle");' href="javascript:Library.changeCategory('L0308');">
-            <div class="category-bgs category-bgs9">
-                <div class="off"></div>
-                <div class="on"></div>
-            </div>
-            <p>Lifestyle</p>
-        </a>
-    </div>
-			
-	<div id="list-container" class="use_gpu">
-		 <c:forEach var="bucketlist" items="${bucketlist}" varStatus="status">
-		<div class="list-box seq-I1596" style="transform-origin: 50% 50% 0px; transform: translate(0px, 0px); opacity: 1;" onclick="popup_to_buc('${bucketlist.bkName}');" >
-            <div class="list-bg" style="transform: matrix(1, 0, 0, 1, 0, 0);">
-                <img src="_resource/images/discover/library/list-empty-box.png" alt="">
-                <img class="list-img" src="${bucketlist.photoURL}" shareimage="http://images.hwlife.hscdn.com//library/i1596_share.jpg" alt="준비 중" onload="Popular.listImgLoadComplete(this)" style="opacity: 1;">
-                <img class="list-shadow" src="_resource/images/discover/bucket_shadow.png" alt="?">
-            </div>
-            <div class="winner-count en top3">${status.index+1}</div>
-            <div class="list-contents">
-                <ul class="list-contents-ul">
-                    <li class="category-name en travel">${bucketlist.bkPurpose}</li>
-                    <li class="title" ><div name="bkName">${bucketlist.bkName}</div></li>
+</body>
+</html>
 
-                    <li class="add-btn" key-value="I1596">
-                            
-                            <div class="list-add-checked change-add-check" style="display:none"><img src="_resource/images/discover/library/checked.png" alt=""></div>
-
-                            <a href="#" class="en change-add-btn" key-value="I1596" style="display:inline-block">
-                                <div class="plus"><img src="_resource/images/discover/library/list-icon-plus.png" alt=""></div>
-                                <span>ADD</span>
-                            </a>
-                    </li>
-                    
-                    
-                    
-                    <li class="share-btns" style="height: 0px;">
-                        
-
-                        
-                        <div class="dibs-checked change-like-check" style="display:none">
-                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
-                            <span>찜하기</span>
-                        </div>
-                        <a href="#" class="dibs change-like-btn" key-value="I1596" style="display:inline-block">
-                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
-                            <span>찜하기</span>
-                        </a>
-
-
-                        <a href="#" class="share">
-                            <img src="_resource/images/discover/library/list-icon2.png" alt="">
-                            <span>공유하기</span>
-                        </a>
-                        <div class="small-share-btns" key-value="I1596">
-                            <a href="javascript:;"><img src="_resource/images/discover/library/btn_share_facebook.png" alt="페이스북 공유하기"></a>
-                            <a href="#"><img src="_resource/images/discover/library/btn_share_kakao.png" alt="카카오스토리 공유하기"></a>
-                            <a href="#"><img src="_resource/images/discover/library/btn_share_twitter.png" alt="트위터 공유하기"></a>
-                            <a href="#" class="small-share-close-btn"><img src="_resource/images/discover/library/btn_share_close.png" alt="공유하기 닫기"></a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="list-add-popup">
-                <div class="list-add-container">
-                    <ul class="list-add-box">
-                        <li class="list-add-icon"><img src="_resource/images/discover/library/list-icon3.png" alt=""></li>
-                        <li class="list-add-title en">ADD BUCKET LIST</li>
-                        <li class="list-add-desc">버킷 리스트가 추가되었습니다.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-		
-		
-		</c:forEach>
-    </div>
-
- 
-<div id="bucket-list" class="fixed-group">
-    <ul class="bucket-list-box">
-        <li class="bucket-list-title">
-            <div class="title en">
-                MY<br>
-                BUCKET LIST
-            </div>
-            <a href="/ln/mypage/bucket.do" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
-        </li>
-        <li class="arrow-btn-l arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></a></li>
-        <li class="lists">
-            <ul class="lists-container">
-                <!--<li><a href="javascript:alert('알럿')"><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></a></li>-->
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-            </ul>
-        </li>
-        <li class="arrow-btn-r arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-r.png" alt="" /></a></li>
-        <li class="bucket-share">
-            <a href="#" onclick='eventTrack("", "discover_board_share");'>
-                <div class="copy">
-                    친구들과<br>
-                    공유하기
-                </div>
-                <div class="icon"><img src="_resource/images/discover/bucket-list-icon3.png" alt="" /></div>
-            </a>
-        </li>
-    </ul>
-    <div class="bucket-list-close-btn"><a href="#"><img src="_resource/images/discover/bucket-list-closebtn.png" alt="[X]" /></a></div>
-    <div class="bucket-floating-menu"><a href="#" onclick='eventTrack("", "discover_btn_board");'><div class="over-mot"></div><img src="_resource/images/discover/floating-icon.png" alt="icon!" /></a></div>
-</div>
-</div>
-
-
-<div id="contents2" style="display:none;">
-	<jsp:include page="bucket_regist.jsp"></jsp:include>
-</div> 
-<div id="contents3" style="display:none;"> </div>
-
-<div id="black-dimmed"></div>
-
-
-
-<div id="ajaxxxx">
-<!--  none 되어 있는것을 block 하면 보이게 된다.  -->
-
-
-   
- </div><!--  ajax -->
- 
- 
-    </div>
-</div>
-
- 
- 
-
- 
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
 <script src="_resource/js/vendor/jquery.cookie.js"></script>
 <script src="_resource/js/vendor/spin.min.js"></script>
@@ -575,67 +384,3 @@ function goMyBucket(){
 <script src="_resource/js/discover/Discover.Search.js"></script>
 <script src="_resource/js/discover/Discover.Popular.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8" ></script>
-<script type="text/javascript">
-
-
-setGnb(0);
-
-</script>
-
-
-<script>
-
-function eventAJAX(num){
-
- 					if (num==3){
- 						 $("#contents").css("display","block");
- 						 $("#contents2").css("display","none");
- 					}else if(num==2){
- 						 $("#contents").css("display","none");
- 						 $("#contents2").css("display","block");
- 					}else{
- 						alert("누르지마");
- 					}
-}
-</script>
-
-
-<script>
-
-function popup_to_buc(buck_recode){
-	$.ajax( // 상세정보를 팝업시킨다.
-			{
-				url:"discover/library_detail_popup.do",
-				dataType:"html",
-				type:"POST",
-				async:true,
-				data:"bkName="+ buck_recode,
-				success:function( data ) {
-					
-		            $("#ajaxxxx").html(data);
-		            $self.listUpdateReset(prevListLen);
-					$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸
-                    $(".simple_loading").hide();
- 				},
-				error : function( e ) {
-					//alert("조회 오류\n"+e.error);
-				}
-			}
-		);	      
-}
-
-</script>
-
-<script>
-
-Popup.$returnURL = "/NewFile.html";
-//if(window.sessionStorage.length <1 ) {
-
-setTimeout(function(){
-    Library.addMainList("");
-}, 200);
-
-//}
-  
-</script>
-

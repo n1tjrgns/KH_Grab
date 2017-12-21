@@ -17,7 +17,9 @@
       <result column="bk_due" jdbcType="TIMESTAMP" property="bkDue"/>
       <result column="bk_sort" jdbcType="VARCHAR" property="bkSort"/>
       <result column="bk_check" jdbcType="VARCHAR" property="bkCheck"/>
+      <result column="photo_URL" jdbcType="VARCHAR" property="photoURL"/>
    </resultMap>
+
 
 	<select id="selectBucketALL" 
 	resultMap="BaseResultMap">
@@ -26,4 +28,18 @@
 	   	FROM bucket_request
 	</select>
 	
+	
+	<select id="selectBucketOne" parameterType="Bucketlist" 
+	resultMap="BaseResultMap">
+	SELECT *
+	   	FROM bucket_request
+	   	WHERE bk_name= #{bkName}
+	   	
+	</select>
+	
+	
+	<insert id="InsertBucket" parameterType="Bucketlist" >
+		INSERT INTO bucket_request
+	   	VALUES(#{bkName},#{cEmail},#{bkContent},#{bkMax},#{bkPurpose},#{bkDate},#{bkDue},'업체버킷',#{bkCheck},#{photoURL})
+	</insert>
 </mapper>
