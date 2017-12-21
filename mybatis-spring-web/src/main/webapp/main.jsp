@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <%
   Session session = request.getSession(true);
   Member member = session.getAttribute('loginInfo');
@@ -9,8 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>GRAB</title>
-<link rel="shortcut icon" type="image/x-icon"
-	href=" " />
+<link rel="shortcut icon" type="image/x-icon" href=" " />
 <link rel="stylesheet" type="text/css"
 	href="_resource/_web/css/common.css">
 <link rel="stylesheet" type="text/css"
@@ -28,7 +27,7 @@
 </script>
 </head>
 <body>
-<script>
+	<script>
 		$('.nowMove').click(function() {
 			localStorage.removeItem('search');
 			localStorage.removeItem('sTop');
@@ -38,7 +37,7 @@
 			localStorage.removeItem('back');
 		});
 	</script>
- <jsp:include page="navi-header.jsp"/>
+	<jsp:include page="navi-header.jsp" />
 	<div id="wrap" class="service_wrap">
 		<div class="section_top">
 			<div class="title_text mot5">
@@ -65,7 +64,7 @@
 							<div class="text">
 								GRAB은 당신의 흩어진 추억들을<br />관리하도록 돕는 전자다이어리 입니다.
 							</div>
-							<a href="Main"	class="btn_detail_view mot3">자세히보기</a>
+							<a href="Main" class="btn_detail_view mot3">자세히보기</a>
 						</div>
 					</li>
 					<li>
@@ -77,7 +76,7 @@
 							<div class="text">
 								당신의 흩어진 추억들을<br />그래프를 통해 한눈에 알아볼 수 있습니다.
 							</div>
-							<a href="Main_graph"	class="btn_detail_view mot3">자세히보기</a>
+							<a href="Main_graph" class="btn_detail_view mot3">자세히보기</a>
 						</div>
 					</li>
 					<li>
@@ -89,7 +88,7 @@
 							<div class="text">
 								버킷리스트에서 당신의 가슴을 뛰게 하는<br> 버킷리스트를 관리하고 도전해보세요.
 							</div>
-							<a href="Main_bucket"	class="btn_detail_view mot3">자세히보기</a>
+							<a href="Main_bucket" class="btn_detail_view mot3">자세히보기</a>
 						</div>
 					</li>
 				</ul>
@@ -125,7 +124,7 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="navi-footer.jsp"/>
-<script src="https://www.lifeplus.co.kr/_resource/_web/js/service.js"></script>
+	<jsp:include page="navi-footer.jsp" />
+	<script src="https://www.lifeplus.co.kr/_resource/_web/js/service.js"></script>
 </body>
 </html>

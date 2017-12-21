@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="repository.mapper.PaymentMapper">
+	<cache />
+
+	<resultMap type="Payment" id="BaseResultMap">
+		<!-- id : primary, key 속성명, jdbcType : 데이터베이스 자료형 -->
+		<id column="pay_num" jdbcType="BIGINT" property="payNum" />
+		<result column="buy_num" jdbcType="BIGINT" property="buyNum" />
+		<result column="how_pay" jdbcType="VARCHAR" property="howPay" />
+		<result column="p_total" jdbcType="BIGINT" property="pTotal" />
+		<result column="p_comment" jdbcType="VARCHAR" property="pComment" />
+	</resultMap>
+
+	<select id="selectMaxPayNumByCondition" parameterType="int"
+		resultMap="BaseResultMap">
+		SELECT
+			*
+		FROM
+			payment
+		where
+			pay_num = (select max(pay_num) from payment)
+	</select>
+
+	<insert id="insertPaymentByCondition" parameterType="buyProduct">
+		INSERT
+		INTO
+			payment
+		(pay_num, buy_num, how_pay, p_total, p_comment)
+		VALUES(#{payNum},#{buyNum},#{howPay},#{pTotal},#{pComment})
+	</insert>
+
+
+</mapper>

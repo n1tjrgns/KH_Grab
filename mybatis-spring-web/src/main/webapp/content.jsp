@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@page import="java.io.*,java.util.*,javax.servlet.*"%>
+<%@page import="repository.*, model.*"%>
 <html>
 <head>
 <meta>
@@ -13,17 +14,40 @@
 	rel="stylesheet" type="text/css">
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="./js/content.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/content.css">
 </head>
 
-	
-
+<script>
+	function stock() {
+		if (parseInt($("input[name=p_stock]").val()) < parseInt($(
+				"input[name=p_payStock]").val())) {
+			alert("재고를 넘었습니다.");
+		} else {
+			document.getElementById('paymentForm').submit();
+		}
+	}
+</script>
 <body>
-	<jsp:include page="navi-header.jsp"></jsp:include> 
-	<div class="blank"> ?? </div>
+	<%
+		System.out.println("p_name(web) : " + request.getParameter("p_name"));
+		ProductSessionRepository psr = new ProductSessionRepository();
+		Product product = psr.selectProduct(request.getParameter("p_name"));
+		System.out.println("이름:" + product.getProdName());
+		System.out.println("가격:" + product.getProdPrice());
+		System.out.println("재고:" + product.getProdStock());
+	%>
+	<jsp:include page="navi-header.jsp"></jsp:include>
+	<div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+	</div>
 	<div class="container">
 		<div class="row">
 			<table style="width: 80%;">
@@ -32,14 +56,16 @@
 						src="./img/property_1.jpg" /></td>
 					<td style="width: 40%;">
 						<!-- Datos del vendedor y titulo del producto -->
-						<h2>canon selphy 포토 용지 RP-54</h2>
+						<h2><%=product.getProdName()%></h2>
 						<h5 style="color: #337ab7">
-							포토프린터에 필요한 포토 용지 <small style="color: #337ab7">(50매,100매)</small>
+							<%=product.getProdCategory()%>
 						</h5> <!-- Precios -->
 						<h6 class="title-price">
 							<small>가격</small>
 						</h6>
-						<h3 style="margin-top: 0px;">30000 원</h3> <!-- Detalles especificos del producto -->
+						<h3 style="margin-top: 0px;"><%=product.getProdPrice()%>
+							원
+						</h3> <!-- Detalles especificos del producto --> <!-- 
 						<div class="section">
 							<h6 class="title-attr" style="margin-top: 15px;">
 								<small>색상</small>
@@ -58,33 +84,43 @@
 								<div class="attr2">100매</div>
 							</div>
 						</div>
-						<div class="section" style="padding-bottom: 20px;">
-							<h6 class="title-attr">
-								<small>수량</small>
-							</h6>
-							<div>
-								<div class="btn-minus">
-									<span class="glyphicon glyphicon-minus"></span>
-								</div>
-								<input value="1" />
-								<div class="btn-plus">
-									<span class="glyphicon glyphicon-plus"></span>
+						 -->
+						<form action="shop_payment" id="paymentForm" method="POST"
+							onSubmit="return false;">
+							<input type="hidden" name="p_stock"
+								value="<%=product.getProdStock()%>" />
+							<div class="section" style="padding-bottom: 20px;">
+								<h6 class="title-attr">
+									<small>수량</small>
+								</h6>
+								<div>
+									<div class="btn-minus">
+										<span class="glyphicon glyphicon-minus"></span>
+									</div>
+									<input name="p_payStock" value="1" readonly />
+									<div class="btn-plus">
+										<span class="glyphicon glyphicon-plus"></span>
+									</div>
 								</div>
 							</div>
-						</div> <!-- Botones de compra -->
-						<div class="section" style="padding-bottom: 20px;">
-							<button class="btn btn-success" onclick="location.href='./pay.jsp'">
-								<span style="margin-right: 20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-								구매하기
-							</button>
+							<!-- Botones de compra -->
+							<div class="section" style="padding-bottom: 20px;">
 
-							<h6>
-								<a href="#"><span class="glyphicon glyphicon-heart-empty"
-									style="cursor: pointer;"></span> 장바구니담기</a>
-							</h6>
-							<a href="./shop.jsp"><button class="btn btn-default">목록으로</button></a>
-						</div>
+								<input type="hidden" name="p_name"
+									value='<%=product.getProdName()%>'>
+								<button class="btn btn-success" onclick="stock();">
+									<span style="margin-right: 20px"
+										class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+									구매하기
+								</button>
 
+								<h6>
+									<a href="#"><span class="glyphicon glyphicon-heart-empty"
+										style="cursor: pointer;"></span> 장바구니담기</a>
+								</h6>
+								<a href="./shop.jsp"><button class="btn btn-default">목록으로</button></a>
+							</div>
+						</form>
 					</td>
 				</tr>
 			</table>
@@ -92,14 +128,18 @@
 			<div class="col-xs-9">
 				<ul class="menu-items">
 					<li class="active">상세설명</li>
+					<!-- 
 					<li>주의사항</li>
 					<li>이용방법</li>
 					<li>상품후기</li>
+					 -->
 				</ul>
 				<div style="width: 100%; border-top: 1px solid silver">
 					<p style="padding: 15px;">
-						<small> 상세설명입니다. </small>
+						<small> <%=product.getProdContent()%>
+						</small>
 					</p>
+					<!-- 
 					<small>
 						<ul>
 							<li>주의사항1</li>
@@ -107,14 +147,15 @@
 							<li>주의사항3</li>
 						</ul>
 					</small>
+					 -->
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 
-<jsp:include page="navi-footer.jsp"></jsp:include>   
+<jsp:include page="navi-footer.jsp"></jsp:include>
 </html>
 
 
