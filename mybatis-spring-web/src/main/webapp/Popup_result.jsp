@@ -20,7 +20,7 @@
                 <ul id="detail-img-contents">
                     
                    <!--  <li><div class="simple_loading"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></li> -->
-                    <li class="img-box" bucketimage="" style="margin-bottom: 30cm;"><center><img src="${bucketlist.photoURL} " alt="없음"></center></li>
+                    <li class="img-box" bucketimage="" ><center><img src="${bucketlist.photoURL}" alt="사진 없음"></center></li>
                     <li class="detail-img-shadow"></li>
                     <li class="detail-img-top-shadow"><img src="_resource/images/discover/popup-top-shadow.png" alt="" /></li>
                     <li class="detail-arrow-btns">		
@@ -32,18 +32,18 @@
                         <p class="title" id="popup_detail_title">${bucketlist.bkName}</p>
                     </li>
                     <li class="detail-share-btns">
-                        <div class="checked-detail-add-btn change-add-check"><img src="_resource/images/discover/etc/add-btn-checked.png" alt="" /></div>
+                        <div class="checked-detail-add-btn change-add-check"><img src="_resource/images/discover/etc/add-btn-checked.png" alt="?" /></div>
                         <a href="#" class="detail-add-btn change-add-btn"><img src="_resource/images/discover/etc/add-btn.png" alt="" /></a>
 
-                        <div class="checked-detail-like-btn change-like-check"><img src="_resource/images/discover/etc/like-btn-checked.png" alt="" /></div>
+                        <div class="checked-detail-like-btn change-like-check"><img src="_resource/images/discover/etc/like-btn-checked.png" alt="??" /></div>
                         <a href="#" class="detail-like-btn change-like-btn"><img src="_resource/images/discover/etc/like-btn.png" alt="" /></a>
 
-                        <a href="#" class="detail-share-btn"><img src="_resource/images/discover/etc/share-btn.png" alt="" /></a>
+                        <a href="#" onclick="showPopup('${bucketlist.bkName}','${bucketlist.cEmail}','member');" class="detail-share-btn">참여신청<img src="_resource/images/discover/etc/share-btn.png" alt="참여신청" /></a>
                         <div class="detail-small-share-btns">
-                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_twitter.png" alt="1" /></a>
+                           <!--  <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_twitter.png" alt="1" /></a>
                             <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_kakao.png" alt="2" /></a>
-                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_facebook.png" alt="3" /></a>
-                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_close.png" alt="4" /></a>
+                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_facebook.png" alt="3" /></a> -->
+                            <a href="#">진행 중<img src="_resource/images/discover/etc/popup_btn_share_close.png" alt="참여신청 진행" /></a>
                         </div>
                     </li>
                     <li class="detail-top-btns">
@@ -75,20 +75,11 @@
                     <ul>
                         <li class="title"><span id="popup_detail_bucket_cnt">최대 ${bucketlist.bkMax}</span> 명이 ${bucketlist.bkDue} 까지 참여 할 수 있습니다.</li>
                         <li class="person-list" id="popup_detail_bucket_list" style="display: none;">
-                         
-                           <!--  
-
-                            <a href="#" class="last">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                         -->   
                         </li>
-                        <li class="zero-person-info" style="display: none;">
+                        <li class="zero-person-info" style="display: block;">
                             <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
-                            <div class="desc1">이 버킷 리스트의 </div>
-                            <div class="desc2">리뷰를 남긴<span>최초의 1인</span>이 되어 보세요!</div>
+                            <div class="desc1">이 버킷 리스트를 </div>
+                            <div class="desc2">참여한<span>최초의 1인</span>이 되어 보세요!</div>
                         </li>
                         <li class="info-prev-next">
                             <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>이전</span></a>
@@ -203,10 +194,39 @@
     
 </div>
    
-	
-	??오이잉
-	
 </body>
 </html>
+<script>
+
+function showPopup(bkName,cEmail,mEmail){
+	if(confirm("예약하시겠습니까?")){
+		var resDate=prompt("수행하실 날짜는 어떻게 되시는지?(YYYY-MM-dd)","");
+		var resInt=prompt("방문 인원은?","");
+		var resCf=prompt("추가로 전하실 말씀이 있으신지요?","");
+	
+		$.ajax( // 상세정보를 팝업시킨다.
+			{
+				url:"discover/reser_popup.do",
+				dataType:"html",
+				type:"GET",
+				async:true,
+				data:{"bkName" : bkName, "cEmail" : cEmail,  "mEmail" : mEmail ,"resDate":resDate
+					,"resInt" : resInt,"resCf" : resCf},
+				success:function( data ) {
+			       alert("참가 신청 되었습니다.");
+			       $(".person-list").css("display","block");
+			       $(".person-list").html(data);
+                   $(".zero-person-info").css("display","none");
+ 				},
+				error : function( e ) {
+				alert("조회 오류\n"+e.error);
+				}
+			}
+		);	 
+	}//if
+
+}//function
+
+</script>
 
 <script src="_resource/js/discover/Discover.Popup.js"></script>

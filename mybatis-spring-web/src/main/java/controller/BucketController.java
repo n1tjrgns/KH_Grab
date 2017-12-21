@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Bucketlist;
+import model.Reservation;
 import repository.BucketSessionRepository;
 @Controller
 public class BucketController {
@@ -31,7 +32,13 @@ public class BucketController {
 			System.out.println("컨트롤러: "+bucketlist_take.getBkName());
 			if(bucketlist_take.getBkName()!=null) {
 			List<Bucketlist> bucketlist= bucketRepository.selectBucketlist_one(bucketlist_take);
-			System.out.println("1줄"+bucketlist.get(0).getBkName());
+			
+			for(int i=0; i< bucketlist.size() ; i++ ) {
+				bucketlist.get(i).setBkDate(bucketlist.get(i).getBkDate().substring(0, 10));
+				bucketlist.get(i).setBkDue(bucketlist.get(i).getBkDue().substring(0, 10));
+			}
+			
+			
 			model.addAttribute("bucketlist",bucketlist.get(0));
 			}
 			}
@@ -47,5 +54,16 @@ public class BucketController {
 			
 				return "result";
 		}
-				
+		
+			
+		@RequestMapping(value="discover/reser_popup.do", method = RequestMethod.GET)
+		public String handleStep5(Model model,Reservation reservation) {
+			System.out.println(reservation.getResCf());
+			//Integer result = bucketRepository.InsertReserv(reservation);
+			//System.out.println(result+"개");
+			model.addAttribute("reservation",reservation);
+			
+				return "reser_popup";
+		}
+			
 }

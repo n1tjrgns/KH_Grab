@@ -290,9 +290,9 @@ function goMyBucket(){
     <div class="sub-navi-container">
         <div class="sub-navi-btns en">
             
-            <a href="#" onclick='eventAJAX("1");' class="">POPULAR</a>
-            <a href="#" onclick='eventAJAX("2");' class="">FEATURED</a>
-            <a href="#" onclick='eventAJAX("3");' class="">LIBRARY</a>
+            <a href="#" onclick='eventAJAX("1");' id="p" class="">POPULAR</a>
+            <a href="#" onclick='eventAJAX("2");' id="f" class="">FEATURED</a>
+            <a href="#" onclick='eventAJAX("3");' id="l" class="">LIBRARY</a>
         </div>
         <div class="sub-navi-search">
             <a href="#" class="en" onclick='eventTrack("", "discover_btn_search");'>
@@ -584,15 +584,19 @@ setGnb(0);
 
 
 <script>
-
+$("#contents").css("display","block");
 function eventAJAX(num){
 
  					if (num==3){
  						 $("#contents").css("display","block");
  						 $("#contents2").css("display","none");
+ 						 $("#p").addClass("active");
+ 						 $("#l").removeClass("active");
  					}else if(num==2){
  						 $("#contents").css("display","none");
  						 $("#contents2").css("display","block");
+ 						 $("#l").addClass("active");
+ 						 $("#p").removeClass("active");
  					}else{
  						alert("준비중입니다.");
  					}
