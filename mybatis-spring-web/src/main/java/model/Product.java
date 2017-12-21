@@ -12,7 +12,7 @@ public class Product {
 	private int prodPrice;
 	private String prodPic;
 	private String cEmail;
-	private List<Product> products;
+	private List<Product> products; 
 
 
 
