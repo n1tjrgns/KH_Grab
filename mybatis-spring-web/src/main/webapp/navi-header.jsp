@@ -19,14 +19,20 @@
 <script
 	src="https://www.lifeplus.co.kr/_resource/js/vendor/TweenMax.min.js"></script>
 <script src="https://www.lifeplus.co.kr/_resource/_web/js/common.js"></script>
-<script>			
-		System.out.println("세션:" + session.getAttribute("loginInfo"));
-		if (session.getAttribute("loginInfo") != null) {
-			Member member = (Member) session.getAttribute("loginInfo");
-		}
-</script>
+
+<% 
+	System.out.println("세션:" + session.getAttribute("loginInfo"));
+	
+	if (session.getAttribute("loginInfo") != null) {
+		Member member = (Member) session.getAttribute("loginInfo");
+		System.out.println(member.getmEmail());
+	}	
+ %>
 </head>
 <body>
+<%
+	Member member = (Member) session.getAttribute("loginInfo");
+%>
 	<div id="header">
 		<div class="navi">
 			<ul class="nav_top">
@@ -36,8 +42,21 @@
 							alt="grabIcon" />
 					</span>
 				</a></li>
+				
+				<%
+					if (session.getAttribute("loginInfo") == null) {
+				%>
 				<li><a href="Main_graph" class="mot2" onclick=""><span
+						class="en">GRAPH</span></a></li>						
+				<%
+					} else {
+				%>
+				<form id="graph" action="Main_graph"><li><a href="#" class="mot2" onclick="graph.submit();"><span
 						class="en">GRAPH</span></a></li>
+						<input type="hidden" value="<%= member.getmEmail()%>" name="mEmail"></form>
+				<%
+					}
+				%>
 				<li><a href="Main_bucket" class="mot2" onclick=""><span
 						class="en">BUCKET LIST</span></a></li>
 				<li><a href="Main_shop" class="mot2" onclick=""><span
@@ -68,15 +87,14 @@
 				<%
 					} else {
 				%>
-				<li class="sub"><a href="Logout" class="mot2" name="logout">Logout</a>
+				<li class="sub"><a href="Logout" class="mot2" name="logout" >Logout</a>
 					<div class="sub_link mot3">
 						<div class="border1"></div>
 						<div class="border2"></div>
 						<div class="border3"></div>
 						<div class="border4"></div>
 						<a href="Main_mypage" onclick="" class="sub_a mot2">MY PAGE</a>
-					</div>
-				</li>
+					</div></li>
 				<%
 					}
 				%>

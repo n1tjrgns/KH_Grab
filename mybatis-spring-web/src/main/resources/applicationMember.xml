@@ -16,5 +16,5 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<bean id="buyProductSessionRepository" class="repository.BuyProductSessionRepository" />
 	<bean id="paymentSessionRepository" class="repository.PaymentSessionRepository" />
 	<bean id="buyListSessionRepository" class="repository.BuyListSessionRepository" />
-	
+	<bean id="graphSessionRepository" class="repository.GraphSessionRepository" />
 </beans>

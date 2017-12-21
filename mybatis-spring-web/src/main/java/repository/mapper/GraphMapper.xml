@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="repository.mapper.GraphMapper">
+	<cache />
+
+   <resultMap type="linkdata" id="LinkdataResultMap">
+      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+      <id column="data_num" jdbcType="BIGINT" property="dataNum"/>
+      <result column="bkrv_num" jdbcType="BIGINT" property="bkrvNum"/>
+      <result column="sns_sort" jdbcType="VARCHAR" property="snsSort"/>
+      <result column="sns_url" jdbcType="VARCHAR" property="snsUrl"/>
+      <result column="bkrv_date" jdbcType="DATE" property="bkrvDate"/>
+   </resultMap>
+
+	<select id="selectLinkdataBymEmail" parameterType="String"
+	resultMap="LinkdataResultMap">
+		SELECT ld.sns_sort, ld.sns_url, br.bkrv_date 
+		FROM LINK_DATA ld, bucket_review br, member m 
+		WHERE ld.bkrv_num = br.bkrv_num	AND br.m_email=m.m_email AND m.m_email=#{mEmail}
+	</select>
+</mapper>

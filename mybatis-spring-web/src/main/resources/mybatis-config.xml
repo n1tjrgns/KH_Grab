@@ -10,6 +10,7 @@
    	<typeAlias type="model.BuyProduct" alias="BuyProduct"/>
    	<typeAlias type="model.Payment" alias="Payment"/>
    	<typeAlias type="model.BuyList" alias="BuyList"/>
+   	<typeAlias type="model.Linkdata" alias="Linkdata"/>
    </typeAliases>
    
    <environments default="development">
@@ -31,5 +32,6 @@
       <mapper resource="repository/mapper/BuyProductMapper.xml"/>
       <mapper resource="repository/mapper/PaymentMapper.xml"/>
       <mapper resource="repository/mapper/BuyListMapper.xml"/>
+      <mapper resource="repository/mapper/GraphMapper.xml"/>
    </mappers>
 </configuration>
