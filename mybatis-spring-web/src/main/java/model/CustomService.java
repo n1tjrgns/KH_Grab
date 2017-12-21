@@ -25,7 +25,58 @@ public class CustomService {
 	public CustomService() {
 		
 	}
-	
+
+
+	public int getCsNum() {
+		return csNum;
+	}
+
+
+	public void setCsNum(int csNum) {
+		this.csNum = csNum;
+	}
+
+
+	public String getCsSort() {
+		return csSort;
+	}
+
+
+	public void setCsSort(String csSort) {
+		this.csSort = csSort;
+	}
+
+
+	public String getCsTitle() {
+		return csTitle;
+	}
+
+
+	public void setCsTitle(String csTitle) {
+		this.csTitle = csTitle;
+	}
+
+
+	public String getCsContent() {
+		return csContent;
+	}
+
+
+	public void setCsContent(String csContent) {
+		this.csContent = csContent;
+	}
+
+
+	public Date getCsDate() {
+		return csDate;
+	}
+
+
+	public void setCsDate(Date csDate) {
+		this.csDate = csDate;
+	}
+
+
 	public String getaEmail() {
 		return aEmail;
 	}
@@ -34,35 +85,6 @@ public class CustomService {
 	public void setaEmail(String aEmail) {
 		this.aEmail = aEmail;
 	}
-
-	public int getCsNum() {
-		return csNum;
-	}
-	public void setCsNum(int csNum) {
-		this.csNum = csNum;
-	}
-	public String getCsSort() {
-		return csSort;
-	}
-	public void setCsSort(String csSort) {
-		this.csSort = csSort;
-	}
-	public String getCsTitle() {
-		return csTitle;
-	}
-	public void setCsTitle(String csTitle) {
-		this.csTitle = csTitle;
-	}
-	public String getCsContent() {
-		return csContent;
-	}
-	public void setCsContent(String csContent) {
-		this.csContent = csContent;
-	}
-	public Date getCsDate() {
-		return csDate;
-	}
-	public void setCsDate(Date csDate) {
-		this.csDate = csDate;
-	}
+	
+	
 }

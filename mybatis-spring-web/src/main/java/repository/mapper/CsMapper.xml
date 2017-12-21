@@ -22,6 +22,15 @@
 	   	FROM CS
 		
 	</select>
+	
+	<insert id="insertcsservice" parameterType="CustomService">
+	
+	insert into CS
+	values (CS_SEQ.NEXTVAL, #{cs_sort}, #{cs_title}, #{cs_content}, SYSDATE, 'admin')
+	
+	
+	
+	</insert>
 
 	
 </mapper>

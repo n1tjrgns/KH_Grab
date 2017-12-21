@@ -140,7 +140,7 @@ public class CommentController {
 		return "/comment_update";
 	}	
 	
-	@RequestMapping(value="/CSCS", method = RequestMethod.GET)
+	@RequestMapping(value = "CSCS", method = {RequestMethod.POST,RequestMethod.GET})
 	public String csSelect(Model model) {
 		System.out.println("cslist222"); 
 		List<CustomService> cslist = csSessionRepository.selectCustomService();	
@@ -149,4 +149,19 @@ public class CommentController {
 		System.out.println("cslist222 : "+cslist.size());
 		return "CS";
 	}
+	
+	@RequestMapping(value="CS_write", method = RequestMethod.POST)
+	public String csInsert(CustomService customservice, Model model) {
+		System.out.println("customservice.getCsSort()"+customservice.getCsSort());
+		System.out.println("customservice.getCsSort()"+customservice.getCsTitle());
+		System.out.println("customservice.getCsSort()"+customservice.getCsContent());
+		List<CustomService> cslist = csSessionRepository.insertCustomService(customservice);	
+		System.out.println("cslist222 : "+cslist.get(0).getCsTitle());
+		System.out.println("cslist222 : "+cslist.size());
+		model.addAttribute("cslist",cslist);
+		
+		return "CS";
+	}
+	
+	
 }

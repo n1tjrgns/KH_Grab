@@ -16,5 +16,15 @@ public class CsSessionRepository extends AbstractRepository{
 		System.out.println(statment);							
 		return sqlSession.selectList(statment);
 	}
+	
+	
+	public List<CustomService> insertCustomService(CustomService customservice) {
+		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		String statment = nameSpace+".insertcsservice";
+		System.out.println(statment);							
+		return sqlSession.selectList(statment,customservice);
+	}
+	
+	
 }
 

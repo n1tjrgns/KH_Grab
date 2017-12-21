@@ -74,7 +74,7 @@
 			<div class="text_title">
 				<h3>자주 묻는 질문</h3>
 				<p>
-					<span class="en">Lifeplus</span>의 궁금한 사항을 먼저 찾아보세요.
+					<span class="en">GRAB</span>의 궁금한 사항을 먼저 찾아보세요.
 				</p>
 			</div>
 			<div class="faq_container">
@@ -133,7 +133,7 @@
 				</p>
 			</div>
 			<div class="mailing_container">
-				<form name="qna_write" action="q.jsp" method="post">
+				<form name="qna_write" action="CSCS" method="post">
 
 					<ul class="mail">
 						<li class="texttype">작성자&nbsp; &nbsp;&nbsp;<input type="text"
