@@ -21,7 +21,7 @@ public class BuyProduct {
 		this.totalPrice = totalPrice;
 		this.howDeliver = howDeliver;
 		this.receiver = receiver;
-		this.receiver = receiver;
+		this.receiAddr = receiAddr;
 		this.mEmail = mEmail;
 	}
 

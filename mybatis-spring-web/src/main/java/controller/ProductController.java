@@ -82,7 +82,7 @@ public class ProductController {
 		String m_email = httpServletRequest.getParameter("member_email");
 		String dlv_msg = httpServletRequest.getParameter("dlv_msg");
 		String how_del = "택배";
-		String memberName = httpServletRequest.getParameter("member_name");
+		String prodName = httpServletRequest.getParameter("prod_name");
 		System.out.println("수량:"+qty);
 		System.out.println("총액:"+total_price);
 		System.out.println("결제방법:"+howPay);
@@ -90,39 +90,39 @@ public class ProductController {
 		System.out.println("주소:"+receiAddr);
 		System.out.println("이메일:"+m_email); //이메일로 회원 전화번호 DB 받기
 		System.out.println("메시지:"+dlv_msg);
-		System.out.println("회원이름:"+memberName);
+		System.out.println("물건이름:"+prodName);
 		System.out.println("날짜:"+today);
 
 
 		System.out.println("test:"+buyProductSessionRepository.selectMaxBuyNum()); //null로 뜸
 		
 		//BuyNum 최대값 출력
-		BuyProduct BuyProduct = buyProductSessionRepository.selectMaxBuyNum();
-		int maxBuyNum = BuyProduct.getBuyNum() + 1;
+		int maxBuyNum = buyProductSessionRepository.selectMaxBuyNum().getBuyNum() + 1;
 		System.out.println("maxBuyNum:"+maxBuyNum);
 
 		//PayNum 최대값 출력
-		Payment payment = paymentSessionRepository.selectMaxPayNum();
-		int maxPayNum = payment.getBuyNum() + 1;
-		payment.setPayNum(maxPayNum);
+		int maxPayNum = paymentSessionRepository.selectMaxPayNum().getBuyNum() + 1;
 		System.out.println("maxPayNum:"+maxPayNum);
 		
 		//구매 DB 넣은 결과
 		BuyProduct buyProduct = new BuyProduct(maxBuyNum, today, total_price, how_del, rv_name, receiAddr, m_email);
+		System.out.println("구매자:"+buyProduct.getmEmail());
+		System.out.println("구매DB주소:"+buyProduct.getReceiAddr());
 		int buyResult = buyProductSessionRepository.insertBuyProduct(buyProduct);
 		System.out.println("buyResult:"+buyResult);
 		
 		//결제 DB 넣은 결과
-		payment = new Payment(maxPayNum, maxBuyNum, howPay, Integer.parseInt(total_price), dlv_msg);
+		Payment payment = new Payment(maxPayNum, maxBuyNum, howPay, Integer.parseInt(total_price), dlv_msg);
 		int payResult = paymentSessionRepository.insertPayment(payment);
 		System.out.println("payResult:"+payResult);
 		
 		//구매리스트 DB 넣은 결과
-		BuyList buyList = new BuyList(maxBuyNum, memberName, qty);
+		BuyList buyList = new BuyList(maxBuyNum, prodName, qty);
 		int listResult = buyListSessionRepository.insertBuyList(buyList);
 		System.out.println("listResult:"+listResult);
 		model.addAttribute("result", listResult);
 
-		return "shop";
+		
+		return "payComplete";
 	}
 }
