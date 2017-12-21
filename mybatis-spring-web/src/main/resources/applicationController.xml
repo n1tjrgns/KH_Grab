@@ -12,11 +12,12 @@
 
 	<bean class="controller.CommentController">
 	</bean>	
-	<bean class="controller.BucketController">
-	</bean>	
-	<bean class="controller.LoginController">
-	</bean>	
+	
 	<bean class="controller.ProductController">
 	</bean>	
+	
+	<bean class="controller.LoginController">
+	</bean>	
+	
 
 </beans>

@@ -8,19 +8,21 @@
 
    <resultMap type="Member" id="MemberResultMap">
       <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
-      <id column="m_email" jdbcType="VARCHAR2" property="mEmail"/>
-      <result column="m_pw" jdbcType="VARCHAR2" property="mPw"/>
-      <result column="m_name" jdbcType="VARCHAR2" property="mName"/>
-      <result column="m_tel" jdbcType="VARCHAR2" property="mTel"/>
+      <id column="m_email" jdbcType="VARCHAR" property="mEmail"/>
+      <result column="m_pw" jdbcType="VARCHAR" property="mPw"/>
+      <result column="m_name" jdbcType="VARCHAR" property="mName"/>
+      <result column="m_tel" jdbcType="VARCHAR" property="mTel"/>
       <result column="m_birth" jdbcType="DATE" property="mBirth"/>
-      <result column="m_gen" jdbcType="VARCHAR2" property="mGen"/>
-      <result column="m_addr" jdbcType="VARCHAR2" property="mAddr"/>
-      <result column="m_attendcount" jdbcType="NUMBER" property="mAttendcount"/>
-      <result column="m_profile" jdbcType="VARCHAR2" property="mProfile"/>
-      <result column="m_license" jdbcType="NUMBER" property="mLicense"/>
-      <result column="m_authority" jdbcType="VARCHAR2" property="mAuthority"/>
-      <result column="bank" jdbcType="VARCHAR2" property="bank"/>
-      <result column="account" jdbcType="VARCHAR2" property="account"/>
+      <result column="m_gen" jdbcType="VARCHAR" property="mGen"/>
+      <result column="m_postnum" jdbcType="VARCHAR" property="mPost"/>
+      <result column="m_addr" jdbcType="VARCHAR" property="mAddr"/>
+      <result column="m_addr_detail" jdbcType="VARCHAR" property="mAddr_d"/>
+      <result column="m_attendcount" jdbcType="BIGINT" property="mAttendcount"/>
+      <result column="m_profile" jdbcType="VARCHAR" property="mProfile"/>
+      <result column="m_license" jdbcType="BIGINT" property="mLicense"/>
+      <result column="m_authority" jdbcType="VARCHAR" property="mAuthority"/>
+      <result column="bank" jdbcType="VARCHAR" property="bank"/>
+      <result column="account" jdbcType="VARCHAR" property="account"/>
    </resultMap>
 
 	<select id="selectMemberByLoginCheck" parameterType="Member"

@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,31 +12,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Member;
-import repository.CommentSessionRepository;
 import repository.LoginSessionRepository;
 
 @Controller
 public class LoginController {
 	@Autowired
-	CommentSessionRepository commentSessionRepository;
-	@Autowired
 	LoginSessionRepository loginSessionRepository;
 
-	@RequestMapping(value="/login_process.do", method = RequestMethod.POST)
-	public String loginProcess(Member member, Model model, HttpServletRequest request) {
-		Member result =loginSessionRepository.selectLogin(member);
+	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
+	public String LoginMember(Member member, Model model, HttpServletRequest request) {
+		Member result = loginSessionRepository.selectLoginMember(member);
 		HttpSession session = request.getSession(false);
-		if(result!=null) {
-			if(session != null) {
+		if (result != null) {
+			if (session != null) {
 				session.invalidate();
 			}
 			session = request.getSession(true);
-			System.out.println("로그인성공 result != null");
+			System.out.println("로그인 성공시 세션만들고 메인페이지로");
 			session.setAttribute("loginInfo", result);
-			return "redirect:Main";
+			System.out.println(result.getmEmail());
+			return "redirect:/Main";
 		}
-
-		model.addAttribute("loginResult", "fail");
-		return "login";
+		return "";
+	}
+	
+	
+	@RequestMapping(value="/Logout")
+	public String LogoutMember(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/Main";
 	}
 }
