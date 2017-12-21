@@ -32,10 +32,8 @@ public class LoginController {
 			session.setAttribute("loginInfo", result);
 			System.out.println(result.getmEmail());			
 			return "redirect:/Main";
-		}
-		
-		return "redirect:/Main_login";
-	
+		}		
+		return "redirect:/Main_login";	
 	}
 	@RequestMapping(value="/Logout")
 	public String LogoutMember(HttpServletRequest request) {

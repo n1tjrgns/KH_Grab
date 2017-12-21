@@ -29,11 +29,13 @@
 <body>
 
 <jsp:include page="navi-header.jsp"/>
-	<!-- 상단바 하단 -->
-	<%
-		Member member = (Member)session.getAttribute("loginInfo");
-		System.out.println("graph : "+ member.getmEmail());		
-	%>
+	<!-- 상단바 하단 -->	
+<%
+	if (session.getAttribute("loginInfo") != null) {
+		Member member = (Member) session.getAttribute("loginInfo");
+		System.out.println(member.getmEmail());
+	}	
+%>
 	
 	<div id="wrap" class="service_wrap">
 		<div class="section_top"><br/> <br/> 
