@@ -72,11 +72,11 @@
 										<input type="password" placeholder="비밀번호" name="mPw"
 											maxlength="40">
 									</div>
-									<div class="input_box email_reg_password_check">
-										<input type="password" placeholder="비밀번호확인" maxlength="40">
+									<div class="input_box email_reg_password_check" id="email_reg_password_check">
+										<input type="password" placeholder="비밀번호확인" maxlength="40" >
 									</div> 
 								</div>
-								<p class="password_check_txt" style="display: none;">영문
+								<p class="password_check_txt" style="display: none;" id ="password_check_txt">영문
 									대/소문자, 숫자, 특수문자 중 3조합 8자리</p>
 
 								<p class="txt">영문 대/소문자, 숫자, 특수문자 중 3조합 8자리</p> 
@@ -685,12 +685,14 @@
 
 	function inputCheck() {
 		var $pwTxt = $("#password_check_txt");
-
 		var $emailRegAgree = $('#btn_email_agree');
 		var $emailRegAllAgree = $('#btn_email_all_agree');
-		 var $email_flg = $("#email_flg"); 
-//		$pwTxt.hide();
+		var $email_flg = $("#email_flg"); 
+//	$pwTxt.hide();
 
+ 		
+ 			
+ 			
 		if ($emailRegName.val() == '') {
 			alert('이름을 입력해주세요');
 			$emailRegName.focus();
@@ -706,7 +708,13 @@
 			alert('비밀번호를 입력해주세요');
 			$emailRegPw.focus();
 			return false;
-		} 
+		}
+		
+		if($emailRegPwCheck.val() == '' || $emailRegPw.val() != $emailRegPwCheck.val()){
+			alert('동일한 비밀번호로 입력해주세요');
+			$emailRegPwCheck.focus();
+			return false;
+		}
 		if($emailRegBirth.val() == ''){
 				alert('생일을 입력해주세요');
 				$emailRegBirth.focus();
@@ -831,7 +839,7 @@
 		} 
 	}
 
-	function pwCheck() {
+ function pwCheck() {
 		var oFORM = document.joinForm;
 		var email = oFORM.email1.value.trim();
 		var passwd = oFORM.passwd.value;
@@ -841,7 +849,7 @@
 		var passCnt = chkCharMixCnt(passwd);
 		var cell2 = oFORM.cell2.value.trim();
 		var cell3 = oFORM.cell3.value.trim();
-		var $pwTxt = $(".password_check_txt");
+		var $pwTxt = $("#password_check_txt");
 
 		if (passwd.length < 8) {
 			$pwTxt.show();
@@ -955,6 +963,8 @@
 		
 		//return true;
 	}
+
+	
 //주소
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function sample4_execDaumPostcode() {
