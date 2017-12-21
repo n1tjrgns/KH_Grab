@@ -9,7 +9,7 @@
 <body>
 	<script>
 		alert("구매가 완료되었습니다!");
-		window.location.href="shop";
+		window.location.href="Main_shop";
 	</script>
 </body>
 </html>
