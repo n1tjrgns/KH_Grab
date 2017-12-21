@@ -32,7 +32,7 @@
 	<!-- 상단바 하단 -->
 	<%
 		Member member = (Member)session.getAttribute("loginInfo");
-		System.out.println("graph : "+ member.getmEmail());
+		System.out.println("graph : "+ member.getmEmail());		
 	%>
 	
 	<div id="wrap" class="service_wrap">
@@ -73,8 +73,8 @@
 %>	
 <%
 	List<Linkdata> linkdata = (List<Linkdata>)request.getAttribute("linkdata");
-	System.out.println(sdf.format(linkdata.get(0).getBkrvDate()));
-	System.out.println(linkdata.get(0).getBkrvDate());
+	System.out.println("yyyy-MM-dd 변환하여 가져온 날짜 : " + sdf.format(linkdata.get(0).getBkrvDate()));
+	System.out.println("yyyy-MM-dd 변환하여 가져온 날짜의 다음날 : " + sdf.format(linkdata.get(0).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 )));
 %>
 			<!-- Chart code -->
 <script>
@@ -116,7 +116,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     		%>
     	{	
         "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "2017-12-14",
+        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#cc4748",
         "task": "GRAB 게시글" 
     	},	
@@ -131,7 +131,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     		%>
     	{
         "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "2017-12-15",
+        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#b9783f",
         "task": "KAKAO 게시글" 
     	},	
@@ -146,7 +146,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     		%>
     	{
         "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "2017-12-15",
+        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#cd82ad",
         "task": "INSTA 게시글" 
     	},	
@@ -162,7 +162,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     		%>
     	{
         "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "2017-12-20",
+        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#2f4074",
         "task": "FACEBOOK 게시글" 
     	},	
@@ -178,7 +178,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     		%>
     	{
         "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "2017-12-20",
+        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#448e4d",
         "task": "NAVER 게시글" 
     	},	
