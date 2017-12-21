@@ -13,8 +13,7 @@
 <h1><a href="Main"><img src="_resource/_web/images/common/logoText.png" class="logo_img" alt="grabIcon"></a></h1>
 <script href="/ajax.js"> </script>
 <div class="pop_login">
-       <div class="login_box">
-            
+       <div class="login_box">            
             <div class="email_box">
                 <h3>정보 입력</h3>
                 <div class="input_area">

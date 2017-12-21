@@ -33,7 +33,8 @@ public class LoginController {
 			System.out.println(result.getmEmail());			
 			return "redirect:/Main";
 		}
-		return "";
+		
+		return "redirect:/Main_login";
 	
 	}
 	@RequestMapping(value="/Logout")
