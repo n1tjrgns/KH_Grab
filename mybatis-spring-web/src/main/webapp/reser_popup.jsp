@@ -5,11 +5,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+table {border:3px;}
+body { backgorund-color:white;}
+</style>
 </head>
-<body>
-${reservation.mEmail } 님이 ${reservation.resDate} 에 예약했습니다. 
-아래는 예약내역.
 
-<a href="discover/library_detail_popup.do"> x </a>
+<body>
+
+ <p class="en" id="SNS_SHARE_CTGR"> ${reservation.bkName}</p>
+ <span  id="SNS_SHARE_TEXT">
+
+
+	예약날짜 : ${reservation.resDate}<br/> 
+	방문인원 : ${reservation.resInt}<br/>
+	담당업체 : ${reservation.cEmail}<br/>
+	전달사항 : ${reservation.resCf}<br/>
+
+
+ </span>
 </body>
 </html>

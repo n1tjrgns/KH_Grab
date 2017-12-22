@@ -81,6 +81,9 @@
                             <div class="desc1">이 버킷 리스트를 </div>
                             <div class="desc2">참여한<span>최초의 1인</span>이 되어 보세요!</div>
                         </li>
+                          <li class="zero-person-info 2" style="display: block;">
+                            
+                        </li>
                         <li class="info-prev-next">
                             <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>이전</span></a>
                             <div class="info-count en" id="popup_detail_bucket_list_page"><span >1</span> / 0</div>
@@ -125,7 +128,7 @@
     
 
     
-    <div id="share-popup" class="share-popup popup-group">
+    <div id="share-popup" class="share-popup popup-group" style="display: none;" >
      	<input type="hidden" id="SNS_SHARE_KEY">
      	<input type="hidden" id="SNS_SHARE_MEM_KEY" value="20171205B000010261">
      	<input type="hidden" id="SAVE_SNS_SHARE_KEY">
@@ -133,17 +136,17 @@
      	<input type="hidden" id="SAVE_SNS_SHARE_TEXT">
      	<input type="hidden" id="SAVE_SNS_SHARE_IMAGE">
      	
-        <ul class="share-popup-ul">
-            <li class="share-popup-title"><span>채홍기</span> 님의<br> 버킷리스트를 SNS에 공유해보세요.</li>
-            <li class="share-popup-info"><span>ㆍ</span> 아래 이미지가 SNS에 공유됩니다.</li>
+        <ul class="share-popup-ul"  >
+            <li class="share-popup-title"><span>회원아이디</span> 님의<br> 예약 내역입니다.</li>
+            <li class="share-popup-info"><span>ㆍ</span> 아래 예약 내역이 업체로 전달되고 전송됩니다.</li>
             <li class="share-popup-img">
                 
                 <div class="share-popup-contents">
-                    <img src="_resource/images/discover/library/share-popup-sample.png"  id="SNS_SHARE_IMAGE"/>
+                    <img src="img/bg.jpg"  id="SNS_SHARE_IMAGE"/>
                     <div class="share-popup-dimmed"></div>
                     <div class="share-popup-contents-copy">
-                        <p class="en" id="SNS_SHARE_CTGR">SPORTS</p>
-                        	<span  id="SNS_SHARE_TEXT">하와이에서 서핑 마스터하기</span>
+                    
+                    <br/><br/><br/>   
                     </div>
                 </div>
             </li>
@@ -197,7 +200,6 @@
 </body>
 </html>
 <script>
-
 function showPopup(bkName,cEmail,mEmail){
 	if(confirm("예약하시겠습니까?")){
 		var resDate=prompt("수행하실 날짜는 어떻게 되시는지?(YYYY-MM-dd)","");
@@ -205,7 +207,17 @@ function showPopup(bkName,cEmail,mEmail){
 		var resCf=prompt("추가로 전하실 말씀이 있으신지요?","");
 	
 		$.ajax( // 상세정보를 팝업시킨다.
-			{
+			{	
+				beforeSend : function(){
+ 					if(resDate=="" || resDate==null ){
+ 						alert("날짜를 입력해주세요");
+ 						return false;
+ 					}
+					if(resInt==null || resInt=="" ||resInt<=0 ||resInt>=9999  ){
+ 						alert("인원수를 입력해주세요(0~9999)");
+ 						return false;
+ 					}
+ 				},
 				url:"discover/reser_popup.do",
 				dataType:"html",
 				type:"GET",
@@ -217,10 +229,14 @@ function showPopup(bkName,cEmail,mEmail){
 			       $(".person-list").css("display","block");
 			       $(".person-list").html(data);
                    $(".zero-person-info").css("display","none");
+                   $("#share-popup").css("display","block");
+                   $(".share-popup-contents-copy").html(data);
+                   
  				},
 				error : function( e ) {
-				alert("조회 오류\n"+e.error);
+				alert("잘못된 정보를 입력하였거나, 이미 예약을 신청한 내역입니다! 예약내역을 확인해 주세요.\n");
 				}
+				
 			}
 		);	 
 	}//if

@@ -42,4 +42,11 @@
 		INSERT INTO bucket_request
 	   	VALUES(#{bkName},#{cEmail},#{bkContent},#{bkMax},#{bkPurpose},#{bkDate},#{bkDue},'업체버킷',#{bkCheck},#{photoURL})
 	</insert>
+	
+    <insert id="InsertReserv" parameterType="Reservation" >
+		INSERT INTO Reservation
+	   	VALUES(#{bkName},#{mEmail},#{cEmail},#{resDate},#{resInt},'N', sysdate,#{resCf})
+	</insert>
+	
+	
 </mapper>
