@@ -35,7 +35,7 @@
                         
                     </li>
                     <li class="detail-share-btns">
-                        <div class="checked-detail-add-btn change-add-check"><img src="_resource/images/discover/etc/add-btn-checked.png" alt="?" /></div>
+                        <div class="checked-detail-add-btn change-add-check" ><img src="_resource/images/discover/etc/add-btn-checked.png" alt="?" /></div>
                         <a href="#" class="detail-add-btn change-add-btn"><img src="_resource/images/discover/etc/add-btn.png" alt="" /></a>
 
                         <div class="checked-detail-like-btn change-like-check"><img src="_resource/images/discover/etc/like-btn-checked.png" alt="??" /></div>

@@ -444,7 +444,7 @@ function goMyBucket(){
 
                     <li class="add-btn" key-value="I1596">
                             
-                            <div class="list-add-checked change-add-check" style="display:none"><img src="_resource/images/discover/library/checked.png" alt=""></div>
+                            <div class="list-add-checked change-add-check ${status.index+1}" style="display:none;"><img src="_resource/images/discover/library/checked.png" alt=""></div>
 
                             <a href="#" class="en change-add-btn" key-value="I1596" style="display:inline-block">
                                 <div class="plus"><img src="_resource/images/discover/library/list-icon-plus.png" alt=""></div>
@@ -504,7 +504,7 @@ function goMyBucket(){
                 MY<br>
                 BUCKET LIST
             </div>
-            <a href="/ln/mypage/bucket.do" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
+            <a href="#" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
         </li>
         <li class="arrow-btn-l arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></a></li>
         <li class="lists">
