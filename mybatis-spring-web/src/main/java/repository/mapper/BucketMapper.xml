@@ -60,7 +60,7 @@
 	SELECT 
    			*
 	   	FROM Reservation  
-	   	  	
+	   	  	WHERE bk_name= #{bkName}
 	</select>
 	
 	

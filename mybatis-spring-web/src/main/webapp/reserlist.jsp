@@ -15,7 +15,7 @@
 	예약 ID : ${reservation.mEmail}<br/>
 	예약 날짜 : ${reservation.resDate}<br/> 
 	예약 인원 : ${reservation.resInt}<br/>
-	예약 인원 : ${reservation.resInt}<br/>
+	예약 ID : ${reservation.bkName}<br/>
 	</c:forEach>
 </body>
 </html>
