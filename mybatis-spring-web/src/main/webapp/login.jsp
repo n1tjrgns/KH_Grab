@@ -43,4 +43,11 @@
 
 </body>
 </html>
-
+<script type="text/javascript"> 
+	if(result == null){
+		var message = '${msg}'; 
+		var returnUrl = '${url}'; 
+		alert("msg"); 
+		document.location.href = url; 
+	}
+</script>
