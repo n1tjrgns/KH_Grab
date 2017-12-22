@@ -22,4 +22,5 @@ $(document).ready(function() {
 			$(".section > div > input").val("1");
 		}
 	})
+	
 })

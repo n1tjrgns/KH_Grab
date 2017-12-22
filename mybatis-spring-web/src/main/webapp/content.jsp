@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="java.io.*,java.util.*,javax.servlet.*"%>
+<%@page import="java.io.*,java.util.*,javax.servlet.*,java.util.List"%>
 <%@page import="repository.*, model.*"%>
 <html>
 <head>
@@ -20,15 +20,24 @@
 </head>
 
 <script>
-	function stock() {
+	function stock(index) {
 		if (parseInt($("input[name=p_stock]").val()) < parseInt($(
 				"input[name=p_payStock]").val())) {
 			alert("재고를 넘었습니다.");
 		} else {
-			document.getElementById('paymentForm').submit();
+			if(index == 1){
+				document.getElementById('paymentForm').action="shop_payment";
+				document.getElementById('paymentForm').submit();
+			}
+			if(index == 2){
+				document.getElementById('paymentForm').action="addProductList";
+				document.getElementById('paymentForm').submit();
+			}
 		}
 	}
+
 </script>
+
 <body>
 	<%
 		System.out.println("p_name(web) : " + request.getParameter("p_name"));
@@ -40,13 +49,7 @@
 	%>
 	<jsp:include page="navi-header.jsp"></jsp:include>
 	<div>
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
+		<br /> <br /> <br /> <br /> <br /> <br /> <br />
 	</div>
 	<div class="container">
 		<div class="row">
@@ -85,10 +88,9 @@
 							</div>
 						</div>
 						 -->
-						<form action="shop_payment" id="paymentForm" method="POST"
-							onSubmit="return false;">
-							<input type="hidden" name="p_stock"
-								value="<%=product.getProdStock()%>" />
+						<form id="paymentForm" method="POST" onSubmit="return false;">
+							<input type="hidden" name="p_stock"	value="<%=product.getProdStock()%>" />
+							<input type="hidden" name="p_price" value="<%=product.getProdPrice()%>">
 							<div class="section" style="padding-bottom: 20px;">
 								<h6 class="title-attr">
 									<small>수량</small>
@@ -108,15 +110,17 @@
 
 								<input type="hidden" name="p_name"
 									value='<%=product.getProdName()%>'>
-								<button class="btn btn-success" onclick="stock();">
+								<button class="btn btn-success" onclick="stock(1);">
 									<span style="margin-right: 20px"
 										class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 									구매하기
 								</button>
 
 								<h6>
-									<a href="#"><span class="glyphicon glyphicon-heart-empty"
-										style="cursor: pointer;"></span> 장바구니담기</a>
+									<a href="#" onclick="stock(2);"> <span
+										class="glyphicon glyphicon-heart-empty"
+										style="cursor: pointer;"></span> 장바구니담기
+									</a>
 								</h6>
 								<a href="./shop.jsp"><button class="btn btn-default">목록으로</button></a>
 							</div>

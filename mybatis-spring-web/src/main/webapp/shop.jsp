@@ -91,7 +91,18 @@
 				</li>
 			<%} %>
 			</form>
-			
+			<%
+				ArrayList<Product> list = (ArrayList)session.getAttribute("productList");
+				if(list == null){
+					System.out.println("장바구니 비어있음");
+				}else{
+					for(Product product : list){
+						System.out.println("상품이름:"+product.getProdName());
+						System.out.println("상품주문수량:"+product.getProdStock());
+						System.out.println("상품주문가격:"+product.getProdPrice());
+					}
+				}
+			%>
 
 			</ul>
 			<div class="more_listing">

@@ -1,9 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,9 +71,32 @@ public class ProductController {
 		return "pay";
 	}
 	
-	//수정중
-	@RequestMapping(value="/paying", method = RequestMethod.POST)
+	
+	@RequestMapping(value="/addProductList", method = RequestMethod.POST)
 	public String shopStep4(HttpServletRequest httpServletRequest, Model model) {
+		String prodName = httpServletRequest.getParameter("p_name");
+		System.out.println("p_name:"+prodName);
+		int qty = Integer.parseInt(httpServletRequest.getParameter("p_payStock"));
+		System.out.println("qty:"+qty);
+		
+		int total_price = qty * Integer.parseInt(httpServletRequest.getParameter("p_price"));
+		System.out.println("total_price:"+total_price);
+		HttpSession session = httpServletRequest.getSession(false);
+		Product prod = productSessionRepository.selectProduct(prodName);
+		prod.setProdStock(qty);
+		prod.setProdPrice(total_price);
+		ArrayList list = (ArrayList)session.getAttribute("productList");
+		if(list == null) {
+			list= new ArrayList();
+		}
+		list.add(prod);
+		session.setAttribute("productList", list);
+		System.out.println("장바구니세션:"+(ArrayList)session.getAttribute("productList"));
+		return "addProductListComplete";
+	}
+	
+	@RequestMapping(value="/paying", method = RequestMethod.POST)
+	public String shopStep5(HttpServletRequest httpServletRequest, Model model) {
 		Date today = new Date();
 		
 		int qty = Integer.parseInt(httpServletRequest.getParameter("qty"));
@@ -125,4 +150,6 @@ public class ProductController {
 		
 		return "payComplete";
 	}
+	
+	
 }
