@@ -305,7 +305,8 @@ var pagenum=1;
 
 function showPopup_Personlist(){
 		$.ajax( // 예약정보를 노출시킨다.
-			{	beforeSend: function(){ alert(cEmail+"cEmail"+bkName+"bkName"+mEmail+"mEmail");
+			{	beforeSend: function(){ 
+				//alert(cEmail+"cEmail"+bkName+"bkName"+mEmail+"mEmail");
 		
 			},
 				url:"discover/reser_list.do",
@@ -315,7 +316,7 @@ function showPopup_Personlist(){
 				data:{"bkName" : bkName, "mEmail" : mEmail,"cEmail" : cEmail,"pagenum":pagenum
 					},
 				success:function( data ) {
-			       alert("리스트 불러오기성공");
+			      // alert("리스트 불러오기성공");
 			       $(".person-list").css("display","block");
 			       $(".person-list").html(data);
                    $(".zero-person-info").css("display","none");

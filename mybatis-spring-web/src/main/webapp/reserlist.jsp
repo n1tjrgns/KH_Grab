@@ -11,14 +11,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2> 나의 예약 내역 </h2>
+<h4> 나의 예약 내역 </h4>
 
 	<c:forEach var="reservation" items="${reservation}" varStatus="status">
 	예약 ID : ${reservation.mEmail}<br/>
 	예약 날짜 : ${reservation.resDate}<br/> 
 	예약 인원 : ${reservation.resInt}<br/>
-	예약 ID : ${reservation.bkName}<br/>
 	</c:forEach>
+	<c:if test="${empty reservation}">
+	 
+         <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
+         <div class="desc1">이 버킷 리스트를 </div>
+       <div class="desc2">참여한<span>최초의 1인</span>이 되어 보세요!</div>
+     
+	</c:if>
 
 </body>
 </html>
