@@ -27,8 +27,6 @@ public class CommentController {
 		return "main";
 	}
 	
-	
-	
 	@RequestMapping(value="/Bucket_main", method = RequestMethod.GET)
 	public String handleStep2(Model model) {
 		model.addAttribute("comment",new Comment());
@@ -40,7 +38,6 @@ public class CommentController {
 		model.addAttribute("comment",new Comment());
 		return "Main_bucket";
 	}
-	
 	
 	@RequestMapping(value="/Main_cs", method = RequestMethod.GET)
 	public String handleStep5(Model model) {
@@ -115,8 +112,7 @@ public class CommentController {
 		List<Comment> result=commentSessionRepository.selectComment(comment);
 		model.addAttribute("result",result);
 		return "/comment_select";
-	}	
-	
+	}
 	
 	@RequestMapping(value="/comment_insert", method = RequestMethod.POST)
 	public String commentInsert(Comment comment ,Model model) {
@@ -132,6 +128,6 @@ public class CommentController {
 		Integer result=commentSessionRepository.updateComment(comment);
 		model.addAttribute("result",result);
 		return "/comment_update";
-	}	
+	}
 
 }

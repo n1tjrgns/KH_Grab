@@ -33,17 +33,22 @@ public class LoginController {
 			System.out.println(result.getmEmail());			
 			return "redirect:/Main";
 		}
-		else if(result == null){
+		else {
 		model.addAttribute("msg", "메세메세메세메세메세메세메세메세메세지지지지지지지지지지"); 
 		model.addAttribute("url", "Main_login");
-		}
-		return "redirect:/Main_login";			
+		return "redirect:/loginFail";
+		}		
 	}
 	@RequestMapping(value="/Logout")
 	public String LogoutMember(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();			
 		return "redirect:/Main";
+	}
+	
+	@RequestMapping(value="/loginFail")
+	public String LoginFail() {			
+		return "loginFail";
 	}
 	
 }

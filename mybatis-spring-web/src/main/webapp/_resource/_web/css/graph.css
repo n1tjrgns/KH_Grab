@@ -33,6 +33,6 @@ body{background: #ffffff;min-width: 1300px;}
 .section_service .title_area.active:after {width:50%;}
 .section_service .title_area.active:before {width:50%;}
 
-.section_service .title_area .title_box {padding:0 70px;background:#fff;font-size:25px;color:#222;display:inline-block;position:relative;z-index:2;top:34px;}
+.section_service .title_area .title_box {padding:0 70px;background:#fff;font-size:25px;color:#222;display:inline-block;position:relative;z-index:999;top:34px;}
 .section_service .title_area .title_box.active {top:0;}
 .section_service .title_area .title_box span {font-size:28px;font-weight:700;}

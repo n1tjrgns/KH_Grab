@@ -18,7 +18,7 @@
             <div class="email_box">
                 <h3>정보 입력</h3>
                 <div class="input_area">
-                    <form action="loginProcess" id="__loginForm__" method="post">
+                    <form action="loginProcess" id="__loginForm__" method="POST">
 
                         <div class="input_box email login_email">
                             <input type="text" placeholder="이메일 주소" name="mEmail" id="mEmail" value="" maxlength="35">
@@ -27,27 +27,18 @@
                             <input type="password" placeholder="비밀번호" name="mPw" id="mPw" onkeypress="" maxlength="25">
                         </div>
                         <div class="input_box loginbtn">
-                            <input type="submit" value="로그인">
+                            <input type="submit" value="로그인" >
                         </div>
                     </form>
                 </div>
                 <div class="btn_link">
                     <a href="javascript:void(0);" class="btn_email_save ">이메일 저장</a>
-                 
                     <a href="Main_login_find" class="btn_pw_find">비밀번호 찾기</a>
-                    <a href="Main_login_regist1" class="btn_register" onclick=''>이메일 회원가입</a>
+                    <a href="Main_login_regist1" class="btn_register">이메일 회원가입</a>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>
-<script type="text/javascript"> 
-	if(result == null){
-		var message = '${msg}'; 
-		var returnUrl = '${url}'; 
-		alert("msg"); 
-		document.location.href = url; 
-	}
-</script>
+
