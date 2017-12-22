@@ -18,11 +18,11 @@
 	예약 날짜 : ${reservation.resDate}<br/> 
 	예약 인원 : ${reservation.resInt}<br/>
 	</c:forEach>
-	<c:if test="${empty reservation.mEmail}">
+	<c:if test="${empty reservation}">
 	 
          <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
          <div class="desc1">이 버킷 리스트를 </div>
-       <div class="desc2">참여한<span>최초의 1인</span>이 되어 보세요!</div>
+       <div class="desc2">참여해<span>풍부한 삶을 누리는</span>그랩퍼가 되어 보세요!</div>
      
 	</c:if>
 
