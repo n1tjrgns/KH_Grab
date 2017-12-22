@@ -19,7 +19,19 @@
       <result column="bk_check" jdbcType="VARCHAR" property="bkCheck"/>
       <result column="photo_URL" jdbcType="VARCHAR" property="photoURL"/>
    </resultMap>
-
+	
+	
+	<resultMap type="Reservation" id="BaseResultMap2">
+	      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+	      <id column="bk_name" jdbcType="VARCHAR" property="bkName"/>
+	      <id column="m_email" jdbcType="VARCHAR" property="mEmail"/>
+	      <id column="c_email" jdbcType="VARCHAR" property="cEmail"/>
+	      <result column="visit_date" jdbcType="DATE" property="resDate"/>
+	      <result column="persons" jdbcType="BIGINT" property="resInt"/>
+	      <result column="reser_check" jdbcType="VARCHAR" property="resCheck"/>
+	      <result column="reser_date" jdbcType="DATE" property="regDate"/>
+	      <result column="re_comment" jdbcType="VARCHAR" property="resCf"/>
+	   </resultMap>
 
 	<select id="selectBucketALL" 
 	resultMap="BaseResultMap">
@@ -42,4 +54,20 @@
 		INSERT INTO bucket_request
 	   	VALUES(#{bkName},#{cEmail},#{bkContent},#{bkMax},#{bkPurpose},#{bkDate},#{bkDue},'업체버킷',#{bkCheck},#{photoURL})
 	</insert>
+	
+	<select id="selectReservList" parameterType="Reservation"
+	resultMap="BaseResultMap2">
+	SELECT 
+   			*	
+	   	FROM Reservation  
+	   	  	WHERE bk_name= #{bkName} AND m_email= #{mEmail} AND rownum <![CDATA[>=]]> #{resInt} AND rownum  <![CDATA[<=]]> #{resInt}
+	</select>
+	
+	
+    <insert id="InsertReserv" parameterType="Reservation" >
+		INSERT INTO Reservation
+	   	VALUES(#{bkName},#{mEmail},#{cEmail},#{resDate},#{resInt},'N', sysdate,#{resCf})
+	</insert>
+	
+	
 </mapper>

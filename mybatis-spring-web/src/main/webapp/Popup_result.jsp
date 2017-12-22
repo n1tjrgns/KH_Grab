@@ -29,10 +29,13 @@
                     </li>
                     <li class="detail-title">
                         <p class="category en" id="popup_detail_category">${bucketlist.bkSort}</p>
-                        <p class="title" id="popup_detail_title">${bucketlist.bkName}</p>
+                        <p class="title" id="popup_detail_title"  >${bucketlist.bkName}</p>
+                        <input type="hidden" value="${bucketlist.cEmail}" id="comdata" />
+                        <input type="hidden" value="${bucketlist.bkName}" id="bkdata" />
+                        
                     </li>
                     <li class="detail-share-btns">
-                        <div class="checked-detail-add-btn change-add-check"><img src="_resource/images/discover/etc/add-btn-checked.png" alt="?" /></div>
+                        <div class="checked-detail-add-btn change-add-check" ><img src="_resource/images/discover/etc/add-btn-checked.png" alt="?" /></div>
                         <a href="#" class="detail-add-btn change-add-btn"><img src="_resource/images/discover/etc/add-btn.png" alt="" /></a>
 
                         <div class="checked-detail-like-btn change-like-check"><img src="_resource/images/discover/etc/like-btn-checked.png" alt="??" /></div>
@@ -76,15 +79,19 @@
                         <li class="title"><span id="popup_detail_bucket_cnt">최대 ${bucketlist.bkMax}</span> 명이 ${bucketlist.bkDue} 까지 참여 할 수 있습니다.</li>
                         <li class="person-list" id="popup_detail_bucket_list" style="display: none;">
                         </li>
+                        
                         <li class="zero-person-info" style="display: block;">
                             <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
                             <div class="desc1">이 버킷 리스트를 </div>
                             <div class="desc2">참여한<span>최초의 1인</span>이 되어 보세요!</div>
                         </li>
+                          <li class="zero-person-info 2" style="display: block;">
+                            
+                        </li>
                         <li class="info-prev-next">
-                            <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>이전</span></a>
-                            <div class="info-count en" id="popup_detail_bucket_list_page"><span >1</span> / 0</div>
-                            <a href="javascript:Popup.detailBucketList('next');" class="info-next"><span>다음</span></a>
+                            <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>현재 참여인원</span></a>
+                            <div class="info-count en" id="popup_detail_bucket_list_page"><span >${ size }</span> / ${bucketlist.bkMax}</div>
+                            <!-- <a href="javascript:Popup.detailBucketList('next');" class="info-next"><span>다음</span></a> -->
                         </li>
                     </ul>
                 </div>
@@ -125,7 +132,7 @@
     
 
     
-    <div id="share-popup" class="share-popup popup-group">
+    <div id="share-popup" class="share-popup popup-group" style="display: none;" >
      	<input type="hidden" id="SNS_SHARE_KEY">
      	<input type="hidden" id="SNS_SHARE_MEM_KEY" value="20171205B000010261">
      	<input type="hidden" id="SAVE_SNS_SHARE_KEY">
@@ -133,17 +140,17 @@
      	<input type="hidden" id="SAVE_SNS_SHARE_TEXT">
      	<input type="hidden" id="SAVE_SNS_SHARE_IMAGE">
      	
-        <ul class="share-popup-ul">
-            <li class="share-popup-title"><span>채홍기</span> 님의<br> 버킷리스트를 SNS에 공유해보세요.</li>
-            <li class="share-popup-info"><span>ㆍ</span> 아래 이미지가 SNS에 공유됩니다.</li>
+        <ul class="share-popup-ul"  >
+            <li class="share-popup-title"><span>회원아이디</span> 님의<br> 예약 내역입니다.</li>
+            <li class="share-popup-info"><span>ㆍ</span> 아래 예약 내역이 업체로 전달되고 전송됩니다.</li>
             <li class="share-popup-img">
                 
                 <div class="share-popup-contents">
-                    <img src="_resource/images/discover/library/share-popup-sample.png"  id="SNS_SHARE_IMAGE"/>
+                    <img src="img/bg.jpg"  id="SNS_SHARE_IMAGE"/>
                     <div class="share-popup-dimmed"></div>
                     <div class="share-popup-contents-copy">
-                        <p class="en" id="SNS_SHARE_CTGR">SPORTS</p>
-                        	<span  id="SNS_SHARE_TEXT">하와이에서 서핑 마스터하기</span>
+                    
+                    <br/><br/><br/>   
                     </div>
                 </div>
             </li>
@@ -197,7 +204,6 @@
 </body>
 </html>
 <script>
-
 function showPopup(bkName,cEmail,mEmail){
 	if(confirm("예약하시겠습니까?")){
 		var resDate=prompt("수행하실 날짜는 어떻게 되시는지?(YYYY-MM-dd)","");
@@ -205,7 +211,17 @@ function showPopup(bkName,cEmail,mEmail){
 		var resCf=prompt("추가로 전하실 말씀이 있으신지요?","");
 	
 		$.ajax( // 상세정보를 팝업시킨다.
-			{
+			{	
+				beforeSend : function(){
+ 					if(resDate=="" || resDate==null ){
+ 						alert("날짜를 입력해주세요");
+ 						return false;
+ 					}
+					if(resInt==null || resInt=="" ||resInt<=0 ||resInt>=9999  ){
+ 						alert("인원수를 입력해주세요(0~9999)");
+ 						return false;
+ 					}
+ 				},
 				url:"discover/reser_popup.do",
 				dataType:"html",
 				type:"GET",
@@ -217,10 +233,14 @@ function showPopup(bkName,cEmail,mEmail){
 			       $(".person-list").css("display","block");
 			       $(".person-list").html(data);
                    $(".zero-person-info").css("display","none");
+                   $("#share-popup").css("display","block");
+                   $(".share-popup-contents-copy").html(data);
+                   
  				},
 				error : function( e ) {
-				alert("조회 오류\n"+e.error);
+				alert("잘못된 정보를 입력하였거나, 이미 예약을 신청한 내역입니다! 예약내역을 확인해 주세요.\n");
 				}
+				
 			}
 		);	 
 	}//if
@@ -229,4 +249,86 @@ function showPopup(bkName,cEmail,mEmail){
 
 </script>
 
+<script>
+function showPopup(bkName,cEmail,mEmail){
+	if(confirm("예약하시겠습니까?")){
+		var resDate=prompt("수행하실 날짜는 어떻게 되시는지?(YYYY-MM-dd)","");
+		var resInt=prompt("방문 인원은?","");
+		var resCf=prompt("추가로 전하실 말씀이 있으신지요?","");
+	
+		$.ajax( // 상세정보를 팝업시킨다.
+			{	
+				beforeSend : function(){
+ 					if(resDate=="" || resDate==null ){
+ 						alert("날짜를 입력해주세요");
+ 						return false;
+ 					}
+					if(resInt==null || resInt=="" ||resInt<=0 ||resInt>=9999  ){
+ 						alert("인원수를 입력해주세요(0~9999)");
+ 						return false;
+ 					}
+ 				},
+				url:"discover/reser_popup.do",
+				dataType:"html",
+				type:"GET",
+				async:true,
+				data:{"bkName" : bkName, "cEmail" : cEmail,  "mEmail" : mEmail ,"resDate":resDate
+					,"resInt" : resInt,"resCf" : resCf},
+				success:function( data ) {
+			       alert("참가 신청 되었습니다.");
+			       $(".person-list").css("display","block");
+			       $(".person-list").html(data);
+                   $(".zero-person-info").css("display","none");
+                   $("#share-popup").css("display","block");
+                   $(".share-popup-contents-copy").html(data);
+                   
+ 				},
+				error : function( e ) {
+				alert("잘못된 정보를 입력하였거나, 이미 예약을 신청한 내역입니다! 예약내역을 확인해 주세요.\n");
+				}
+				
+			}
+		);	 
+	}//if
+
+}//function
+
+</script>
+
+
+<script>
+var cEmail = document.getElementById("comdata").value;
+var mEmail = "member";
+var bkName = document.getElementById("bkdata").value;
+
+var pagenum=1;
+
+function showPopup_Personlist(){
+		$.ajax( // 예약정보를 노출시킨다.
+			{	beforeSend: function(){ 
+				//alert(cEmail+"cEmail"+bkName+"bkName"+mEmail+"mEmail");
+		
+			},
+				url:"discover/reser_list.do",
+				dataType:"html",
+				type:"GET",
+				async:true,
+				data:{"bkName" : bkName, "mEmail" : mEmail,"cEmail" : cEmail,"pagenum":pagenum
+					},
+				success:function( data ) {
+			      // alert("리스트 불러오기성공");
+			       $(".person-list").css("display","block");
+			       $(".person-list").html(data);
+                   $(".zero-person-info").css("display","none");
+            		
+ 				},
+				error : function( e ) {
+				alert(" 실패 \n");
+				}
+				
+			}
+		);	 
+	}
+showPopup_Personlist();
+</script>
 <script src="_resource/js/discover/Discover.Popup.js"></script>
