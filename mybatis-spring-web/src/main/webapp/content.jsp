@@ -25,13 +25,18 @@
 				"input[name=p_payStock]").val())) {
 			alert("재고를 넘었습니다.");
 		} else {
-			if(index == 1){
-				document.getElementById('paymentForm').action="shop_payment";
-				document.getElementById('paymentForm').submit();
-			}
-			if(index == 2){
-				document.getElementById('paymentForm').action="addProductList";
-				document.getElementById('paymentForm').submit();
+			if(parseInt($("input[name=login]").val())==0){
+				if(index == 1){
+					document.getElementById('paymentForm').action="shop_payment";
+					document.getElementById('paymentForm').submit();
+				}
+				if(index == 2){
+					document.getElementById('paymentForm').action="addProductList";
+					document.getElementById('paymentForm').submit();
+				}
+			}else{
+				alert("로그인을 해주세요.");
+				window.location.href="main";
 			}
 		}
 	}
@@ -42,13 +47,21 @@
 	<%
 		System.out.println("p_name(web) : " + request.getParameter("p_name"));
 		ProductSessionRepository psr = new ProductSessionRepository();
-		Product product = psr.selectProduct(request.getParameter("p_name"));
+		Product product = (Product)request.getAttribute("product");
 		System.out.println("이름:" + product.getProdName());
 		System.out.println("가격:" + product.getProdPrice());
 		System.out.println("재고:" + product.getProdStock());
 	%>
 	<jsp:include page="navi-header.jsp"></jsp:include>
 	<div>
+		<input type="hidden" name="login" value='
+		<%if (session.getAttribute("loginInfo") != null) {%>
+			0<%
+		}
+		else{
+		%>1<% 
+		}%>'/>
+		
 		<br /> <br /> <br /> <br /> <br /> <br /> <br />
 	</div>
 	<div class="container">
@@ -90,7 +103,8 @@
 						 -->
 						<form id="paymentForm" method="POST" onSubmit="return false;">
 							<input type="hidden" name="p_stock"	value="<%=product.getProdStock()%>" />
-							<input type="hidden" name="p_price" value="<%=product.getProdPrice()%>">
+							<input type="hidden" name="p_price" value="<%=product.getProdPrice()%>" />
+							<input type="hidden" name="BuyType" value="no"/>
 							<div class="section" style="padding-bottom: 20px;">
 								<h6 class="title-attr">
 									<small>수량</small>
@@ -117,12 +131,14 @@
 								</button>
 
 								<h6>
+								<br/>
 									<a href="#" onclick="stock(2);"> <span
 										class="glyphicon glyphicon-heart-empty"
 										style="cursor: pointer;"></span> 장바구니담기
 									</a>
 								</h6>
-								<a href="./shop.jsp"><button class="btn btn-default">목록으로</button></a>
+								<br/>
+								<a href="javascript:history.back()"><button class="btn btn-default">목록으로</button></a>
 							</div>
 						</form>
 					</td>

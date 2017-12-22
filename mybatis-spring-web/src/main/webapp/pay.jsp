@@ -180,8 +180,15 @@
 	<%
 		Member member = (Member)session.getAttribute("loginInfo");
 		ProductSessionRepository psr = new ProductSessionRepository();
-		Product product = psr.selectProduct(request.getParameter("p_name"));
-		
+		Product product = null;
+		ArrayList<Product> list = null;
+		String type = (String)request.getAttribute("buyType");
+		int totalPrice = 0;
+		if(session.getAttribute("productList")==null){
+			product = (Product)request.getAttribute("product");
+		}else{
+			list = (ArrayList)session.getAttribute("productList");
+		}
 	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->
@@ -238,12 +245,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- 반품여부 N : 반품불가 상품 -->
+					<%
+					if(type.equals("no")){
+					%>
 					<tr>
-
-						
-						<td class="td_product"><input type="hidden" name="no"
-							value="49187680" />
+						<td class="td_product">
 							<div class="connect_img">
 								<img src="./img/property_1.jpg" />
 							</div>
@@ -253,12 +259,34 @@
 									</span>
 								</div>
 							</div></td>
-						<td><strong><%=request.getParameter("p_payStock")%>개</strong></td>
+						<td><strong><%=product.getProdStock()%>개</strong></td>
 						
-						<td class="price"><strong><%=Integer.parseInt(request.getParameter("p_payStock")) * product.getProdPrice()%>
+						<td class="price"><strong><%=product.getProdPrice()%>
 								원</strong></td>
 						<td rowspan="1"><strong>무료</strong>
 					</tr>
+					<%}else{ 
+						for(int i=0; i<list.size();i++){
+						totalPrice += list.get(i).getProdPrice();
+					%>
+					<tr>
+						<td class="td_product">
+							<div class="connect_img">
+								<img src="./img/property_1.jpg" />
+							</div>
+							<div class="article_info connect_info">
+								<div class="box_product">
+									<span class="list_info"> <%=list.get(i).getProdName()%>
+									</span>
+								</div>
+							</div></td>
+						<td><strong><%=list.get(i).getProdStock()%>개</strong></td>
+						
+						<td class="price"><strong><%=list.get(i).getProdPrice()%>원</strong></td>
+						<td rowspan="1"><strong>무료</strong>
+					</tr>
+					<%}
+					} %>
 				</tbody>
 			</table>
 			<div class="cell_order_form">
@@ -276,84 +304,19 @@
 				<div class="cell_order_price total_price_wrap">
 					<ul class="cell_order_totalPrice">
 						<li class="total_title">총 상품 금액</li>
-						<li class="total_price" id="total_prd_amt"><%=Integer.parseInt(request.getParameter("p_payStock")) * product.getProdPrice()%>
+						<%
+							if(type.equals("no")){
+						%>
+						<li class="total_price" id="total_prd_amt"><%= product.getProdPrice()%>
 							원</li>
+						<%}else{ %>
+						<li class="total_price" id="total_prd_amt"><%=totalPrice%>원</li>
+						<%} %>
 					</ul>
 				</div>
 				<!--//결제금액-->
 			</div>
 		</div>
-
-		<!-- 
-		<div class="section order_coupon_discount">
-			<h3 class="section_title">
-				COUPON / DISCOUT<span>쿠폰/추가 할인</span>
-			</h3>
-			<div class="cell_order_form">
-		 -->
-		<!--회원할인-->
-		<!--할인상세-->
-		<!-- 
-				<div class="discount_contents">
-					<ul>
-						<li class="cell_discount_tit">보유 쿠폰 할인</li>
-						<li class="cell_discount_detail2"><a class="plain-btn btn"
-							onClick="Order.viewCouponPop(); return false;">쿠폰 조회/적용</a> <span
-							class="font_basic txt_desc_btn">(쿠폰 허용 상품 / 일부 쿠폰 제외)</span></li>
-					</ul>
-
-					<ul>
-						<li class="cell_discount_tit">할인 합계</li>
-						<li class="cell_discount_detail">모든 할인 내역을 합산한 금액입니다.</li>
-					</ul>
-				</div>
-				<!--//할인상세-->
-		<!--할인금액-->
-		<!-- 
-				<div class="cell_order_form2 cell_order_price">
-					<ul class="list_discount_order">
-						<!-- 배송비 -->
-		<!-- 
-					</ul>
-					<ul class="list_discount_order">
-						<li class="right_cell_order">보유 쿠폰 할인</li>
-						<li class="right_cell_price"><input type="hidden"
-							name="kcoupon" readonly value="0" /> - <strong id="coupon_price">0</strong>
-							원</li>
-					</ul>
-					<ul class="list_discount_order">
-						<li class="right_cell_sum">할인 합계</li>
-						<li class="right_cell_result"><strong id="total_pay_dc_amt">-0</strong>
-							원 <span class="payment_off_grey" id="total_dc_rate">0</span> <span
-							class="txt_unit_discount">%</span></li>
-					</ul>
-				</div>
-				<!--//할인금액-->
-		<!--//회원할인-->
-		<!-- 
-			</div>
-		-->
-		<!-- 
-			<div class="cell_order_form">
-
-				<div class="cell_order_price total_price_wrap">
-					<ul class="box_total_price">
-						<li class="total_title">최종 결제 금액</li>
-						<li class="total_price"><strong id="pay_amt">299,000</strong>
-							원</li>
-		 -->
-		<!--
-							<li class="right_cell_app">특별 적립(APP구매)</li>
-							<li class="right_cell_saving">0 원</li>
-							-->
-		<!-- 
-					</ul>
-				</div>
-			</div>
-			<!--//할인-->
-		<!-- 
-		</div>
- 		-->
 		<div class="right_contents section_address">
 			<div class="cell_order_form article_tit">
 				<div class="cell_order_form1">
@@ -552,11 +515,18 @@
 		</div>
 		<!--// 컨텐츠 영역 -->
 		<!-- 회원의 구매 정보 -->
-		<input type="hidden" name="p_stock" value="<%=request.getParameter("p_payStock")%>" />
-		<input type="hidden" name="p_totalprice" value="<%=Integer.parseInt(request.getParameter("p_payStock")) * product.getProdPrice()%>" />
-		<input type="hidden" name="member_email" value="<%=member.getmEmail() %>" />		
-		<input type="hidden" name="prod_name" value="<%=product.getProdName()%>" />
-		<input type="hidden" name="qty" value="<%=request.getParameter("p_payStock")%>" />
+		<%
+			if(list == null){
+		%>
+				<input type="hidden" name="p_totalprice" value="<%=product.getProdStock() * product.getProdPrice()%>" />
+				
+				<input type="hidden" name="prod_name" value="<%=product.getProdName()%>" />
+				<input type="hidden" name="qty" value="<%=product.getProdStock()%>" />
+		<%} else{%>
+				<input type="hidden" name="member_email" value="<%=member.getmEmail() %>" />
+				<input type="hidden" name="p_totalprice" value="<%=totalPrice%>" />
+		<%} %>
+
 		<!-- 회원의 구매 정보 끝-->
 				
 	</form>

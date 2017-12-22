@@ -59,8 +59,17 @@
 				%>
 				<li><a href="Main_bucket" class="mot2" onclick=""><span
 						class="en">BUCKET LIST</span></a></li>
-				<li><a href="Main_shop" class="mot2" onclick=""><span
-						class="en">SHOP</span></a></li>
+				<li class="sub"><a href="Main_shop" class="mot2" onclick=""><span
+						class="en">SHOP</span></a>
+					<%
+					if (session.getAttribute("loginInfo") != null) {
+					%>
+					<div class="sub_link mot3">
+						<a href="ShoppingBasket" onclick="" class="sub_a mot2">Shopping Basket</a>
+					</div>
+					<%} %>
+				</li>
+
 				<li class="sub"><a href="Main_cs" class="mot2" onclick="">
 						<span class="en">CUSTOM SERVICE</span>
 				</a>
@@ -69,8 +78,6 @@
 						<div class="border2"></div>
 						<div class="border3"></div>
 						<div class="border4"></div>
-
-
 					</div></li>
 
 				<%
