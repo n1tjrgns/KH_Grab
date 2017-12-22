@@ -58,9 +58,9 @@
 	<select id="selectReservList" parameterType="Reservation"
 	resultMap="BaseResultMap2">
 	SELECT 
-   			*
+   			*	
 	   	FROM Reservation  
-	   	  	WHERE bk_name= #{bkName}
+	   	  	WHERE bk_name= #{bkName} AND m_email= #{mEmail} AND rownum <![CDATA[>=]]> #{resInt} AND rownum  <![CDATA[<=]]> #{resInt}
 	</select>
 	
 	

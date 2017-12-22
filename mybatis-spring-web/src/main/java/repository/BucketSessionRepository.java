@@ -70,6 +70,7 @@ public class BucketSessionRepository  extends AbstractRepository {
 		}
 		
 		public List<Reservation> selectReservList(Reservation reservation) {
+			System.out.println(reservation.getBkName()+"selectReservList"+reservation.getResInt());
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			String statment = nameSpace+".selectReservList";
 			return sqlSession.selectList(statment,reservation);

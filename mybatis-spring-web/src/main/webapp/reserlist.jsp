@@ -17,5 +17,6 @@
 	예약 인원 : ${reservation.resInt}<br/>
 	예약 ID : ${reservation.bkName}<br/>
 	</c:forEach>
+
 </body>
 </html>

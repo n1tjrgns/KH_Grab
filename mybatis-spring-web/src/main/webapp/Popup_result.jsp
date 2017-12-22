@@ -29,8 +29,10 @@
                     </li>
                     <li class="detail-title">
                         <p class="category en" id="popup_detail_category">${bucketlist.bkSort}</p>
-                        <p class="title" id="popup_detail_title">${bucketlist.bkName}</p>
-                        <input type="hidden" value="${bucketlist.cEmail}" id="popup_detail_company" />
+                        <p class="title" id="popup_detail_title"  >${bucketlist.bkName}</p>
+                        <input type="hidden" value="${bucketlist.cEmail}" id="comdata" />
+                        <input type="hidden" value="${bucketlist.bkName}" id="bkdata" />
+                        
                     </li>
                     <li class="detail-share-btns">
                         <div class="checked-detail-add-btn change-add-check"><img src="_resource/images/discover/etc/add-btn-checked.png" alt="?" /></div>
@@ -87,9 +89,9 @@
                             
                         </li>
                         <li class="info-prev-next">
-                            <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>이전</span></a>
-                            <div class="info-count en" id="popup_detail_bucket_list_page"><span >1</span> / 0</div>
-                            <a href="javascript:Popup.detailBucketList('next');" class="info-next"><span>다음</span></a>
+                            <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>현재 참여인원</span></a>
+                            <div class="info-count en" id="popup_detail_bucket_list_page"><span >${ size }</span> / ${bucketlist.bkMax}</div>
+                            <!-- <a href="javascript:Popup.detailBucketList('next');" class="info-next"><span>다음</span></a> -->
                         </li>
                     </ul>
                 </div>
@@ -295,15 +297,17 @@ function showPopup(bkName,cEmail,mEmail){
 
 
 <script>
-var bkName = document.getElementById("popup_detail_title").value;
+var cEmail = document.getElementById("comdata").value;
 var mEmail = "member";
-var cEmail = document.getElementById("popup_detail_company").value;
-alert(cEmail+"내가함");
+var bkName = document.getElementById("bkdata").value;
+
 var pagenum=1;
 
 function showPopup_Personlist(){
 		$.ajax( // 예약정보를 노출시킨다.
-			{	beforeSend: function(){ alert("에이작스실행됌");},
+			{	beforeSend: function(){ alert(cEmail+"cEmail"+bkName+"bkName"+mEmail+"mEmail");
+		
+			},
 				url:"discover/reser_list.do",
 				dataType:"html",
 				type:"GET",
@@ -315,7 +319,7 @@ function showPopup_Personlist(){
 			       $(".person-list").css("display","block");
 			       $(".person-list").html(data);
                    $(".zero-person-info").css("display","none");
-            
+            		
  				},
 				error : function( e ) {
 				alert(" 실패 \n");
