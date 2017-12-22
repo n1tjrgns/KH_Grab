@@ -18,7 +18,7 @@
 	예약 날짜 : ${reservation.resDate}<br/> 
 	예약 인원 : ${reservation.resInt}<br/>
 	</c:forEach>
-	<c:if test="${empty reservation}">
+	<c:if test="${empty reservation.mEmail}">
 	 
          <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
          <div class="desc1">이 버킷 리스트를 </div>
