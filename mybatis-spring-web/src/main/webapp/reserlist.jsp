@@ -11,6 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2> 나의 예약 내역 </h2>
+
 	<c:forEach var="reservation" items="${reservation}" varStatus="status">
 	예약 ID : ${reservation.mEmail}<br/>
 	예약 날짜 : ${reservation.resDate}<br/> 

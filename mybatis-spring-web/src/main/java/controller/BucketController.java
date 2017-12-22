@@ -69,9 +69,12 @@ public class BucketController {
 		public String handleStep6(Model model,Reservation reservation1,Integer pagenum) {
 			System.out.println(pagenum+"페이지 번호");
 			reservation1.setResInt(pagenum);
+			reservation1.setResCheck(String.valueOf((pagenum+1)));
+			System.out.println(reservation1.getBkName()+"Reservation_getBkName");
 			List<Reservation> reservation = bucketRepository.selectReservList(reservation1);
 			System.out.println(reservation.size()+" 개 출력 완료");
 			model.addAttribute("reservation",reservation);
+			model.addAttribute("size",reservation.size());
 			return "reserlist";
 		}
 		
