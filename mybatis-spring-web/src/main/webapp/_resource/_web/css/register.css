@@ -117,13 +117,37 @@ h2 {font-size:32px;line-height:32px;color:#333;font-weight:300;text-align:center
 .btn_area a.btn_info_modify:hover {background:url('../images/register/ico_cursor_login_on.png') no-repeat 148px center #00c5bc;}
 .btn_area a.btn_member_leave {width:89px;padding-left:33px;background:url('../images/register/ico_cursor_login.png') no-repeat 80px center #fff;}
 .btn_area a.btn_member_leave:hover {background:url('../images/register/ico_cursor_login_on.png') no-repeat 80px center #00c5bc;}
-.btn_area a.btn_click {border:1px solid #00c5bc;color:#00c5bc;padding-left:36px;}
-.btn_area a.btn_click:hover {color:#fff;}
+
 .btn_area a.btn_cancel {width:88px;border:1px solid #666;text-align:center;}
 .btn_area a.btn_cancel:hover {background:#666;color:#fff;}
 .btn_area a.btn_pw_change {width:161px;border:1px solid #666;text-align:center;}
 .btn_area a.btn_pw_change:hover {background:#666;color:#fff;}
 .btn_area a.btn_leave {width:86px;height:26px;display:inline-block;font-size:14px;text-align:left;border-bottom:1px solid #4e4e4e;text-indent:3px;background:url('../images/register/ico_cursor_login2.png') no-repeat 80px 4px;border-radius:0;line-height:16px;position:absolute;right:20px;top:15px;}
+
+.btn_area .btn_click{
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #00c5bc;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+.btn_area .btn_click:hover{
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
 
 .btn_area2 {text-align:center;position:relative;margin-top:40px;}
 .btn_area2 a {width:86px;height:26px;display:inline-block;margin:0 13px;font-size:14px;text-align:left;border-bottom:1px solid #4e4e4e;text-indent:3px;background:url('../images/register/ico_cursor_login2.png') no-repeat 80px 4px;}

@@ -145,10 +145,7 @@ function goMyBucket(){
                 </form>
                 
             </div>
-            <div class="btn_area2">                
-                <a href="Main_login" class="btn_login mot2">로그인</a>
-                <a href="Main_login_regist1" class="btn_register mot2">회원가입</a>
-            </div>
+           
         </div>
     </div>
 </div>

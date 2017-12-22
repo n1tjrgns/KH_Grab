@@ -8,8 +8,8 @@ import javax.mail.PasswordAuthentication;
 */
 public class googleSMTPAuthenticator extends Authenticator {
 protected PasswordAuthentication getPasswordAuthentication() {
- String username = "n2tjrgns@gmail.com"; // gmail 사용자;
- String password = "sh276912";  // 패스워드;
+ String username = ""; // gmail 사용자;
+ String password = "";  // 패스워드;
  return new PasswordAuthentication(username, password);
 }
 }

@@ -8,10 +8,10 @@
 <%@page import="javax.mail.internet.InternetAddress"%>
 <%@page import="javax.mail.internet.MimeMessage"%>
 <%@page import="javax.mail.Session"%>
-<%@page import="qna.SMTPAuthenticator" %>
+<%@page import="qna.SMTPAuthenticator"%>
 <%@page import="javax.mail.Authenticator"%>
 <%@page import="java.util.Properties"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-	<jsp:include page="navi-header.jsp"></jsp:include> 
+	<jsp:include page="navi-header.jsp"></jsp:include>
 	<script>
 		$('.nowMove').click(function() {
 			localStorage.removeItem('search');
@@ -50,7 +50,7 @@
 		});
 	</script>
 
-	
+
 	<div id="wrap">
 		<div class="section_top">
 			<h2>
@@ -78,36 +78,35 @@
 				</p>
 			</div>
 			<form name="frm" method="post" action="CS_delete">
-			<div class="faq_container">
-				<ul class="faq_tab">
-					<li class="on"><a href="#">GRAB의 자주 묻는 질문</a></li>
-					
-				</ul>
-				<ul class="faq_article on">
-					
-					<c:forEach var="cslist" items="${cslist}" varStatus="status">
-					<c:if test="${cslist.csSort=='자주 묻는 질문'}">
-					
-					<input name="csNum" type="hidden" value="${cslist.csNum}">
-					<li>
-		
-						<p class="q">
-						
-							<a href="#">${cslist.csTitle} </a>
-							
+				<div class="faq_container">
+					<ul class="faq_tab">
+						<li class="on"><a href="#">GRAB의 자주 묻는 질문</a></li>
 
-						</p>
-						<input type="submit" value="[삭제]">
-						<p class="a">${cslist.csContent}</p>
-					</li>
-					</c:if>
-					</c:forEach>
-					
-				</ul>
-			</div>
+					</ul>
+					<ul class="faq_article on">
+
+						<c:forEach var="cslist" items="${cslist}" varStatus="status">
+							<c:if test="${cslist.csSort=='자주 묻는 질문'}">
+
+								<input name="csNum" type="hidden" value="${cslist.csNum}">
+								<li>
+
+									<p class="q">
+
+										<a href="#">${cslist.csTitle} </a>
+
+
+									</p> <input type="submit" value="[삭제]">
+									<p class="a">${cslist.csContent}</p>
+								</li>
+							</c:if>
+						</c:forEach>
+
+					</ul>
+				</div>
 			</form>
 		</div>
-		
+
 		<div class="noti_text_container">
 			<div class="text_title">
 				<h3>공지사항</h3>
@@ -116,30 +115,28 @@
 				</p>
 			</div>
 			<form name="frm" method="post" action="CS_delete">
-			<div class="notifiaction_container">
-				<ul>
-					
-					<li class="head"><span class="num">번호 </span> <span
-						class="title">제목</span> <span class="date">등록일</span></li>
+				<div class="notifiaction_container">
+					<ul>
 
-					<c:forEach var="cslist" items="${cslist}" varStatus="status">
-					<c:if test="${cslist.csSort=='공지사항'}">
-					<input name="csNum" type="hidden" value="${cslist.csNum}">
-					<li class="no2"><a href="#"><span class="num"><em>${status.index+1}</em></span>
-							<span class="title">${cslist.csTitle}</span> <span class="date">${cslist.csDate}</span></a>
-						<div class="content">
-							${cslist.csContent}
-							
-						</div>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
-						<input type="submit" value="[삭제]"></li>
-						
-					</c:if>
+						<li class="head"><span class="num">번호 </span> <span
+							class="title">　　　　　　　제목</span> <span class="date">등록일</span></li>
+
+						<c:forEach var="cslist" items="${cslist}" varStatus="status">
+							<c:if test="${cslist.csSort=='공지사항'}">
+								<input name="csNum" type="hidden" value="${cslist.csNum}">
+								<li class="no2"><a href="#"><span class="num"><em>${status.index+1}</em></span>
+										<span class="title">　　　　　　　${cslist.csTitle}</span> <span
+										class="date">${cslist.csDate}</span></a>
+									<div class="content">${cslist.csContent}</div> <input
+									type="submit" value="[삭제]"></li>
+
+							</c:if>
 						</c:forEach>
-				</ul>
-			</div>
+					</ul>
+				</div>
 			</form>
 		</div>
-		
+
 		<div class=mail_text_container>
 			<div class="text_title">
 				<h3>Q & A</h3>
@@ -149,56 +146,92 @@
 			</div>
 			<div class="mailing_container">
 				<form name="qna_write" action="CSCS" method="post">
-
+					
 					<ul class="mail">
-						<li class="texttype">작성자&nbsp; &nbsp;&nbsp;<input type="text"
-							width="300" name="name"
+					
+						<li class="texttype">작성자　　<input type="text"
+							width="300" name="name" class="name" placeholder="이름을 입력하세요."
 							style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
-						<li class="texttype">휴대전화&nbsp;<input type="text"
-							name="phonenum"
+						<li class="texttype">휴대전화　<input type="text"
+							name="phonenum" class="phonenum" placeholder="휴대전화를 입력하세요."
 							style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
-						<li class="texttype">전화번호&nbsp;<input type="text" name="hnum"
+						<li class="texttype">전화번호　<input type="text" name="hnum" class="hnum" placeholder="전화번호을  입력하세요"
+								style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
+						<li class="texttype">이메일　　<input
+							type="text" name="email" class="email"
+							placeholder="abc@gmail.com 형식에 맞게 입력하세요."
 							style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
-						<li class="texttype">이메일&nbsp;&nbsp;&nbsp;&nbsp;<input
-							type="text" name="email"
+						<li class="texttype">제목　　　<input type="text" name="subject" class="subject"
+							placeholder="제목을 입력하세요."
 							style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
-						<li class="texttype">&nbsp;제목&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-							type="text" name="subject"
-							style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
-						<li class="textarea" placeholder="내용을 입력하세요.">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea
-								name="content" class="content" cols="40" rows="5"
+						<li class="textarea">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<textarea name="content" class="content" placeholder="내용을 입력하세요."
+								cols="40" rows="5"
 								style="margin-top: 10px; border: 2px solid pink;"> 
 					</textarea>
 						</li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-							type="submit" value="문의하기" onclick="check()" class="submit"
-							style="background-color: white; padding: 15px 32px; text-align: center; border: 1px solid black;text-decoration: none; display: inline-block; font-size: 16px;">
-							<input type="reset" value="취소"
-							style="background-color: white; padding: 15px 32px; text-align: center; border: 1px solid black;text-decoration: none; display: inline-block; font-size: 16px;"></li>
+							type="submit" value="문의하기" class="submit">
+						
+							<input type="reset" value="취소" class="cancel">
+						</li>
 						<li><input type="hidden" name="from"
 							value="n2tjrgns@gmail.com"></li>
+					
 					</ul>
+					
 				</form>
 			</div>
 		</div>
 
+
 		<script>
 		$(".submit").click(
 			function check() {
+			
+				var name =  $('.name').val();
+				var phonenum =  $('.phonenum').val();
+				var hnum =  $('.hnum').val();
+				var email =  $('.email').val();
+				var subject =  $('.subject').val();
+				var content =  $('.content').val();
+				
+				
+				if(!name){					
+					alert("이름이 입력되지 않았습니다.");	
+				}else if (!phonenum){
+					
+					alert("휴대전화가 입력되지 않았습니다.");
+				}else if (!hnum){
+				
+					alert("전화번호가 입력되지 않았습니다.");
+				}else if (!email){
+					alert("메일이 입력되지 않았습니다.");
+					
+				}else if (!subject){
+					alert("제목이 입력되지 않았습니다.");
+					
+				}else if (!content){
+					alert("내용이 입력되지 않았습니다.");
+				}else{
 				alert("전송되었습니다.");
 				document.q.submit();
+				}
+				
 				<%System.out.println("출력되었따미2");%>
 				
 			}
 			);
 		</script>
 	</div>
-	<jsp:include page="navi-footer.jsp"></jsp:include> 
-		<script src="_resource/_web/js/faq.js"></script>
+	<jsp:include page="navi-footer.jsp"></jsp:include>
+	<script src="_resource/_web/js/faq.js"></script>
 </body>
 </html>
-<%System.out.println("출력되었따미33333333");%>
+<%
+	System.out.println("출력되었따미33333333");
+%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String name = null;
@@ -256,7 +289,7 @@
 		buffer.append(hnum + "<br>");
 		buffer.append("이메일 : ");
 		buffer.append(email + "<br>");
-		buffer.append("제목 : "); 
+		buffer.append("제목 : ");
 		buffer.append(subject + "<br>");
 		buffer.append("내용 : ");
 		buffer.append(content + "<br>");
