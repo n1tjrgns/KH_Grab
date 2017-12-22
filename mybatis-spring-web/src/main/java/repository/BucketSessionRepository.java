@@ -68,6 +68,13 @@ public class BucketSessionRepository  extends AbstractRepository {
 				sqlSession.close();
 			}
 		}
+		
+		public List<Reservation> selectReservList(Reservation reservation) {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".selectReservList";
+			return sqlSession.selectList(statment,reservation);
+			
+		}
 }
 		
 		

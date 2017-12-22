@@ -65,6 +65,16 @@ public class BucketController {
 		return "reser_popup";
 		}
 		
+		@RequestMapping(value="discover/reser_list.do", method = RequestMethod.GET)
+		public String handleStep6(Model model,Reservation reservation1,Integer pagenum) {
+			System.out.println(pagenum+"페이지 번호");
+			reservation1.setResInt(pagenum);
+			List<Reservation> reservation = bucketRepository.selectReservList(reservation1);
+			System.out.println(reservation.size()+" 개 출력 완료");
+			model.addAttribute("reservation",reservation);
+			return "reserlist";
+		}
+		
 		
 			
 }

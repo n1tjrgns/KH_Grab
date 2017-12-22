@@ -30,6 +30,7 @@
                     <li class="detail-title">
                         <p class="category en" id="popup_detail_category">${bucketlist.bkSort}</p>
                         <p class="title" id="popup_detail_title">${bucketlist.bkName}</p>
+                        <input type="hidden" value="${bucketlist.cEmail}" id="popup_detail_company" />
                     </li>
                     <li class="detail-share-btns">
                         <div class="checked-detail-add-btn change-add-check"><img src="_resource/images/discover/etc/add-btn-checked.png" alt="?" /></div>
@@ -76,6 +77,7 @@
                         <li class="title"><span id="popup_detail_bucket_cnt">최대 ${bucketlist.bkMax}</span> 명이 ${bucketlist.bkDue} 까지 참여 할 수 있습니다.</li>
                         <li class="person-list" id="popup_detail_bucket_list" style="display: none;">
                         </li>
+                        
                         <li class="zero-person-info" style="display: block;">
                             <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
                             <div class="desc1">이 버킷 리스트를 </div>
@@ -245,4 +247,83 @@ function showPopup(bkName,cEmail,mEmail){
 
 </script>
 
+<script>
+function showPopup(bkName,cEmail,mEmail){
+	if(confirm("예약하시겠습니까?")){
+		var resDate=prompt("수행하실 날짜는 어떻게 되시는지?(YYYY-MM-dd)","");
+		var resInt=prompt("방문 인원은?","");
+		var resCf=prompt("추가로 전하실 말씀이 있으신지요?","");
+	
+		$.ajax( // 상세정보를 팝업시킨다.
+			{	
+				beforeSend : function(){
+ 					if(resDate=="" || resDate==null ){
+ 						alert("날짜를 입력해주세요");
+ 						return false;
+ 					}
+					if(resInt==null || resInt=="" ||resInt<=0 ||resInt>=9999  ){
+ 						alert("인원수를 입력해주세요(0~9999)");
+ 						return false;
+ 					}
+ 				},
+				url:"discover/reser_popup.do",
+				dataType:"html",
+				type:"GET",
+				async:true,
+				data:{"bkName" : bkName, "cEmail" : cEmail,  "mEmail" : mEmail ,"resDate":resDate
+					,"resInt" : resInt,"resCf" : resCf},
+				success:function( data ) {
+			       alert("참가 신청 되었습니다.");
+			       $(".person-list").css("display","block");
+			       $(".person-list").html(data);
+                   $(".zero-person-info").css("display","none");
+                   $("#share-popup").css("display","block");
+                   $(".share-popup-contents-copy").html(data);
+                   
+ 				},
+				error : function( e ) {
+				alert("잘못된 정보를 입력하였거나, 이미 예약을 신청한 내역입니다! 예약내역을 확인해 주세요.\n");
+				}
+				
+			}
+		);	 
+	}//if
+
+}//function
+
+</script>
+
+
+<script>
+var bkName = document.getElementById("popup_detail_title").value;
+var mEmail = "member";
+var cEmail = document.getElementById("popup_detail_company").value;
+alert(cEmail+"내가함");
+var pagenum=1;
+
+function showPopup_Personlist(){
+		$.ajax( // 예약정보를 노출시킨다.
+			{	beforeSend: function(){ alert("에이작스실행됌");},
+				url:"discover/reser_list.do",
+				dataType:"html",
+				type:"GET",
+				async:true,
+				data:{"bkName" : bkName, "mEmail" : mEmail,"cEmail" : cEmail,"pagenum":pagenum
+					},
+				success:function( data ) {
+			       alert("리스트 불러오기성공");
+			       $(".person-list").css("display","block");
+			       $(".person-list").html(data);
+                   $(".zero-person-info").css("display","none");
+            
+ 				},
+				error : function( e ) {
+				alert(" 실패 \n");
+				}
+				
+			}
+		);	 
+	}
+showPopup_Personlist();
+</script>
 <script src="_resource/js/discover/Discover.Popup.js"></script>
