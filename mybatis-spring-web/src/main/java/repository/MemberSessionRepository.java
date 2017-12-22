@@ -34,6 +34,22 @@ public class MemberSessionRepository extends AbstractRepository {
 		}
 	}
 	
+	public Integer insertMemberEnter(Member member) {
+		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		try {
+		String statment = nameSpace+".insertRegisterEnterByCondition";
+		Integer result = sqlSession.insert(statment,member);
+		 if(result>0) {
+			 sqlSession.commit();
+		 }else {
+			 sqlSession.rollback();
+		 }
+		 return result;
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
 //	public Integer updateComment(Member comment) {
 //		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 //		try {

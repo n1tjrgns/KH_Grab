@@ -47,20 +47,17 @@
 										maxlength="70">
 								</div>
 						<!-- 이메일 -->
-							<p class="txt">이메일</p>
-								<div class="email_box">
-									<div class="input_box email_reg_email" id="email_reg_email">
-										<input type="text"  name="mEmail" placeholder ="이메일"
-											maxlength="70">
-									</div>
-									<!-- <div class="dot">@</div> 
-								<div class="input_box email_reg_email2">
-										<input type="text" name="email2" maxlength="20">
-									</div>  -->
-									 <!-- <a href="javascript:checkDupicate(2);"
-										class="btn_double_check mot2">중복확인</a>  -->
-								</div>
-								<a href="javascript:void(0);" class="btn_email_agree1 btn_agree">
+						<p class="txt">이메일</p>
+						<div class="email_box">
+							<div class="input_box email_reg_email" id="email_reg_email">
+								<input type="text" name="mEmail1" placeholder="이메일"
+									maxlength="70">
+							</div>
+							
+							<a href="javascript:checkDupicate(2);" class="btn_double_check"
+								id="btn_double_check">중복확인</a>
+						</div>
+						<a href="javascript:void(0);" class="btn_email_agree1 btn_agree">
 									<span class="ico"></span> <span>이메일 수신에 동의합니다.</span><br>
 									(문의 답변 메일, 버킷 리스트 업데이트 알림 등 꼭 필요한 메일만 발송합니다.)
 								</a>
@@ -87,29 +84,45 @@
 										<input type="date" placeholder="생일" name="mBirth" maxlength="50">
 									</div>
 								</div> 
-								 <!-- 성별 -->
-								 <div class="email_box">
-									<p class="txt">성별</p>
-									<div class="input_box email_reg_gen" id="email_reg_gen">
-										<input type="text" placeholder="성별" name="mGen" maxlength="50">
-									</div>
-								</div>  
-								<!-- 연락처 -->
-								  <div class="phone_box"> 
-									<p class="txt">연락처</p>									
-									<div class="input_box email_reg_phone1" id="email_reg_phone1">
-										<input type="tel"  name="mTel"
-											onkeydown="register.numberKeyPress(event);"
-											onpaste="return false;" oncopy="return false;">
-									</div>
-									<!-- <div class="input_box email_reg_phone2">
-										<input type="tel" maxlength="4" name="mTel"
-											onkeydown="register.numberKeyPress(event);"
-											onpaste="return false;" oncopy="return false;">
-									</div> -->
+							<!-- 성별 -->
+							
+							<div class="phone_box">
+									<p class="txt">성별</p>					
+										<!-- <input type="text" placeholder="성별" name="mGen" maxlength="50"> -->
+								<select id="email_reg_phone" name="mGen" class="input_box email_reg_gen" id="email_reg_gen">
+									<option>성별(선택)</option>
+									<option>남성</option>
+									<option>여성</option>
+								</select>						
+							</div>
+	 					<br>
+	 					<br>
+	 					<br>
+				<!-- 연락처 -->
+						<div class="phone_box">
+							<p class="txt">연락처</p>
+							<select id="email_reg_phone" name="cell1" class="email_reg_phone">
+								<option>연락처 (선택)</option>
+								<option>010</option>
+								<option>011</option>
+								<option>016</option>
+								<option>017</option>
+								<option>018</option>
+								<option>019</option>
+							</select>
+							<div class="input_box email_reg_phone1" id="email_reg_phone1">
+								<input type="tel" name="cell2" maxlength="4"
+									onkeydown="register.numberKeyPress(event);"
+									onpaste="return false;" oncopy="return false;">
+							</div>
+							<div class="input_box email_reg_phone2" id="email_reg_phone2">
+								<input type="tel" maxlength="4" name="cell3"
+									onkeydown="register.numberKeyPress(event);"
+									onpaste="return false;" oncopy="return false;">
+							</div>
 
-								</div>
-								<a href="javascript:void(0);" class="btn_email_agree2 btn_agree">
+						</div>
+						<a href="javascript:void(0);" class="btn_email_agree2 btn_agree">
 									<span class="ico"></span> <span>SMS 수신에 동의합니다.</span><br>
 									(경품 발송 및 마케팅을 위한 SMS만 발송합니다.)
 								</a>
@@ -592,7 +605,7 @@
 									가입</a>
 								
 										
-										 <a href="Main" class="btn_cancel mot2"
+										<a href="Main" class="btn_cancel mot2"
 										onclick='eventTrack("", "email_register_btn_cancel");'>취 소</a>
 								</div>
 								<p class="bottom_txt">
@@ -604,6 +617,7 @@
 					</div>
 				</form>
 				</div>
+				
 				<!--  <div class="pop_layer pop_complete pop_email_complete">
 					<div class="pop_inner">
 						<div class="text_area">
@@ -704,12 +718,15 @@
 			$emailRegEmail.focus();
 			return false;
 		} 
+		/*  if ($email_flg.val() != 'Y') {
+			alert("이메일 중복 체크를 해 주세요");
+			return false;
+		}  */
 		if ($emailRegPw.val() == '') {
 			alert('비밀번호를 입력해주세요');
 			$emailRegPw.focus();
 			return false;
-		}
-		
+		} //////////////////////////////////////////////////////////////특수 문자 등 나중에 만들기
 		if($emailRegPwCheck.val() == '' || $emailRegPw.val() != $emailRegPwCheck.val()){
 			alert('동일한 비밀번호로 입력해주세요');
 			$emailRegPwCheck.focus();
@@ -745,10 +762,10 @@
 			$emailRegAddr2.focus();
 			return false;
 		}
-	/* 	if (!$allAgree.hasClass('active')) {
+	 	if (!$allAgree.hasClass('active')) {
 			alert('약관에 모두 동의 해주세요');
 			return false;
-		 }*/
+		 }
 			
 		document.getElementById('joinForm').submit();
 		/* else {
@@ -776,67 +793,70 @@
 
 	}
 	
-	       
-	function checkDupicate(num) {
+	
+	      
+	function checkDupicate(num){
 		var oFORM = document.joinForm;
 		var message = "연락처";
 		var schType = "cellular";
-		if (num == 2) {
-			schType = "email";
+		if( num == 2){
+			schType = "mEmail";
+			if(oFORM.mEmail1.value.trim() != ''&&oFORM.mEmail2.value.trim() != ''){
+				mEmail = oFORM.email1.value+"@"+oFORM.email2.value;
+			}else{
+				schString = "";
+			}
 			message = "이메일";
-			if (!isEmail(oFORM.email1.value, oFORM.email2.value,
-					"이메일 형식이 올바르지 않습니다.")) {
+			if(!isEmail(oFORM.email1.value,oFORM.email2.value,"이메일 형식이 올바르지 않습니다.") ){
 				return;
 			}
-			if (schString.length > 100) {
+			if( schString.length >100){
 				alert("100자 이하의 email만 입력 가능합니다.");
 				return;
 			}
-		} else {
-			if (oFORM.cell1.value.trim() != ''
-					&& oFORM.cell2.value.trim() != ''
-					&& oFORM.cell3.value.trim() != '') {
-				schString = oFORM.cell1.value + "-" + oFORM.cell2.value + "-"
-						+ oFORM.cell3.value;
-			} else {
+		}else{
+			if(oFORM.cell1.value.trim() != '' && oFORM.cell2.value.trim() != '' && oFORM.cell3.value.trim() != '' ){
+				mTel = oFORM.cell1.value+"-"+oFORM.cell2.value+"-"+oFORM.cell3.value;
+			}else{
 				schString = "";
-			}
+			}			
 
 		}
 
-		if (schString.trim() != '') {
+		if(schString.trim() != '' ){
 			//alert(schString)
-			$.post("/member/Main_login_regist1", {
-				schType : schType,
-				schString : schString
-			}, function(result) {
-				switch (parseInt(result.dataObject.result, 10)) {
-				case 1:
-					alert("사용가능한 " + message + "입니다.");
-					$("#" + schType + "_flg").val("Y");
-					$("#checked_" + schType).val(schString);
-					if (schType == "email") {
-						$("#checked_email").val(schString);
-					} else {
-						$("#checked_cellular").val(schString);
+			$.post(
+				"/member/checkDupicate.do",
+				{schType:schType,schString:schString},
+				function(result){
+						switch(parseInt(result.dataObject.result,10)){
+						case 1:
+							alert("사용가능한 "+message+"입니다.");
+							$("#"+schType+"_flg").val("Y");
+							$("#checked_"+schType).val(schString );
+							if( schType == "email"){ 
+								$("#checked_email").val(schString);
+							}else{
+								$("#checked_cellular").val(schString);								
+							}
+							break;
+						case 2:
+							alert("이미 사용중인 "+message+"입니다.");
+							break;
+						case -1:
+							alert("매개변수 부족");
+							break;
+						default:
+							alert(result.dataObject.result);
+							break;
 					}
-					break;
-				case 2:
-					alert("이미 사용중인 " + message + "입니다.");
-					break;
-				case -1:
-					alert("매개변수 부족");
-					break;
-				default:
-					alert(result.dataObject.result);
-					break;
 				}
-			});
+			);
 
-		} else if (schString.trim() == '') {
-			alert(message + "입력후 중복확인 바랍니다.");
-			return;
-		} 
+		}else if(schString.trim() == ''){
+			alert(message+"입력후 중복확인 바랍니다.");
+	        return;
+		}
 	}
 
  function pwCheck() {

@@ -20,18 +20,18 @@ public class MemberController {
 
 	@RequestMapping(value = "/registing", method = RequestMethod.POST)
 	public String insrtStep1(HttpServletRequest httpServletRequest, Model model) {
-		String mName = httpServletRequest.getParameter("mEmail");
+		String mName = httpServletRequest.getParameter("mName");
 		String mPw = httpServletRequest.getParameter("mPw");
-		String mEmail = httpServletRequest.getParameter("mName");
-		String mTel = httpServletRequest.getParameter("mTel");
+		String mEmail = httpServletRequest.getParameter("mEmail1");
+		String mTel = httpServletRequest.getParameter("cell1") +"-"+httpServletRequest.getParameter("cell2")+"-"+httpServletRequest.getParameter("cell3");
 		Date mBirth = java.sql.Date.valueOf(httpServletRequest.getParameter("mBirth"));
 		String mGen = httpServletRequest.getParameter("mGen");
 		String mPost = httpServletRequest.getParameter("mPost");
 		String mAddr = httpServletRequest.getParameter("mAddr");
 		String mAddr_d = httpServletRequest.getParameter("mAddr_d");
-		int mAttendcount = 0;
+		Long mAttendcount = 0L;
 		String mAuthority = httpServletRequest.getParameter("mAuthority");
-		int mLicense = 0;
+		Long mLicense = 0L;
 		String mProfile = "";
 		String bank = "";
 		String account = "";
@@ -42,6 +42,34 @@ public class MemberController {
 		Integer result = memberSessionRepository.insertMember(member);
 		model.addAttribute("member", member);
 		return "main";
+		
+	}
+	
+	@RequestMapping(value = "/registingEnter", method = RequestMethod.POST)
+	public String insrtStep2(HttpServletRequest httpServletRequest, Model model) {
+		String mName = httpServletRequest.getParameter("mName");
+		String mEmail = httpServletRequest.getParameter("mEmail1");
+		String mPw = httpServletRequest.getParameter("mPw");
+		String mTel = httpServletRequest.getParameter("cell1") +"-"+httpServletRequest.getParameter("cell2")+"-"+httpServletRequest.getParameter("cell3");
+		Long mLicense = 0L;
+		String mPost = httpServletRequest.getParameter("mPost");
+		String mAddr = httpServletRequest.getParameter("mAddr");
+		String mAddr_d = httpServletRequest.getParameter("mAddr_d");
+		Date mBirth = java.sql.Date.valueOf(httpServletRequest.getParameter("mBirth"));
+		String mGen = httpServletRequest.getParameter("mGen");
+		Long mAttendcount = 0L;
+		String mAuthority = httpServletRequest.getParameter("mAuthority");
+		String mProfile = "";
+		String bank = "";
+		String account = "";
+
+		Member member = new Member(mEmail,mPw, mName, mTel, mBirth, mGen, mPost, mAddr, mAddr_d, mAttendcount, mAuthority,
+				mLicense, mProfile, bank, account);
+
+		Integer result = memberSessionRepository.insertMemberEnter(member);
+		model.addAttribute("member", member);
+		return "main";
+		
 	}
 
 	/*
