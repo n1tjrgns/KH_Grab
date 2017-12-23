@@ -15,7 +15,6 @@ $(document).ready(function() {
 	})
 	$(".btn-plus").on("click", function() {
 		var now = $(".section > div > input").val();
-		window.alert(now);
 		if ($.isNumeric(now)) {
 			$(".section > div > input").val(parseInt(now) + 1);
 		} else {

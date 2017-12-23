@@ -138,7 +138,7 @@
 					</form>
 					<form action="shop_payment2" method="post">
 						<input type="hidden" name="BuyType" value="yes" />
-						<input type="button" value="구매하기" />
+						<input type="submit" value="구매하기" />
 					</form>
 				</tbody>
 					
