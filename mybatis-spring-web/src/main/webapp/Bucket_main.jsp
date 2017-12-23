@@ -405,8 +405,19 @@ window.onload = function() { search_list('All'); };
     </div>
 			
 	<div id="list-container" class="use_gpu">
-
-    </div>
+				<ul class="lists-container">
+        			<li>
+        			<a href="javascript:alert('알럿')"> <img
+							src="_resource/images/discover/bucket-list-none-image.png"
+							alt="??!#!@#!@#!@#!@#" />
+					</a></li>
+					<li>
+					<a href="javascript:Popup.$keyValue='I0117';Popup.detailPopupShowHide(true);"><img
+							src="http://images.hwlife.hscdn.com//library/i0117_thumb.jpg"
+							alt="??!#!@#!@#!@#!@#"></a>
+					</li>
+				 </ul>
+				</div>
 
 <div id="bucket-list" class="fixed-group">
     <ul class="bucket-list-box">
