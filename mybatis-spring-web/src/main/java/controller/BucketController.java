@@ -20,10 +20,23 @@ public class BucketController {
 		
 		@RequestMapping(value="/Bucket_main", method = RequestMethod.GET)
 		public String handleStep2(Model model) {
-			
-			List<Bucketlist> bucketlist= bucketRepository.selectBucketlist();
-			model.addAttribute("bucketlist",bucketlist);
 			return "Bucket_main";
+		}
+		
+		@RequestMapping(value="/Bucket_main_search.do", method = RequestMethod.GET)
+		public String handleStep2_1(Model model,String search ) {
+			if(search==null || search.equals("All")){
+				List<Bucketlist> bucketlist= bucketRepository.selectBucketlist();
+				model.addAttribute("bucketlist",bucketlist);
+				System.out.println(bucketlist.size());
+			}else {
+			System.out.println("서치:"+search);
+			List<Bucketlist> bucketlist= bucketRepository.selectBucketlist_search(search);
+			model.addAttribute("bucketlist",bucketlist);
+			System.out.println(bucketlist.size());
+			
+			}
+			return "list_container";
 		}
 		
 		@RequestMapping(value="/discover/library_detail_popup.do", method = RequestMethod.POST)

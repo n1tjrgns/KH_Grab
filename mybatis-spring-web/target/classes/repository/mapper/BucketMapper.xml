@@ -41,6 +41,14 @@
 	</select>
 	
 	
+	<select id="selectBucketSearch" parameterType="string"
+	resultMap="BaseResultMap">
+	SELECT 
+   			*
+	   	FROM bucket_request
+	   	WHERE bk_purpose=#{search}
+	</select>
+	
 	<select id="selectBucketOne" parameterType="Bucketlist" 
 	resultMap="BaseResultMap">
 	SELECT *

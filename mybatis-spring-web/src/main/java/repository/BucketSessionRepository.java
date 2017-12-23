@@ -18,6 +18,13 @@ public class BucketSessionRepository  extends AbstractRepository {
 			return sqlSession.selectList(statment);
 		}
 		
+		public List<Bucketlist> selectBucketlist_search(String search) {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".selectBucketSearch";
+										
+			return sqlSession.selectList(statment,search);
+		}
+		
 		public List<Bucketlist> selectBucketlist_one(Bucketlist bl) {
 		//	System.out.println("selectBucketlist_one:"+bl.getBkName());
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();

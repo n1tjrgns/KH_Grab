@@ -72,66 +72,7 @@ isLogin = true;
 </div>
 <div class="pop_bg"></div>
  
-
-<script>
-function loginInputCheck(){
-	if( $("#_login_email_").val() == ""){
-		alert("이메일을 입력하세요.");
-		return;
-	}
-	if( $("#_login_passwd_").val() == ""){
-		alert("비밀번호를 입력하세요.");
-		return;
-	}
-	
-		$.ajax( // 화면의 데이타를 조회한다.
-				{
-					 
-					url:"https://www.lifeplusbucket.com/member/login.do",
-					dataType:"jsonp",
-					jsonp:"callback",
-					type:"POST",
-					async:true,
-					data:{
-						_login_email_:$("#_login_email_").val(),
-						_login_passwd_:$("#_login_passwd_").val()
-					},
-					success:function( data ) {
-						if(data.code == "0"){
-                            NTrackObj.callTrackTag('29441', callbackFn, 11979);
-							$("#__loginForm__").submit();
-						}else{
-							alert("이메일 주소 또는 비밀번호가 정확하지 않습니다.");
-						}
- 						
-	 				},
-					error : function( e ) {
-						//alert("조회 오류\n"+e.error);
-					}
-				}
-			);	
-	
-	
-	//$("#__loginForm__").submit();
-}
-function checkLoginPassswordKeyPress(event){
-	   if(window.event){
-	      var code = window.event.keyCode;
-	   }
-	   else{
-	      var code = e.charCode;
-	   }
-		   
  
-		 
-	if(code == 13){
-		loginInputCheck()
-	}
-}
-
-
-</script>
-
         <div class="dumpBannerBox"></div>
         <div id="facebook-banner" class="fixed-group">
             <a href="https://www.lifeplus.co.kr/lifeplusxlcd/" class="banner-copy" target="_blank" onclick='eventTrack("", "clublibday_banner_head");'><!-- 20171109 -->
@@ -290,9 +231,9 @@ function goMyBucket(){
     <div class="sub-navi-container">
         <div class="sub-navi-btns en">
             
-            <a href="#" onclick='eventAJAX("1");' id="p" class="">POPULAR</a>
-            <a href="#" onclick='eventAJAX("2");' id="f" class="">FEATURED</a>
-            <a href="#" onclick='eventAJAX("3");' id="l" class="">LIBRARY</a>
+            <a href="#" onclick='eventAJAX("1");' id="p" class="">버킷리스트</a>
+            <a href="#" onclick='eventAJAX("2");' id="f" class="">인기순위</a>
+            <a href="#" onclick='eventAJAX("3");' id="l" class="">버킷등록하기</a>
         </div>
         <div class="sub-navi-search">
             <a href="#" class="en" onclick='eventTrack("", "discover_btn_search");'>
@@ -316,12 +257,26 @@ function goMyBucket(){
         <div class="search-result">
             <div class="search-result-title"></div>
             
-            <div id="search-result-library" style="display:none;" >
+            <div id="search-result-library" style="display:block;" >
                 <div class="search-result-library-title en">LIBRARY <span id="search-result-library-title-cnt">0</span></div>
                 <div class="search-result-library-contents">
-
+					<div class="search-library-contents  seq-I1557">
+                        <ul>
+                            
+                            <li class="desc">
+								<a href="#" key-value="I1557">
+									<img src="http://images.hwlife.hscdn.com//library/i1557_thumb.jpg" alt="'얏록'에서 거위요리 즐기기">
+									<p class="en travel">TRAVEL</p>
+									<span>'얏록'에서 거위요리 즐기기</span>
+								</a>
+                            </li>
+                           
+                            </li>
+                        </ul>
+                    </div>
+				
                 </div>
-                <div class="search-more-btn"  style="display:none;" id="search-more-btn-library"> 
+                <div class="search-more-btn"  style="display:block;" id="search-more-btn-library"> 
                     <a href="javascript:Search.moreData();" >
                         더보기
                         <img src="_resource/images/discover/search-more-icon.png" alt="" />
@@ -329,22 +284,6 @@ function goMyBucket(){
                 </div>
             </div>
             
-
-            
-            <div id="search-result-featured" style="display:none;" >
-                <div class="search-result-featured-title en">FEATURED <span id="search-result-featured-title-cnt">0</span></div>
-                <div class="search-result-featured-contents">
-
-                </div>
-                <div class="search-more-btn" style="display:none;" id="search-more-btn-featured">
-                    <a href="javascript:Search.moreDataFeatured();">
-                        더보기
-                        <img src="_resource/images/discover/search-more-icon.png" alt="" />
-                    </a>
-                </div>
-            </div>
-            
-
             <!-- 검색 결과 없을때 -->
             <div class="none_result" style="display:none;">
                 <div class="ico">
@@ -361,65 +300,96 @@ function goMyBucket(){
 </div>
 
 
+<script>
+function search_list(category){
+	//alert(category);
+	$.ajax( // 상세정보를 팝업시킨다.
+			{	
+				url:"Bucket_main_search.do",
+				dataType:"html",
+				type:"GET",
+				async:true,
+				data:"search="+ category,
+				success:function( data ) {
+					//alert("검색완료:"+category);
+					$("#list-container").html(data);
+		           $self.listUpdateReset(prevListLen);
+				   $self.listUpdateReset(0); // 초기화 안하니 sessionstroage 후 하얗게 뜸
+                    $(".simple_loading").hide();
+ 				},
+				error : function( e ) {
+					//alert("조회 오류\n"+e.error);
+				}
+			}
+		);	      
+}
+</script>
+
+<script>//처음에 데이터 불러옴.
+window.onload = function() { search_list('All'); };
+</script>
+
+
+
 <div id="contents" style="display:none;">
   <div id="category" >
-        <a class="active" onclick='eventTrack("", "category_tab_all");' href="javascript:Library.changeCategory('');">
+        <a class="active" onclick="search_list('All');" >
             <div class="category-bgs category-bgs1">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>All</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_travel");' href="javascript:Library.changeCategory('L0301');">
+        <a onclick="search_list('Travel');">
             <div class="category-bgs category-bgs2">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>Travel</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_sports");' href="javascript:Library.changeCategory('L0302');">
+        <a onclick="search_list('Sport');">
             <div class="category-bgs category-bgs3">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>Sport</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_food");' href="javascript:Library.changeCategory('L0303');">
+        <a onclick="search_list('Food');" >
             <div class="category-bgs category-bgs4">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>Food</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_newskill");' href="javascript:Library.changeCategory('L0304');">
+        <a onclick="search_list('New Skill');">
             <div class="category-bgs category-bgs5">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>New Skill</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_culture");' href="javascript:Library.changeCategory('L0305');">
+        <a onclick="search_list('Culture');">
             <div class="category-bgs category-bgs6">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>Culture</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_outdoor");' href="javascript:Library.changeCategory('L0306');">
+        <a onclick="search_list('Outdoor');" >
             <div class="category-bgs category-bgs7">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>Outdoor</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_shopping");' href="javascript:Library.changeCategory('L0307');">
+        <a onclick="search_list('Shopping');" >
             <div class="category-bgs category-bgs8">
                 <div class="off"></div>
                 <div class="on"></div>
             </div>
             <p>Shopping</p>
         </a>
-        <a onclick='eventTrack("", "category_tab_lifestyle");' href="javascript:Library.changeCategory('L0308');">
+        <a onclick="search_list('Lifestyle');">
             <div class="category-bgs category-bgs9">
                 <div class="off"></div>
                 <div class="on"></div>
@@ -429,74 +399,9 @@ function goMyBucket(){
     </div>
 			
 	<div id="list-container" class="use_gpu">
-		 <c:forEach var="bucketlist" items="${bucketlist}" varStatus="status">
-		<div class="list-box seq-I1596" style="transform-origin: 50% 50% 0px; transform: translate(0px, 0px); opacity: 1;" onclick="popup_to_buc('${bucketlist.bkName}');" >
-            <div class="list-bg" style="transform: matrix(1, 0, 0, 1, 0, 0);">
-                <img src="_resource/images/discover/library/list-empty-box.png" alt="">
-                <img class="list-img" src="${bucketlist.photoURL}" shareimage="http://images.hwlife.hscdn.com//library/i1596_share.jpg" alt="준비 중" onload="Popular.listImgLoadComplete(this)" style="opacity: 1;">
-                <img class="list-shadow" src="_resource/images/discover/bucket_shadow.png" alt="?">
-            </div>
-            <div class="winner-count en top3">${status.index+1}</div>
-            <div class="list-contents">
-                <ul class="list-contents-ul">
-                    <li class="category-name en travel">${bucketlist.bkPurpose}</li>
-                    <li class="title" ><div name="bkName">${bucketlist.bkName}</div></li>
 
-                    <li class="add-btn" key-value="I1596">
-                            
-                            <div class="list-add-checked change-add-check ${status.index+1}" style="display:none;"><img src="_resource/images/discover/library/checked.png" alt=""></div>
-
-                            <a href="#" class="en change-add-btn" key-value="I1596" style="display:inline-block">
-                                <div class="plus"><img src="_resource/images/discover/library/list-icon-plus.png" alt=""></div>
-                                <span>ADD</span>
-                            </a>
-                    </li>
-                    
-                    
-                    
-                    <li class="share-btns" style="height: 0px;">
-                        
-
-                        
-                        <div class="dibs-checked change-like-check" style="display:none">
-                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
-                            <span>찜하기</span>
-                        </div>
-                        <a href="#" class="dibs change-like-btn" key-value="I1596" style="display:inline-block">
-                            <img src="_resource/images/discover/library/list-icon1.png" alt="">
-                            <span>찜하기</span>
-                        </a>
-
-
-                        <a href="#" class="share">
-                            <img src="_resource/images/discover/library/list-icon2.png" alt="">
-                            <span>공유하기</span>
-                        </a>
-                        <div class="small-share-btns" key-value="I1596">
-                            <a href="javascript:;"><img src="_resource/images/discover/library/btn_share_facebook.png" alt="페이스북 공유하기"></a>
-                            <a href="#"><img src="_resource/images/discover/library/btn_share_kakao.png" alt="카카오스토리 공유하기"></a>
-                            <a href="#"><img src="_resource/images/discover/library/btn_share_twitter.png" alt="트위터 공유하기"></a>
-                            <a href="#" class="small-share-close-btn"><img src="_resource/images/discover/library/btn_share_close.png" alt="공유하기 닫기"></a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="list-add-popup">
-                <div class="list-add-container">
-                    <ul class="list-add-box">
-                        <li class="list-add-icon"><img src="_resource/images/discover/library/list-icon3.png" alt=""></li>
-                        <li class="list-add-title en">ADD BUCKET LIST</li>
-                        <li class="list-add-desc">버킷 리스트가 추가되었습니다.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-		
-		
-		</c:forEach>
     </div>
 
- 
 <div id="bucket-list" class="fixed-group">
     <ul class="bucket-list-box">
         <li class="bucket-list-title">
@@ -532,7 +437,6 @@ function goMyBucket(){
 </div>
 </div>
 
-
 <div id="contents2" style="display:none;">
 	<jsp:include page="bucket_regist.jsp"></jsp:include>
 </div> 
@@ -540,23 +444,14 @@ function goMyBucket(){
 
 <div id="black-dimmed"></div>
 
-
-
 <div id="ajaxxxx">
 <!--  none 되어 있는것을 block 하면 보이게 된다.  -->
-
-
-   
- </div><!--  ajax -->
- 
+</div><!--  ajax -->
  
     </div>
 </div>
 
- 
- 
 
- 
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
 <script src="_resource/js/vendor/jquery.cookie.js"></script>
 <script src="_resource/js/vendor/spin.min.js"></script>
@@ -587,12 +482,12 @@ setGnb(0);
 $("#contents").css("display","block");
 function eventAJAX(num){
 
- 					if (num==3){
+ 					if (num==1){
  						 $("#contents").css("display","block");
  						 $("#contents2").css("display","none");
  						 $("#p").addClass("active");
  						 $("#l").removeClass("active");
- 					}else if(num==2){
+ 					}else if(num==3){
  						 $("#contents").css("display","none");
  						 $("#contents2").css("display","block");
  						 $("#l").addClass("active");
