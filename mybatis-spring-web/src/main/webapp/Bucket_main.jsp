@@ -210,7 +210,13 @@ function goMyBucket(){
 	}
 }
 </script>
- 
+
+<!-- <script> 
+ $("#SEARCH_KEYWORD").keyup(function(e){
+	 if(e.keyCode == 13)  alert("엔터쳤냐");
+	 });
+</script> -->
+
 <div id="h-empty-box"></div>
 <div id="md-discover">
     <div class="md-bg">
