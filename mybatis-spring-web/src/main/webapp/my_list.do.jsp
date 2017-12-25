@@ -22,7 +22,12 @@
                             <div class="list_date en">${reservation.regDate }</div>
                             <div class="title">${reservation.bkName }</div>
 							<div class="mouse_lock" style="display: none;"></div>
-                            <a href="javascript:void(0);" key-value="I0741" class="btn_complete  mot2">완료하기</a>
+                           <c:if test="${reservation.resCheck=='N'}">
+                            <a href="javascript:complateBucket('${reservation.bkName }','${reservation.mEmail }','Y');"  class="btn_complete  mot2">완료하기</a>
+                            </c:if>
+                            <c:if test="${reservation.resCheck=='Y'}">
+                            <a href="javascript:complateBucket('${reservation.bkName }','${reservation.mEmail }','N');"  class="btn_complete  mot2">완료 됨</a>
+                            </c:if>
                             <div class="btn_ico"> 
                                 <a href="" class="btn_share mot2"></a>
                                 <a href="javascript:void(0);" key-value="I0741" class="btn_delete mot2"></a>
@@ -34,7 +39,35 @@
 
 </body>
 </html>
+<script>
+function  complateBucket(bkName,mEmail,resCheck){
 
+ 	$.ajax( // 화면의 데이타를 조회한다.
+				{
+
+					url:"ln/member/complateBucket.do",
+					dataType:"text",
+					type:"GET",
+					async:true,
+					data:{
+						"bkName":bkName , "mEmail":mEmail, "resCheck":resCheck 
+					},
+					success:function( data ) {
+						alert("성공1");
+						if(data==null){
+						alert("성공real");}
+						},
+					error : function( e ) {
+						
+						//alert("조회 오류\n"+JSON.stringify(e));
+						alert("완료되었습니다.(질문하기)");
+						location.reload();
+					}
+				}
+		);
+	
+ }
+</script>
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
 <script src="_resource/js/vendor/jquery.cookie.js"></script>
 <script src="_resource/js/vendor/spin.min.js"></script>

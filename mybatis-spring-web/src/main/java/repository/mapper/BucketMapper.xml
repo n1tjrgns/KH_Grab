@@ -105,7 +105,7 @@
 	SELECT 
    			*	
 	   		FROM Reservation  r, Bucket_request b
-	   	  	WHERE r.bk_name=b.bk_name AND r.m_email= #{mEmail} AND b.bk_Check=#{bkCheck} 
+	   	  	WHERE r.bk_name=b.bk_name AND r.m_email= #{mEmail} AND r.RESER_CHECK=#{resCheck} 
 	</select>
 	
 	
@@ -114,5 +114,12 @@
 	   	VALUES(#{bkName},#{mEmail},#{cEmail},#{resDate},#{resInt},'N', sysdate,#{resCf})
 	</insert>
 	
+	
+	<update id="updateReservList_mypage" parameterType="Reservation">
+		  UPDATE Reservation
+            SET reser_check=#{resCheck}
+            WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
+	</update>
+
 	
 </mapper>

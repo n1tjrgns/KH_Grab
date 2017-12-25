@@ -158,7 +158,7 @@ function goMyBucket(){
 <script>
 var mEmail='member';
  function regisList(mEmail){
-	 
+
 	$.ajax( //전체 리스트를 불러온다.
 			{
 				url:"Bucket_mypage.do",
@@ -167,10 +167,11 @@ var mEmail='member';
 				async:true,
 				data:"mEmail="+ mEmail,
 				success:function( data ) {
-					alert("성공\n");
+					//alert("성공\n");
 					$(".list_none").css("display","none");
 					$(".list_box_ul").css("display","block");
 		            $(".list_box_ul").html(data);
+		     
 		            $self.listUpdateReset(prevListLen);
 					$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸   
  				},
@@ -180,28 +181,42 @@ var mEmail='member';
 			}
 		);	      
 } 
- window.onload= function() { regisList(mEmail); };
+ window.onload= function() { regisList(mEmail);
+ setBtns();};
 </script>
+<script>
 
+function setBtns() {
+	var depth2Btns = $(".list_ul>li>a");
+
+	depth2Btns.click(function(){
+		depth2Btns.removeClass("active");
+		$(this).addClass("active");
+	})
+}
+
+
+</script>
 
 <script>
 
 function regisList2(mEmail,NY){
-	 
+	
 	$.ajax( //완료또는 완료되지 않은 리스트를 불러온다.
 			{
 				url:"Bucket_mypage.do",
 				dataType:"html",
 				type:"POST",
 				async:true,
-				data: {"mEmail": mEmail, "bkCheck": NY },
+				data: {"mEmail": mEmail, "resCheck": NY },
 				success:function( data ) {
-					alert("성공\n");
+					//alert("성공\n");
 					$(".list_none").css("display","none");
 					$(".list_box_ul").css("display","block");
 		            $(".list_box_ul").html(data);
 		            $self.listUpdateReset(prevListLen);
-					$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸   
+					$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸
+			
  				},
 				error : function( e ) {
 					alert("조회 오류2\n"+e.error);
@@ -516,16 +531,7 @@ dom = $listLi.clone(),
 listIdx,
 isLoadtype = "";
 
-setBtns();
 
-function setBtns() {
-	var depth2Btns = $(".list_ul>li>a");
-
-	depth2Btns.click(function(){
-		depth2Btns.removeClass("active");
-		$(this).addClass("active");
-	})
-}
 
 
 function loadList(type){
@@ -535,61 +541,6 @@ function loadList(type){
 	$('.list_box_ul').html("");
 	mypage_page = 1;
 	addList();
-}
-
-
-function addList(){
- 		$.ajax( // 화면의 데이타를 조회한다.
-				{
-					 
-					url:"/ln/mypage/bucket_fragment_list.do",
-					dataType:"html",
-					type:"POST",
-					async:true,
-					data:{
- 						curr_page:mypage_page ,
- 						search_param3:$("#_search_param3_").val()
-
-					},
-					success:function( data ) {
- 
-						if( data.trim() == "" && mypage_page != 1 ){
-							alert("더 담겨진 버킷 리스트가 없습니다.");
-							return;
-						}else if( data.trim() == "" && mypage_page == 1){
-							$('.list_box_ul').hide();
-							$(".btn_more").hide();
-							$('.list_none').show();
-							return;
-						}else{
-							$('.list_box_ul').show();
-							$('.list_none').hide();	
-							$(".btn_more").show();
-						}
- 						mypage_page++;
-			             
-						$('.list_box_ul').append(data);
-
-						listIdx = $btnComplete.length;
-						listIdx = $listLi.length;
-
-						updateBtns();
-
-						if(isLoadtype == "Y") $(".mouse_lock").show();
-						else $(".mouse_lock").hide();
-
-
-			            
-	 				},
-					error : function( e ) {
-						//alert("조회 오류\n"+e.error);
-					}
-				}
-			);	                
-        
-     
-        
-
 }
 
 
@@ -614,37 +565,6 @@ function updateBtns(){
 }
 
 
-function  complateBucket(keyValue){
-	 //alert(keyValue)
- 	$.ajax( // 화면의 데이타를 조회한다.
-				{
-
-					url:"/ln/member/complateBucket.do",
-					dataType:"json",
-					type:"POST",
-					async:true,
-					data:{
-						idea_id:keyValue 
-					},
-					success:function( data ) {
-						//alert(data.dataObject.code)
-						if(data.dataObject.code == "0"){//입력
-							thisTarget.addClass('active');
-							thisTarget.html('완료됨');
-					     }else {//삭제
-					    	 thisTarget.removeClass('active');
-					    	 thisTarget.html('완료하기');
-						}
-
-					},
-					error : function( e ) {
-						//alert("조회 오류\n"+JSON.stringify(e));
-						alert("로그인이 필요한 화면입니다. 로그인해 주세요.")
-					}
-				}
-		);
-	
- }
 function  deleteBucket(keyValue){
 	 //alert(keyValue)
 	$.ajax( // 화면의 데이타를 조회한다.
@@ -671,39 +591,7 @@ function  deleteBucket(keyValue){
 		);
 	
 }
-var thisTarget;
-function completeCheck(target){
-	thisTarget = target;
-	if( $("#_search_param3_").val() != ""){
-		directDeleteLi(target);
-	}
 
-	complateBucket(target.attr("key-value"));
-	/*
-	
-    if(target.hasClass('active')){
-        target.removeClass('active');
-        target.html('완료하기');
-    }else{
-        target.addClass('active');
-        target.html('완료됨');
-    }
-	*/
-}
-
-function deleteLi(target){
-	//alert(target.attr("key-value"));
-	thisTarget = target;	
-	deleteBucket(target.attr("key-value"));
-	
-	
-}
-
-function directDeleteLi(target){
-	TweenMax.to(target.parent().parent().parent(), 0.8, {delay:0.2, width:0,opacity:0,ease: Power3.easeOut,onComplete:function(){
-		target.parent().parent().parent().hide();
-	}});
-}
 
 $btnMore.click(function(){
 	addList();

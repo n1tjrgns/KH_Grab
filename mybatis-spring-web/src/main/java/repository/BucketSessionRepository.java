@@ -85,20 +85,40 @@ public class BucketSessionRepository  extends AbstractRepository {
 			
 		}
 		
-		public List<Reservation> selectReservList_mypage(Reservation_Bucketlist reservation_bucketlist) {
+		public List<Reservation_Bucketlist> selectReservList_mypage(Reservation_Bucketlist reservation_bucketlist) {
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			String statment="";
-			if(reservation_bucketlist.getBkCheck()!=null) {
+			if(reservation_bucketlist.getResCheck()!=null) {
 				System.out.println(reservation_bucketlist.getBkCheck()+"getBkCheck");
 				
 				 statment = nameSpace+".selectReservList_mypage_NY";
 			}else {
 			
-			System.out.println(reservation_bucketlist.getmEmail()+"selectReservList_mypage");
+			//System.out.println(reservation_bucketlist.getmEmail()+"selectReservList_mypage");
 			 statment = nameSpace+".selectReservList_mypage";
 			}
 			
 			return sqlSession.selectList(statment,reservation_bucketlist);
+			
+		}
+		
+		public Integer updateReservList_mypage(Reservation reservation) {
+			System.out.println(reservation.getBkName()+"updateReservList_mypage"+reservation.getResCheck());
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			try {
+				
+			String statment = nameSpace+".updateReservList_mypage";
+			Integer result = sqlSession.update(statment,reservation);
+			if(result>0) {
+				 sqlSession.commit();
+			 }else {
+				 sqlSession.rollback();
+			 }
+			 return result;
+			}finally {
+				sqlSession.close();
+			}
+		
 			
 		}
 }

@@ -99,11 +99,18 @@ public class BucketController {
 		
 		@RequestMapping(value="/Bucket_mypage.do", method = RequestMethod.POST)
 		public String handleStep7_1(Model model, Reservation_Bucketlist reservation_bucketlist) {
-			List<Reservation> reservation = bucketRepository.selectReservList_mypage(reservation_bucketlist);
+			List<Reservation_Bucketlist> reservation = bucketRepository.selectReservList_mypage(reservation_bucketlist);
 			model.addAttribute("reservation",reservation);
 			System.out.println(reservation.size()+" 개 출력 완료");
 			
 			return "my_list.do";//jsp 페이지임.
+		}
+		
+		@RequestMapping(value="/ln/member/complateBucket.do", method = RequestMethod.GET)
+		public String handleStep7_2(Model model, Reservation reservation) {
+			Integer result = bucketRepository.updateReservList_mypage(reservation);
+			System.out.println(result+"개 변경완료");
+			return null;
 		}
 		
 		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
