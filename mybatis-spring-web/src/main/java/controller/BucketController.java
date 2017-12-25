@@ -103,7 +103,7 @@ public class BucketController {
 			model.addAttribute("reservation",reservation);
 			System.out.println(reservation.size()+" 개 출력 완료");
 			
-			return "my_list.do";
+			return "my_list.do";//jsp 페이지임.
 		}
 		
 		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)

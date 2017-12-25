@@ -103,10 +103,10 @@ function goMyBucket(){
     <div class="mypage_content">
         <div class="top_title">
             <div class="profile_img">
-                <img src="/_resource/images/register/ico_profile.png" alt="나의이미지" />
+                <img src="_resource/images/register/ico_profile.png" alt="나의이미지" />
             </div>
             <div class="profile_name">
-                <span>채홍기</span> 님의 마이페이지 <a href="javascript:Popup.directShareSns('MYBUC','', '', 'http://www.lifeplusbucket.com/_resource/images/common/sns_share_img.jpg');" class="ico"><img src="/_resource/images/mypage/ico_circle_share.png" alt="공유" /></a>
+                <span>채홍기</span> 님의 마이페이지 <a href="javascript:Popup.directShareSns('MYBUC','', '', 'http://www.lifeplusbucket.com/_resource/images/common/sns_share_img.jpg');" class="ico"><img src="_resource/images/mypage/ico_circle_share.png" alt="공유" /></a>
                 
             </div>
             <div class="btn_tab_area">
@@ -122,13 +122,13 @@ function goMyBucket(){
 			<div class="list_tab">
 				<ul class="list_ul">
 					<li>
-						<a href="loadList('member');" class="first active mot2">전체</a>
+						<a href="javascript:regisList('member');" class="first active mot2">전체</a>
 					</li>
 					<li>
-						<a href="javascript:loadList('N');" class="mot2">예약 중</a>
+						<a href="javascript:regisList2('member','N');" class="mot2">예약 중</a>
 					</li>
 					<li>
-						<a href="javascript:loadList('Y');" class="mot2">수행 완료</a>
+						<a href="javascript:regisList2('member','Y');" class="mot2">수행 완료</a>
 					</li>
 				</ul>
 			</div>
@@ -159,7 +159,7 @@ function goMyBucket(){
 var mEmail='member';
  function regisList(mEmail){
 	 
-	$.ajax( //리스트를 불러온다.
+	$.ajax( //전체 리스트를 불러온다.
 			{
 				url:"Bucket_mypage.do",
 				dataType:"html",
@@ -181,6 +181,35 @@ var mEmail='member';
 		);	      
 } 
  window.onload= function() { regisList(mEmail); };
+</script>
+
+
+<script>
+
+function regisList2(mEmail,NY){
+	 
+	$.ajax( //완료또는 완료되지 않은 리스트를 불러온다.
+			{
+				url:"Bucket_mypage.do",
+				dataType:"html",
+				type:"POST",
+				async:true,
+				data: {"mEmail": mEmail, "bkCheck": NY },
+				success:function( data ) {
+					alert("성공\n");
+					$(".list_none").css("display","none");
+					$(".list_box_ul").css("display","block");
+		            $(".list_box_ul").html(data);
+		            $self.listUpdateReset(prevListLen);
+					$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸   
+ 				},
+				error : function( e ) {
+					alert("조회 오류2\n"+e.error);
+				}
+			}
+		);	      
+} 
+ 
 </script>
 
 
@@ -470,54 +499,7 @@ var mEmail='member';
 </html>
 <script src="_resource/js/discover/Discover.Popup.js"></script>
 <script src="_resource/js/vendor/kakao.min.js"></script>
-<script type="text/javascript">
-<!--
-Kakao.init('54fdc94fb5308e67bf208e2863485e71');
-function sendSns(sns, seq, txt){
-	
-	if( seq == ""){
-		seq = $("#SNS_SHARE_KEY").val();
-	}
-	if( txt == ""){
-		txt = $("#SNS_SHARE_TEXT").text();
-	}
-	txt="";
-	 	var _urls = "http://www.lifeplusbucket.com/discover/library.do?search_param8=";
-	    var _url = encodeURIComponent(_urls+seq);
-	    var _txt = encodeURIComponent(txt);
-	    switch(sns){
-	        case 'facebook':
-	            var win = window.open('http://www.facebook.com/sharer/sharer.php?u=' + _url);
-	            checkPopup(win);
-	            break;
-	        case 'twitter':
-	        	_txt = encodeURIComponent("당신의 가슴을 뛰게 할 Bucket List를 발견해보세요!  ");
-	        	 var request = gapi.client.urlshortener.url.insert({
-		     	        'resource' : {
-		     	            'longUrl' : _urls+seq
-		     	        }
-		     	    });
-		     	    request.execute(function(response) {
-		     	        if (response.id != null) {
-		     	             
-		    	           var win= window.open('http://twitter.com/intent/tweet?text=' + _txt + '&url=' + response.id);
-		    	            checkPopup(win);
-		     	        } else {
-		     	            alert(JSON.stringify(response));
-		     	        }
-		     	    });
-		     	    
-	            break;
-	        case 'kakaostory':
-	   			Kakao.Story.share({ url: _urls+seq, text: txt });
-	            break;
-	    }
-        Popup.saveShareCnt(seq);
-	 
-}
-//-->
- 
-</script>
+
 
 
 
@@ -612,30 +594,7 @@ function addList(){
 
 
 function updateBtns(){
-	/*$btnComplete = document.getElementsByClassName('btn_complete');
-	$btnDelete = document.getElementsByClassName('btn_delete');
-
-	for(var i=listIdx;i<$btnComplete.length;i++){
-		$btnComplete[i].addEventListener("click", function(){
-			completeCheck($(this));
-		}, false);
-
-		$btnDelete[i].addEventListener("click", function(){
-			deleteLi($(this));
-		}, false);
-	}
-	listIdx = $btnComplete.length;
-
-	listIdx = $listLi.length;
-
-	for(var i=0;i<$btnComplete.length;i++){
-		$btnComplete[i].addEventListener("click", function(){
-			completeCheck($(this));
-		}, false);
-		$btnDelete[i].addEventListener("click", function(){
-			deleteLi($(this));
-		}, false);
-	}*/
+	
 
 	var btnComplete = $(".btn_complete");
 	var btnDelete = $(".btn_delete");

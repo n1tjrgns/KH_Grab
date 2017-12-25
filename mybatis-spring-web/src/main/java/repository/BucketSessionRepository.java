@@ -86,9 +86,18 @@ public class BucketSessionRepository  extends AbstractRepository {
 		}
 		
 		public List<Reservation> selectReservList_mypage(Reservation_Bucketlist reservation_bucketlist) {
-			System.out.println(reservation_bucketlist.getmEmail()+"selectReservList_mypage");
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
-			String statment = nameSpace+".selectReservList_mypage";
+			String statment="";
+			if(reservation_bucketlist.getBkCheck()!=null) {
+				System.out.println(reservation_bucketlist.getBkCheck()+"getBkCheck");
+				
+				 statment = nameSpace+".selectReservList_mypage_NY";
+			}else {
+			
+			System.out.println(reservation_bucketlist.getmEmail()+"selectReservList_mypage");
+			 statment = nameSpace+".selectReservList_mypage";
+			}
+			
 			return sqlSession.selectList(statment,reservation_bucketlist);
 			
 		}

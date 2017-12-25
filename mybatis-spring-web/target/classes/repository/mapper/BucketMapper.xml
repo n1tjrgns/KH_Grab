@@ -100,6 +100,14 @@
 	   	  	WHERE r.bk_name=b.bk_name AND r.m_email= #{mEmail} 
 	</select>
 	
+		<select id="selectReservList_mypage_NY" parameterType="Reservation"
+	resultMap="BaseResultMap3">
+	SELECT 
+   			*	
+	   		FROM Reservation  r, Bucket_request b
+	   	  	WHERE r.bk_name=b.bk_name AND r.m_email= #{mEmail} AND b.bk_Check=#{bkCheck} 
+	</select>
+	
 	
     <insert id="InsertReserv" parameterType="Reservation" >
 		INSERT INTO Reservation
