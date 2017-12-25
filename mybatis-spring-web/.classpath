@@ -28,10 +28,11 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/java/activation.jar"/>
-	<classpathentry kind="lib" path="C:/java/mail.jar"/>
-	<classpathentry kind="lib" path="C:/java/mybatis-3.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/java/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/java/smtp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ckh01/Documents/카카오톡 받은 파일/jar파일/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ckh01/Documents/카카오톡 받은 파일/jar파일/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ckh01/Documents/카카오톡 받은 파일/jar파일/mybatis-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ckh01/Documents/카카오톡 받은 파일/jar파일/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ckh01/Documents/카카오톡 받은 파일/jar파일/smtp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ckh01/Desktop/ojdbc14 (1).jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

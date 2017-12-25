@@ -50,6 +50,22 @@ public class MemberSessionRepository extends AbstractRepository {
 		}
 	}
 	
+	public int updateMemberUpdate(Member member) {
+		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		try {
+		String statment = nameSpace+".updateByCondition";
+		Integer result = sqlSession.update(statment,member);
+		 if(result>0) {
+			 sqlSession.commit();
+		 }else {
+			 sqlSession.rollback();
+		 }
+		 return result;
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
 //	public Integer updateComment(Member comment) {
 //		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 //		try {

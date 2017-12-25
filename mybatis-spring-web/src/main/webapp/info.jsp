@@ -33,14 +33,32 @@
                     <dl class="info_dl">
                         <dt class="first">프로필</dt>
                         <dd class="first">
-                            <div class="profile">
-                                <!--<a href="javascript:void(0)" class="ico">-->
-                                    <!--<img src="/_resource/images/register/ico_profile.png" alt="">-->
-                                <!--</a>-->
+								<div class="formDivList formImageBig">
+									<input type="file" name="item_image" id="itemImage"
+										class="Hidden">
+									<table class="TableList">
+										<tr>
+											<td><img src="/images/objects/cameraView.png"
+												id="itemImageSrc" align="absbottom" border="0"
+												onclick="formUploadCheck('#itemImage','/images/objects/cameraView.png');" /></td>
+											<td>
+												<div class="formDivSubList" id="itemImageCaution"
+													class="Hidden"></div>
+												
+												<div class="formDivSubList">
+													<a class="InputButton"
+														onclick="formUploadCheck('#itemImage','/images/objects/cameraView.png');">이미지
+														선택</a> <input type="checkbox" value="1"
+														name="item_image_no_resave" id="item_image_no_resave_y"
+														align="absmiddle" /> 
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
 
-                                <img src="_resource/_web/images/register/ico_profile.png" alt="" class="img">
-                            </div>
-                        </dd>
+
+							</dd>
                         <dt>이메일</dt>
                         <dd>
                             <span>ckh0103@naver.com</span>
@@ -73,12 +91,83 @@
             </div>
             <div class="btn_area">
                 <a href="javascript:inputCheck();" class="btn_click btn_info_modify mot2" onclick='eventTrack("", "member_info_btn_modify");'>정보 수정 완료 </a>       
-                    <a href="./change_password_member.do" class="btn_pw_change mot2" onclick='eventTrack("", "member_info_btn_password");'>비밀 번호 변경</a>         
-                <a href="./member_leave.do" class="btn_leave mot2" onclick='eventTrack("", "member_info_btn_leave");'>탈퇴하기</a>
+                    <a href="changePw.jsp" class="btn_pw_change mot2" onclick='eventTrack("", "member_info_btn_password");'>비밀 번호 변경</a>         
+                <a href="memberDrop.jsp" class="btn_leave mot2" onclick='eventTrack("", "member_info_btn_leave");'>탈퇴하기</a>
             </div>
         </div>
     </div>
 </div>   
+
+<script>
+
+function formUploadCheck(nid,originalImg)
+{
+	if(!$(nid)){return;}
+
+	$(nid).one('change', function(event) {
+
+		if(!event.target.files[0]){return;}
+		var imgPath=URL.createObjectURL(event.target.files[0]);
+		var imgSize=this.files[0].size;
+		
+		if($(nid+"Src"))
+		{
+			var imgUrlOld=$(nid+"Src").attr('src');
+			if(originalImg){imgUrlOld=originalImg;}
+			
+			$(nid+"Src").one('error',function(){
+				$(nid).val("");
+				
+				if($(nid+"Src"))
+				{
+					$(nid+"Src").attr('src',imgUrlOld);
+				}
+				if($(nid+"ImgSize"))
+				{
+					$(nid+"ImgSize").html('0&times;0');
+				}
+				if($(nid+"Size"))
+				{
+					$(nid+"Size").text('0');
+				}
+			});	
+
+			$(nid+"Src").attr('src',imgPath);
+
+			var imgWidth=$(nid+"Src").get(0).naturalWidth;
+			var imgHeight=$(nid+"Src").get(0).naturalHeight;
+			
+			if($(nid+"ImgSize"))
+			{
+				$(nid+"ImgSize").html($.number(imgWidth)+'&times;'+$.number(imgHeight));
+			}
+		}
+		
+		if($(nid+"Size"))
+		{
+			$(nid+"Size").html($.number(imgSize));
+			var imgCautionMsg="";
+			if(imgSize>(1024*1024*10)){imgCautionMsg='<span style="color:#f44;font-weight:bold;" class="Blink5">파일이 10M가 넘습니다. 포토샵 저장 문제가 있는지 확인하십시오.</span>';}
+			else if(imgSize>(1024*1024*5)){imgCautionMsg='<span style="color:#44f;font-weight:bold;" class="Blink">파일이 5M가 넘습니다. 포토샵 저장 문제에 주의하십시오.</span>';}
+			else if(imgSize>(1024*1024*2)){imgCautionMsg='<span style="color:#080;font-weight:bold;">파일이 2M가 넘습니다. 주의가 요구됩니다.</span>';}
+			if($(nid+"Caution"))
+			{
+				$(nid+"Caution").hide();
+				if(imgCautionMsg)
+				{
+					$(nid+"Caution").html(imgCautionMsg);
+					$(nid+"Caution").show();
+				}
+			}
+		}
+		
+	}).click();
+}
+	
+window.setInterval(function(){$('.Blink').fadeTo(200, 0.1).fadeTo(200, 1.0);}, 1000);
+window.setInterval(function(){$('.Blink5').fadeTo(100, 0.1).fadeTo(100, 1.0);}, 500);
+
+</script>
 
 <jsp:include page="navi-footer.jsp"></jsp:include>   
 

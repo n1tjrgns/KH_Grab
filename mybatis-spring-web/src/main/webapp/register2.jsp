@@ -88,7 +88,6 @@
 							
 							<div class="phone_box">
 									<p class="txt">성별</p>					
-										<!-- <input type="text" placeholder="성별" name="mGen" maxlength="50"> -->
 								<select id="email_reg_phone" name="mGen" class="input_box email_reg_gen" id="email_reg_gen">
 									<option>성별(선택)</option>
 									<option>남성</option>
@@ -718,10 +717,7 @@
 			$emailRegEmail.focus();
 			return false;
 		} 
-		/*  if ($email_flg.val() != 'Y') {
-			alert("이메일 중복 체크를 해 주세요");
-			return false;
-		}  */
+		   
 		if ($emailRegPw.val() == '') {
 			alert('비밀번호를 입력해주세요');
 			$emailRegPw.focus();
@@ -761,7 +757,11 @@
 			alert('나머지주소를 입력해주세요');
 			$emailRegAddr2.focus();
 			return false;
-		}
+		}if ($email_flg.val() != 'Y') {
+			alert("이메일 중복 체크를 해 주세요");
+			return false;
+		} 
+		
 	 	if (!$allAgree.hasClass('active')) {
 			alert('약관에 모두 동의 해주세요');
 			return false;
@@ -801,13 +801,13 @@
 		var schType = "cellular";
 		if( num == 2){
 			schType = "mEmail";
-			if(oFORM.mEmail1.value.trim() != ''&&oFORM.mEmail2.value.trim() != ''){
-				mEmail = oFORM.email1.value+"@"+oFORM.email2.value;
+			if(oFORM.mEmail1.value.trim() != ''){
+				mEmail1 = oFORM.email1.value;
 			}else{
 				schString = "";
 			}
 			message = "이메일";
-			if(!isEmail(oFORM.email1.value,oFORM.email2.value,"이메일 형식이 올바르지 않습니다.") ){
+			if(!isEmail1(oFORM.mEmail1.value,"이메일 형식이 올바르지 않습니다.") ){
 				return;
 			}
 			if( schString.length >100){

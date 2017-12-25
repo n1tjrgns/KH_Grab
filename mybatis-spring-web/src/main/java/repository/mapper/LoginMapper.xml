@@ -62,8 +62,8 @@
 	 <insert id="insertRegisterEnterByCondition" parameterType="Member">
 		INSERT INTO member(
 		m_name,
-		m_email,
 		m_pw,
+		m_email,
 		m_tel,
 		m_license,
 		m_Postnum,
@@ -75,5 +75,19 @@
 	</insert>
  
 	
+<!-- 	<update id="updateByCondition" parameterType="Member" >
+		UPDATE member
+			<set>
+				<if test="m_profile !=null">
+					m_profile=#{mProfile},
+				</if>
+				<if test="m_email !=null">
+					m_tel=#{mTel}
+				</if>
+			</set>
+			<where>
+				m_email =#{mEmail}
+			</where>
+	</update> -->
 
 </mapper>

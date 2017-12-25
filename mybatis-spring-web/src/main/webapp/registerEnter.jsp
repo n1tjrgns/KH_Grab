@@ -8,8 +8,10 @@
 </head>
 <body>
 <head>
-<link rel="shortcut icon" type="image/x-icon"
-	href="_resource/images/favicon.ico">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script charset="UTF-8" type="text/javascript"
+	src="http://t1.daumcdn.net/cssjs/postcode/1506320738556/170925.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="_resource/images/favicon.ico">
 <link href="_resource/css/common.css" rel="stylesheet" />
 <script src="https://apis.google.com/js/client.js?onload=load_google"></script>
 <link href="_resource/css/register.css" rel="stylesheet" />
@@ -78,7 +80,7 @@
 								<p class="txt">비밀번호</p>	
 								<div class="password_box">
 									<div class="input_box email_r eg_password" id ="email_reg_password">
-										<input type="password" placeholder="비밀번호(영문 대/소문자, 숫자, 특수문자 중 3조합 8자리)" name="passwd"
+										<input type="password" placeholder="비밀번호(영문 대/소문자, 숫자, 특수문자 중 3조합 8자리)" name="mPw"
 											maxlength="40">
 									</div>
 									<div class="input_box email_reg_password_check" id="reg_password_check">
@@ -121,7 +123,7 @@
 										maxlength="50">
 								</div>
 					<!-- 주소 -->
-								<p class="txt">주소</p>
+							 <p class="txt">주소</p>
 								<div class="email_box">
 									<div class="input_box email_reg_email" id="email_reg_addr">
 										<input type="text" placeholder="우편번호" id="sample4_postcode" name="mPost">
@@ -138,7 +140,7 @@
 								</div>
 								<div class="input_box email_reg_phone2" id="email_reg_addr2">
 									<input type="text" placeholder="나머지주소" id="address_detail" name="mAddr_d"> 
-ㄴ
+
 
 								<a href="javascript:void(0);" class="btn_email_agree2 btn_agree">
 									<span class="ico"></span> <span>SMS 수신에 동의합니다.</span><br>
@@ -1046,9 +1048,7 @@
 							
 						}
 					}).open();
-		
-				}
-
+		}
 		
 	function load_google() {
 			gapi.client.setApiKey('AIzaSyBySGWNccSTO9XHnlay_kpBHAWUO1-d3L4');
