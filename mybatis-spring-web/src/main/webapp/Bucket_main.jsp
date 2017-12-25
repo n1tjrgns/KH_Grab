@@ -114,89 +114,8 @@ isLogin = true;
                  
                     </span>
                 </a>
-                <a href="javascript:void(0);" class="h-menu">
-                    <div class="bar1 mot2"></div>
-                    <div class="bar2 mot2"></div>
-                    <div class="bar3 mot2"></div>
-                </a>
-                <div class="gnb_menu">
-                    <ul class="gnb_menu_ul">
-                        <li>
-                            <a href="Bucket_main" class="gnb1 mot2" onclick='eventTrack("", "menu_discover");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Discover</span><br>
-                                    당신의 버킷 리스트를 찾아보세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:goMyBucket();" class="gnb2 mot2" onclick='eventTrack("", "menu_mypage");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">My Bucket</span><br>
-                                    나의 버킷 리스트를 모아보세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                     
-                        <li>
-                            <a href="Main_bucket" class="gnb4 mot2" onclick='eventTrack("", "menu_about");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">About</span><br>
-                                    <strong>Lifeplus</strong> Bucket List를 소개합니다. <!-- 2017-03-13 -->
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="gnb_info">
-                    	<!-- 2017-03-13 -->
-                        <ul class="info_ul">
-                            <li>
-                                <a href="Main" class="btn_lifeplus en" target="_blank" onclick='eventTrack("", "menu_lifeplus");'>Grab</a>
-                            </li>
-                            <li>
-                                <a href="https://www.facebook.com/lifeplus.h/" class="btn_facebook en" target="_blank" onclick='eventTrack("", "menu_facebook");'>FACEBOOK</a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/lifeplus_h/" class="btn_insta en" target="_blank" onclick='eventTrack("", "menu_instagram");'>INSTAGRAM</a>
-                            </li>
-                        </ul>
-                    	<!-- //2017-03-13 -->
-                        <div class="copyright">
-                            <ul class="side_ul">
-                                <li>
-                                    <a href="/terms.jsp" onclick='eventTrack("", "menu_terms");'>이용약관</a>
-                                </li>
-                                <li>
-                                    <a href="/privacy.jsp" onclick='eventTrack("", "menu_privacy");'>개인정보 취급방침</a>
-                                </li>
-                                <!--<li>-->
-                                    <!--<a href="#">이메일 문의</a>-->
-                                <!--</li>-->
-                                <li>
-                                    <a href="/faq/faq_list.do" onclick='eventTrack("", "menu_faq");'>자주 묻는 질문</a>
-                                </li>
-                            </ul>
-                            <div class="copy_img">
-                                <img src="_resource/_web/images/common/mini_logo.png" alt="KH taem. All rights reserved.">
-                            </div>
-                            <ul class="text_ul">
-                                <li>
-                                    KH 주식회사
-                                </li>
-                                <li>
-                                    대표이사 강범진
-                                </li>
-                                <li>
-                                    사업자등록번호 123-12-12345
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              
+         </div>
         </div>
 
 
@@ -253,6 +172,13 @@ function goMyBucket(){
             </a>
         </div>
     </div>
+
+<script> 
+$("#__search_param1__").keyup(function(e){
+   if(e.keyCode == 13)  alert("검색실행");
+   });
+
+</script>
 
 <div id="search">
     <div class="search-container">
@@ -426,33 +352,27 @@ window.onload = function() { search_list('All'); };
                 MY<br>
                 BUCKET LIST
             </div>
-            <a href="#" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
+            <a href="Bucket_mypage" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
         </li>
         <li class="arrow-btn-l arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></a></li>
         <li class="lists">
             <ul class="lists-container">
-                <!--<li><a href="javascript:alert('알럿')"><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></a></li>-->
+                 <!-- <li><a href="javascript:alert('알럿')"><img src="_resource/images/discover/bucket-list-none-image.png" alt="??" /></a></li>-->
+                <li><a href="#"><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></a></li>
+                <li><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></li>
                 <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
-                <li><img src="_resource/images/discover/bucket-list-none-image.png" alt="" /></li>
+                <li><img src="_resource/images/discover/bucket-list-arrow-l.png" alt="" /></li> 
             </ul>
         </li>
         <li class="arrow-btn-r arrow-btns"><a href="#"><img src="_resource/images/discover/bucket-list-arrow-r.png" alt="" /></a></li>
-        <li class="bucket-share">
-            <a href="#" onclick='eventTrack("", "discover_board_share");'>
-                <div class="copy">
-                    친구들과<br>
-                    공유하기
-                </div>
-                <div class="icon"><img src="_resource/images/discover/bucket-list-icon3.png" alt="" /></div>
-            </a>
-        </li>
     </ul>
-    <div class="bucket-list-close-btn"><a href="#"><img src="_resource/images/discover/bucket-list-closebtn.png" alt="[X]" /></a></div>
-    <div class="bucket-floating-menu"><a href="#" onclick='eventTrack("", "discover_btn_board");'><div class="over-mot"></div><img src="_resource/images/discover/floating-icon.png" alt="icon!" /></a></div>
-</div>
-</div>
+    <div class="bucket-list-close-btn">
+	    <a href="#"><img src="_resource/images/discover/bucket-list-closebtn.png" alt="[X]" /></a></div>
+	    <div class="bucket-floating-menu">
+	    <a href="#" onclick='eventTrack("", "discover_btn_board");'><div class="over-mot"></div>
+	    <img src="_resource/images/discover/floating-icon.png" alt="icon!" /></a></div>
+		</div>
+	</div>
 
 <div id="contents2" style="display:none;">
 	<jsp:include page="bucket_regist.jsp"></jsp:include>

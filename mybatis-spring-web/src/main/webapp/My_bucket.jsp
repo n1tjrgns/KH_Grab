@@ -82,97 +82,7 @@
                         
                     </div>
                 </a>
-                <a href="javascript:void(0);" class="h-menu">
-                    <div class="bar1 mot2"></div>
-                    <div class="bar2 mot2"></div>
-                    <div class="bar3 mot2"></div>
-                </a>
-                <div class="gnb_menu">
-                    <ul class="gnb_menu_ul">
-                        <li>
-                            <a href="/discover/library.do" class="gnb1 mot2" onclick='eventTrack("", "menu_discover");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Discover</span><br>
-                                    당신의 버킷 리스트를 찾아보세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:goMyBucket();" class="gnb2 mot2" onclick='eventTrack("", "menu_mypage");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">My Bucket</span><br>
-                                    나의 버킷 리스트를 모아보세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/notice/notice_list.do" class="gnb3 mot2" onclick='eventTrack("", "menu_event");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Event</span><br>
-                                    다양한 혜택과 이벤트를 놓치지 마세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/about/about.jsp" class="gnb4 mot2" onclick='eventTrack("", "menu_about");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">About</span><br>
-                                    <strong>Lifeplus</strong> Bucket List를 소개합니다. <!-- 2017-03-13 -->
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="gnb_info">
-                    	<!-- 2017-03-13 -->
-                        <ul class="info_ul">
-                            <li>
-                                <a href="https://www.lifeplus.co.kr" class="btn_lifeplus en" target="_blank" onclick='eventTrack("", "menu_lifeplus");'>LIFEPLUS</a>
-                            </li>
-                            <li>
-                                <a href="https://www.facebook.com/lifeplus.h/" class="btn_facebook en" target="_blank" onclick='eventTrack("", "menu_facebook");'>FACEBOOK</a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/lifeplus_h/" class="btn_insta en" target="_blank" onclick='eventTrack("", "menu_instagram");'>INSTAGRAM</a>
-                            </li>
-                        </ul>
-                    	<!-- //2017-03-13 -->
-                        <div class="copyright">
-                            <ul class="side_ul">
-                                <li>
-                                    <a href="/terms.jsp" onclick='eventTrack("", "menu_terms");'>이용약관</a>
-                                </li>
-                                <li>
-                                    <a href="/privacy.jsp" onclick='eventTrack("", "menu_privacy");'>개인정보 취급방침</a>
-                                </li>
-                                <!--<li>-->
-                                    <!--<a href="#">이메일 문의</a>-->
-                                <!--</li>-->
-                                <li>
-                                    <a href="/faq/faq_list.do" onclick='eventTrack("", "menu_faq");'>자주 묻는 질문</a>
-                                </li>
-                            </ul>
-                            <div class="copy_img">
-                                <img src="_resource/images/gnb/copy.png" alt="Hanwha Life. All rights reserved.">
-                            </div>
-                            <ul class="text_ul">
-                                <li>
-                                    한화생명보험 주식회사
-                                </li>
-                                <li>
-                                    대표이사 차남규
-                                </li>
-                                <li>
-                                    사업자등록번호 116-81-11757
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           </div>
         </div>
 
 
@@ -188,15 +98,6 @@ function goMyBucket(){
 </script>
    <script src="_resource/js/vendor/makePCookie.js"></script>
 
-<!--NSmart Track Tag Script-->
-<script type='text/javascript'>
-    callbackFn = function() {};
-    var _nsmart = _nsmart || [];
-    _nsmart.host = _nsmart.host || (('https:' == document.location.protocol) ? 'https://' : 'http://');
-    _nsmart.push([11979, 29407]); // 캠페인 번호와 페이지 번호를 배열 객체로 전달
-    document.write(unescape("%3Cscript src='" + _nsmart.host + "n00.nsmartad.com/etc?id=10' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<!--NSmart Track Tag Script End..-->
 <div id="contents">
 	<input type="hidden" name="_search_param3_" id="_search_param3_">
     <div class="mypage_content">
@@ -209,10 +110,10 @@ function goMyBucket(){
                 
             </div>
             <div class="btn_tab_area">
-                <a href="./bucket.do" class="btn_bucket active mot2">
+                <a href="Bucket_mypage" class="btn_bucket active mot2">
                     버킷리스트 <span>0</span>
                 </a>
-                <a href="./wish.do" class="btn_wish mot2">
+                <a href="Bucket_mypage_wish" class="btn_wish mot2">
                     위시리스트 <span>0</span>
                 </a>
             </div>

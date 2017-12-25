@@ -130,16 +130,7 @@
 
             </div>
         </div>
-        <!--<div class="text_box">-->
-            <!--<p>-->
-                <!--아직 Life+ 버킷 리스트 회원이 아니신가요?-->
-            <!--</p>-->
-            <!--<span>회원 가입하시고 당신의 삶에 버킷 리스트를 더해 보세요.</span> <a href="/member/email_register.do" class="btn_register mot2" onclick='eventTrack("", "login_btn_register"); NTrackObj.callTrackTag("29443", callbackFn, 11979);'>회원가입</a>-->
-        <!--</div>-->
-		<!-- 1201 삭제 작업 -->
-        <!--<a href="/winterevent.do" class="banner_box" onclick='eventTrack("", "winterevent_banner_login");'>-->
-            <!--<span class="btn_event">이벤트 참여하기</span>-->
-        <!--</a>-->
+       
     </div>
 </div>
 <div class="pop_bg"></div>
@@ -209,18 +200,7 @@ function checkLoginPassswordKeyPress(event){
         <div class="dumpBannerBox"></div>
         <div id="facebook-banner" class="fixed-group">
             <a href="https://www.lifeplus.co.kr/lifeplusxlcd/" class="banner-copy" target="_blank" onclick='eventTrack("", "clublibday_banner_head");'><!-- 20171109 -->
-                    <!-- <a href="/winterevent.do" class="banner-copy" onclick='eventTrack("", "winterevent_banner_head");'> -->
-                    <!--<a href="https://www.facebook.com/lifeplus.h/" target="_blank" onclick='eventTrack("", "banner_goto_event");'>-->
-                    <!--<img src="/_resource/images/common/banner-logo.png">-->
-                    <!--<span class="copys">-->
-                        <!--<span class="strong">페이스북</span>의-->
-                        <!--<div class="fb-like" data-href="https://www.facebook.com/lifeplus.h/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false" id="fb-like-btn"></div>-->
-                        <!--를 누르고 더 다채로운 이야기를 만나보세요.-->
-                    <!--</span>-->
-                <!--</a>-->
-               <!--  <span class="title"><span class="event en">EVENT</span>버킷 리스트 공유하고 <span class="color">뉴욕에서 크리스마스</span> 보내자!</span>
-                <span class="sub">11.16(수) ~ 12.6(화)</span>
-                <span class="btn_event">이벤트 참여하기</span> -->
+                 
             </a>
             <a href="#" class="close-btn"><img src="_resource/images/common/banner-close-btn.png"></a>
         </div>
@@ -255,96 +235,7 @@ function checkLoginPassswordKeyPress(event){
                         
                     </div>
                 </a>
-                <a href="javascript:void(0);" class="h-menu">
-                    <div class="bar1 mot2"></div>
-                    <div class="bar2 mot2"></div>
-                    <div class="bar3 mot2"></div>
-                </a>
-                <div class="gnb_menu">
-                    <ul class="gnb_menu_ul">
-                        <li>
-                            <a href="/discover/library.do" class="gnb1 mot2" onclick='eventTrack("", "menu_discover");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Discover</span><br>
-                                    당신의 버킷 리스트를 찾아보세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:goMyBucket();" class="gnb2 mot2" onclick='eventTrack("", "menu_mypage");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">My Bucket</span><br>
-                                    나의 버킷 리스트를 모아보세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/notice/notice_list.do" class="gnb3 mot2" onclick='eventTrack("", "menu_event");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">Event</span><br>
-                                    다양한 혜택과 이벤트를 놓치지 마세요.
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/about/about.jsp" class="gnb4 mot2" onclick='eventTrack("", "menu_about");'>
-                                <div class="text mot2">
-                                    <span class="en mot2">About</span><br>
-                                    <strong>Lifeplus</strong> Bucket List를 소개합니다. <!-- 2017-03-13 -->
-                                </div>
-                                <div class="ico mot2"></div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="gnb_info">
-                    	<!-- 2017-03-13 -->
-                        <ul class="info_ul">
-                            <li>
-                                <a href="https://www.lifeplus.co.kr" class="btn_lifeplus en" target="_blank" onclick='eventTrack("", "menu_lifeplus");'>LIFEPLUS</a>
-                            </li>
-                            <li>
-                                <a href="https://www.facebook.com/lifeplus.h/" class="btn_facebook en" target="_blank" onclick='eventTrack("", "menu_facebook");'>FACEBOOK</a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/lifeplus_h/" class="btn_insta en" target="_blank" onclick='eventTrack("", "menu_instagram");'>INSTAGRAM</a>
-                            </li>
-                        </ul>
-                    	<!-- //2017-03-13 -->
-                        <div class="copyright">
-                            <ul class="side_ul">
-                                <li>
-                                    <a href="/terms.jsp" onclick='eventTrack("", "menu_terms");'>이용약관</a>
-                                </li>
-                                <li>
-                                    <a href="/privacy.jsp" onclick='eventTrack("", "menu_privacy");'>개인정보 취급방침</a>
-                                </li>
-                                <!--<li>-->
-                                    <!--<a href="#">이메일 문의</a>-->
-                                <!--</li>-->
-                                <li>
-                                    <a href="/faq/faq_list.do" onclick='eventTrack("", "menu_faq");'>자주 묻는 질문</a>
-                                </li>
-                            </ul>
-                            <div class="copy_img">
-                                <img src="_resource/images/gnb/copy.png" alt="Hanwha Life. All rights reserved.">
-                            </div>
-                            <ul class="text_ul">
-                                <li>
-                                    한화생명보험 주식회사
-                                </li>
-                                <li>
-                                    대표이사 차남규
-                                </li>
-                                <li>
-                                    사업자등록번호 116-81-11757
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+           
             </div>
         </div>
 
@@ -361,15 +252,6 @@ function goMyBucket(){
 </script>
    <script src="_resource/js/vendor/makePCookie.js"></script>
 
-<!--NSmart Track Tag Script-->
-<script type='text/javascript'>
-    callbackFn = function() {};
-    var _nsmart = _nsmart || [];
-    _nsmart.host = _nsmart.host || (('https:' == document.location.protocol) ? 'https://' : 'http://');
-    _nsmart.push([11979, 29407]); // 캠페인 번호와 페이지 번호를 배열 객체로 전달
-    document.write(unescape("%3Cscript src='" + _nsmart.host + "n00.nsmartad.com/etc?id=10' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<!--NSmart Track Tag Script End..-->
 <div id="contents">
     <div class="mypage_content">
         <div class="pop_toast">
@@ -383,10 +265,10 @@ function goMyBucket(){
                 <span>채홍기</span> 님의 마이페이지 <a href="javascript:Popup.directShareSns('MYBUC','', '', 'http://www.lifeplusbucket.com/_resource/images/common/sns_share_img.jpg');" class="ico"><img src="_resource/images/mypage/ico_circle_share.png" alt="공유" /></a>
             </div>
             <div class="btn_tab_area">
-                <a href="./bucket.do" class="btn_bucket mot2">
+                <a href="Bucket_mypage" class="btn_bucket mot2">
                     버킷리스트 <span>1</span>
                 </a>
-                <a href="./wish.do" class="btn_wish active mot2">
+                <a href="Bucket_mypage_wish" class="btn_wish active mot2">
                     위시리스트 <span>1</span>
                 </a>
             </div>

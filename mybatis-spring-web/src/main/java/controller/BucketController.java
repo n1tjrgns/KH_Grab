@@ -91,6 +91,14 @@ public class BucketController {
 			return "reserlist";
 		}
 		
+		@RequestMapping(value="/Bucket_mypage", method = RequestMethod.GET)
+		public String handleStep7(Model model) {
+			return "My_bucket";
+		}
 		
+		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
+		public String handleStep8(Model model) {
+			return "My_bucket2";
+		}
 			
 }
