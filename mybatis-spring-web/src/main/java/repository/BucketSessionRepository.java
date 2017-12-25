@@ -121,6 +121,28 @@ public class BucketSessionRepository  extends AbstractRepository {
 		
 			
 		}
+		
+		public Integer delteReservList_mypage(Reservation reservation) {
+			System.out.println(reservation.getBkName()+"delete2"+reservation.getmEmail());
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			try {
+				
+			String statment = nameSpace+".delteReservList_mypage";
+			Integer result = sqlSession.delete(statment,reservation);
+			if(result>0) {
+				 sqlSession.commit();
+			 }else {
+				 sqlSession.rollback();
+			 }
+			 return result;
+			}finally {
+				sqlSession.close();
+			}
+		
+			
+		}
+		
+		
 }
 		
 		

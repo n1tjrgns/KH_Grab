@@ -121,5 +121,8 @@
             WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
 	</update>
 
-	
+	<delete id="delteReservList_mypage" parameterType="Reservation">
+	 DELETE FROM Reservation
+            WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
+	</delete>
 </mapper>

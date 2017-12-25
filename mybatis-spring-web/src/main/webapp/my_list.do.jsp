@@ -28,9 +28,10 @@
                             <c:if test="${reservation.resCheck=='Y'}">
                             <a href="javascript:complateBucket('${reservation.bkName }','${reservation.mEmail }','N');"  class="btn_complete  mot2">완료 됨</a>
                             </c:if>
+                            <br/> <br/>
                             <div class="btn_ico"> 
-                                <a href="" class="btn_share mot2"></a>
-                                <a href="javascript:void(0);" key-value="I0741" class="btn_delete mot2"></a>
+                 	      <c:if test="${reservation.resCheck=='Y'}">리뷰쓰기 <a href="" class="btn_share mot2"></a></c:if>
+                               삭제하기 <a href="javascript:deleteRes('${reservation.mEmail}','${reservation.bkName}');"  class="btn_delete mot2"></a>
                             </div>
                         </div>
                     </div>
@@ -51,6 +52,36 @@ function  complateBucket(bkName,mEmail,resCheck){
 					async:true,
 					data:{
 						"bkName":bkName , "mEmail":mEmail, "resCheck":resCheck 
+					},
+					success:function( data ) {
+						alert("성공1");
+						if(data==null){
+						alert("성공real");}
+						},
+					error : function( e ) {
+						
+						//alert("조회 오류\n"+JSON.stringify(e));
+						alert("완료되었습니다.(질문하기)");
+						location.reload();
+					}
+				}
+		);
+	
+ }
+</script>
+
+<script>
+function  deleteRes(bkName,mEmail){
+
+ 	$.ajax( // 해당 자료를 삭제한다.
+				{
+
+					url:"ln/member/deleteBucket.do",
+					dataType:"text",
+					type:"GET",
+					async:true,
+					data:{
+						"bkName":bkName , "mEmail":mEmail 
 					},
 					success:function( data ) {
 						alert("성공1");

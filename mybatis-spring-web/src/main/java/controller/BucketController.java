@@ -113,6 +113,15 @@ public class BucketController {
 			return null;
 		}
 		
+		@RequestMapping(value="/ln/member/deleteBucket.do", method = RequestMethod.GET)
+		public String handleStep7_3(Model model, Reservation reservation) {
+			System.out.println(reservation.getBkName()+"delete"+reservation.getmEmail());
+			Integer result = bucketRepository.delteReservList_mypage(reservation);
+			System.out.println(result+"개 삭제완료");
+			return null;
+		}
+		
+		
 		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
 		public String handleStep8(Model model) {
 			return "My_bucket2";
