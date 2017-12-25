@@ -1,6 +1,4 @@
 $(document).ready(function() {
-	// -- Click on detail
-
 	// -- Click on QUANTITY
 	$(".btn-minus").on("click", function() {
 		var now = $(".section > div > input").val();

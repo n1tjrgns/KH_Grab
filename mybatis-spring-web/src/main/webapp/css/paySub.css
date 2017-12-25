@@ -2626,7 +2626,9 @@ li.box-tab-btn.tab-btn.btn.tab-box-bidlist.active {line-height:12px; border:1px 
 
 .box_address_cell .box_receiver_info {display:table; width:100%; font-family:"굴림", Gulim, Arial, sans-serif; line-height:24px; border-bottom:1px solid #ddd}
 .box_address_cell .box_receiver_info .cell_discount_detail select{height:24px; box-sizing:border-box;-webkit-box-sizing: border-box;-webkit-margin-after:1px}
-.box_address_cell .box_receiver_info .order_address_form.box_receiver input[type="text"]{width:70px}
+.box_address_cell .box_receiver_info .order_address_form.box_receiver input[type="text"]{width:100px}
+.box_address_cell .box_receiver_info .order_address_form.product_name input[type="text"]{width:300px}
+
 .box_address_cell .box_receiver_info .order_address_form.box_phone input[type="text"]{border:1px solid #ddd; width:70px; box-sizing:border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box}
 .box_address_cell .box_receiver_info .order_address_form.box_tel input[type="text"]{border:1px solid #ddd; width:70px; box-sizing:border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box}
 .box_address_cell .box_receiver_info .order_address_form.box_tel p{display:inline-block; margin-left:10px; vertical-align:bottom}
