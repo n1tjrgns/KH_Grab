@@ -19,21 +19,6 @@
     <p><a href="javascript:void(0);" class="skip-contents">본문 바로가기</a></p>
 </div>
 
-
-<script>
-	var isLogin = true;
-    var resourcePath = "_resource";
-    var webDomain = "http://www.lifeplusbucket.com"; 
-    var domainName = "lifeplusbucket.com"; 
-    var fbAppId = "803062869828098";
-    var nvAppId = "MLj0oi23BbB6Z9PdGctD";
-    var kaAppId = "54fdc94fb5308e67bf208e2863485e71";
-    var kaAppSecret = "cd1307a27870955ff42db477f3945923";
-    var kaAppSecret = "U_2RigbPTb";
-    var sslDomain = "https://www.lifeplusbucket.com";
-    document.domain="lifeplusbucket.com";
-
-</script>
 <script> var isMainAlready = true; </script>
 
 <div id="wrap" class='already'>
@@ -422,45 +407,48 @@ function regisList2(mEmail,NY){
      	<input type="hidden" id="SAVE_SNS_SHARE_IMAGE">
      	
         <ul class="share-popup-ul">
-            <li class="share-popup-title"><span>채홍기</span> 님의<br> 버킷리스트를 SNS에 공유해보세요.</li>
-            <li class="share-popup-info"><span>ㆍ</span> 아래 이미지가 SNS에 공유됩니다.</li>
+            <li class="share-popup-title"><span>채홍기</span> 님의<br> 버킷리스트 리뷰를 작성해보세요!</li>
+            <li class="share-popup-info"><span>ㆍ</span> 아래 내역은 공개시 리뷰로 등록됩니다.</li>
             <li class="share-popup-img">
                 
                 <div class="share-popup-contents">
-                    <img src="_resource/images/discover/library/share-popup-sample.png"  id="SNS_SHARE_IMAGE"/>
+                    <img src="img/bg.jpg"  id="SNS_SHARE_IMAGE"/>
                     <div class="share-popup-dimmed"></div>
                     <div class="share-popup-contents-copy">
-                        <p class="en" id="SNS_SHARE_CTGR">SPORTS</p>
-                        	<span  id="SNS_SHARE_TEXT">하와이에서 서핑 마스터하기</span>
+                       <form name="form" method="post" action="discover/bucket_review_resist.do">
+                       <p class="1">이곳은 버킷 이름이 들어가는 곳</p>
+                       <input type="hidden" name="mEmail" value="member">
+                       <input type="hidden" name="bkName" id="bkName" value="">
+                       	제목 : <input name ="bkrvTitle" type="text" size="50"/> <br/>
+                 		<span  id="SNS_SHARE_TEXT">	내용 : <textarea cols="55" rows="15" name="bkrvContent"> </textarea> <br/></span>
+                      <p>평점 : 
+                      <input type="radio" name="bkrvScore" value="1">1
+                      <input type="radio" name="bkrvScore" value="2">2
+                      <input type="radio" name="bkrvScore" value="3">3
+                      <input type="radio" name="bkrvScore" value="4">4
+                      <input type="radio" name="bkrvScore" value="5">5</p>
+                     
+                        	</form> 
                     </div>
                 </div>
             </li>
             <li class="share-popup-btns">
-                <a href="#" class="share-fb">
-                    <div>
-                        <img src="_resource/images/discover/etc/fb-icon.png" />
-                        <img src="_resource/images/discover/etc/fb-icon_on.png" class="on" />
-                    </div>
-                    페이스북 공유
+                <a  href="javascript:regist();"  class="share-fb">
+              
+                   리뷰등록하기
                 </a>
-                <a href="#" class="share-tw">
-                    <div>
-                        <img src="_resource/images/discover/etc/tw-icon.png" />
-                        <img src="_resource/images/discover/etc/tw-icon_on.png" class="on" />
-                    </div>
-                    트위터 공유
-                </a>
-                <a href="#" class="share-ks">
-                    <div>
-                        <img src="_resource/images/discover/etc/ks-icon.png" />
-                        <img src="_resource/images/discover/etc/ks-icon_on.png" class="on" />
-                    </div>
-                    카카오스토리 공유
-                </a>
+                
             </li>
             <li class="share-popup-close"><a href="#"><img src="_resource/images/discover/share-popup-close.png" /></a></li>
         </ul>
     </div>
+  	<script>
+  	function  regist(){
+  		document.form.submit(); 
+  	}
+  	
+  	
+  	</script>
     
     
     <script>
@@ -565,32 +553,6 @@ function updateBtns(){
 }
 
 
-function  deleteBucket(keyValue){
-	 //alert(keyValue)
-	$.ajax( // 화면의 데이타를 조회한다.
-				{
-
-					url:"/ln/member/deleteBucket.do",
-					dataType:"json",
-					type:"POST",
-					async:true,
-					data:{
-						idea_id:keyValue 
-					},
-					success:function( data ) {
-
-					    TweenMax.to(thisTarget.parent().parent().parent().parent(), 0.8, {width:0,opacity:0,ease: Power3.easeOut,onComplete:function(){
-					    	thisTarget.parent().parent().parent().parent().hide();
-					    }});
-					},
-					error : function( e ) {
-						//alert("조회 오류\n"+JSON.stringify(e));
-						alert("로그인이 필요한 화면입니다. 로그인해 주세요.")
-					}
-				}
-		);
-	
-}
 
 
 $btnMore.click(function(){

@@ -17,7 +17,7 @@
                         <div class="list_img">
 							<a href="javascript:Popup.$keyValue='I0741';Popup.detailPopupShowHide(true);"><img src="${reservation.photoURL}" alt="${reservation.bkName}" style="width:274px;height:274px;"></a>
                         </div>
-                        <div class="list_title">
+                        <div class="list_title"><form name="frm" action="redirect:My_bucket.jsp" method="post"><input type="hidden" name="val1" value="${reservation.bkPurpose }"/>
                             <div class="class en lifestyle">${reservation.bkPurpose }</div>
                             <div class="list_date en">${reservation.regDate }</div>
                             <div class="title">${reservation.bkName }</div>
@@ -30,9 +30,10 @@
                             </c:if>
                             <br/> <br/>
                             <div class="btn_ico"> 
-                 	      <c:if test="${reservation.resCheck=='Y'}">리뷰쓰기 <a href="" class="btn_share mot2"></a></c:if>
+                 	      <c:if test="${reservation.resCheck=='Y'}">리뷰쓰기 <a href="javascript:Popup.sharePopupShowHide(true);" onclick="transfer('${reservation.bkName}');" class="btn_share mot2"></a></c:if>
                                삭제하기 <a href="javascript:deleteRes('${reservation.mEmail}','${reservation.bkName}');"  class="btn_delete mot2"></a>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </li>
@@ -40,6 +41,16 @@
 
 </body>
 </html>
+<script>
+function transfer(value){
+   		$("#bkName").val(value);
+    	$(".1").html(value);
+        alert(value);
+    };
+
+</script>
+
+
 <script>
 function  complateBucket(bkName,mEmail,resCheck){
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import model.Bucket_Review;
 import model.Bucketlist;
 import model.Reservation;
 import model.Reservation_Bucketlist;
@@ -140,6 +141,27 @@ public class BucketSessionRepository  extends AbstractRepository {
 			}
 		
 			
+		}
+		
+		public Integer InsertBucket_Review(Bucket_Review bucket_review) {
+			System.out.println("InsertBucket_Review:"+bucket_review.getBkName());
+			if(bucket_review.getBkrvCheck()==null) {
+				bucket_review.setBkrvCheck("no");
+			}
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			try {
+			
+			String statment = nameSpace+".InsertBucket_Review";
+			 int result = sqlSession.insert(statment,bucket_review);
+			 if(result>0) {
+				 sqlSession.commit();
+			 }else {
+				 sqlSession.rollback();
+			 }
+			 return result;
+			}finally {
+				sqlSession.close();
+			}
 		}
 		
 		

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Bucket_Review;
 import model.Bucketlist;
 import model.Reservation;
 import model.Reservation_Bucketlist;
@@ -125,6 +126,17 @@ public class BucketController {
 		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
 		public String handleStep8(Model model) {
 			return "My_bucket2";
+		}
+		
+		@RequestMapping(value="/discover/bucket_review_resist.do", method = RequestMethod.POST)
+		public String handleStep9(Model model,Bucket_Review bucket_review) {
+			System.out.println("bucket_review_resist.do:"+bucket_review.getBkName());
+			System.out.println("bucket_review_resist.do:"+bucket_review.getBkrvContent());
+			Integer result = bucketRepository.InsertBucket_Review(bucket_review);
+			System.out.println(result+"개");
+			model.addAttribute("result",result);
+			
+				return "redirect:../Bucket_mypage";
 		}
 			
 }

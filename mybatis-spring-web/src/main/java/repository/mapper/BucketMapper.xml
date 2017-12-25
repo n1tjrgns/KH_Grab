@@ -125,4 +125,10 @@
 	 DELETE FROM Reservation
             WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
 	</delete>
+	
+	<insert id="InsertBucket_Review" parameterType="Bucket_Review" >
+		INSERT INTO Bucket_Review
+	   	VALUES(BR_SEQ.NEXTVAL,#{mEmail},#{bkName},'company',sysdate,#{bkrvTitle},#{bkrvContent},NULL,#{bkrvScore},'Y')
+	</insert>
+	
 </mapper>

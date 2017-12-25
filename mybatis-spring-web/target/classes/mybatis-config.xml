@@ -9,6 +9,7 @@
    	<typeAlias type="model.Bucketlist" alias="Bucketlist"/>
    	<typeAlias type="model.Reservation" alias="Reservation"/>
    	<typeAlias type="model.Reservation_Bucketlist" alias="Reservation_Bucketlist"/>
+   	<typeAlias type="model.Bucket_Review" alias="Bucket_Review"/>
    </typeAliases>
    
    <environments default="development">
