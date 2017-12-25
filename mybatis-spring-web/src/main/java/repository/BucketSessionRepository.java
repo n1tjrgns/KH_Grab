@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import model.Bucketlist;
 import model.Reservation;
+import model.Reservation_Bucketlist;
 @Repository
 public class BucketSessionRepository  extends AbstractRepository {	
 		private final String nameSpace = "repository.mapper.BucketMapper";
@@ -81,6 +82,14 @@ public class BucketSessionRepository  extends AbstractRepository {
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			String statment = nameSpace+".selectReservList";
 			return sqlSession.selectList(statment,reservation);
+			
+		}
+		
+		public List<Reservation> selectReservList_mypage(Reservation_Bucketlist reservation_bucketlist) {
+			System.out.println(reservation_bucketlist.getmEmail()+"selectReservList_mypage");
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".selectReservList_mypage";
+			return sqlSession.selectList(statment,reservation_bucketlist);
 			
 		}
 }

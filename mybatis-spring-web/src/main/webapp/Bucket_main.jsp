@@ -235,7 +235,7 @@ $("#__search_param1__").keyup(function(e){
 <script>
 function search_list(category){
 	//alert(category);
-	$.ajax( // 상세정보를 팝업시킨다.
+	$.ajax( // 카테고리로 서치한다.
 			{	
 				url:"Bucket_main_search.do",
 				dataType:"html",

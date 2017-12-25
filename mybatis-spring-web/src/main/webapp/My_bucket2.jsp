@@ -56,147 +56,6 @@
         <div class="gnb_bg"></div>
         
 
-
-
-<div class="pop_layer pop_login">
-    <div class="pop_inner">
-        <a href="javascript:login.closePop();" class="btn_pop_close">
-            <img src="_resource/images/register/pop/btn_pop_close.png" alt="">
-        </a>
-        <div class="login_box">
-            <div class="sns_box">
-                <h3>SNS 로그인</h3>
-                <ul class="reg_ul">
-                    <li>
-                        <a href="javascript:loginSns('facebook','login');" class="btn_facebook mot3" onclick='eventTrack("", "login_btn_facebook");'>
-                            <span class="ico mot3"></span>
-                            <span class="txt"><span class="bold">페이스북</span>으로 로그인/회원가입</span>
-                            <span class="cursor mot3"></span>
-                        </a>
-                    </li>
-                    <li>
-                     <div id="naver_id_login" style="display:none;"></div>
-                        <a href="javascript:loginSns('naver','login');"  class="btn_naver mot3" onclick='eventTrack("", "login_btn_naver");'>
-                            <span class="ico mot3"></span>
-                            <span class="txt"><span class="bold">네이버</span>로 로그인/회원가입</span>
-                            <span class="cursor mot3"></span>
-                        </a>
-                    </li>
-                    <li>
-                      
-                        <a href="javascript:loginSns('kakao','login');" class="btn_kakao mot3" onclick='eventTrack("", "login_btn_kakao");'>
-                            <span class="ico mot3"></span>
-                            <span class="txt"><span class="bold">카카오</span>로 로그인/회원가입</span>
-                            <span class="cursor mot3"></span>
-                        </a> 
-                    </li>
-                </ul>
-            </div>
-            <div class="email_box">
-                <h3>이메일 로그인</h3>
-                <div class="input_area">
-                    <form action="https://www.lifeplusbucket.com/member/login.do" id="__loginForm__" method="post">
-                    	<input type="hidden" name="_returnURL_" id="_returnURL_" value="">
-                    	<input type="hidden" name="_sns_type_" id="_sns_type_" value="">
-                    	
-                    	<input type="hidden" name="_sns_id_" id="_sns_id_" value="">
-                    	<input type="hidden" name="_sns_pimage_" id="_sns_pimage_" value="">
-                    	<input type="hidden" name="_sns_nm_" id="_sns_nm_" value="">
-                    	<input type="hidden" name="_sns_email_" id="_sns_email_" value="">
-                         <!-- 20170816_SNS_ADD  -->
-                      <input type="hidden" name="_sns_age_" id="_sns_age_" value="">
-                      <input type="hidden" name="_sns_birthday_" id="_sns_birthday_" value="">
-                      <input type="hidden" name="_sns_gender_" id="_sns_gender_" value="">
-                       <!-- 20170816_SNS_ADD  -->
-                      	<input type="hidden" name="pcode" id="pcode" value="login">
-                    	  <input type="hidden" name="save_email_flg" id="save_email_flg" value="">   
-                    	
-                    	 
-                        <div class="input_box email login_email">
-                            <input type="text" placeholder="이메일 주소" name="_login_email_" id="_login_email_" value="" maxlength="35">
-                        </div>
-                        <div class="input_box password login_password">
-                            <input type="password" placeholder="비밀번호" name="_login_passwd_" id="_login_passwd_" onkeypress="checkLoginPassswordKeyPress(event);" maxlength="25">
-                        </div>
-                    </form>
-                </div>
-                <a href="javascript:loginInputCheck();" class="btn_login" onclick='eventTrack("", "login_btn_email");'>로그인</a>
-                <div class="btn_link">
-                    <a href="javascript:void(0);" class="btn_email_save ">이메일 저장</a>
-                    
-                    <a href="/member/find_password.do" class="btn_pw_find">비밀번호 찾기</a>
-                    <a href="/member/email_register.do" class="btn_register" onclick='eventTrack("", "login_btn_register"); NTrackObj.callTrackTag("29443", callbackFn, 11979);'>이메일 회원가입</a>
-                </div>
-
-            </div>
-        </div>
-       
-    </div>
-</div>
-<div class="pop_bg"></div>
- 
-
-<script>
-function loginInputCheck(){
-	if( $("#_login_email_").val() == ""){
-		alert("이메일을 입력하세요.");
-		return;
-	}
-	if( $("#_login_passwd_").val() == ""){
-		alert("비밀번호를 입력하세요.");
-		return;
-	}
-	
-		$.ajax( // 화면의 데이타를 조회한다.
-				{
-					 
-					url:"https://www.lifeplusbucket.com/member/login.do",
-					dataType:"jsonp",
-					jsonp:"callback",
-					type:"POST",
-					async:true,
-					data:{
-						_login_email_:$("#_login_email_").val(),
-						_login_passwd_:$("#_login_passwd_").val()
-					},
-					success:function( data ) {
-						if(data.code == "0"){
-                            NTrackObj.callTrackTag('29441', callbackFn, 11979);
-							$("#__loginForm__").submit();
-						}else{
-							alert("이메일 주소 또는 비밀번호가 정확하지 않습니다.");
-						}
- 						
-	 				},
-					error : function( e ) {
-						//alert("조회 오류\n"+e.error);
-					}
-				}
-			);	
-	
-	
-	//$("#__loginForm__").submit();
-}
-function checkLoginPassswordKeyPress(event){
-	   if(window.event){
-	      var code = window.event.keyCode;
-	   }
-	   else{
-	      var code = e.charCode;
-	   }
-		   
- 
-		 
-	if(code == 13){
-		loginInputCheck()
-	}
-}
-
-
-</script>
-
-
-
         <div class="dumpBannerBox"></div>
         <div id="facebook-banner" class="fixed-group">
             <a href="https://www.lifeplus.co.kr/lifeplusxlcd/" class="banner-copy" target="_blank" onclick='eventTrack("", "clublibday_banner_head");'><!-- 20171109 -->
@@ -235,8 +94,8 @@ function checkLoginPassswordKeyPress(event){
                         
                     </div>
                 </a>
-           
-            </div>
+        
+             </div>
         </div>
 
 
@@ -303,158 +162,6 @@ function goMyBucket(){
 
 <div id="popups" class="fixed-group">
 
-    
-    <div id="detail-popup" class="detail-popup popup-group">
-        <div class="detail-container">
-            <div class="img-container">
-                <div class="detail-bg"><img src="_resource/images/discover/library/popup/img-bg.png" alt="" /></div>
-
-                <ul id="detail-img-contents">
-                    
-                    <li><div class="simple_loading"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></li>
-                    <li class="img-box" bucketimage=""></li>
-                    <li class="detail-img-shadow"></li>
-                    <li class="detail-img-top-shadow"><img src="_resource/images/discover/popup-top-shadow.png" alt="" /></li>
-                    <li class="detail-arrow-btns">
-                        <a href="javascript:;"><img src="_resource/images/discover/etc/arrow-btn-l.png" alt=""></a>
-                        <a href="javascript:;"><img src="_resource/images/discover/etc/arrow-btn-r.png" alt=""></a>
-                    </li>
-                    <li class="detail-title">
-                        <p class="category en" id="popup_detail_category">TRAVEL</p>
-                        <p class="title" id="popup_detail_title">마테호른에서 커피 한 잔 하기1</p>
-                    </li>
-                    <li class="detail-share-btns">
-                        <div class="checked-detail-add-btn change-add-check"><img src="_resource/images/discover/etc/add-btn-checked.png" alt="" /></div>
-                        <a href="#" class="detail-add-btn change-add-btn"><img src="_resource/images/discover/etc/add-btn.png" alt="" /></a>
-
-                        <div class="checked-detail-like-btn change-like-check"><img src="_resource/images/discover/etc/like-btn-checked.png" alt="" /></div>
-                        <a href="#" class="detail-like-btn change-like-btn"><img src="_resource/images/discover/etc/like-btn.png" alt="" /></a>
-
-                        <a href="#" class="detail-share-btn"><img src="_resource/images/discover/etc/share-btn.png" alt="" /></a>
-                        <div class="detail-small-share-btns">
-                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_twitter.png" alt="" /></a>
-                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_kakao.png" alt="" /></a>
-                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_facebook.png" alt="" /></a>
-                            <a href="#"><img src="_resource/images/discover/etc/popup_btn_share_close.png" alt="" /></a>
-                        </div>
-                    </li>
-                    <li class="detail-top-btns">
-                        <div class="dots">
-                            <a href="#" class="active"></a>
-                            <a href="#"></a>
-                            <a href="#"></a>
-                        </div>
-                        <a href="#" class="detail-popup-close"><img src="_resource/images/discover/library/popup/close-btn.png" alt="" /></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="info-container">
-                <div id="info-left">
-                    <ul class="info-left-ul">
-                        <li class="tags tag-btns-group"  id="popup_detail_tags">
-                            <a href="#"><span>#</span>스위스</a>
-                            <a href="#"><span>#</span>마테호른</a>
-                            <a href="#"><span>#</span>알프스의여왕</a>
-                        </li>
-                        <li class="desc" id="popup_detail_desc">
-                            눈과 얼음으로 뒤덮인 알프스 산맥의 마테호른에 올라 장엄한 풍경을 바라보면서 여유 있게 커피 한 잔을 즐겨봅니다.
-                            장엄한 풍경을 바라보면서 여유 있게 커피 한 잔을 즐겨봅니다. 눈과 얼음으로 뒤덮인 알프스 산맥의 마테호른에
-                            올라 장엄한 풍경을 바라보면서 여유 있게 커피 한 잔을 즐겨봅니다.
-                        </li>
-                        <li class="links">
-                            <dl id="popup_detail_urls">
-                                <dt>관련링크</dt>
-                                <dd>알프스 관광청 <a href="#">alps.vvco.kr</a></dd>
-                                <dd>마테호른 커피 <a href="#">mathehornecoffee.co.kr</a></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-                <div id="info-right">
-                    <ul>
-                        <li class="title"><span id="popup_detail_bucket_cnt">300</span>명이 이 버킷 리스트를 함께 합니다.</li>
-                        <li class="person-list" id="popup_detail_bucket_list" style="display: none;">
-                           
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="last">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="last">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                        </li>
-                        <li class="zero-person-info" style="display: none;">
-                            <img src="_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
-                            <div class="desc1">이 버킷 리스트를</div>
-                            <div class="desc2">추가한 <span>최초의 1인</span>이 되어 보세요!</div>
-                        </li>
-                        <li class="info-prev-next">
-                            <a href="javascript:Popup.detailBucketList('prev');" class="info-prev"><span>이전</span></a>
-                            <div class="info-count en" id="popup_detail_bucket_list_page"><span >1</span> / 0</div>
-                            <a href="javascript:Popup.detailBucketList('next');" class="info-next"><span>다음</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
     <div id="person-bucket-popup" class="person-bucket-popup popup-group">
         <div class="person-bucket-container">
              
@@ -533,92 +240,8 @@ function goMyBucket(){
             <li class="share-popup-close"><a href="#"><img src="_resource/images/discover/share-popup-close.png" /></a></li>
         </ul>
     </div>
-    
-    
-    <div id="user-guide-popup" class="user-guide-popup popup-group">
-        <div class="left-contents">
-            <div class="title">
-                USER<br>
-                <span>GUIDE</span>
-            </div>
-            <div class="desc">
-                당신의 가슴을 뛰게 할<br>
-                Bucket List를 발견하고,<br>
-                삶에 색을 더해보세요.
-            </div>
-        </div>
-        <ul>
-            <li>
-                <span>01</span>
-                <div><img src="_resource/images/discover/etc/popup-user-guide-icon1.png" /></div>
-                <dt>탐색해보세요</dt>
-                <dd>
-                    Lifeplus Bucket List가 제안하는<br>
-                    다양한 아이디어들을 탐색해보고
-                </dd>
-            </li>
-            <li>
-                <span>02</span>
-                <div><img src="_resource/images/discover/etc/popup-user-guide-icon2.png" /></div>
-                <dt>발견해보세요</dt>
-                <dd>
-                    나의 가슴을 뛰게 만드는<br>
-                    Bucket List를 발견해보세요.
-                </dd>
-            </li>
-            <li>
-                <span>03</span>
-                <div><img src="_resource/images/discover/etc/popup-user-guide-icon3.png" /></div>
-                <dt>공유해보세요</dt>
-                <dd>
-                    자랑하고 싶고, 함께하고 싶은<br>
-                    Bucket List를 친구들과 공유해보고
-                </dd>
-            </li>
-            <li>
-                <span>04</span>
-                <div><img src="_resource/images/discover/etc/popup-user-guide-icon4.png" /></div>
-                <dt>삶에 더해보세요</dt>
-                <dd>
-                    나의 Bucket List에 +Add하는 순간,<br>
-                    Lifeplus는 시작됩니다.
-                </dd>
-            </li>
-        </ul>
-        <div class="user-guide-popup-close">
-            <a href="#"><img src="_resource/images/discover/etc/popup-user-guide-close.png" /></a>
-        </div>
-    </div>
-    
-    
-    <script>
-    	function setSnsShareData( sns_share_key,sns_share_ctgr, sns_share_text, sns_share_image){
-    	 
-    		$("#SNS_SHARE_KEY").val(sns_share_key);
-    		$("#SNS_SHARE_CTGR").text(sns_share_ctgr);
-    		$("#SNS_SHARE_TEXT").text(sns_share_text);
-    		$("#SNS_SHARE_IMAGE").attr("src",sns_share_image);
-    		
-    		
-    	}
-    	
-    	function setSnsSareSaveData(sns_share_key,sns_share_ctgr, sns_share_text, sns_share_image ){
-    		$("#SAVE_SNS_SHARE_KEY").val(sns_share_key);
-    		$("#SAVE_SNS_SHARE_CTGR").val(sns_share_ctgr);
-    		$("#SAVE_SNS_SHARE_TEXT").val(sns_share_text);
-    		$("#SAVE_SNS_SHARE_IMAGE").val(sns_share_image);
-    	}
-    	function loadSnsShareData(  ){
-       	 
-    		$("#SNS_SHARE_KEY").val($("#SAVE_SNS_SHARE_KEY").val());
-    		$("#SNS_SHARE_CTGR").html($("#SAVE_SNS_SHARE_CTGR").val());
-    		$("#SNS_SHARE_TEXT").html($("#SAVE_SNS_SHARE_TEXT").val());
-    		$("#SNS_SHARE_IMAGE").attr("src",$("#SAVE_SNS_SHARE_IMAGE").val());
-    		
-    		
-    	}   	
-    </script>
-    
+  
+   
 </div>
 
 
@@ -635,9 +258,9 @@ function goMyBucket(){
 <script src="_resource/js/vendor/jquery.cookie.js"></script>
 <script src="_resource/js/vendor/spin.min.js"></script>
 <script src="_resource/js/vendor/CustomTW.js"></script>
-<script type="text/javascript" src="_resource/js/vendor/naverLogin_implicit-1.0.3-my.js" charset="utf-8"></script>
 
-<script type="text/javascript" src="_resource/js/vendor/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
+
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript" src="_resource/js/sns_add.js" charset="utf-8"></script>
 <script src="_resource/js/common.js"></script>
@@ -648,56 +271,6 @@ function goMyBucket(){
 </html>
 <script src="_resource/js/discover/Discover.Popup.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script type="text/javascript">
-<!--
-Kakao.init('54fdc94fb5308e67bf208e2863485e71');
-function sendSns(sns, seq, txt){
-	
-	if( seq == ""){
-		seq = $("#SNS_SHARE_KEY").val();
-	}
-	if( txt == ""){
-		txt = $("#SNS_SHARE_TEXT").text();
-	}
-	txt="";
-	 	var _urls = "http://www.lifeplusbucket.com/discover/library.do?search_param8=";
-	    var _url = encodeURIComponent(_urls+seq);
-	    var _txt = encodeURIComponent(txt);
-	    switch(sns){
-	        case 'facebook':
-	            var win = window.open('http://www.facebook.com/sharer/sharer.php?u=' + _url);
-	            checkPopup(win);
-	            break;
-	        case 'twitter':
-	        	_txt = encodeURIComponent("당신의 가슴을 뛰게 할 Bucket List를 발견해보세요!  ");
-	        	 var request = gapi.client.urlshortener.url.insert({
-		     	        'resource' : {
-		     	            'longUrl' : _urls+seq
-		     	        }
-		     	    });
-		     	    request.execute(function(response) {
-		     	        if (response.id != null) {
-		     	             
-		    	            var win = window.open('http://twitter.com/intent/tweet?text=' + _txt + '&url=' + response.id);
-		    	            checkPopup(win);
-		     	        } else {
-		     	            alert(JSON.stringify(response));
-		     	        }
-		     	    });
-		     	    
-	            break;
-	        case 'kakaostory':
-	   			Kakao.Story.share({ url: _urls+seq, text: txt });
-	            break;
-	    }
-        Popup.saveShareCnt(seq);
-	 
-}
-//-->
- 
-</script>
-
-
 
 <script>
 	setGnb(3);

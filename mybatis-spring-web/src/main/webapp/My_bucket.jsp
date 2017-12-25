@@ -76,7 +76,7 @@
             </div>
 
             <div class="h-menu-box">
-                <a href="/discover/library.do" class="h-logo">
+                <a href="Bucket_main" class="h-logo">
                     <div>
                         <img src="_resource/images/common/logo.png" alt=""/>
                         
@@ -122,18 +122,18 @@ function goMyBucket(){
 			<div class="list_tab">
 				<ul class="list_ul">
 					<li>
-						<a href="javascript:loadList('');" class="first active mot2">전체</a>
+						<a href="loadList('member');" class="first active mot2">전체</a>
 					</li>
 					<li>
-						<a href="javascript:loadList('N');" class="mot2">도전 중</a>
+						<a href="javascript:loadList('N');" class="mot2">예약 중</a>
 					</li>
 					<li>
-						<a href="javascript:loadList('Y');" class="mot2">완료</a>
+						<a href="javascript:loadList('Y');" class="mot2">수행 완료</a>
 					</li>
 				</ul>
 			</div>
 			<!-- 리스트 없을때 -->
-			<div class="list_none" style="display:none;">
+			<div class="list_none" style="display:block;">
 				<div class="ico">
 					<img src="_resource/images/mypage/ico_bucket.png" alt="" />
 				</div>
@@ -145,7 +145,9 @@ function goMyBucket(){
 			</div>
 
 			<!-- 리스트 있을때 -->
-            <ul class="list_box_ul">
+            <ul class="list_box_ul" style="display:none;">
+        
+            
             </ul>
           	<a href="javascript:void(0);" class="btn_more mot2">더보기</a>
         </div>
@@ -153,8 +155,33 @@ function goMyBucket(){
 </div>
 <div id="black-dimmed"></div>
 
-
-
+<script>
+var mEmail='member';
+ function regisList(mEmail){
+	 
+	$.ajax( //리스트를 불러온다.
+			{
+				url:"Bucket_mypage.do",
+				dataType:"html",
+				type:"POST",
+				async:true,
+				data:"mEmail="+ mEmail,
+				success:function( data ) {
+					alert("성공\n");
+					$(".list_none").css("display","none");
+					$(".list_box_ul").css("display","block");
+		            $(".list_box_ul").html(data);
+		            $self.listUpdateReset(prevListLen);
+					$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸   
+ 				},
+				error : function( e ) {
+					alert("조회 오류\n"+e.error);
+				}
+			}
+		);	      
+} 
+ window.onload= function() { regisList(mEmail); };
+</script>
 
 
 

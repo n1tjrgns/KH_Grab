@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Bucketlist;
 import model.Reservation;
+import model.Reservation_Bucketlist;
 import repository.BucketSessionRepository;
 @Controller
 public class BucketController {
@@ -94,6 +95,15 @@ public class BucketController {
 		@RequestMapping(value="/Bucket_mypage", method = RequestMethod.GET)
 		public String handleStep7(Model model) {
 			return "My_bucket";
+		}
+		
+		@RequestMapping(value="/Bucket_mypage.do", method = RequestMethod.POST)
+		public String handleStep7_1(Model model, Reservation_Bucketlist reservation_bucketlist) {
+			List<Reservation> reservation = bucketRepository.selectReservList_mypage(reservation_bucketlist);
+			model.addAttribute("reservation",reservation);
+			System.out.println(reservation.size()+" 개 출력 완료");
+			
+			return "my_list.do";
 		}
 		
 		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)

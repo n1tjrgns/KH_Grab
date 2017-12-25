@@ -32,6 +32,27 @@
 	      <result column="reser_date" jdbcType="DATE" property="regDate"/>
 	      <result column="re_comment" jdbcType="VARCHAR" property="resCf"/>
 	   </resultMap>
+	   
+	   	<resultMap type="Reservation_Bucketlist" id="BaseResultMap3">
+	      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+	      <id column="bk_name" jdbcType="VARCHAR" property="bkName"/>
+	      <id column="m_email" jdbcType="VARCHAR" property="mEmail"/>
+	      <id column="c_email" jdbcType="VARCHAR" property="cEmail"/>
+	      <result column="visit_date" jdbcType="DATE" property="resDate"/>
+	      <result column="persons" jdbcType="BIGINT" property="resInt"/>
+	      <result column="reser_check" jdbcType="VARCHAR" property="resCheck"/>
+	      <result column="reser_date" jdbcType="DATE" property="regDate"/>
+	      <result column="re_comment" jdbcType="VARCHAR" property="resCf"/>
+	      
+	      <result column="BK_CONTENT" jdbcType="VARCHAR" property="bkContent"/>
+	      <result column="BK_MAX" jdbcType="BIGINT" property="bkMax"/>
+	      <result column="BK_PURPOSE" jdbcType="VARCHAR" property="bkPurpose"/>
+	      <result column="BK_DATE" jdbcType="DATE" property="bkDate"/>
+	      <result column="BK_DUE" jdbcType="DATE" property="bkDue"/>
+	      <result column="BK_SORT" jdbcType="VARCHAR" property="bkSort"/>
+	      <result column="BK_CHECK" jdbcType="VARCHAR" property="bkCheck"/>
+	      <result column="PHOTO_URL" jdbcType="VARCHAR" property="photoURL"/>
+	   </resultMap>
 
 	<select id="selectBucketALL" 
 	resultMap="BaseResultMap">
@@ -69,6 +90,14 @@
    			*	
 	   	FROM Reservation  
 	   	  	WHERE bk_name= #{bkName} AND m_email= #{mEmail} AND rownum <![CDATA[>=]]> #{resInt} AND rownum  <![CDATA[<=]]> #{resInt}
+	</select>
+	
+	<select id="selectReservList_mypage" parameterType="Reservation"
+	resultMap="BaseResultMap3">
+	SELECT 
+   			*	
+	   		FROM Reservation  r, Bucket_request b
+	   	  	WHERE r.bk_name=b.bk_name AND r.m_email= #{mEmail} 
 	</select>
 	
 	
