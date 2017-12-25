@@ -63,11 +63,23 @@
 						class="en">SHOP</span></a>
 					<%
 					if (session.getAttribute("loginInfo") != null) {
+						int i=1;
+						if(member.getmAuthority().equals("company")){
+					%>
+					<div class="sub_link mot3">
+						<a href="AddProduct" onclick="" class="sub_a mot2">Add Product</a>
+						<a href="ModifyProduct" onclick="" class="sub_a mot2">Modify Product</a>
+					</div>
+
+					<%		
+						}else{
 					%>
 					<div class="sub_link mot3">
 						<a href="ShoppingBasket" onclick="" class="sub_a mot2">Shopping Basket</a>
 					</div>
-					<%} %>
+						
+					<%}
+					}%>
 				</li>
 
 				<li class="sub"><a href="Main_cs" class="mot2" onclick="">

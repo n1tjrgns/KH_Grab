@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
-<title>물품추가 | Grab STORE</title>
+<title>물품수정 | Grab STORE</title>
 
 <link rel="stylesheet" type="text/css"
 	href="//static.musinsa.com/skin/musinsa/css/magazine_common.css?20161230" />
@@ -94,10 +94,10 @@ $(document).ready(function(){
 		<!--article-title-->
 		<div class="article-title">
 			<h2 class="title-page">
-				SHOP / ADD PRODUCT<span>샵/추가</span>
+				SHOP / MODIFY PRODUCT<span>샵/수정</span>
 			</h2>
 			<div class="page-sorting">
-				<span class="current-page">샵</span> <span>&gt;</span> <span>물품추가</span>
+				<span class="current-page">샵</span> <span>&gt;</span> <span>물품수정</span>
 			</div>
 		</div>
 		<!--//article-title-->
@@ -114,7 +114,7 @@ $(document).ready(function(){
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">물품 이름</li>
 						<li class="cell_discount_detail2 order_address_form product_name">
-							<input type="text" name="rcvr_nm" /> <span
+							<input type="text" name="product_name" /> <span
 							class="plain-btn btn cart_amount"
 							style="cursor: default; display: none" id="baesong_title"></span>
 						</li>
@@ -123,7 +123,7 @@ $(document).ready(function(){
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">카테고리</li>
 						<li class="cell_discount_detail order_address_form box_tel">
-							<select name="category" id="category">
+							<select name="product_category" id="product_category">
 								<option value="">선택하세요</option>
 								<option value="버킷리스트">버킷리스트</option>
 								<option value="여행">여행</option>
@@ -144,7 +144,7 @@ $(document).ready(function(){
 						<li class="cell_discount_tit">상세 설명
 						</li>
 						<li class="cell_discount_detail box_memo">
-							<textarea name="dlv_msg" id="dlv_msg"></textarea>
+							<textarea name="product_content" id="product_content"></textarea>
 						</li>
 					</ul>
 					<ul class="box_receiver_info">
@@ -160,11 +160,10 @@ $(document).ready(function(){
 			</div>
 		</div>
 
-			<!--p class="box_bottom_link"><span class="first"><a href="/app/cart">장바구니</a>↗</span> <span><a href="/app">스토어 메인</a>↗</span></p-->
 			<!--cart button-->
 			<div class="btn_wrap btn_type01">
 				<a href="javascript:void(0)" onclick="payCheck();"
-					class="btn_black">ADD <span class="btn_side_text">등록하기</span></a>
+					class="btn_black">MODIFY <span class="btn_side_text">수정하기</span></a>
 			</div>
 			<!--//cart button-->
 		</div>

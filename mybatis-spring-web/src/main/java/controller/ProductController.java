@@ -252,5 +252,13 @@ public class ProductController {
 		}
 	}
 	
-
+	@RequestMapping(value="/AddProduct")
+	public String shopStep7() {
+		return "addProduct";
+	}
+	
+	@RequestMapping(value="/ModifyProduct")
+	public String shopStep8() {
+		return "modifyProduct";
+	}
 }
