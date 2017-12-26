@@ -107,13 +107,15 @@
 			</form>
 		</div>
 
-		<div class="noti_text_container">
+		 <div class="noti_text_container">
 			<div class="text_title">
 				<h3>공지사항</h3>
 				<p>
 					<span class="en">GRAB</span>의 다양한 소식을 알려드립니다.
 				</p>
 			</div>
+			
+			
 			<form name="frm" method="post" action="CS_delete">
 				<div class="notifiaction_container">
 					<ul>
@@ -124,7 +126,7 @@
 						<c:forEach var="cslist" items="${cslist}" varStatus="status">
 							<c:if test="${cslist.csSort=='공지사항'}">
 								<input name="csNum" type="hidden" value="${cslist.csNum}">
-								<li class="no2"><a href="#"><span class="num"><em>${status.index+1}</em></span>
+								<li class="no2 on"><a href="#"><span class="num "><em>${status.index+1}</em></span>
 										<span class="title">　　　　　　　${cslist.csTitle}</span> <span
 										class="date">${cslist.csDate}</span></a>
 									<div class="content">${cslist.csContent}</div> <input
@@ -136,7 +138,7 @@
 				</div>
 			</form>
 		</div>
-
+      
 		<div class=mail_text_container>
 			<div class="text_title">
 				<h3>Q & A</h3>
