@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<%
+		Member member = (Member) session.getAttribute("loginInfo");
+		System.out.println("mypage세션 : " + member.getmEmail());
+%>
 <body>
 <head>
-    <link href="_resource/css/common.css" rel="stylesheet" />
+<link href="_resource/css/common.css" rel="stylesheet" />
 <link href=_resource/css/register.css rel="stylesheet" />
 <title>Grab Bucket List : 버킷 리스트 회원정보 관리</title>
-<script>
-    var resourcePath = "_resource";
-    var webDomain = "http://www.lifeplusbucket.com";
- </script>
 </head>
 <body>
-	<jsp:include page="navi-header.jsp"></jsp:include> 
-
+<jsp:include page="navi-header.jsp"></jsp:include> 
 
 <div id="contents">
     <div class="reg_content">
@@ -34,20 +34,16 @@
                         <dt class="first">프로필</dt>
                         <dd class="first">
                             <div class="profile">
-                                <!--<a href="javascript:void(0)" class="ico">-->
-                                    <!--<img src="/_resource/images/register/ico_profile.png" alt="">-->
-                                <!--</a>-->
-
                                 <img src="_resource/_web/images/register/ico_profile.png" alt="" class="img">
                             </div>
                         </dd>
                         <dt>이메일</dt>
                         <dd>
-                            <span>ckh0103@naver.com</span>
+                            <span><%= member.getmEmail() %></span>
                         </dd>
                         <dt>이름</dt>
                         <dd>
-                            <span>최규하</span>
+                            <span><%= member.getmName() %></span>
                         </dd>
                         <dt>연락처</dt>
                         <dd>

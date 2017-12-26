@@ -63,36 +63,6 @@ public class CommentController {
 		return "registerEnter";
 	}
 	
-	@RequestMapping(value="/Main_login_find", method = RequestMethod.GET)
-	public String handleStep8(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "findPw";
-	}
-	
-	
-	@RequestMapping(value="/Main_info", method = RequestMethod.GET)
-	public String handleStep9(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "info";
-	}
-	
-	@RequestMapping(value="/Main_info_enter", method = RequestMethod.GET)
-	public String handleStep9_1(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "infoEnter";
-	}
-	
-	@RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.GET)
-	public String handleStep10(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "changePw";
-	}
-	
-	@RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
-	public String handleStep11(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "memberDrop";
-	}
 	
 	@RequestMapping(value="/Buket_mypage_complite", method = RequestMethod.GET)
 	public String handleStep12_1(Model model) {

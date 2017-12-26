@@ -34,9 +34,9 @@ public class LoginController {
 			return "redirect:/Main";
 		}
 		else {
-		model.addAttribute("msg", "메세메세메세메세메세메세메세메세메세지지지지지지지지지지"); 
-		model.addAttribute("url", "Main_login");
-		return "redirect:/loginFail";
+		/*model.addAttribute("msg", "메세메세메세메세메세메세메세메세메세지지지지지지지지지지"); 
+		model.addAttribute("url", "Main_login");*/
+		return "redirect:/Main";
 		}		
 	}
 	@RequestMapping(value="/Logout")
@@ -46,9 +46,9 @@ public class LoginController {
 		return "redirect:/Main";
 	}
 	
-	@RequestMapping(value="/loginFail")
+	/*@RequestMapping(value="/loginFail")
 	public String LoginFail() {			
 		return "loginFail";
-	}
+	}*/
 	
 }
