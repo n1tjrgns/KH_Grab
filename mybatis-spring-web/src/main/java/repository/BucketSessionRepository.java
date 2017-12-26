@@ -180,6 +180,31 @@ public class BucketSessionRepository  extends AbstractRepository {
 										
 			return sqlSession.selectList(statment,bucket_Review);
 		}
+		
+		public List<Bucket_Review> selectBucket_Review_mypage_detail(Bucket_Review bucket_Review) {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".selectBucket_Review_mypage_detail";
+										
+			return sqlSession.selectList(statment,bucket_Review);
+		}
+		
+		public Integer selectBucket_Review_mypage_delete(Bucket_Review bucket_Review) {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			try {
+				String statment = nameSpace+".selectBucket_Review_mypage_delete";
+				 int result = sqlSession.delete(statment,bucket_Review);
+				 if(result>0) {
+					 sqlSession.commit();
+				 }else {
+					 sqlSession.rollback();
+				 }
+				 return result;
+				}finally {
+					sqlSession.close();
+				}
+	
+		}
+		
 }
 		
 		

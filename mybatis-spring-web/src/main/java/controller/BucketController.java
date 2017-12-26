@@ -173,5 +173,31 @@ public class BucketController {
 			model.addAttribute("bucket_Review",bucket_Review);
 			return "Bucket_main_review.do";
 		}	
+		
+		@RequestMapping(value="/Bucket_main_review_mypage_detail", method = RequestMethod.POST)
+		public String handleStep10_3(Model model,Bucket_Review bucket_Review2) {
+			List<Bucket_Review> bucket_Review=bucketRepository.selectBucket_Review_mypage_detail(bucket_Review2);
+			System.out.println("11Bucket_main_review:"+bucket_Review.size());
+			
+			for(int i=0; i<bucket_Review.size();i++) {
+				System.out.println("11before:"+bucket_Review.get(i).getBkrvPhoto());
+				if(bucket_Review.get(i).getBkrvPhoto()==null){
+				bucket_Review.get(i).setBkrvPhoto("사진없음");
+				}
+				System.out.println("11after:"+bucket_Review.get(i).getBkrvPhoto());
+				System.out.println("11other:"+bucket_Review.get(i).getBkrvTitle());
+			}
+		
+			model.addAttribute("bucket_Review",bucket_Review);
+			return "Review_detail";
+		}
+		
+		@RequestMapping(value="/Bucket_main_review_mypage_delete", method = RequestMethod.POST)
+		public String handleStep10_4(Model model,Bucket_Review bucket_Review2) {
+			Integer bucket_Review=bucketRepository.selectBucket_Review_mypage_delete(bucket_Review2);
+			System.out.println("del result:"+bucket_Review);
+
+			return "Review_detail";
+		}	
 			
 }

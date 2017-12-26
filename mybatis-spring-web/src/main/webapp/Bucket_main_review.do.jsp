@@ -23,7 +23,7 @@
         </div>
         <div class="search-result">
             <div class="search-result-title"></div>
-            
+            	
             <div id="search-result-library" style="display:block;" >
                 <div class="search-result-library-title en">LIBRARY <span id="search-result-library-title-cnt">${fn:length(bucket_Review)}</span></div>
                 <div class="search-result-library-contents">
@@ -39,6 +39,12 @@
 									 <p class="en travel">작성자  : ${bucket_Review.mEmail}</p>
 									 <p class="en travel">작성일  : ${bucket_Review.bkrvDate}</p>
 								</a>
+								<div class="btn_ico"> 
+								 <a href="javascript:Popup.sharePopupShowHide(true);" onclick="transfer('${bucket_Review.mEmail}','${bucket_Review.bkName}');" class="btn_share mot2">리뷰 상세 보기
+								 </a><br/>
+								<br/>                               	
+                               
+              				</div>
                              </li>
                         </ul>
                     </div>
@@ -67,22 +73,55 @@
 </div>
 
 
+
+<script>
+	function deleteRes(mEmail,bkName){
+		$.ajax( //내 리뷰 상세내역을 불러온다.
+				{	
+					url:"Bucket_main_review_mypage_delete",
+					dataType:"html",
+					type:"POST",
+					async:true,
+					data: {"mEmail" : mEmail,"bkName" : bkName},
+					success:function( data ) {	
+					alert("삭제성공");		
+	 				},
+					error : function( e ) {
+						alert("삭제 오류\n"+e.error);
+					}
+				}
+			);	
+		
+	}
+</script>
+
+<script>
+	function transfer(mEmail,bkName){
+		$.ajax( //내 리뷰 상세내역을 불러온다.
+				{	
+					url:"Bucket_main_review_mypage_detail",
+					dataType:"html",
+					type:"POST",
+					async:true,
+					data: {"mEmail" : mEmail,"bkName" : bkName},
+					success:function( data ) {	
+						$("#contents2").html(data);
+						$("#popups").css("display","block");		
+	 				},
+					error : function( e ) {
+						alert("리뷰 조회 오류\n"+e.error);
+					}
+				}
+			);	
+		
+	}
+</script>
+<script>
+	
+
+</script>
+<script src="_resource\css\mypage.css"></script>
+<script src="_resource/js/discover/Discover.Popup.js"></script>
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
-<script src="_resource/js/vendor/jquery.cookie.js"></script>
-<script src="_resource/js/vendor/spin.min.js"></script>
-<script src="_resource/js/vendor/CustomTW.js"></script>
-<script type="text/javascript" src="_resource/js/sns_add.js" charset="utf-8"></script>
-<script src="_resource/js/common.js"></script>
-<script src="_resource/js/login.js"></script>
-<script src="_resource/js/common_biz.js"></script>
-<!-- <script src="_resource/js/all.js"></script> -->
 </body>
 </html>
-
-<script src="_resource/js/discover/Discover.BucketCart.js"></script>
-<script src="_resource/js/discover/Discover.Popup.js"></script>
-<script src="_resource/js/discover/Discover.Common.js"></script>
-<script src="_resource/js/discover/Discover.Search.js"></script>
-<script src="_resource/js/discover/Discover.Popular.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8" ></script>
-<script type="text/javascript">

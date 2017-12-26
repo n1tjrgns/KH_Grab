@@ -160,4 +160,17 @@
 	   	WHERE m_email=#{mEmail}
 	</select>
 	
+	<select id="selectBucket_Review_mypage_detail"  parameterType="Bucket_Review"
+	  resultMap="BaseResultMap4">
+	SELECT 
+   			*
+	   	FROM Bucket_Review 
+	   	WHERE m_email=#{mEmail} AND bk_name=#{bkName}
+	</select>
+	
+	<delete id="selectBucket_Review_mypage_delete" parameterType="Bucket_Review">
+	ON DELETE CASCADE FROM Bucket_Review 
+            WHERE m_email=#{mEmail} AND trim(bk_Name)=#{bkName}
+	</delete>
+	
 </mapper>
