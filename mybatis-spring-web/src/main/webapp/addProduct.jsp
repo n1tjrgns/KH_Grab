@@ -39,7 +39,7 @@
 
 <script>
 $(document).ready(function(){
-	$("#imgInp").change(function() {
+	$("#file").change(function() {
 		  readURL(this);
 
 	});
@@ -48,18 +48,18 @@ $(document).ready(function(){
 		  if (input.files && input.files[0]) {
 		    var reader = new FileReader();
 			    reader.onload = function(e) {
-		      $('#blah').attr('src', e.target.result);
+		      $('#img').attr('src', e.target.result);
 		    }
-				  if ($('#blah').width > 560) { // holder width
-					  $('#blah').width = 560;
+				  if (document.img.width > 560) { // holder width
+					  document.img.width = 560;
 				  }
 			    reader.readAsDataURL(input.files[0]);
 		  }
 	}
-
 });
-
-
+function add() {
+	document.addForm.submit();
+}
 </script>
 
 <jsp:include page="navi-header.jsp" />
@@ -73,16 +73,7 @@ $(document).ready(function(){
 	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->
-	
-	<!-- 세션 회원의 정보 -->
-	<input type="hidden" name="m_name" value="<%=member.getmName() %>" />
-	<input type="hidden" name="m_tel1" value="<%=member.getmTel().substring(0, 3) %>" />
-	<input type="hidden" name="m_tel2" value="<%=member.getmTel().substring(4, 8) %>" />
-	<input type="hidden" name="m_tel3" value="<%=member.getmTel().substring(9, 13) %>" />
-	<input type="hidden" name="m_post" value="<%=member.getmPost() %>" />
-	<input type="hidden" name="m_addr" value="<%=member.getmAddr() %>" />
-	<input type="hidden" name="m_addr_d" value="<%=member.getmAddr_d() %>" />
-	
+
 	<div class="pagenation">
 		<div class="nav_sub">
 			<a href="/">STORE</a><span class="icon_entity">&gt;</span><span>주문서</span>
@@ -90,7 +81,7 @@ $(document).ready(function(){
 	</div>
 	<!--//page nation -->
 
-	<form action="paying2" name="payForm" id="payForm" method="post" >
+	<form action="AddProductComplete" name="addForm" id="addForm" method="post" enctype="multipart/form-data">
 		<!--article-title-->
 		<div class="article-title">
 			<h2 class="title-page">
@@ -114,9 +105,8 @@ $(document).ready(function(){
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">물품 이름</li>
 						<li class="cell_discount_detail2 order_address_form product_name">
-							<input type="text" name="rcvr_nm" /> <span
-							class="plain-btn btn cart_amount"
-							style="cursor: default; display: none" id="baesong_title"></span>
+							<input type="text" name="product_name" />
+							<span class="plain-btn btn cart_amount" style="cursor: default; display: none" id="baesong_title"></span>
 						</li>
 					</ul>
 					
@@ -139,19 +129,25 @@ $(document).ready(function(){
 						</li>
 						<br/>
 					</ul>
-					
+					<ul class="box_receiver_info">
+						<li class="cell_discount_tit">가격</li>
+						<li class="cell_discount_detail order_address_form box_tel">
+							<input type="text" name="product_price" /> 원
+						</li>
+						<br/>
+					</ul>
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">상세 설명
 						</li>
 						<li class="cell_discount_detail box_memo">
-							<textarea name="dlv_msg" id="dlv_msg"></textarea>
+							<textarea name="product_content" id="product_content"></textarea>
 						</li>
 					</ul>
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">사진</li>
 						<li class="cell_discount_detail box_memo">
-							<input type='file' id="imgInp" />
-  							<img id="blah" src="#" alt="your image" />
+							<input type='file' id="file" name="file"/>
+  							<img id="img" name="img" src="#" alt="your image" />
 						</li>
 					</ul>
 					<!--물품 정보-->
@@ -163,7 +159,7 @@ $(document).ready(function(){
 			<!--p class="box_bottom_link"><span class="first"><a href="/app/cart">장바구니</a>↗</span> <span><a href="/app">스토어 메인</a>↗</span></p-->
 			<!--cart button-->
 			<div class="btn_wrap btn_type01">
-				<a href="javascript:void(0)" onclick="payCheck();"
+				<a href="javascript:void(0)" onclick="add();"
 					class="btn_black">ADD <span class="btn_side_text">등록하기</span></a>
 			</div>
 			<!--//cart button-->

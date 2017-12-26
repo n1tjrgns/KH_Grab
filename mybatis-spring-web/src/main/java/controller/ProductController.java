@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,11 +12,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.util.FileCopyUtils;
 
 import model.BuyList;
 import model.BuyProduct;
+import model.Member;
 import model.Payment;
 import model.Product;
 import repository.BuyListSessionRepository;
@@ -24,7 +31,7 @@ import repository.ProductSessionRepository;
 
 @Controller
 public class ProductController {
-
+	
 	@Autowired
 	ProductSessionRepository productSessionRepository;
 	
@@ -256,6 +263,40 @@ public class ProductController {
 	public String shopStep7() {
 		return "addProduct";
 	}
+	
+	@RequestMapping(value="/AddProductComplete")
+	public String shopStep7_1(HttpServletRequest httpServletRequest, MultipartFile uploadFile) throws IOException {
+		String product_name = httpServletRequest.getParameter("product_name");
+		String category = httpServletRequest.getParameter("category");
+		int product_stock = Integer.parseInt(httpServletRequest.getParameter("product_stock"));
+		int product_price = Integer.parseInt(httpServletRequest.getParameter("product_price"));
+		String product_content = httpServletRequest.getParameter("product_content");
+		
+		MultipartHttpServletRequest multipartRequest=(MultipartHttpServletRequest)httpServletRequest;
+		MultipartFile file = multipartRequest.getFile("file");
+		
+		HttpSession session = httpServletRequest.getSession(false);
+		Member member = (Member) session.getAttribute("loginInfo");
+		File convFile = new File( file.getOriginalFilename());
+		System.out.println("conv path:"+convFile.getAbsolutePath());
+		System.out.println("product_name : "+product_name);
+		System.out.println("category : "+category);
+		System.out.println("product_stock : "+product_stock);
+		System.out.println("product_price : "+product_price);
+		System.out.println("product_content : "+product_content);
+		System.out.println("file name:"+file.getName());
+		System.out.println("file path:"+file.getOriginalFilename());
+		String savedName = member.getmEmail()+"_"+product_name;
+		//String uploadPath = "../../img/product/";
+		File target = new File(savedName);
+		// 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
+		// FileCopyUtils.copy(바이트배열, 파일객체)
+		FileCopyUtils.copy(file.getBytes(), target);
+		System.out.println("완료크");
+		return "addProduct";
+	}
+	
+	
 	
 	@RequestMapping(value="/ModifyProduct")
 	public String shopStep8() {
