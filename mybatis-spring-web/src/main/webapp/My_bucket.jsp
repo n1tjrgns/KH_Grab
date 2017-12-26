@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
     <meta charset="UTF-8">
 	
-    <link rel="shortcut icon" type="image/x-icon" href="/_resource/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="_resource/images/favicon.ico">
  
     <link href="_resource/css/common.css" rel="stylesheet" />
 
@@ -481,9 +481,6 @@ function regisList2(mEmail,NY){
     
 </div>
 
-
-
-        
     </div>
 </div>
 

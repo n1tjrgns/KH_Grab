@@ -53,6 +53,20 @@
 	      <result column="BK_CHECK" jdbcType="VARCHAR" property="bkCheck"/>
 	      <result column="PHOTO_URL" jdbcType="VARCHAR" property="photoURL"/>
 	   </resultMap>
+	   
+	   <resultMap type="Bucket_Review" id="BaseResultMap4">
+	      <!-- id : primary key 속성명 jdbcType : 데이터베이스 자료형 -->
+	      <id column="BKRV_NUM" jdbcType="BIGINT" property="bkrvNum"/>
+	      <result column="M_EMAIL" jdbcType="VARCHAR" property="mEmail"/>
+	      <result column="BK_NAME" jdbcType="VARCHAR" property="bkName"/>
+	      <result column="C_EMAIL" jdbcType="VARCHAR" property="cEmail"/>
+	      <result column="BKRV_DATE" jdbcType="DATE" property="bkrvDate"/>
+	      <result column="BKRV_TITLE" jdbcType="VARCHAR" property="bkrvTitle"/>
+	      <result column="BKRV_CONTENT" jdbcType="CLOB" property="bkrvContent"/>
+	      <result column="BKRV_PHOTO" jdbcType="VARCHAR" property="bkrvPhoto"/>
+	      <result column="BKRV_SCORE" jdbcType="BIGINT" property="bkrvScore"/>
+	      <result column="BKRV_CHECK" jdbcType="VARCHAR" property="bkrvCheck"/>
+	   </resultMap>
 
 	<select id="selectBucketALL" 
 	resultMap="BaseResultMap">
@@ -123,7 +137,7 @@
 
 	<delete id="delteReservList_mypage" parameterType="Reservation">
 	 DELETE FROM Reservation
-            WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
+            WHERE m_email=#{mEmail} AND trim(bk_Name)=#{bkName}
 	</delete>
 	
 	<insert id="InsertBucket_Review" parameterType="Bucket_Review" >
@@ -131,4 +145,10 @@
 	   	VALUES(BR_SEQ.NEXTVAL,#{mEmail},#{bkName},'company',sysdate,#{bkrvTitle},#{bkrvContent},NULL,#{bkrvScore},'Y')
 	</insert>
 	
+	
+	<select id="selectBucket_Review" resultMap="BaseResultMap4">
+	SELECT 
+   			*
+	   	FROM Bucket_Review
+	</select>
 </mapper>

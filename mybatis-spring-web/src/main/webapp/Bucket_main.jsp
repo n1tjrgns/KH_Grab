@@ -130,11 +130,7 @@ function goMyBucket(){
 }
 </script>
 
-<!-- <script> 
- $("#SEARCH_KEYWORD").keyup(function(e){
-	 if(e.keyCode == 13)  alert("엔터쳤냐");
-	 });
-</script> -->
+
 
 <div id="h-empty-box"></div>
 <div id="md-discover">
@@ -157,20 +153,10 @@ function goMyBucket(){
         <div class="sub-navi-btns en">
             
             <a href="#" onclick='eventAJAX("1");' id="p" class="">버킷리스트</a>
-            <a href="#" onclick='eventAJAX("2");' id="f" class="">인기순위</a>
+            <a href="#" onclick='eventAJAX("2");' id="f" class="">버킷리뷰</a>
             <a href="#" onclick='eventAJAX("3");' id="l" class="">버킷등록하기</a>
         </div>
-        <div class="sub-navi-search">
-            <a href="#" class="en" onclick='eventTrack("", "discover_btn_search");'>
-                SEARCH
-                <div class="search-icon">
-                    <img class="icon-search" src="_resource/images/discover/search-icon.png" alt="" />
-                    <img class="icon-close" src="_resource/images/discover/search-close.png" alt="" />
-                    <div class="top-mask"></div>
-                    <div class="bottom-mask"></div>
-                </div>
-            </a>
-        </div>
+       
     </div>
 
 <script> 
@@ -180,55 +166,7 @@ $("#__search_param1__").keyup(function(e){
 
 </script>
 
-<div id="search">
-    <div class="search-container">
-        <div class="search-input-box">
-            <img src="_resource/images/discover/search-icon-big.png" alt="" />
-            <input type="text" id="__search_param1__" placeholder="여기에 검색어를 입력하세요." maxlength="50" />
-        </div>
-        <div class="search-result">
-            <div class="search-result-title"></div>
-            
-            <div id="search-result-library" style="display:block;" >
-                <div class="search-result-library-title en">LIBRARY <span id="search-result-library-title-cnt">0</span></div>
-                <div class="search-result-library-contents">
-					<div class="search-library-contents  seq-I1557">
-                        <ul>
-                            
-                            <li class="desc">
-								<a href="#" key-value="I1557">
-									<img src="http://images.hwlife.hscdn.com//library/i1557_thumb.jpg" alt="'얏록'에서 거위요리 즐기기">
-									<p class="en travel">TRAVEL</p>
-									<span>'얏록'에서 거위요리 즐기기</span>
-								</a>
-                            </li>
-                           
-                            </li>
-                        </ul>
-                    </div>
-				
-                </div>
-                <div class="search-more-btn"  style="display:block;" id="search-more-btn-library"> 
-                    <a href="javascript:Search.moreData();" >
-                        더보기
-                        <img src="_resource/images/discover/search-more-icon.png" alt="" />
-                    </a>
-                </div>
-            </div>
-            
-            <!-- 검색 결과 없을때 -->
-            <div class="none_result" style="display:none;">
-                <div class="ico">
-                    <img src="_resource/images/mypage/ico_bucket_gray.png" alt="">
-                </div>
-                <div class="text">
-                    <div class="sub">검색 결과가 없습니다.</div>
-                    <div class="title">다른 검색어로 <span>버킷 리스트</span>를 찾아보세요.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 </div>
 
 
@@ -259,6 +197,30 @@ function search_list(category){
 
 <script>//처음에 데이터 불러옴.
 window.onload = function() { search_list('All'); };
+</script>
+
+<script>
+function review_list(){
+	//alert(category);
+	$.ajax( // 리뷰를 불러온다.
+			{	
+				url:"Bucket_main_review",
+				dataType:"html",
+				type:"POST",
+				async:true,
+				success:function( data ) {
+					alert("리뷰 출력 완료:");
+					$("#contents3").html(data);
+		           $self.listUpdateReset(prevListLen);
+				   $self.listUpdateReset(0); // 초기화 안하니 sessionstroage 후 하얗게 뜸
+                    $(".simple_loading").hide();
+ 				},
+				error : function( e ) {
+					alert("리뷰 조회 오류\n"+e.error);
+				}
+			}
+		);	      
+}
 </script>
 
 
@@ -374,10 +336,11 @@ window.onload = function() { search_list('All'); };
 		</div>
 	</div>
 
-<div id="contents2" style="display:none;">
+<div id="contents2" style="display:none;"> <!--  등록하기 가 나오는 공간 -->
 	<jsp:include page="bucket_regist.jsp"></jsp:include>
 </div> 
-<div id="contents3" style="display:none;"> </div>
+
+<div id="contents3" style="display:none;"> </div> <!-- 리뷰가 나오는 공간 -->
 
 <div id="black-dimmed"></div>
 
@@ -422,14 +385,25 @@ function eventAJAX(num){
  					if (num==1){
  						 $("#contents").css("display","block");
  						 $("#contents2").css("display","none");
+ 						 $("#contents3").css("display","none");
  						 $("#p").addClass("active");
  						 $("#l").removeClass("active");
+ 						 $("#f").removeClass("active");
  					}else if(num==3){
  						 $("#contents").css("display","none");
  						 $("#contents2").css("display","block");
+ 						 $("#contents3").css("display","none");
  						 $("#l").addClass("active");
  						 $("#p").removeClass("active");
+ 						 $("#f").removeClass("active");
  					}else{
+ 						 $("#contents").css("display","none");
+ 						 $("#contents2").css("display","none");
+ 						 $("#contents3").css("display","block");
+ 						 $("#f").addClass("active");
+ 						 $("#p").removeClass("active");
+ 						 $("#l").removeClass("active");
+ 						review_list();
  						alert("준비중입니다.");
  					}
 }

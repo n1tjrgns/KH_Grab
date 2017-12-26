@@ -23,10 +23,10 @@
                             <div class="title">${reservation.bkName }</div>
 							<div class="mouse_lock" style="display: none;"></div>
                            <c:if test="${reservation.resCheck=='N'}">
-                            <a href="javascript:complateBucket('${reservation.bkName }','${reservation.mEmail }','Y');"  class="btn_complete  mot2">완료하기</a>
+                            <a href="javascript:completeBucket('${reservation.bkName }','${reservation.mEmail }','Y');"  class="btn_complete  mot2">완료하기</a>
                             </c:if>
                             <c:if test="${reservation.resCheck=='Y'}">
-                            <a href="javascript:complateBucket('${reservation.bkName }','${reservation.mEmail }','N');"  class="btn_complete  mot2">완료 됨</a>
+                            <a href="javascript:completeBucket('${reservation.bkName }','${reservation.mEmail }','N');"  class="btn_complete  mot2">완료 됨</a>
                             </c:if>
                             <br/> <br/>
                             <div class="btn_ico"> 
@@ -52,13 +52,13 @@ function transfer(value){
 
 
 <script>
-function  complateBucket(bkName,mEmail,resCheck){
+function  completeBucket(bkName,mEmail,resCheck){
 
  	$.ajax( // 화면의 데이타를 조회한다.
 				{
 
-					url:"ln/member/complateBucket.do",
-					dataType:"text",
+					url:"ln/member/completeBucket.do",
+					dataType:"html",
 					type:"GET",
 					async:true,
 					data:{
@@ -66,9 +66,8 @@ function  complateBucket(bkName,mEmail,resCheck){
 					},
 					success:function( data ) {
 						alert("성공1");
-						if(data==null){
-						alert("성공real");}
-						},
+						location.reload();
+					},
 					error : function( e ) {
 						
 						//alert("조회 오류\n"+JSON.stringify(e));
@@ -88,7 +87,7 @@ function  deleteRes(bkName,mEmail){
 				{
 
 					url:"ln/member/deleteBucket.do",
-					dataType:"text",
+					dataType:"html",
 					type:"GET",
 					async:true,
 					data:{
@@ -96,9 +95,8 @@ function  deleteRes(bkName,mEmail){
 					},
 					success:function( data ) {
 						alert("성공1");
-						if(data==null){
-						alert("성공real");}
-						},
+						location.reload();
+					},
 					error : function( e ) {
 						
 						//alert("조회 오류\n"+JSON.stringify(e));

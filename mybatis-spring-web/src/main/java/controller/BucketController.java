@@ -103,11 +103,11 @@ public class BucketController {
 			List<Reservation_Bucketlist> reservation = bucketRepository.selectReservList_mypage(reservation_bucketlist);
 			model.addAttribute("reservation",reservation);
 			System.out.println(reservation.size()+" 개 출력 완료");
-			
+					
 			return "my_list.do";//jsp 페이지임.
 		}
 		
-		@RequestMapping(value="/ln/member/complateBucket.do", method = RequestMethod.GET)
+		@RequestMapping(value="/ln/member/completeBucket.do", method = RequestMethod.GET)
 		public String handleStep7_2(Model model, Reservation reservation) {
 			Integer result = bucketRepository.updateReservList_mypage(reservation);
 			System.out.println(result+"개 변경완료");
@@ -122,12 +122,6 @@ public class BucketController {
 			return null;
 		}
 		
-		
-		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
-		public String handleStep8(Model model) {
-			return "My_bucket2";
-		}
-		
 		@RequestMapping(value="/discover/bucket_review_resist.do", method = RequestMethod.POST)
 		public String handleStep9(Model model,Bucket_Review bucket_review) {
 			System.out.println("bucket_review_resist.do:"+bucket_review.getBkName());
@@ -137,6 +131,29 @@ public class BucketController {
 			model.addAttribute("result",result);
 			
 				return "redirect:../Bucket_mypage";
+		}
+		
+		@RequestMapping(value="/Bucket_main_review", method = RequestMethod.POST)
+		public String handleStep10(Model model) {
+			List<Bucket_Review> bucket_Review=bucketRepository.selectBucket_Review();
+			System.out.println("Bucket_main_review:"+bucket_Review.size());
+			
+			for(int i=0; i<bucket_Review.size();i++) {
+				System.out.println("before:"+bucket_Review.get(i).getBkrvPhoto());
+				if(bucket_Review.get(i).getBkrvPhoto()==null){
+				bucket_Review.get(i).setBkrvPhoto("사진없음");
+				}
+				System.out.println("after:"+bucket_Review.get(i).getBkrvPhoto());
+				System.out.println("other:"+bucket_Review.get(i).getBkName());
+			}
+		
+			model.addAttribute("bucket_Review",bucket_Review);
+			return "Bucket_main_review.do";
+		}			
+		
+		@RequestMapping(value="/Bucket_mypage_wish", method = RequestMethod.GET)
+		public String handleStep10_1(Model model) {
+			return "My_bucket2";
 		}
 			
 }

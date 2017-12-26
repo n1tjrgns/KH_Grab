@@ -1,14 +1,21 @@
 package model;
 
 public class Bucket_Review {
+	private Integer bkrvNum;
+	public Integer getBkrvNum() {
+		return bkrvNum;
+	}
+	public void setBkrvNum(Integer bkrvNum) {
+		this.bkrvNum = bkrvNum;
+	}
 	private String mEmail;
 	private String bkName;
 	private String cEmail;
 	private String bkrvDate;
 	private String bkrvTitle;
 	private String bkrvContent;
-	private String bkrvphoto;
-	private String bkrvScore;
+	private String bkrvPhoto;
+	private Integer bkrvScore;
 	private String bkrvCheck;
 	public String getmEmail() {
 		return mEmail;
@@ -40,11 +47,11 @@ public class Bucket_Review {
 	public void setBkrvTitle(String bkrvTitle) {
 		this.bkrvTitle = bkrvTitle;
 	}
-	public String getBkrvphoto() {
-		return bkrvphoto;
+	public String getBkrvPhoto() {
+		return bkrvPhoto;
 	}
-	public void setBkrvphoto(String bkrvphoto) {
-		this.bkrvphoto = bkrvphoto;
+	public void setBkrvPhoto(String bkrvPhoto) {
+		this.bkrvPhoto = bkrvPhoto;
 	}
 	public String getBkrvContent() {
 		return bkrvContent;
@@ -52,10 +59,10 @@ public class Bucket_Review {
 	public void setBkrvContent(String bkrvContent) {
 		this.bkrvContent = bkrvContent;
 	}
-	public String getBkrvScore() {
+	public Integer getBkrvScore() {
 		return bkrvScore;
 	}
-	public void setBkrvScore(String bkrvScore) {
+	public void setBkrvScore(Integer bkrvScore) {
 		this.bkrvScore = bkrvScore;
 	}
 	public String getBkrvCheck() {

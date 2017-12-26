@@ -162,6 +162,16 @@ public class BucketSessionRepository  extends AbstractRepository {
 			}finally {
 				sqlSession.close();
 			}
+			
+			
+			
+		}
+		
+		public List<Bucket_Review> selectBucket_Review() {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".selectBucket_Review";
+										
+			return sqlSession.selectList(statment);
 		}
 		
 		
