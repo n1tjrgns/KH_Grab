@@ -8,6 +8,7 @@
 
 </head>
 <body>
+
    <form name="frm" action="CS_write" method="post" > <!-- application(서버로 파일명만감)/multi-part(내용까지날림) 있음 -->
       <table> 
          <tr>
@@ -23,6 +24,7 @@
          </tr><tr>
                <td>내용</td> 
                <td><textarea name="csContent" cols="67" rows="15"></textarea>
+               
                </td>
         
          <tr>
@@ -30,5 +32,8 @@
                </tr>
       </table>
    </form>
+   
 </body>
 </html>
+
+

@@ -52,20 +52,20 @@ $(function () {
             //자주 묻는 기능에서 각각의 질문들 기능
         });
         
-      
+       
         $('.notifiaction_container ul li > a').on('click', function(e){
             e.preventDefault();
             var idx = $(this).closest('li').index();
             if($(this).closest('li').hasClass('on')){
             	
-                $('.notifiaction_container ul li .content').slideDown();
-                $('.notifiaction_container ul li').removeClass('on');
-                
-            }else{
                 $('.notifiaction_container ul li .content').slideUp();
                 $('.notifiaction_container ul li').removeClass('on');
-                $('.notifiaction_container ul li').eq(idx).find('.content').slideUp();
-                $('.notifiaction_container ul li').eq(idx).addClass('on');
+            }else{
+                $('.notifiaction_container ul li .content').slideDown();
+               /*$('.notifiaction_container ul li').removeClass('on');
+               */
+               /* $('.notifiaction_container ul li').eq(idx).find('.content').slideDown();
+                $('.notifiaction_container ul li').eq(idx).addClass('on');*/
             }
             //공지사항에서의 각각의 공지들 기능
         });

@@ -11,6 +11,7 @@
 <%@page import="qna.SMTPAuthenticator"%>
 <%@page import="javax.mail.Authenticator"%>
 <%@page import="java.util.Properties"%>
+<%@page import="model.Member" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -37,6 +38,9 @@
 
 </head>
 <body>
+<% Member member = (Member) session.getAttribute("loginInfo"); 
+	%>
+
 
 	<jsp:include page="navi-header.jsp"></jsp:include>
 	<script>
@@ -49,7 +53,6 @@
 			localStorage.removeItem('back');
 		});
 	</script>
-
 
 	<div id="wrap">
 		<div class="section_top">
@@ -84,7 +87,7 @@
 
 					</ul>
 					<ul class="faq_article on">
-
+					 
 						<c:forEach var="cslist" items="${cslist}" varStatus="status">
 							<c:if test="${cslist.csSort=='자주 묻는 질문'}">
 
@@ -96,12 +99,23 @@
 										<a href="#">${cslist.csTitle} </a>
 
 
-									</p> <input type="submit" value="[삭제]">
+									</p> 
+									
+									<% if(member != null){
+								String ad = member.getmAuthority(); 
+							
+								if(ad.equals("admin")){%>
+									<input type="submit" value="[삭제]">
+								<%}else{
+							}
+							}%>
 									<p class="a">${cslist.csContent}</p>
 								</li>
 							</c:if>
 						</c:forEach>
-
+					
+					
+					
 					</ul>
 				</div>
 			</form>
@@ -119,24 +133,35 @@
 			<form name="frm" method="post" action="CS_delete">
 				<div class="notifiaction_container">
 					<ul>
-
+						
 						<li class="head"><span class="num">번호 </span> <span
 							class="title">　　　　　　　제목</span> <span class="date">등록일</span></li>
-
+						
 						<c:forEach var="cslist" items="${cslist}" varStatus="status">
 							<c:if test="${cslist.csSort=='공지사항'}">
 								<input name="csNum" type="hidden" value="${cslist.csNum}">
-								<li class="no2 on"><a href="#"><span class="num "><em>${status.index+1}</em></span>
+								<li class="no2"><a href="#"><span class="num "><em>${status.index+1}</em></span>
 										<span class="title">　　　　　　　${cslist.csTitle}</span> <span
 										class="date">${cslist.csDate}</span></a>
-									<div class="content">${cslist.csContent}</div> <input
-									type="submit" value="[삭제]"></li>
-
+							
+									<div class="content">${cslist.csContent}</div>
+								
+							 
+							<% if(member != null){
+								String ad = member.getmAuthority(); 
+							
+								if(ad.equals("admin")){%>
+									<input type="submit" value="[삭제]"></li>
+								<%}else{
+							}
+							}%>
 							</c:if>
 						</c:forEach>
+						
 					</ul>
 				</div>
 			</form>
+			
 		</div>
       
 		<div class=mail_text_container>
@@ -157,8 +182,7 @@
 						<li class="texttype">휴대전화　<input type="text"
 							name="phonenum" class="phonenum" placeholder="휴대전화를 입력하세요."
 							style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
-						<li class="texttype">전화번호　<input type="text" name="hnum" class="hnum" placeholder="전화번호을  입력하세요"
-								style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
+						
 						<li class="texttype">이메일　　<input
 							type="text" name="email" class="email"
 							placeholder="abc@gmail.com 형식에 맞게 입력하세요."
@@ -168,10 +192,9 @@
 							style="width: 250px; height: 30px; border: 2px solid pink; margin-top: 10px;"></li>
 						<li class="textarea">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<textarea name="content" class="content" placeholder="내용을 입력하세요."
-								cols="40" rows="5"
-								style="margin-top: 10px; border: 2px solid pink;"> 
-					</textarea>
+							<textarea name="content"  cols="40" rows="5"
+								style="margin-top: 10px; border: 2px solid pink;"><%=request.getParameter("content")%> 
+							</textarea> 
 						</li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
 							type="submit" value="문의하기" class="submit">
@@ -193,8 +216,7 @@
 			function check() {
 			
 				var name =  $('.name').val();
-				var phonenum =  $('.phonenum').val();
-				var hnum =  $('.hnum').val();
+				var phonenum =  $('.phonenum').val();		
 				var email =  $('.email').val();
 				var subject =  $('.subject').val();
 				var content =  $('.content').val();
@@ -205,17 +227,12 @@
 				}else if (!phonenum){
 					
 					alert("휴대전화가 입력되지 않았습니다.");
-				}else if (!hnum){
-				
-					alert("전화번호가 입력되지 않았습니다.");
 				}else if (!email){
 					alert("메일이 입력되지 않았습니다.");
 					
 				}else if (!subject){
 					alert("제목이 입력되지 않았습니다.");
 					
-				}else if (!content){
-					alert("내용이 입력되지 않았습니다.");
 				}else{
 				alert("전송되었습니다.");
 				document.q.submit();
@@ -238,7 +255,7 @@
 	request.setCharacterEncoding("utf-8");
 	String name = null;
 	String phonenum = null;
-	String hnum = null;
+	
 	String email = null;
 	String subject = null;
 	String content = null;
@@ -249,19 +266,22 @@
 	if (request.getParameter("phonenum") != null) {
 		phonenum = request.getParameter("phonenum");
 	}
-	if (request.getParameter("hnum") != null) {
-		hnum = request.getParameter("hnum");
-	}
+	
 	if (request.getParameter("email") != null) {
 		email = request.getParameter("email");
 	}
 	if (request.getParameter("subject") != null) {
 		subject = request.getParameter("subject");
 	}
+	if (request.getParameter("content") != null) {
+		content = request.getParameter("content");
+	}
 	if (request.getParameter("from") != null) {
 		from = request.getParameter("from");
 	}
-
+	
+	System.out.println("cotent" + content);
+	
 	Properties p = new Properties(); // 정보를 담을 객체
 
 	p.put("mail.smtp.host", "smtp.gmail.com");
@@ -287,8 +307,6 @@
 		buffer.append(name + "<br>");
 		buffer.append("휴대전화 : ");
 		buffer.append(phonenum + "<br>");
-		buffer.append("전화번호 : ");
-		buffer.append(hnum + "<br>");
 		buffer.append("이메일 : ");
 		buffer.append(email + "<br>");
 		buffer.append("제목 : ");

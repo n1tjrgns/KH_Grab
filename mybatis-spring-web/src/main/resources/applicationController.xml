@@ -20,6 +20,10 @@
 	<bean class="controller.PwmailController">
 	</bean>
 	
+	<bean class="controller.LoginController">
+	</bean>
+	
+	
 	
 
 

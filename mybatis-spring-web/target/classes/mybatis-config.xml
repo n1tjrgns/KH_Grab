@@ -29,5 +29,6 @@
       <mapper resource="repository/mapper/ProductMapper.xml"/>
       <mapper resource="repository/mapper/PwmailMapper.xml"/>
       <mapper resource="repository/mapper/CsMapper.xml"/>
+   	  <mapper resource="repository/mapper/LoginMapper.xml"/>
    </mappers>
 </configuration>

@@ -67,14 +67,14 @@ body{background: #ffffff;min-width: 1200px;}
 .notifiaction_container ul li.head span.date:after{content:none;}
 .notifiaction_container ul li{border-bottom:1px solid #dddddd;}
 .notifiaction_container ul li .content{display:none;position: relative;background-color:#f5f5f6;border-top:2px solid #ff7e00;border-bottom:1px solid #ff7e00;text-align: left;padding:40px;box-sizing: border-box;-webkit-box-sizing: border-box;line-height: 24px;}
-.notifiaction_container ul li.no7 .content dl{overflow-y: scroll;height: 250px;margin: 6px 0;}
-.notifiaction_container ul li.no7 .content dt{width: 16%;float: left;padding:0 0 3px;}
-.notifiaction_container ul li.no7 .content dd{width: 16%;float: left;padding:0 0 3px;}
+.notifiaction_container ul li.no2 .content dl{overflow-y: scroll;height: 250px;margin: 6px 0;}
+.notifiaction_container ul li.no2 .content dt{width: 16%;float: left;padding:0 0 3px;}
+.notifiaction_container ul li.no2 .content dd{width: 16%;float: left;padding:0 0 3px;}
 
-.notifiaction_container ul li.no10 .content dl{overflow-y: scroll;height: 250px;margin: 6px 0;}
-.notifiaction_container ul li.no10 .content dd{width: 16%;float: left;padding:0 0 3px;}
-.notifiaction_container ul li.no11 .content dl{overflow-y: scroll;height: 250px;margin: 6px 0;}
-.notifiaction_container ul li.no11 .content dd{width:20%;float: left;padding:0 0 3px;}
+.notifiaction_container ul li.no2 .content dl{overflow-y: scroll;height: 250px;margin: 6px 0;}
+.notifiaction_container ul li.no2 .content dd{width: 16%;float: left;padding:0 0 3px;}
+.notifiaction_container ul li.no2 .content dl{overflow-y: scroll;height: 250px;margin: 6px 0;}
+.notifiaction_container ul li.no2 .content dd{width:20%;float: left;padding:0 0 3px;}
 
 .faq_container ul.faq_article{display: none;}
 .faq_container ul.faq_article.on{display: block;}
