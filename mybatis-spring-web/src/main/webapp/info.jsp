@@ -25,40 +25,43 @@
         <h2>회원정보 관리</h2>
         	<br><br>
         <div class="reg_box">
-            <div class="info_box">
-                <form action="https://www.lifeplusbucket.com/ln/member/member_info_save.do"  name="joinForm" id="joinForm"  method="post">
-                	<input type="hidden" id="checked_cellular" value="010-9396-1885">
-                    <input type="hidden" name="agree_sms" id="agree_sms" value="N">
-                    <input type="hidden" name="agree_email" id="agree_email" value="N">
-                    <dl class="info_dl">
-                        <dt class="first">프로필</dt>
-                        <dd class="first">
-								<div class="formDivList formImageBig">
-									<input type="file" name="item_image" id="itemImage"
-										class="Hidden">
-									<table class="TableList">
-										<tr>
-											<td><img src="/images/objects/cameraView.png"
-												id="itemImageSrc" align="absbottom" border="0"
-												onclick="formUploadCheck('#itemImage','/images/objects/cameraView.png');" /></td>
-											<td>
-												<div class="formDivSubList" id="itemImageCaution"
-													class="Hidden"></div>
-												
-												<div class="formDivSubList">
-													<a class="InputButton"
-														onclick="formUploadCheck('#itemImage','/images/objects/cameraView.png');">이미지
-														선택</a> <input type="checkbox" value="1"
-														name="item_image_no_resave" id="item_image_no_resave_y"
-														align="absmiddle" /> 
-												</div>
-											</td>
-										</tr>
-									</table>
+				<div class="info_box">
+					<form
+						action="https://www.lifeplusbucket.com/ln/member/member_info_save.do"
+						name="joinForm" id="joinForm" method="post">
+						<input type="hidden" id="checked_cellular" value="010-9396-1885">
+						<input type="hidden" name="agree_sms" id="agree_sms" value="N">
+						<input type="hidden" name="agree_email" id="agree_email" value="N">
+						<dl class="info_dl">
+							<dt class="first">프로필</dt>
+							<dd class="first">
+								<div class="thumbnail" style="width: 400px;" id="abcd">
+
+								
+
+										<img id="blah" src="http://placehold.it/300X300"
+											alt="등록된 이미지가 없습니다." width='300px;' height="300px;" /><br>
+
+										<input type='file' id="imgInp" /><br /> <span>간단설명</span><br>
+
+										<textarea></textarea>
+										<br>
+										<br> 소요시간:<input type="text"><br>
+
+								
+
 								</div>
 
+								<div id="add"></div>
 
-							</dd>
+								<INPUT TYPE="button" onclick="copyWrite('abcd')" value="추가">
+								</td>
+								</tr>
+								</table>
+				</div>
+
+
+				</dd>
                         <dt>이메일</dt>
                         <dd>
                             <span>ckh0103@naver.com</span>

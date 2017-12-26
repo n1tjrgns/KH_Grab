@@ -49,14 +49,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/registingEnter", method = RequestMethod.POST)
-	public String insrtStep2(HttpServletRequest httpServletRequest, Model model,Member member) {
-	//	String mName = httpServletRequest.getParameter("mName");
+	public String insrtStep2(HttpServletRequest httpServletRequest, Model model) {
+		String mName = httpServletRequest.getParameter("mName");
 		String mEmail = httpServletRequest.getParameter("mEmail1");
-		member.setmEmail(mEmail);
-		//String mPw = httpServletRequest.getParameter("mPw");
+		String mPw = httpServletRequest.getParameter("mPw");
 		String mTel = httpServletRequest.getParameter("cell1") +"-"+httpServletRequest.getParameter("cell2")+"-"+httpServletRequest.getParameter("cell3");
-		member.setmTel(mTel);
-		/*Long mLicense = 0L;
+		Long mLicense = 0L;
 		String mPost = httpServletRequest.getParameter("mPost");
 		String mAddr = httpServletRequest.getParameter("mAddr");
 		String mAddr_d = httpServletRequest.getParameter("mAddr_d");
@@ -66,10 +64,10 @@ public class MemberController {
 		String mAuthority = httpServletRequest.getParameter("mAuthority");
 		String mProfile = "";
 		String bank = "";
-		String account = "";*/
+		String account = "";
 
-		/*Member member = new Member(mEmail,mPw, mName, mTel, mBirth, mGen, mPost, mAddr, mAddr_d, mAttendcount, mAuthority,
-				mLicense, mProfile, bank, account);*/
+		Member member = new Member(mEmail,mPw, mName, mTel, mBirth, mGen, mPost, mAddr, mAddr_d, mAttendcount, mAuthority,
+				mLicense, mProfile, bank, account);
 
 		Integer result = memberSessionRepository.insertMemberEnter(member);
 		model.addAttribute("member", member);

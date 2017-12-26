@@ -88,9 +88,9 @@ function checkLoginPassswordKeyPress(event){
                         <dt class="first">프로필</dt>
                         <dd class="first">
                             <div class="profile">
-                                <!--<a href="javascript:void(0)" class="ico">-->
+                                <a href="javascript:void(0)" class="ico">
                                     <!--<img src="/_resource/images/register/ico_profile.png" alt="">-->
-                                <!--</a>-->
+                                </a>
                                 <img src="_resource/_web/images/register/ico_profile.png" alt="" class="img">
                             </div>
 
@@ -127,12 +127,7 @@ function checkLoginPassswordKeyPress(event){
                     				<input type="text" name="EnterName" maxlength="30">
                 			</div>       
                  		</dd>
-                 		<dt>업체 종류</dt>
-                 		<dd>
-                 			 <div class="input_box email_reg_name">
-                    				<input type="text" name="EnterKind" maxlength="30" >
-                			</div>    
-                 		</dd>
+                 		
                     </dl>                	        
                 </form>  
             </div>

@@ -800,14 +800,14 @@
 		var message = "연락처";
 		var schType = "cellular";
 		if( num == 2){
-			schType = "mEmail";
+			schType = "email";
 			if(oFORM.mEmail1.value.trim() != ''){
-				mEmail1 = oFORM.email1.value;
+				schString = oFORM.mEmail1.value;
 			}else{
 				schString = "";
 			}
 			message = "이메일";
-			if(!isEmail1(oFORM.mEmail1.value,"이메일 형식이 올바르지 않습니다.") ){
+			if(!isEmail(oFORM.mEmail1.value,"이메일 형식이 올바르지 않습니다.") ){
 				return;
 			}
 			if( schString.length >100){
@@ -816,7 +816,7 @@
 			}
 		}else{
 			if(oFORM.cell1.value.trim() != '' && oFORM.cell2.value.trim() != '' && oFORM.cell3.value.trim() != '' ){
-				mTel = oFORM.cell1.value+"-"+oFORM.cell2.value+"-"+oFORM.cell3.value;
+				schString = oFORM.cell1.value+"-"+oFORM.cell2.value+"-"+oFORM.cell3.value;
 			}else{
 				schString = "";
 			}			
@@ -859,10 +859,11 @@
 		}
 	}
 
+
  function pwCheck() {
 		var oFORM = document.joinForm;
-		var email = oFORM.email1.value.trim();
-		var passwd = oFORM.passwd.value;
+		var email = oFORM.mEmail1.value.trim();
+		var passwd = oFORM.mPw.value;
 		var pw_chk1 = true;
 		var pw_chk2 = true;
 		var pw_chk3 = true;
