@@ -1,57 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%
+	Member member = (Member) session.getAttribute("loginInfo");
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="_resource/_web/css/common.css" rel="stylesheet" />
-    <link href="_resource/_web/css/register.css" rel="stylesheet" />
-    <script>
-	function load_google() {
-	    gapi.client.setApiKey('AIzaSyBySGWNccSTO9XHnlay_kpBHAWUO1-d3L4');
-	    gapi.client.load('urlshortener', 'v1',function(){});
-	}
-   </script>
-   <script src="https://apis.google.com/js/client.js?onload=load_google"></script>
+<link href="_resource/_web/css/register.css" rel="stylesheet" />
+
+<script src="https://apis.google.com/js/client.js?onload=load_google"></script>
 <title>Grab List : Grab 회원 탈퇴</title><!-- 2017-03-29 -->
-<script>
-    var resourcePath = "/_resource";
-    var webDomain = "http://www.Lifeplusbucket.com";
- </script>
 </head>
 <title>Insert title here</title>
 </head>
 <body>
 <jsp:include page="navi-header.jsp"/>
-
-<script> var isMainAlready = true; </script>
-
-<script>
-function goMyBucket(){
-	
-	if(!isLogin){
-		login.showPop('pop_login',"","http://www.Lifeplusbucket.com/ln/mypage/bucket.do");
-	}else{
-		location.href="/ln/mypage/bucket.do";
-	}
-}
-</script>
-   <script src="_resource/js/vendor/makePCookie.js"></script>
-
-<!--NSmart Track Tag Script-->
-<script type='text/javascript'>
-    callbackFn = function() {};
-    var _nsmart = _nsmart || [];
-    _nsmart.host = _nsmart.host || (('https:' == document.location.protocol) ? 'https://' : 'http://');
-    _nsmart.push([11979, 29407]); // 캠페인 번호와 페이지 번호를 배열 객체로 전달
-    document.write(unescape("%3Cscript src='" + _nsmart.host + "n00.nsmartad.com/etc?id=10' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<!--NSmart Track Tag Script End..-->
+<script src="_resource/js/vendor/makePCookie.js"></script>
 <div id="contents">
     <div class="reg_content">
         <h2>회원 탈퇴</h2>
         <div class="reg_box">
-            <form action="https://www.Lifeplusbucket.com/ln/member/member_leave_save.do" method="post" id="leave_form" >
+            <form action="MemberDelete" method="post" id="MemberDelete" >
 				<!-- 2017-03-29 -->
                 <p class="reg_p">
                     아래 내용을 확인하신 후 <span>회원 탈퇴</span> 해주세요.
@@ -84,9 +56,10 @@ function goMyBucket(){
 				<!-- //2017-03-29 -->
                 
             </form>
+
         </div>
         <div class="btn_area mt40">
-            <a href="javascript:inputCheck();" class="btn_click btn_member_leave mot2" onclick='eventTrack("", "member_leave_btn_submit");'>탈 퇴</a>
+            <a href="#" class="btn_click btn_member_leave mot2" onclick="MemberDelete.submit();">탈 퇴</a>
             <a href="/ln/member/member_info.do" class="btn_cancel mot2"  onclick='eventTrack("", "member_leave_btn_cancel");'>취 소</a>
         </div>
     </div>

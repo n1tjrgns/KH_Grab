@@ -37,11 +37,11 @@
 		UPDATE 	
 	</update>
 	
-	<delete id="" parameterType="member">
+	<delete id="deleteMemberByCondition" parameterType="member">
 		DELETE FROM member
 		<where>
 			<if test="mPw != null">
-				m_pw = #{mPw}
+				m_email = #{mEmail}
 			</if>
 		</where>
 	</delete>

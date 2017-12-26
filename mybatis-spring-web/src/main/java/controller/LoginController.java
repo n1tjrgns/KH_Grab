@@ -34,7 +34,7 @@ public class LoginController {
 			return "redirect:/Main";
 		}
 		else {
-		/*model.addAttribute("msg", "메세메세메세메세메세메세메세메세메세지지지지지지지지지지"); 
+		/*model.addAttribute("msg", "메세지"); 
 		model.addAttribute("url", "Main_login");*/
 		return "redirect:/Main";
 		}		
