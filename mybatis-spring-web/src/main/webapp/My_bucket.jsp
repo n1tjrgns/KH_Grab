@@ -140,6 +140,8 @@ function goMyBucket(){
 </div>
 <div id="black-dimmed"></div>
 
+
+
 <script>
 var mEmail='member';
  function regisList(mEmail){
@@ -286,70 +288,6 @@ function regisList2(mEmail,NY){
                 <div id="info-right">
                     <ul>
                         <li class="title"><span id="popup_detail_bucket_cnt">300</span>명이 이 버킷 리스트를 함께 합니다.</li>
-                        <li class="person-list" id="popup_detail_bucket_list" style="display: none;">
-                           
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="last">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                            <a href="#" class="last">
-                                <svg width="60" height="60" baseProfile="full" version="1.2"><defs><mask id="svgmask2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)"><image width="60" height="60" xlink:href="/_resource/images/discover/library/popup/person-mask.png" /></mask></defs>
-                                    <image id="the-mask" mask="url(#svgmask2)" width="60" height="60" y="0" x="0" xlink:href="/_resource/images/discover/library/popup/sample-person.jpg" />
-                                </svg>
-                            </a>
-                            
-                        </li>
                         <li class="zero-person-info" style="display: none;">
                             <img src="/_resource/images/discover/etc/popup-zero-person-icon.png" alt="" />
                             <div class="desc1">이 버킷 리스트를</div>

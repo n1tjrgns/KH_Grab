@@ -11,12 +11,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4> 나의 예약 내역 </h4>
+<h4> 예약 상세 내역 </h4>
 
 	<c:forEach var="reservation" items="${reservation}" varStatus="status">
 	예약 ID : ${reservation.mEmail}<br/>
-	예약 날짜 : ${reservation.resDate}<br/> 
 	예약 인원 : ${reservation.resInt}<br/>
+	예약 날짜 : ${reservation.resDate}<br/> 
+	등록일 : ${reservation.regDate}<br/>
+	요청 사항 : ${reservation.resCf}<br/>
 	</c:forEach>
 	<c:if test="${empty reservation}">
 	 
