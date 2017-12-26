@@ -151,4 +151,13 @@
    			*
 	   	FROM Bucket_Review
 	</select>
+	
+	<select id="Bucket_main_review_mypage"  parameterType="Bucket_Review"
+	 resultMap="BaseResultMap4">
+	SELECT 
+   			*
+	   	FROM Bucket_Review 
+	   	WHERE m_email=#{mEmail}
+	</select>
+	
 </mapper>

@@ -125,10 +125,10 @@ function goMyBucket(){
             </div>
             <div class="btn_tab_area">
                 <a href="Bucket_mypage" class="btn_bucket mot2">
-                    버킷리스트 <span>1</span>
+                    버킷리스트 <span></span>
                 </a>
                 <a href="Bucket_mypage_wish" class="btn_wish active mot2">
-                    위시리스트 <span>1</span>
+                   버킷 리뷰 <span></span>
                 </a>
             </div>
         </div>
@@ -147,6 +147,9 @@ function goMyBucket(){
 
 			<!-- 리스트 있을때 -->
 			<ul class="list_box_ul">
+			
+			
+			
 			</ul>
 			<a href="javascript:void(0);" class="btn_more mot2">더보기</a>
 		</div>
@@ -155,7 +158,32 @@ function goMyBucket(){
 
 <div id="black-dimmed"></div>
 
+<script>
+function my_review_list(mEmail){
+	//alert(category);
+	$.ajax( //내 리뷰를 불러온다.
+			{	
+				url:"Bucket_main_review_mypage",
+				dataType:"html",
+				type:"POST",
+				async:true,
+				data: "mEmail="+mEmail,
+				success:function( data ) {
+					alert("리뷰 출력 완료:");
+					$(".list_box_ul").html(data);
+		           $self.listUpdateReset(prevListLen);
+				   $self.listUpdateReset(0); // 초기화 안하니 sessionstroage 후 하얗게 뜸
+                    $(".simple_loading").hide();
+ 				},
+				error : function( e ) {
+					alert("리뷰 조회 오류\n"+e.error);
+				}
+			}
+		);	      
+}
 
+window.onload= function() { my_review_list('member');}
+</script>
 
 
 

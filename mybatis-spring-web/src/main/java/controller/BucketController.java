@@ -155,5 +155,23 @@ public class BucketController {
 		public String handleStep10_1(Model model) {
 			return "My_bucket2";
 		}
+		
+		@RequestMapping(value="/Bucket_main_review_mypage", method = RequestMethod.POST)
+		public String handleStep10_2(Model model,Bucket_Review bucket_Review2) {
+			List<Bucket_Review> bucket_Review=bucketRepository.selectBucket_Review_mypage(bucket_Review2);
+			System.out.println("Bucket_main_review:"+bucket_Review.size());
+			
+			for(int i=0; i<bucket_Review.size();i++) {
+				System.out.println("before:"+bucket_Review.get(i).getBkrvPhoto());
+				if(bucket_Review.get(i).getBkrvPhoto()==null){
+				bucket_Review.get(i).setBkrvPhoto("사진없음");
+				}
+				System.out.println("after:"+bucket_Review.get(i).getBkrvPhoto());
+				System.out.println("other:"+bucket_Review.get(i).getBkName());
+			}
+		
+			model.addAttribute("bucket_Review",bucket_Review);
+			return "Bucket_main_review.do";
+		}	
 			
 }
