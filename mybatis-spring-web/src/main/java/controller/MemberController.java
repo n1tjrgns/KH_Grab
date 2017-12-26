@@ -90,6 +90,17 @@ public class MemberController {
       return mav;
    }
 
+   @RequestMapping(value="/Main_info", method = RequestMethod.GET)
+   public String handleStep9(Model model) {
+      model.addAttribute("comment",new Comment());
+      return "info";
+   }
+   
+   @RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
+   public String handleStep11() {
+      return "memberDrop";
+   }
+   
    @RequestMapping(value="/MemberDelete", method = RequestMethod.POST)
 	public String deleteMember(Member member ,Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -105,6 +116,11 @@ public class MemberController {
 		
 		return "redirect:/Main";
 	}
+   
+   @RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.GET)
+   public String handleStep10() {      
+      return "changePw";
+   }
    /*
     * @RequestMapping(value="/login.do", method = RequestMethod.GET) public String
     * dropStep3(Model model, Member member) {
@@ -120,17 +136,7 @@ public class MemberController {
    }
    
    
-   @RequestMapping(value="/Main_info", method = RequestMethod.GET)
-   public String handleStep9(Model model) {
-      model.addAttribute("comment",new Comment());
-      return "info";
-   }
    
-   @RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
-   public String handleStep11(Model model) {
-	   model.addAttribute("comment",new Comment());
-      return "memberDrop";
-   }
    
    @RequestMapping(value="/Main_info_enter", method = RequestMethod.GET)
    public String handleStep9_1(Model model) {
@@ -138,11 +144,7 @@ public class MemberController {
       return "infoEnter";
    }
    
-   @RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.GET)
-   public String handleStep10(Model model) {
-      model.addAttribute("comment",new Comment());
-      return "changePw";
-   }
+   
    
    
    

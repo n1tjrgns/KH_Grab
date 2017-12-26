@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="model.*" %>
+<%
+	Member member = (Member) session.getAttribute("loginInfo");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,28 +16,9 @@
 <link href="_resource/_web/css/register.css" rel="stylesheet" />
 <title>Grab Bucket List : 버킷 리스트 비밀번호 변경</title>
 <!-- 2017-03-29 -->
-<script>
-	var resourcePath = "_resource";
-	var webDomain = "http://www.lifeplusbucket.com";
-</script>
+
 </head>
 <body>
-	<script>
-		var isLogin = true;
-		var resourcePath = "/_resource";
-		var webDomain = "http://www.lifeplusbucket.com";
-		var domainName = "lifeplusbucket.com";
-		var fbAppId = "803062869828098";
-		var nvAppId = "MLj0oi23BbB6Z9PdGctD";
-		var kaAppId = "54fdc94fb5308e67bf208e2863485e71";
-		var kaAppSecret = "cd1307a27870955ff42db477f3945923";
-		var kaAppSecret = "U_2RigbPTb";
-		var sslDomain = "https://www.lifeplusbucket.com";
-		document.domain = "lifeplusbucket.com";
-	</script>
-	<script>
-		var isMainAlready = true;
-	</script>
 
 	<div id="wrap" class='already'>
 		<jsp:include page="navi-header.jsp" />
@@ -46,46 +31,7 @@
 				if ($("#_login_passwd_").val() == "") {
 					alert("비밀번호를 입력하세요.");
 					return;
-				}
-
-				$.ajax( // 화면의 데이타를 조회한다.
-				{
-
-					url : "https://www.lifeplusbucket.com/member/login.do",
-					dataType : "jsonp",
-					jsonp : "callback",
-					type : "POST",
-					async : true,
-					data : {
-						_login_email_ : $("#_login_email_").val(),
-						_login_passwd_ : $("#_login_passwd_").val()
-					},
-					success : function(data) {
-						if (data.code == "0") {
-							NTrackObj.callTrackTag('29441', callbackFn, 11979);
-							$("#__loginForm__").submit();
-						} else {
-							alert("이메일 주소 또는 비밀번호가 정확하지 않습니다.");
-						}
-
-					},
-					error : function(e) {
-						//alert("조회 오류\n"+e.error);
-					}
-				});
-
-				//$("#__loginForm__").submit();
-			}
-			function checkLoginPassswordKeyPress(event) {
-				if (window.event) {
-					var code = window.event.keyCode;
-				} else {
-					var code = e.charCode;
-				}
-
-				if (code == 13) {
-					loginInputCheck()
-				}
+				}				
 			}
 		</script>
 
@@ -93,35 +39,8 @@
 
 		<div class="dumpBannerBox"></div>
 
-		<script>
-			function goMyBucket() {
-
-				if (!isLogin) {
-					login
-							.showPop('pop_login', "",
-									"http://www.lifeplusbucket.com/ln/mypage/bucket.do");
-				} else {
-					location.href = "/ln/mypage/bucket.do";
-				}
-			}
-		</script>
 		<script src="/_resource/js/vendor/makePCookie.js"></script>
 
-		<!--NSmart Track Tag Script-->
-		<script type='text/javascript'>
-			callbackFn = function() {
-			};
-			var _nsmart = _nsmart || [];
-			_nsmart.host = _nsmart.host
-					|| (('https:' == document.location.protocol) ? 'https://'
-							: 'http://');
-			_nsmart.push([ 11979, 29407 ]); // 캠페인 번호와 페이지 번호를 배열 객체로 전달
-			document
-					.write(unescape("%3Cscript src='"
-							+ _nsmart.host
-							+ "n00.nsmartad.com/etc?id=10' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-		<!--NSmart Track Tag Script End..-->
 		<div id="contents">
 			<div class="reg_content">
 				<h2>비밀번호 변경</h2>
@@ -149,26 +68,26 @@
 								<dt>이메일 주소</dt>
 								<dd>
 									<div class="input_box change_pw_email">
-										<input type="text" id="email1" value="ckh0103@naver.com"
+										<input type="text" id="email1" value="<%=member.getmEmail() %>"
 											disabled maxlength="50">
 									</div>
 								</dd>
 								<dt>기존 비밀번호</dt>
 								<dd>
 									<div class="input_box change_pw_password">
-										<input type="password" name="passwd" maxlength="40">
+										<input type="password" name="oldmPw" maxlength="40">
 									</div>
 								</dd>
 								<dt>새 비밀번호</dt>
 								<dd>
 									<div class="input_box change_pw_new_password">
-										<input type="password" name="new_passwd" maxlength="40">
+										<input type="password" name="newmPw" maxlength="40">
 									</div>
 								</dd>
 								<dt>새 비밀번호 확인</dt>
 								<dd>
 									<div class="input_box change_pw_new_password_check">
-										<input type="password" maxlength="40">
+										<input type="password" name="newmPwchk" maxlength="40">
 									</div>
 								</dd>
 							</dl>

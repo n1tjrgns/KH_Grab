@@ -68,7 +68,7 @@
             </div>
             <div class="btn_area">
                 <a href="javascript:inputCheck();" class="btn_click btn_info_modify mot2" onclick='eventTrack("", "member_info_btn_modify");'>정보 수정 완료 </a>       
-                    <a href="./change_password_member.do" class="btn_pw_change mot2" onclick='eventTrack("", "member_info_btn_password");'>비밀 번호 변경</a>         
+                    <a href="Main_mypage_changePw" class="btn_pw_change mot2">비밀 번호 변경</a>         
                 <a href="Main_mypage_drop" class="btn_leave mot2">탈퇴하기</a>
             </div>
         </div>
