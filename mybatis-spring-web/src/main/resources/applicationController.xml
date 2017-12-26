@@ -22,4 +22,6 @@
 	<bean class="controller.GraphController">
 	</bean>	
 
+	<bean class="controller.MemberController">
+	</bean>
 </beans>

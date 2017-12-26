@@ -23,20 +23,7 @@
 </head>
 <body>
 <jsp:include page="navi-header.jsp"/>
-<script>
-	var isLogin = true;
-    var resourcePath = "/_resource";
-    var webDomain = "http://www.Lifeplusbucket.com"; 
-    var domainName = "Lifeplusbucket.com"; 
-    var fbAppId = "803062869828098";
-    var nvAppId = "MLj0oi23BbB6Z9PdGctD";
-    var kaAppId = "54fdc94fb5308e67bf208e2863485e71";
-    var kaAppSecret = "cd1307a27870955ff42db477f3945923";
-    var kaAppSecret = "U_2RigbPTb";
-    var sslDomain = "https://www.Lifeplusbucket.com";
-    document.domain="Lifeplusbucket.com";
 
-</script>
 <script> var isMainAlready = true; </script>
 
 <script>
@@ -81,12 +68,7 @@ function goMyBucket(){
                 <div class="leave_text">
                     SNS 계정으로 가입하신 경우 SNS계정과 연동한 어플레케이션은 해당 SNS 시스템에 남아 있으므로 재가입 시 별도의 인증 절차를 거치지 않습니다.
                 </div>
-                <div class="leave_form">
-                    <p>Grab 버킷 리스트의 탈퇴 사유를 알려주시면 향후 적극 반영하여 개선하도록 하겠습니다.</p>
-                    <div class="text_box">
-                        <textarea name="lve_rsn"></textarea>
-                    </div>
-                </div>
+                
                 
                 <div class="leave_form bottom">
                     <p>Grab 버킷 리스트를 탈퇴하시겠습니까?</p>
@@ -94,7 +76,7 @@ function goMyBucket(){
                         <dt>비밀번호 확인</dt>
                         <dd>
                             <div class="input_box leave_password">
-                                <input type="password" name="passwd">
+                                <input type="password" name="mPw">
                             </div>
                         </dd>
                     </dl>
