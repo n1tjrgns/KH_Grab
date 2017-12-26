@@ -78,7 +78,7 @@
 			%>
 				<li>
 					<a href="#" onclick="document.getElementById('contentForm').p_name.value='<%= products.get(i).getProdName()%>';contentForm.submit();">
-						<img src="img/property_1.jpg" alt="" title="" class="property_img"/>
+						<img src="<%=products.get(i).getProdPic() %>" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
 						<h1>

@@ -265,7 +265,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/AddProductComplete")
-	public String shopStep7_1(HttpServletRequest httpServletRequest, MultipartFile uploadFile) throws IOException {
+	public String shopStep7_1(HttpServletRequest httpServletRequest, MultipartFile uploadFile,  Model model) throws IOException {
 		String product_name = httpServletRequest.getParameter("product_name");
 		String category = httpServletRequest.getParameter("category");
 		int product_stock = Integer.parseInt(httpServletRequest.getParameter("product_stock"));
@@ -278,6 +278,9 @@ public class ProductController {
 		HttpSession session = httpServletRequest.getSession(false);
 		Member member = (Member) session.getAttribute("loginInfo");
 		File convFile = new File( file.getOriginalFilename());
+		int pos = convFile.getName().lastIndexOf( "." );
+		String ext = convFile.getName().substring( pos + 1 );
+
 		System.out.println("conv path:"+convFile.getAbsolutePath());
 		System.out.println("product_name : "+product_name);
 		System.out.println("category : "+category);
@@ -286,14 +289,32 @@ public class ProductController {
 		System.out.println("product_content : "+product_content);
 		System.out.println("file name:"+file.getName());
 		System.out.println("file path:"+file.getOriginalFilename());
-		String savedName = member.getmEmail()+"_"+product_name;
-		//String uploadPath = "../../img/product/";
-		File target = new File(savedName);
+		String savedName = member.getmEmail()+"_"+product_name+"."+ext;
+		String uploadPath = "C:\\Users\\user1\\git\\KH_Grab\\mybatis-spring-web\\src\\main\\webapp\\img\\product\\";
+		System.out.println("저장이름:"+savedName);
+		System.out.println("지금위치:"+uploadPath);
+		String temp = uploadPath + savedName;
 		// 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
 		// FileCopyUtils.copy(바이트배열, 파일객체)
-		FileCopyUtils.copy(file.getBytes(), target);
-		System.out.println("완료크");
-		return "addProduct";
+		FileCopyUtils.copy(file.getBytes(), new File(uploadPath, savedName));
+		System.out.println("파일 복사 완료");
+		
+		Product product = new Product(product_name, category, product_stock, product_content, product_price,
+				temp, member.getmEmail());
+		System.out.println("product_name"+product.getProdName());
+		System.out.println("category"+product.getProdCategory());
+		System.out.println("product_stock"+product.getProdStock());
+		System.out.println("product_content"+product.getProdContent());
+		System.out.println("product_price"+product.getProdPrice());
+		System.out.println("prod_pic"+product.getProdPic());
+		System.out.println("email"+product.getcEmail());
+		
+		
+		int result = productSessionRepository.insertProduct(product);
+		
+		model.addAttribute("result", result);
+		
+		return "addProductListComplete";
 	}
 	
 	

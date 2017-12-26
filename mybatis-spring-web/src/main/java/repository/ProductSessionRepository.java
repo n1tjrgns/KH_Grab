@@ -28,7 +28,7 @@ public class ProductSessionRepository extends AbstractRepository {
 	public Integer insertProduct(Product product) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		try {
-			String statment = nameSpace + ".insertCommentByCondition";
+			String statment = nameSpace + ".insertProductByCondition";
 			int result = sqlSession.insert(statment, product);
 			if (result > 0) {
 				sqlSession.commit();

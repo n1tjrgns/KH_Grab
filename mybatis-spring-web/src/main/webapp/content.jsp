@@ -69,7 +69,7 @@
 			<table style="width: 80%;">
 				<tr>
 					<td style="width: 40%;"><img class="imgsize"
-						src="./img/property_1.jpg" /></td>
+						src='<%=product.getProdPic() %>' /></td>
 					<td style="width: 40%;">
 						<!-- Datos del vendedor y titulo del producto -->
 						<h2><%=product.getProdName()%></h2>

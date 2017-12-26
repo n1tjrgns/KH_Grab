@@ -47,12 +47,11 @@
 	</select>
 
 
-	<insert id="insertCommentByCondition" parameterType="Comment">
-		INSERT INTO comment1(comment_no,
-		user_id,
-		comment_content,
-		reg_date)
-		VALUES(#{commentNo},#{userId},#{commentContent},#{regDate})
+	<insert id="insertProductByCondition" parameterType="Product">
+		INSERT INTO
+			product(prod_name, prod_category, prod_stock, prod_content,	prod_price, prod_pic, c_email)
+		VALUES
+			(#{prodName},#{prodCategory},#{prodStock},#{prodContent},#{prodPrice},#{prodPic},#{cEmail})
 	</insert>
 
 	<update id="updateCommentByCondition" parameterType="Comment">
