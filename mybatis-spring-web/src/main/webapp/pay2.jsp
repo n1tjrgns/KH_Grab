@@ -180,7 +180,7 @@
 	<%
 		Member member = (Member)session.getAttribute("loginInfo");
 		ArrayList<Product> list = (ArrayList)session.getAttribute("productList");
-
+		String arr[] = member.getmTel().split("-");
 		int totalPrice = 0;
 	%>
 	<!-- 컨텐츠 영역 -->
@@ -188,9 +188,9 @@
 	
 	<!-- 세션 회원의 정보 -->
 	<input type="hidden" name="m_name" value="<%=member.getmName() %>" />
-	<input type="hidden" name="m_tel1" value="<%=member.getmTel().substring(0, 3) %>" />
-	<input type="hidden" name="m_tel2" value="<%=member.getmTel().substring(4, 8) %>" />
-	<input type="hidden" name="m_tel3" value="<%=member.getmTel().substring(9, 13) %>" />
+	<input type="hidden" name="m_tel1" value="<%=arr[0] %>" />
+	<input type="hidden" name="m_tel2" value="<%=arr[1] %>" />
+	<input type="hidden" name="m_tel3" value="<%=arr[2] %>" />
 	<input type="hidden" name="m_post" value="<%=member.getmPost() %>" />
 	<input type="hidden" name="m_addr" value="<%=member.getmAddr() %>" />
 	<input type="hidden" name="m_addr_d" value="<%=member.getmAddr_d() %>" />

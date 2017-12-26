@@ -293,14 +293,13 @@ public class ProductController {
 		String uploadPath = "C:\\Users\\user1\\git\\KH_Grab\\mybatis-spring-web\\src\\main\\webapp\\img\\product\\";
 		System.out.println("저장이름:"+savedName);
 		System.out.println("지금위치:"+uploadPath);
-		String temp = uploadPath + savedName;
 		// 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
 		// FileCopyUtils.copy(바이트배열, 파일객체)
 		FileCopyUtils.copy(file.getBytes(), new File(uploadPath, savedName));
 		System.out.println("파일 복사 완료");
 		
 		Product product = new Product(product_name, category, product_stock, product_content, product_price,
-				temp, member.getmEmail());
+				(uploadPath + savedName), member.getmEmail());
 		System.out.println("product_name"+product.getProdName());
 		System.out.println("category"+product.getProdCategory());
 		System.out.println("product_stock"+product.getProdStock());
@@ -317,10 +316,22 @@ public class ProductController {
 		return "addProductListComplete";
 	}
 	
-	
+	@RequestMapping(value="/CompanyProductList")
+	public String shopStep8(HttpServletRequest httpServletRequest, Model model) {
+		HttpSession session = httpServletRequest.getSession(false);
+		Member member = (Member) session.getAttribute("loginInfo");
+		List<Product> result = productSessionRepository.selectCompanyProductList(member.getmEmail());
+		model.addAttribute("product", result);
+		return "companyProductList";
+	}
 	
 	@RequestMapping(value="/ModifyProduct")
-	public String shopStep8() {
+	public String shopStep9(HttpServletRequest httpServletRequest, Model model) {
+		String p_name = httpServletRequest.getParameter("p_name");
+		System.out.println("p_name:"+p_name);
+		Product result = productSessionRepository.selectProduct(p_name);
+		System.out.println("result:"+result);
+		model.addAttribute("product",result);
 		return "modifyProduct";
 	}
 }
