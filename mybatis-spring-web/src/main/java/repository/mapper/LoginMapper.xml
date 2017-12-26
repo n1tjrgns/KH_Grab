@@ -32,4 +32,16 @@
 			</if>
 		</where>
 	</select>
+	
+	<update id="updateMember" parameterType="member" >
+		UPDATE member
+			<set >
+				<if test="commentContent !=null">
+					comment_content=#{commentContent},
+				</if>
+			</set>
+			<where>
+				m_email = #{mEmail} AND m_pw = #{mPw}
+			</where>
+	</update>
 </mapper>

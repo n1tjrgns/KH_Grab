@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Comment;
 import model.Member;
 import repository.LoginSessionRepository;
 
@@ -42,6 +43,14 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		session.invalidate();			
 		return "redirect:/Main";
+	}
+	
+	@RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.POST)
+	public String updateMember(Member member, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int result = loginSessionRepository.updateMember(member);
+		return "changePw";			
+		
 	}
 	
 }

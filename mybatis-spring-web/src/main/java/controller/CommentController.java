@@ -81,11 +81,7 @@ public class CommentController {
 		return "infoEnter";
 	}
 	
-	@RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.GET)
-	public String handleStep10(Model model) {
-		model.addAttribute("comment",new Comment());
-		return "changePw";
-	}
+	
 	
 	@RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
 	public String handleStep11(Model model) {
