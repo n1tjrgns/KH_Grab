@@ -32,4 +32,17 @@
 			</if>
 		</where>
 	</select>
+	
+	<update id="" parameterType="member">
+		UPDATE 	
+	</update>
+	
+	<delete id="" parameterType="member">
+		DELETE FROM member
+		<where>
+			<if test="mPw != null">
+				m_pw = #{mPw}
+			</if>
+		</where>
+	</delete>
 </mapper>
