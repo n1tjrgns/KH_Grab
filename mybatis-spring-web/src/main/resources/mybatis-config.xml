@@ -11,6 +11,7 @@
    	<typeAlias type="model.Payment" alias="Payment"/>
    	<typeAlias type="model.BuyList" alias="BuyList"/>
    	<typeAlias type="model.Linkdata" alias="Linkdata"/>
+   	<typeAlias type="model.CustomService" alias="CustomService"/>
    </typeAliases>
    
    <environments default="development">
@@ -33,5 +34,8 @@
       <mapper resource="repository/mapper/PaymentMapper.xml"/>
       <mapper resource="repository/mapper/BuyListMapper.xml"/>
       <mapper resource="repository/mapper/GraphMapper.xml"/>
+       <mapper resource="repository/mapper/PwmailMapper.xml"/>
+      <mapper resource="repository/mapper/CsMapper.xml"/>
+       
    </mappers>
 </configuration>
