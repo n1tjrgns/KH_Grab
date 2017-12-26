@@ -94,13 +94,13 @@ public class MemberController {
 	public String deleteMember(Member member ,Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Member deletemember = (Member) session.getAttribute("loginInfo");
-		/*System.out.println("deletemember.getmPw() : " + deletemember.getmPw());
-		System.out.println("request.getParameter(\"mPw\") : " + request.getParameter("mPw"));*/
-		if (deletemember.getmPw() == request.getParameter("mPw")) {
+		System.out.println("deletemember.getmPw() : " + deletemember.getmPw());
+		System.out.println("request.getParameter(\"mPw\") : " + request.getParameter("mPw"));
+		if (deletemember.getmPw().equals(request.getParameter("mPw"))) {
 			Integer result=memberSessionRepository.deleteMember(deletemember);
 			session.invalidate();
 			model.addAttribute("result",result);
-			/*System.out.println(result);*/
+			System.out.println(result);
 		}
 		
 		return "redirect:/Main";
