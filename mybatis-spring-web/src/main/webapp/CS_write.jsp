@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Hompage_Name</title>
+<title>공지사항 & 문의 게시판</title>
 
 </head>
 <body>
-
+<center>
    <form name="frm" action="CS_write" method="post" > <!-- application(서버로 파일명만감)/multi-part(내용까지날림) 있음 -->
-      <table> 
+      <table> <caption> 공지사항 & 문의 게시판 </caption> 
          <tr>
             <td>종류
             </td><td>
@@ -32,7 +32,7 @@
                </tr>
       </table>
    </form>
-   
+</center>   
 </body>
 </html>
 

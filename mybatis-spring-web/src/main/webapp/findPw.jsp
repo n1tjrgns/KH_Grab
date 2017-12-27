@@ -131,7 +131,7 @@ function goMyBucket(){
                     <div class="input_box email_reg_name">
                         <input type="text" placeholder="이름" name="mName" maxlength="15">
                     </div>
-                    <div class="email_box">
+                    <div class="email_box"> 
                         <div class="input_box email_reg_email">
                             <input type="text" placeholder="이메일" name="mEmail" maxlength="50">
                         </div>

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script>	
-		location.href="CSCS"	
+		location.href="CSCS"	 
 	</script>
 </body>
 </html>

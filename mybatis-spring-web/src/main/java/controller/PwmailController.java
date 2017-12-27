@@ -52,7 +52,7 @@ public class PwmailController {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-			
+			return "mail";
 		}
 		
 		return "mail";

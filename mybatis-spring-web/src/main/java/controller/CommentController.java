@@ -75,7 +75,7 @@ public class CommentController {
 		model.addAttribute("comment",new Comment());
 		return "registerEnter";
 	}
-	
+	 
 	@RequestMapping(value="/Main_login_find", method = RequestMethod.GET)
 	public String handleStep8(Model model) {
 		model.addAttribute("comment",new Comment());

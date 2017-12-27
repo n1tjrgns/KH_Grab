@@ -61,11 +61,13 @@ $(function () {
                 $('.notifiaction_container ul li .content').slideUp();
                 $('.notifiaction_container ul li').removeClass('on');
             }else{
-                $('.notifiaction_container ul li .content').slideDown();
-               /*$('.notifiaction_container ul li').removeClass('on');
-               */
-               /* $('.notifiaction_container ul li').eq(idx).find('.content').slideDown();
-                $('.notifiaction_container ul li').eq(idx).addClass('on');*/
+            
+                $('.notifiaction_container ul li .content').slideUp();
+                
+               //$('.notifiaction_container ul li').removeClass('on');
+            
+              	//$('.notifiaction_container ul li').eq(idx).find('.content').slideDown();
+               // $('.notifiaction_container ul li').eq(idx).addClass('on');
             }
             //공지사항에서의 각각의 공지들 기능
         });

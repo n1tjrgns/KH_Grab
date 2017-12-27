@@ -193,7 +193,7 @@
 						<li class="textarea">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<textarea name="content"  cols="40" rows="5"
-								style="margin-top: 10px; border: 2px solid pink;"><%=request.getParameter("content")%> 
+								style="margin-top: 10px; border: 2px solid pink;"> 
 							</textarea> 
 						</li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input

@@ -28,14 +28,14 @@
 <c:if test="${result>=1}">
 	<script>
  	window.alert("임시 비밀번호가 입력하신 메일로 발송되었습니다.");
- 	location.href="login.jsp";
+ 	location.href="Main_login";
  	</script>
 </c:if>
 
-<c:if test="${result==0}">
+<c:if test="${result>=0}"> 
 	<script>
  	window.alert("입력하신 정보가 일치하지 않습니다.");
- 	location.href="findPW.jsp";
+ 	location.href="Main_login_find";
  	</script>
 </c:if>
 
