@@ -22,4 +22,6 @@
 	<bean class="controller.MemberController">
 	</bean>
 	
+	<bean class="controller.PwmailController">
+	</bean>
 </beans>

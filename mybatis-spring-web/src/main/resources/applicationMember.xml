@@ -14,4 +14,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<bean id="loginSessionRepository" class="repository.LoginSessionRepository" />
 	<bean id="graphSessionRepository" class="repository.GraphSessionRepository" />
 	<bean id="memberSessionRepository" class="repository.MemberSessionRepository" />
+	<bean id="csSessionRepository" class="repository.CsSessionRepository" />
+	<bean id="pwmailSessionRepository" class="repository.PwmailSessionRepository" />
+	
 </beans> 

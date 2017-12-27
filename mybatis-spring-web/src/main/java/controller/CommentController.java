@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import model.Comment;
-
+import model.CustomService;
 import repository.CommentSessionRepository;
+import repository.CsSessionRepository;
 
 
 @Controller
 public class CommentController {
 	@Autowired
 	CommentSessionRepository commentSessionRepository;
-	
+	@Autowired
+	CsSessionRepository csSessionRepository;
 	
 	@RequestMapping(value="/Main", method = RequestMethod.GET)
 	public String handleStep0(Model model) {
@@ -98,5 +100,44 @@ public class CommentController {
 		return "/comment_update";
 	}
 	
+	/* 석훈 파트 START */
+	@RequestMapping(value = "CSCS", method = {RequestMethod.POST,RequestMethod.GET})
+	public String csSelect(Model model) {
+		System.out.println("cslist222"); 
+		List<CustomService> cslist = csSessionRepository.selectCustomService();	
+		for(int i=0; i<cslist.size();i++) {
+		
+		cslist.get(i).setCsDate( cslist.get(i).getCsDate().substring(0, 10) );
+    
+		}
+		model.addAttribute("cslist",cslist);
+		System.out.println("cslist222 : "+cslist.get(0).getCsTitle());
+		System.out.println("cslist222 : "+cslist.size());
+		return "CS";
+	}
 	
+	@RequestMapping(value="CS_write", method = RequestMethod.POST)
+	public String csInsert(CustomService customservice, Model model) {
+		System.out.println("customservice.getCsSort()"+customservice.getCsSort());
+		System.out.println("customservice.getCsSort()"+customservice.getCsTitle());
+		System.out.println("customservice.getCsSort()"+customservice.getCsContent());
+		Integer cslist = csSessionRepository.insertCustomService(customservice);	
+		
+		model.addAttribute("cslist",cslist);
+		//model.addAttribute("cf","1");
+		return "CS_write_a";
+	}
+	
+	@RequestMapping(value="CS_delete", method = RequestMethod.POST)
+	public String csDelete(CustomService customservice, Model model) {
+		System.out.println("customservice.getCsSort()"+customservice.getCsSort());
+		System.out.println("customservice.getCsSort()"+customservice.getCsTitle());
+		System.out.println("customservice.getCsSort()"+customservice.getCsContent());
+		Integer cslist = csSessionRepository.deleteCustomService(customservice);	
+		
+		model.addAttribute("cslist",cslist);
+		//model.addAttribute("cf","2");
+		return "CS_write_a";
+	}
+	/* 석훈 파트 END */
 }
