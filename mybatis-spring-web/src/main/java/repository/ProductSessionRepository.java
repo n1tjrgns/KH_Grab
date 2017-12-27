@@ -24,6 +24,7 @@ public class ProductSessionRepository extends AbstractRepository {
 		String statment = nameSpace + ".selectProductByCondition";
 		return sqlSession.selectOne(statment, p_name);
 	}
+	
 	public List<Product> selectCompanyProductList(String p_email) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		String statment = nameSpace + ".selectCompanyProductListByCondition";
@@ -50,7 +51,7 @@ public class ProductSessionRepository extends AbstractRepository {
 	public Integer updateProduct(Product product) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		try {
-			String statment = nameSpace + ".updateCommentByCondition";
+			String statment = nameSpace + ".updateProductByCondition";
 			int result = sqlSession.update(statment, product);
 			if (result > 0) {
 				sqlSession.commit();

@@ -39,7 +39,10 @@
 
 <script>
 $(document).ready(function(){
-	$("#imgInp").change(function() {
+
+	//document.payForm.product_category.value = '$("input[name=category1]").val()';
+	
+	$("#file").change(function() {
 		  readURL(this);
 
 	});
@@ -57,9 +60,23 @@ $(document).ready(function(){
 		  }
 	}
 
+
 });
+</script>
+<script>
 
+function deleteProduct(){
+	if(!confirm("삭제하시겠습니까?")){
+		return
+	}else{
+		document.modifyForm.action="deleteProduct";
+		document.modifyForm.submit();
+	}
+}
 
+function confirm(){
+	document.modifyForm.submit();
+}
 </script>
 
 <jsp:include page="navi-header.jsp" />
@@ -68,21 +85,22 @@ $(document).ready(function(){
 <!-- 오른쪽 콘텐츠 영역 -->
 <div class="right_area page_order_form">
 	<%
-		Member member = (Member)session.getAttribute("loginInfo");
+		Member member = (Member)request.getAttribute("member");
 		Product product = (Product)request.getAttribute("product");
+		 
+		System.out.println("product.getProdPic()"+product.getProdPic());
 		String arr[] = member.getmTel().split("-");
+		String pic = product.getProdPic();
+		System.out.println("pic:"+pic);
+		int idx = pic.indexOf("."); 
+		String form = pic.substring(idx+1);
+		System.out.println("확장자:"+form);
 	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->
 	
 	<!-- 세션 회원의 정보 -->
-	<input type="hidden" name="m_name" value="<%=member.getmName() %>" />
-	<input type="hidden" name="m_tel1" value="<%=arr[0] %>" />
-	<input type="hidden" name="m_tel2" value="<%=arr[1] %>" />
-	<input type="hidden" name="m_tel3" value="<%=arr[2] %>" />
-	<input type="hidden" name="m_post" value="<%=member.getmPost() %>" />
-	<input type="hidden" name="m_addr" value="<%=member.getmAddr() %>" />
-	<input type="hidden" name="m_addr_d" value="<%=member.getmAddr_d() %>" />
+	<input type="hidden" name="category1" value="<%=product.getProdCategory() %>" />
 	
 	<div class="pagenation">
 		<div class="nav_sub">
@@ -91,7 +109,7 @@ $(document).ready(function(){
 	</div>
 	<!--//page nation -->
 
-	<form action="paying2" name="payForm" id="payForm" method="post" >
+	<form action="ModifyProductComplete" name="modifyForm" id="modifyForm" method="post" >
 		<!--article-title-->
 		<div class="article-title">
 			<h2 class="title-page">
@@ -115,7 +133,7 @@ $(document).ready(function(){
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">물품 이름</li>
 						<li class="cell_discount_detail2 order_address_form product_name">
-							<input type="text" name="product_name" /> <span
+							<input type="text" name="product_name" value="<%=product.getProdName()%>" readonly/> <span
 							class="plain-btn btn cart_amount"
 							style="cursor: default; display: none" id="baesong_title"></span>
 						</li>
@@ -136,23 +154,28 @@ $(document).ready(function(){
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">수량</li>
 						<li class="cell_discount_detail order_address_form box_tel">
-							<input type="text" name="product_stock" />
+							<input type="text" name="product_stock" value="<%=product.getProdStock()%>"/>
 						</li>
 						<br/>
 					</ul>
-					
+					<ul class="box_receiver_info">
+						<li class="cell_discount_tit">가격</li>
+						<li class="cell_discount_detail order_address_form box_tel">
+							<input type="text" name="product_price" value="<%=product.getProdPrice()%>"/>
+						</li>
+						<br/>
+					</ul>
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">상세 설명
 						</li>
 						<li class="cell_discount_detail box_memo">
-							<textarea name="product_content" id="product_content"></textarea>
+							<textarea name="product_content" id="product_content"><%=product.getProdContent()%></textarea>
 						</li>
 					</ul>
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">사진</li>
 						<li class="cell_discount_detail box_memo">
-							<input type='file' id="imgInp" />
-  							<img id="blah" src="#" alt="your image" />
+  							<img id="blah" src="./img/product/<%=product.getcEmail()%>_<%=product.getProdName()%>.<%=form%>" alt="your image" width="300px"/>
 						</li>
 					</ul>
 					<!--물품 정보-->
@@ -162,12 +185,16 @@ $(document).ready(function(){
 		</div>
 
 			<!--cart button-->
-			<div class="btn_wrap btn_type01">
-				<a href="javascript:void(0)" onclick="payCheck();"
-					class="btn_black">MODIFY <span class="btn_side_text">수정하기</span></a>
+			<div align=center>
+				<div class="btn_wrap btn_type01" style="display: inline-block; vertical-align: middle;">
+					<a href="javascript:void(0)" onclick="confirm();" class="btn_black">MODIFY <span class="btn_side_text">수정하기</span></a>
+				<!--//cart button-->
+				</div>
+				<div class="btn_wrap btn_type01" style="display: inline-block; vertical-align: middle;">
+					<a href="javascript:void(0)" onclick="deleteProduct();" class="btn_black">DELETE <span class="btn_side_text">삭제하기</span></a>
+				<!--//cart button-->
+				</div>
 			</div>
-			<!--//cart button-->
-		</div>
 		<!--// 컨텐츠 영역 -->
 		<!-- 회원의 구매 정보 -->
 

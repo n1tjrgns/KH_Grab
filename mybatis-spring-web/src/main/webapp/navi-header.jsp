@@ -68,7 +68,7 @@
 					%>
 					<div class="sub_link mot3">
 						<a href="AddProduct" onclick="" class="sub_a mot2">Add Product</a>
-						<a href="ModifyProduct" onclick="" class="sub_a mot2">My Product</a>
+						<a href="CompanyProductList" onclick="" class="sub_a mot2">Product List</a>
 					</div>
 
 					<%		

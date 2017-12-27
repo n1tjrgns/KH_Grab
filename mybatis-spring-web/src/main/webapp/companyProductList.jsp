@@ -25,14 +25,18 @@
 	 <jsp:include page="navi-header.jsp"/>
 	
 	<%
-
-		ProductSessionRepository  psr = new ProductSessionRepository();
-		List<Product> products = psr.selectProductList();
+		
+		Member member = (Member) session.getAttribute("loginInfo");
+		List<Product> products = (List<Product>)request.getAttribute("products");
 		System.out.println("List num : "+ products.size());
+		String pic[][] = new String[products.size()][2];
+
 		for(int i=0; i<products.size();i++){
-			System.out.println("물품 이름:"+products.get(i).getProdName());
-			System.out.println("물품 내용:"+products.get(i).getProdCategory());
+			int idx = products.get(i).getProdPic().indexOf("."); 
+			pic[i][1] = products.get(i).getProdPic().substring(idx+1);
+			System.out.println(products.get(i).getcEmail()+"_"+products.get(i).getProdName()+"."+pic[i][1]);
 		}
+		
 	%>
 
 	</section><!--  end search section  -->
@@ -47,7 +51,7 @@
 			%>
 				<li>
 					<a href="#" onclick="document.getElementById('contentForm').p_name.value='<%= products.get(i).getProdName()%>';contentForm.submit();">
-						<img src="<%=products.get(i).getProdPic() %>" alt="" title="" class="property_img"/>
+						<img src="./img/product/<%=member.getmEmail()%>_<%=products.get(i).getProdName()%>.<%=pic[i][1]%>" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
 						<h1>

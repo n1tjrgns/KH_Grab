@@ -50,9 +50,10 @@ public class ProductController {
 	
 	
 	@RequestMapping(value="/Main_shop")
-	public String shopStep1(Product product, Model model) {
-		List<Product> result = productSessionRepository.selectProductList();
-		model.addAttribute("product", result);
+	public String shopStep1(Model model) {
+		List<Product> products = productSessionRepository.selectProductList();
+
+		model.addAttribute("products", products);
 		return "shop";
 	}
 
@@ -320,18 +321,49 @@ public class ProductController {
 	public String shopStep8(HttpServletRequest httpServletRequest, Model model) {
 		HttpSession session = httpServletRequest.getSession(false);
 		Member member = (Member) session.getAttribute("loginInfo");
-		List<Product> result = productSessionRepository.selectCompanyProductList(member.getmEmail());
-		model.addAttribute("product", result);
+		List<Product> products = productSessionRepository.selectCompanyProductList(member.getmEmail());
+		model.addAttribute("products", products);
+		model.addAttribute("member", member);
 		return "companyProductList";
 	}
 	
 	@RequestMapping(value="/ModifyProduct")
 	public String shopStep9(HttpServletRequest httpServletRequest, Model model) {
+		HttpSession session = httpServletRequest.getSession(false);
+		Member member = (Member) session.getAttribute("loginInfo");
 		String p_name = httpServletRequest.getParameter("p_name");
-		System.out.println("p_name:"+p_name);
-		Product result = productSessionRepository.selectProduct(p_name);
-		System.out.println("result:"+result);
-		model.addAttribute("product",result);
+		Product product = productSessionRepository.selectProduct(p_name);
+		System.out.println("product:"+product);
+		model.addAttribute("product",product);
+		model.addAttribute("member",member);
 		return "modifyProduct";
 	}
+	
+	@RequestMapping(value="/ModifyProductComplete")
+	public String shopStep10(HttpServletRequest httpServletRequest, Model model) {
+		String product_name = httpServletRequest.getParameter("product_name");
+		String category = httpServletRequest.getParameter("product_category");
+		int product_stock = Integer.parseInt(httpServletRequest.getParameter("product_stock"));
+		int product_price = Integer.parseInt(httpServletRequest.getParameter("product_price"));
+		String product_content = httpServletRequest.getParameter("product_content");
+		Product product_hidden = productSessionRepository.selectProduct(product_name);
+		
+		Product product = new Product(product_name, category, product_stock, product_content, product_price, product_hidden.getProdPic(), product_hidden.getcEmail());
+
+		System.out.println("product_name"+product_name);
+		System.out.println("category"+category);
+		System.out.println("product_stock"+product_stock);
+		System.out.println("product_price"+product_price);
+		System.out.println("product_content"+product_content);
+		
+		int result = productSessionRepository.updateProduct(product);
+
+		model.addAttribute("result", result);
+
+		return "modifyProductResult";
+	}
+	
+	
+	
+	
 }

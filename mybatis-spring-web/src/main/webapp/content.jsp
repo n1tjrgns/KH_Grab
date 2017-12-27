@@ -46,7 +46,6 @@
 <body>
 	<%
 		System.out.println("p_name(web) : " + request.getParameter("p_name"));
-		ProductSessionRepository psr = new ProductSessionRepository();
 		Product product = (Product)request.getAttribute("product");
 		System.out.println("이름:" + product.getProdName());
 		System.out.println("가격:" + product.getProdPrice());
