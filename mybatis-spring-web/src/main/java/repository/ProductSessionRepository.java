@@ -67,7 +67,7 @@ public class ProductSessionRepository extends AbstractRepository {
 	public Integer deleteProduct(Product product) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		try {
-			String statment = nameSpace + ".deleteCommentByCondition";
+			String statment = nameSpace + ".deleteProductByCondition";
 			int result = sqlSession.delete(statment, product);
 			if (result > 0) {
 				sqlSession.commit();

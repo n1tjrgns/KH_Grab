@@ -26,7 +26,6 @@
 	
 	<%
 		List<Product> products = (List<Product>)request.getAttribute("products");
-		System.out.println("4번째:"+products.get(4).getcEmail());
 		System.out.println("List num : "+ products.size());
 		String pic[][] = new String[products.size()][2];
 		for(int i=0; i<products.size();i++){

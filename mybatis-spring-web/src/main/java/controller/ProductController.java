@@ -363,6 +363,17 @@ public class ProductController {
 		return "modifyProductResult";
 	}
 	
+	@RequestMapping(value="/DeleteProduct")
+	public String shopStep11(HttpServletRequest httpServletRequest, Model model) {
+		String product_name = httpServletRequest.getParameter("product_name");
+		Product product = productSessionRepository.selectProduct(product_name);
+		System.out.println("삭제쓰!");
+		
+		int result = productSessionRepository.deleteProduct(product);
+
+		model.addAttribute("result", result);
+		return "deleteProductResult";
+	}
 	
 	
 	

@@ -64,14 +64,9 @@ $(document).ready(function(){
 });
 </script>
 <script>
-
 function deleteProduct(){
-	if(!confirm("삭제하시겠습니까?")){
-		return
-	}else{
-		document.modifyForm.action="deleteProduct";
+		document.modifyForm.action="DeleteProduct";
 		document.modifyForm.submit();
-	}
 }
 
 function confirm(){
