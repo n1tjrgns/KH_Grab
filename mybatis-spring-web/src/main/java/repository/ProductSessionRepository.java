@@ -21,7 +21,7 @@ public class ProductSessionRepository extends AbstractRepository {
 	public Product selectProduct(String p_name) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 		String statment = nameSpace+".selectProductByCondition";
-		return sqlSession.selectOne(statment,p_name);
+		return sqlSession.selectOne(statment, p_name);
 	}
 	
 

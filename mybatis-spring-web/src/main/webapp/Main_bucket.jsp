@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 
 <html lang="ko">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
+ 
 <title>Grab</title>
 <meta property="og:url" content="https://localhost/Grap_UI/">
 <meta property="og:title" content="Grab (추억 한 그랩)">
@@ -87,7 +89,7 @@
                                     꿈꾸는 것 만으로도 내 안의 영감을 깨우는 <span class="en">Grab</span>의 가치를 지금 경험해 보세요.
                                 </div>
                                 <div class="btn_area mot3">
-                                    <a href="Bucket_main" target="_blank" class="btn_dir_go mot2">
+                                    <a href="Bucket_main" onclick="logintrue();" target="_blank" class="btn_dir_go mot2">
                                         Bucket List 바로가기
                                     </a>
                                 </div>
@@ -150,7 +152,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <a href="Bucket_main" class="btn_go" target="_blank">
+                        <a href="Bucket_main" class="btn_go" onclick="logintrue();" target="_blank">
                             <span class="en">BUCKET LIST</span> 바로가기
                         </a>
                         <a href="javascript:void(0);" class="btn_top">

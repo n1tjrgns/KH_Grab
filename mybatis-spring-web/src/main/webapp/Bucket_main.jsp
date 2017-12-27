@@ -4,7 +4,24 @@
     <%@page import="model.*,org.springframework.context.*" %>
     <%@page import="org.springframework.context.support.*" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ page import="model.*" %>
 <!DOCTYPE html>
+
+<% Member member = (Member) session.getAttribute("loginInfo"); 
+	%>
+	
+<script>
+
+function logintrue(){
+    <% if(member == null){%>
+       
+    alert("로그인 후 이용해 주세요!");
+    document.location.href="Main_login";
+    
+    <%  }%>
+}
+logintrue();
+</script>	
 
 <html lang="ko">
 <head>
@@ -89,7 +106,7 @@ isLogin = true;
                         <div class="h-members-sns-btns">
                             <a href="https://www.facebook.com/lifeplus.h/" class="fb" target="_blank" onclick='eventTrack("", "gnb_facebook");' >페이스북</a>
                             <a href="https://www.instagram.com/lifeplus_h/" class="insta" target="_blank" onclick='eventTrack("", "gnb_instagram");'>인스타그램</a>
-							<a href="#" class="lifeplus" target="_blank" onclick='eventTrack("", "gnb_lifeplus");'><img src="_resource/_web/images/favicon.ico.png" alt="Grab" /></a>
+							<a href="Main" class="lifeplus" target="_blank" onclick='eventTrack("", "gnb_lifeplus");'><img src="_resource/_web/images/favicon.ico.png" alt="Grab" /></a>
                         </div>
                         <!-- //2017-03-13 -->
                        <div class="h-members-login-btns">
@@ -97,8 +114,8 @@ isLogin = true;
                          <!--    <a href="javascript:login.showPop('pop_login');" class="login" onclick="eventTrack(&quot;&quot;, &quot;gnb_login&quot;);">로그인</a>
                             <a href="/member/register.do" class="regist" onclick="eventTrack(&quot;&quot;, &quot;gnb_register&quot;);">회원가입</a>
  							-->                            
-                            <a href="/member/logout.do" class="login">로그아웃</a>
-                            <a href="/ln/member/member_info.do" class="regist">회원정보관리</a>
+                            <a href="Logout" class="login">로그아웃</a>
+                            <a href="Main_info" class="regist">회원정보관리</a>
                             
                             
                             

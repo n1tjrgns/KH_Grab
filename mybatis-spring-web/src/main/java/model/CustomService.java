@@ -1,0 +1,90 @@
+package model;
+
+
+
+public class CustomService {
+	private int csNum;
+	private String csSort;
+	private String csTitle;
+	private String csContent;
+	private String csDate;
+	private String aEmail;
+	
+	
+
+	public CustomService(int csNum, String csSort, String csTitle, String csContent, String csDate, String aEmail) {
+		this.csNum=csNum;
+		this.csSort=csSort;
+		this.csTitle=csTitle;
+		this.csContent=csContent;
+		this.csDate=csDate;
+		this.aEmail=aEmail;
+	}
+	
+	
+	public CustomService() {
+		
+	}
+
+
+	public int getCsNum() {
+		return csNum;
+	}
+
+
+	public void setCsNum(int csNum) {
+		this.csNum = csNum;
+	}
+
+
+	public String getCsSort() {
+		return csSort;
+	}
+
+
+	public void setCsSort(String csSort) {
+		this.csSort = csSort;
+	}
+
+
+	public String getCsTitle() {
+		return csTitle;
+	}
+
+
+	public void setCsTitle(String csTitle) {
+		this.csTitle = csTitle;
+	}
+
+
+	public String getCsContent() {
+		return csContent;
+	}
+
+
+	public void setCsContent(String csContent) {
+		this.csContent = csContent;
+	}
+
+
+	public String getCsDate() {
+		return csDate;
+	}
+
+
+	public void setCsDate(String csDate) {
+		this.csDate = csDate;
+	}
+
+
+	public String getaEmail() {
+		return aEmail;
+	}
+
+
+	public void setaEmail(String aEmail) {
+		this.aEmail = aEmail;
+	}
+	
+	
+}

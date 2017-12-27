@@ -114,7 +114,7 @@
 						<div class="text_box mot4">
 							<div class="title">CUSTOMER SERVICE</div>
 							<div class="text">도움이 필요한가요?</div>
-							<a href="Main_cs" class="btn_detail_view mot3">자세히보기</a>
+							<a href="CSCS" class="btn_detail_view mot3">자세히보기</a>
 						</div>
 					</li>
 				</ul>

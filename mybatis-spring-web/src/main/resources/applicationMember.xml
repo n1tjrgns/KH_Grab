@@ -11,6 +11,14 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:annotation-config />
 	<bean id="commentSessionRepository" class="repository.CommentSessionRepository" />
-	<bean id="productSessionRepository" class="repository.ProductSessionRepository" />
-	<bean id="bucketSessionRepository" class="repository.BucketSessionRepository" />
+   <bean id="productSessionRepository" class="repository.ProductSessionRepository" />
+   <bean id="pwmailSessionRepository" class="repository.PwmailSessionRepository" />
+   <bean id="csSessionRepository" class="repository.CsSessionRepository" />
+   <bean id="loginSessionRepository" class="repository.LoginSessionRepository" />
+   <bean id="memberSessionRepository" class="repository.MemberSessionRepository" />
+   <bean id="paymentSessionRepository" class="repository.PaymentSessionRepository" />
+   <bean id="graphSessionRepository" class="repository.GraphSessionRepository" />
+   <bean id="buyListSessionRepository" class="repository.BuyListSessionRepository" />
+   <bean id="buyProductSessionRepository" class="repository.BuyProductSessionRepository"/>
+   <bean id="bucketSessionRepository" class="repository.BucketSessionRepository" />
 </beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="repository.mapper.BuyListMapper">
+	<cache />
+
+	<resultMap type="BuyList" id="BaseResultMap">
+		<!-- id : primary, key 속성명, jdbcType : 데이터베이스 자료형 -->
+		<id column="buy_num" jdbcType="BIGINT" property="buyNum" />
+		<result column="prod_name" jdbcType="VARCHAR" property="prodName" />
+		<result column="b_quantity" jdbcType="BIGINT" property="bQuantity" />
+	</resultMap>
+
+	<insert id="insertBuyListByCondition" parameterType="BuyList">
+		INSERT
+		INTO
+			buy_list
+		(buy_num, prod_name, b_quantity)
+		VALUES(#{buyNum},#{prodName},#{bQuantity})
+	</insert>
+
+
+</mapper>

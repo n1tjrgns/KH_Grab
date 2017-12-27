@@ -5,7 +5,13 @@
   
    <typeAliases>
    	<typeAlias type="model.Comment" alias="Comment"/>
-   	<typeAlias type="model.Product" alias="Product"/>
+      <typeAlias type="model.Product" alias="Product"/>
+      <typeAlias type="model.Member" alias="Member"/>
+      <typeAlias type="model.CustomService" alias="CustomService"/>
+      <typeAlias type="model.BuyList" alias="BuyList"/>
+      <typeAlias type="model.BuyProduct" alias="BuyProduct"/>
+      <typeAlias type="model.Linkdata" alias="Linkdata"/>
+      <typeAlias type="model.Payment" alias="Payment"/>
    	<typeAlias type="model.Bucketlist" alias="Bucketlist"/>
    	<typeAlias type="model.Reservation" alias="Reservation"/>
    	<typeAlias type="model.Reservation_Bucketlist" alias="Reservation_Bucketlist"/>
@@ -27,6 +33,12 @@
    <mappers>
       <mapper resource="repository/mapper/CommentMapper.xml"/>
       <mapper resource="repository/mapper/ProductMapper.xml"/>
+      <mapper resource="repository/mapper/PwmailMapper.xml"/>
+      <mapper resource="repository/mapper/CsMapper.xml"/>
+        <mapper resource="repository/mapper/LoginMapper.xml"/>
+        <mapper resource="repository/mapper/GraphMapper.xml"/>
+        <mapper resource="repository/mapper/BuyProductMapper.xml"/>
+        <mapper resource="repository/mapper/BuyListMapper.xml"/>
       <mapper resource="repository/mapper/BucketMapper.xml"/>
    </mappers>
 </configuration>
