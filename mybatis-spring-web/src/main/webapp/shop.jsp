@@ -27,6 +27,8 @@
 	<%
 		List<Product> products = (List<Product>)request.getAttribute("products");
 		System.out.println("List num : "+ products.size());
+		String src = request.getSession().getServletContext().getRealPath("/");
+		
 		String pic[][] = new String[products.size()][2];
 		for(int i=0; i<products.size();i++){
 			int idx = products.get(i).getProdPic().indexOf("."); 
@@ -79,7 +81,7 @@
 			%>
 				<li>
 					<a href="#" onclick="document.getElementById('contentForm').p_name.value='<%= products.get(i).getProdName()%>';contentForm.submit();">
-						<img src="img/product/<%=products.get(i).getcEmail()%>_<%=products.get(i).getProdName()%>.<%=pic[i][1]%>" alt="" title="" class="property_img"/>
+						<img src="<%=src%>img\\product\\<%=products.get(i).getcEmail()%>_<%=products.get(i).getProdName()%>.<%=pic[i][1]%>" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
 						<h1>
