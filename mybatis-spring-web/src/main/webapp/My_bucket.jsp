@@ -91,7 +91,7 @@ function goMyBucket(){
                 <img src="_resource/images/register/ico_profile.png" alt="나의이미지" />
             </div>
             <div class="profile_name">
-                <span>채홍기</span> 님의 마이페이지 <a href="javascript:Popup.directShareSns('MYBUC','', '', 'http://www.lifeplusbucket.com/_resource/images/common/sns_share_img.jpg');" class="ico"><img src="_resource/images/mypage/ico_circle_share.png" alt="공유" /></a>
+                <span>채홍기</span> 님의 마이페이지 
                 
             </div>
             <div class="btn_tab_area">
@@ -355,7 +355,8 @@ function regisList2(mEmail,NY){
                     <div class="share-popup-contents-copy">
                        <form name="form" method="post" action="discover/bucket_review_resist.do">
                        <p class="1">이곳은 버킷 이름이 들어가는 곳</p>
-                       <input type="hidden" name="mEmail" value="member">
+                       <input type="hidden" name="cEmail" id="cEmail" value="">
+                       <input type="hidden" name="mEmail" id="mEmail" value="member">
                        <input type="hidden" name="bkName" id="bkName" value="">
                        	제목 : <input name ="bkrvTitle" type="text" size="50"/> <br/>
                  		<span  id="SNS_SHARE_TEXT">	내용 : <textarea cols="55" rows="15" name="bkrvContent"> </textarea> <br/></span>
@@ -371,8 +372,7 @@ function regisList2(mEmail,NY){
                 </div>
             </li>
             <li class="share-popup-btns">
-                <a  href="javascript:regist();"  class="share-fb">
-              
+                <a  href="javascript:regist();"  class="share-tw">
                    리뷰등록하기
                 </a>
                 
@@ -384,8 +384,6 @@ function regisList2(mEmail,NY){
   	function  regist(){
   		document.form.submit(); 
   	}
-  	
-  	
   	</script>
     
     

@@ -14,7 +14,7 @@
 		<div class="list-box seq-I1596" style="transform-origin: 50% 50% 0px; transform: translate(0px, 0px); opacity: 1;" onclick="popup_to_buc('${bucketlist.bkName}');" >
             <div class="list-bg" style="transform: matrix(1, 0, 0, 1, 0, 0);">
                 <img src="_resource/images/discover/library/list-empty-box.png" alt="">
-                <img class="list-img" src="${bucketlist.photoURL}" shareimage="http://images.hwlife.hscdn.com//library/i1596_share.jpg" alt="준비 중" onload="Popular.listImgLoadComplete(this)" style="opacity: 1;">
+                <img class="list-img" src="${bucketlist.photoURL}" shareimage="http://images.hwlife.hscdn.com//library/i1596_share.jpg" alt="" onload="Popular.listImgLoadComplete(this)" style="opacity: 1;background-image: url('img/logo.jpg');">
                 <img class="list-shadow" src="_resource/images/discover/bucket_shadow.png" alt="?">
             </div>
             <div class="winner-count en top3">${status.index+1}</div>
@@ -25,7 +25,7 @@
 
                     <li class="add-btn" key-value="I1596">
                             
-                            <div class="list-add-checked change-add-check ${status.index+1}" style="display:none;"><img src="_resource/images/discover/library/checked.png" alt=""></div>
+                            <div class="list-add-checked change-add-check ${status.index+1}" style="display:none;"><img src="_resource/images/discover/library/checked.png" alt="?"></div>
 
                             <a href="#" class="en change-add-btn" key-value="I1596" style="display:inline-block">
                                 <div class="plus"><img src="_resource/images/discover/library/list-icon-plus.png" alt=""></div>

@@ -85,7 +85,6 @@
 	</select>
 	
 	
-	
 	<select id="selectReservList_Mmypage" parameterType="Reservation"
 	resultMap="BaseResultMap3">
 	SELECT 
@@ -125,7 +124,12 @@
 	   	  	WHERE r.bk_name=b.bk_name AND r.m_email= #{mEmail} 
 	</select>
 	
-		<select id="selectReservList_mypage_NY" parameterType="Reservation"
+	<insert id="InsertMemberList_mypage" parameterType="Reservation" >
+		INSERT INTO Member_bucket
+	   	VALUES(#{mEmail},#{bkName},#{cEmail},sysdate,'Y')
+	</insert>
+	
+	<select id="selectReservList_mypage_NY" parameterType="Reservation"
 	resultMap="BaseResultMap3">
 	SELECT 
    			*	
@@ -153,14 +157,20 @@
 	
 	<insert id="InsertBucket_Review" parameterType="Bucket_Review" >
 		INSERT INTO Bucket_Review
-	   	VALUES(BR_SEQ.NEXTVAL,#{mEmail},#{bkName},'company',sysdate,#{bkrvTitle},#{bkrvContent},NULL,#{bkrvScore},'Y')
+	   	VALUES(BR_SEQ.NEXTVAL,#{mEmail},#{bkName},#{cEmail},sysdate,#{bkrvTitle},#{bkrvContent},NULL,#{bkrvScore},'N')
 	</insert>
 	
+	
+	<delete id="deleteReservList_mypage" parameterType="Bucket_Review">
+	DELETE FROM Bucket_Review 
+            WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
+	</delete>
 	
 	<select id="selectBucket_Review" resultMap="BaseResultMap4">
 	SELECT 
    			*
 	   	FROM Bucket_Review
+	   	WHERE BKRV_CHECK='Y'
 	</select>
 	
 	<select id="Bucket_main_review_mypage"  parameterType="Bucket_Review"
@@ -183,5 +193,11 @@
 	DELETE FROM Bucket_Review 
             WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
 	</delete>
+	
+	<update id="Bucket_reviewCheck_update" parameterType="Bucket_Review">
+		  UPDATE Bucket_Review
+            SET BKRV_CHECK=#{bkrvCheck}
+            WHERE BKRV_NUM=#{bkrvNum}
+	</update>
 	
 </mapper>

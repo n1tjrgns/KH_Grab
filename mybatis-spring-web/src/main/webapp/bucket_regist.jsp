@@ -44,7 +44,7 @@ div.reg_form{background-color:white;}
                         <option>버킷 목적</option>
                         <option>Travel</option> <option>Sport</option> <option>Food</option>
                         <option>New Skill</option> <option>Culture</option> <option>Outdoor</option>
-                        <option>Shopping</option> <option>LifeStyle</option>
+                        <option>Shopping</option> <option>Lifestyle</option>
                     </select>
                 </div>
                 <div class="password_box">

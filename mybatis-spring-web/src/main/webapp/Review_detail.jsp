@@ -29,7 +29,6 @@
     </div>
     
 
-    
     <div id="featured-detail-popup" class="featured-detail-popup popup-group" style="left: 0px; display: none;">
         <div class="f-detail-popup-box">
             <div class="f-detail-bg"><img src="_resource/images/discover/featured/popup/img-bg.png" alt="" /></div>
@@ -61,30 +60,19 @@
                         	<span  id="SNS_SHARE_TEXT">${bucket_Review.bkrvContent}</span>
                     </div>
                 </div>
+                
+                
+                
             </li>
+            
+            <c:if test="${bucket_Review.mEmail eq 'member'}">
             <li class="share-popup-btns">
-                <a href="#" class="share-fb">
-                    <div>
-                        <img src="_resource/images/discover/etc/fb-icon.png" />
-                        <img src="_resource/images/discover/etc/fb-icon_on.png" class="on" />
-                    </div>
-                    페이스북 공유
+                <a href="#" onclick="YN_update('${bucket_Review.bkrvNum}','${bucket_Review.bkrvCheck}');" class="share-fb">
+                    리뷰 공유
                 </a>
-                <a href="#" class="share-tw">
-                    <div>
-                        <img src="_resource/images/discover/etc/tw-icon.png" />
-                        <img src="_resource/images/discover/etc/tw-icon_on.png" class="on" />
-                    </div>
-                    트위터 공유
-                </a>
-                <a href="#" class="share-ks">
-                    <div>
-                        <img src="_resource/images/discover/etc/ks-icon.png" />
-                        <img src="_resource/images/discover/etc/ks-icon_on.png" class="on" />
-                    </div>
-                    카카오스토리 공유
-                </a>
+                
             </li>
+            </c:if>
             <li class="share-popup-close">
             <a href="#" 
             onclick="javascript:$('#share-popup').css('display','none');" >
@@ -99,3 +87,28 @@
 </body>
 </html>
 <script src="_resource/js/discover/Discover.Popup.js"></script>
+<script>
+	
+function YN_update(bkrvNum,bkrvCheck){
+	$.ajax( //공유여부를 설정한다.
+				{	
+					url:"Bucket_reviewCheck_update.do",
+					dataType:"html",
+					type:"POST",
+					async:true,
+					data: {"bkrvNum" : bkrvNum,"bkrvCheck":bkrvCheck},
+					success:function( data ) {	
+						alert(data);
+						location.reload();
+	 				},
+					error : function( e ) {
+						alert("업데이트 오류\n"+e.error);
+					}
+				}
+			);	
+		
+}
+
+
+
+</script>

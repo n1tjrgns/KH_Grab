@@ -104,7 +104,7 @@ var Popup = (function(){
 
 			share_fbBtn.click(function(){
 				//alert("FB - seq = 1; 湲��댁슜= ���댄궎�ㅽ���");
-				Popup.sendMyBucketSns("facebook","","");
+				//Popup.sendMyBucketSns("facebook","","");
                 return false;
             });
 

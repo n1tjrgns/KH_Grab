@@ -119,8 +119,13 @@ public class BucketController {
 		
 		@RequestMapping(value="/ln/member/completeBucket.do", method = RequestMethod.GET)
 		public String handleStep7_2(Model model, Reservation reservation) {
+			System.out.println(reservation.getBkName()+"개 변경완료");
+			System.out.println(reservation.getcEmail()+"개 삽입완료");
+			System.out.println(reservation.getmEmail()+"개 삽입완료");
 			Integer result = bucketRepository.updateReservList_mypage(reservation);
+			Integer result2 = bucketRepository.InsertMemberList_mypage(reservation);
 			System.out.println(result+"개 변경완료");
+			System.out.println(result2+"개 삽입완료");
 			return null;
 		}
 		
@@ -134,8 +139,10 @@ public class BucketController {
 		
 		@RequestMapping(value="/discover/bucket_review_resist.do", method = RequestMethod.POST)
 		public String handleStep9(Model model,Bucket_Review bucket_review) {
-			System.out.println("bucket_review_resist.do:"+bucket_review.getBkName());
-			System.out.println("bucket_review_resist.do:"+bucket_review.getBkrvContent());
+			System.out.println("getmEmail.do:"+bucket_review.getmEmail());
+			System.out.println("getcEmail.do:"+bucket_review.getcEmail());
+			System.out.println("getBkName.do:"+bucket_review.getBkName());
+			System.out.println("getBkrvContent.do:"+bucket_review.getBkrvContent());
 			Integer result = bucketRepository.InsertBucket_Review(bucket_review);
 			System.out.println(result+"개");
 			model.addAttribute("result",result);
@@ -205,9 +212,22 @@ public class BucketController {
 		@RequestMapping(value="/Bucket_main_review_mypage_delete", method = RequestMethod.POST)
 		public String handleStep10_4(Model model,Bucket_Review bucket_Review2) {
 			Integer bucket_Review=bucketRepository.selectBucket_Review_mypage_delete(bucket_Review2);
-			System.out.println("del result:"+bucket_Review);
-
+			
 			return "Review_detail";
+		}
+		
+		@RequestMapping(value="/Bucket_reviewCheck_update.do", method = RequestMethod.POST)
+		public String handleStep10_5(Model model,Bucket_Review bucket_Review2) {
+			Integer bucket_Review=bucketRepository.Bucket_reviewCheck_update(bucket_Review2);
+			System.out.println("del result: 3이면 N , 4면Y"+bucket_Review);
+			String YN="";
+			if(bucket_Review==3) {
+				YN="비공개";
+			}else {
+				YN="공개";
+			}
+			model.addAttribute("result",YN);
+			return "UpdateResult";
 		}	
 			
 }

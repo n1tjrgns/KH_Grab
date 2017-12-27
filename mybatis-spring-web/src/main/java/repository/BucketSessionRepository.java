@@ -48,6 +48,9 @@ public class BucketSessionRepository  extends AbstractRepository {
 			if(bl.getBkCheck()==null) {
 				bl.setBkCheck("no");
 			}
+			if(bl.getPhotoURL()==null) {
+				bl.setPhotoURL("img\\lego.png");
+			}
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			try {
 			
@@ -113,10 +116,15 @@ public class BucketSessionRepository  extends AbstractRepository {
 		public Integer updateReservList_mypage(Reservation reservation) {
 			System.out.println(reservation.getBkName()+"updateReservList_mypage"+reservation.getResCheck());
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
-			try {
-				
+			try {Integer result=0;
+			if(reservation.getResCheck()=="Y")
+			{String statment = nameSpace+".deleteReservList_mypage";
+			 result = sqlSession.delete(statment,reservation);
+			}else {	
 			String statment = nameSpace+".updateReservList_mypage";
-			Integer result = sqlSession.update(statment,reservation);
+			 result = sqlSession.update(statment,reservation);
+			}
+			
 			if(result>0) {
 				 sqlSession.commit();
 			 }else {
@@ -129,6 +137,26 @@ public class BucketSessionRepository  extends AbstractRepository {
 		
 			
 		}
+		
+		
+		public Integer InsertMemberList_mypage(Reservation reservation) {
+			System.out.println(reservation.getBkName()+"updateReservList_mypage"+reservation.getResCheck());
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			try {
+				
+			String statment = nameSpace+".InsertMemberList_mypage";
+			Integer result = sqlSession.insert(statment,reservation);
+			if(result>0) {
+				 sqlSession.commit();
+			 }else {
+				 sqlSession.rollback();
+			 }
+			 return result;
+			}finally {
+				sqlSession.close();
+			}
+		}
+		
 		
 		public Integer delteReservList_mypage(Reservation reservation) {
 			System.out.println(reservation.getBkName()+"delete2"+reservation.getmEmail());
@@ -153,7 +181,7 @@ public class BucketSessionRepository  extends AbstractRepository {
 		public Integer InsertBucket_Review(Bucket_Review bucket_review) {
 			System.out.println("InsertBucket_Review:"+bucket_review.getBkName());
 			if(bucket_review.getBkrvCheck()==null) {
-				bucket_review.setBkrvCheck("no");
+				bucket_review.setBkrvCheck("N");
 			}
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			try {
@@ -210,8 +238,31 @@ public class BucketSessionRepository  extends AbstractRepository {
 					sqlSession.close();
 				}
 		}
-
-	
+		
+		public Integer Bucket_reviewCheck_update(Bucket_Review bucket_Review) {
+			Integer YN=0;
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			if(bucket_Review.getBkrvCheck().equals("Y")) {
+				bucket_Review.setBkrvCheck("N");
+				YN=3;
+			}else{
+				bucket_Review.setBkrvCheck("Y");
+				YN=4;
+			}
+			try {
+				String statment = nameSpace+".Bucket_reviewCheck_update";
+				 int result = sqlSession.update(statment,bucket_Review);
+				 if(result>0) {
+					 sqlSession.commit();
+					 return YN;
+				 }else {
+					 sqlSession.rollback();
+				 }
+				 return result;
+				}finally {
+					sqlSession.close();
+				}
+		}
 		
 		
 }

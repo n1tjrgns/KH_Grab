@@ -29,14 +29,14 @@
                             <div class="title"> ${reservation.bkName }</div>
 							<div class="mouse_lock" style="display: none;"></div>
                            <c:if test="${reservation.resCheck=='N'}">
-                            <a href="javascript:completeBucket('${reservation.bkName }','${reservation.mEmail }','Y');"  class="btn_complete  mot2">완료하기</a>
+                            <a href="javascript:completeBucket('${reservation.bkName }','${reservation.mEmail }','${reservation.cEmail }','Y');"  class="btn_complete  mot2">완료하기</a>
                             </c:if>
                             <c:if test="${reservation.resCheck=='Y'}">
-                            <a href="javascript:completeBucket('${reservation.bkName }','${reservation.mEmail }','N');"  class="btn_complete  mot2">완료 됨</a>
+                            <a href="javascript:completeBucket('${reservation.bkName }','${reservation.mEmail }','${reservation.cEmail }','N');"  class="btn_complete  mot2">완료취소</a>
                             </c:if>
                             <br/> <br/>
                             <div class="btn_ico"> 
-                 	      <c:if test="${reservation.resCheck=='Y'}">리뷰쓰기 <a href="javascript:Popup.sharePopupShowHide(true);" onclick="transfer('${reservation.bkName}');" class="btn_share mot2"></a></c:if>
+                 	      <c:if test="${reservation.resCheck=='Y'}">리뷰쓰기 <a href="javascript:Popup.sharePopupShowHide(true);" onclick="transfer('${reservation.bkName}','${reservation.cEmail}');" class="btn_share mot2"></a></c:if>
                                삭제하기 <a href="javascript:deleteRes('${reservation.mEmail}','${reservation.bkName}');"  class="btn_delete mot2"></a>
                             </div>
                             </form>
@@ -83,19 +83,20 @@ function showPopup_Personlist(bkName){
 
 
 <script>
-function transfer(value){
+function transfer(value,val2){//이전 페이지에 값을 전달하고 리뷰를 쓸수있게함.
    		$("#bkName").val(value);
+   		$("#cEmail").val(val2);
     	$(".1").html(value);
-        alert(value);
+        alert(value+"리뷰쓰기입니다.");
     };
 
 </script>
 
 
 <script>
-function  completeBucket(bkName,mEmail,resCheck){
+function  completeBucket(bkName,mEmail,cEmail,resCheck){
 
- 	$.ajax( // 화면의 데이타를 조회한다.
+ 	$.ajax( // 완료로 변경하기
 				{
 
 					url:"ln/member/completeBucket.do",
@@ -103,7 +104,7 @@ function  completeBucket(bkName,mEmail,resCheck){
 					type:"GET",
 					async:true,
 					data:{
-						"bkName":bkName , "mEmail":mEmail, "resCheck":resCheck 
+						"bkName":bkName , "mEmail":mEmail,"cEmail":cEmail,  "resCheck":resCheck 
 					},
 					success:function( data ) {
 						alert("성공1");

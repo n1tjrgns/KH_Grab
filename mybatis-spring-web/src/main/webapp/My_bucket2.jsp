@@ -104,7 +104,7 @@ function goMyBucket(){
                 <img src="_resource/images/register/ico_profile.png" alt="나의이미지" />
             </div>
             <div class="profile_name">
-                <span>채홍기</span> 님의 마이페이지 <a href="javascript:Popup.directShareSns('MYBUC','', '', 'http://www.lifeplusbucket.com/_resource/images/common/sns_share_img.jpg');" class="ico"><img src="_resource/images/mypage/ico_circle_share.png" alt="공유" /></a>
+                <span>채홍기</span> 님의 마이페이지 
             </div>
             <div class="btn_tab_area">
                 <a href="Bucket_mypage" class="btn_bucket mot2">
