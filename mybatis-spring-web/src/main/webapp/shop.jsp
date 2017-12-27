@@ -75,10 +75,11 @@
 				<input type="hidden" name="p_name" value=''>
 			<%
 				for(int i=0; i<products.size();i++){
+					System.out.println("img src=./img/product/"+products.get(i).getcEmail()+"_"+products.get(i).getProdName()+"."+pic[i][1]);
 			%>
 				<li>
 					<a href="#" onclick="document.getElementById('contentForm').p_name.value='<%= products.get(i).getProdName()%>';contentForm.submit();">
-						<img src="./img/product/<%=products.get(i).getcEmail()%>_<%=products.get(i).getProdName()%>.<%=pic[i][1]%>" alt="" title="" class="property_img"/>
+						<img src="img/product/<%=products.get(i).getcEmail()%>_<%=products.get(i).getProdName()%>.<%=pic[i][1]%>" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
 						<h1>

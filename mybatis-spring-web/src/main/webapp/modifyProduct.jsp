@@ -40,8 +40,10 @@
 <script>
 $(document).ready(function(){
 
-	//document.payForm.product_category.value = '$("input[name=category1]").val()';
+	var category_val = $("input[name=category1]").val();
+	document.modifyForm.product_category.value = category_val;
 	
+
 	$("#file").change(function() {
 		  readURL(this);
 
@@ -72,6 +74,7 @@ function deleteProduct(){
 function confirm(){
 	document.modifyForm.submit();
 }
+
 </script>
 
 <jsp:include page="navi-header.jsp" />
@@ -95,7 +98,7 @@ function confirm(){
 	<!--page nation -->
 	
 	<!-- 세션 회원의 정보 -->
-	<input type="hidden" name="category1" value="<%=product.getProdCategory() %>" />
+	<input type="hidden" name = "category1" id="category1" value="<%=product.getProdCategory() %>" />
 	
 	<div class="pagenation">
 		<div class="nav_sub">
@@ -137,7 +140,7 @@ function confirm(){
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">카테고리</li>
 						<li class="cell_discount_detail order_address_form box_tel">
-							<select name="product_category" id="product_category">
+							<select name="product_category" id="product_category" >
 								<option value="">선택하세요</option>
 								<option value="버킷리스트">버킷리스트</option>
 								<option value="여행">여행</option>
