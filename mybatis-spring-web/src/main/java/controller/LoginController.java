@@ -36,7 +36,7 @@ public class LoginController {
 		else {
 		/*model.addAttribute("msg", "메세지"); 
 		model.addAttribute("url", "Main_login");*/
-		return "redirect:/Main";
+		return "redirect:/Main_login";
 		}		
 	}
 	@RequestMapping(value="/Logout")
