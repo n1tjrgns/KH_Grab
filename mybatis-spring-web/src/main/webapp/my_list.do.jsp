@@ -149,18 +149,3 @@ function  deleteRes(bkName,mEmail){
 	
  }
 </script>
-<script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
-<script src="_resource/js/vendor/jquery.cookie.js"></script>
-<script src="_resource/js/vendor/spin.min.js"></script>
-<script src="_resource/js/vendor/CustomTW.js"></script>
-<script type="text/javascript" src="_resource/js/sns_add.js" charset="utf-8"></script>
-<script src="_resource/js/common.js"></script>
-<script src="_resource/js/login.js"></script>
-<script src="_resource/js/common_biz.js"></script>
-<script src="_resource/js/discover/Discover.BucketCart.js"></script>
-<script src="_resource/js/discover/Discover.Popup.js"></script>
-<script src="_resource/js/discover/Discover.Common.js"></script>
-<script src="_resource/js/discover/Discover.Search.js"></script>
-<script src="_resource/js/discover/Discover.Popular.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8" ></script>
-<script type="text/javascript">

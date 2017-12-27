@@ -85,7 +85,11 @@
                     카카오스토리 공유
                 </a>
             </li>
-            <li class="share-popup-close"><a href="#" onclick="javascript:$('#share-popup').css('display','none');top.document.location.reload();" ><img src="_resource/images/discover/share-popup-close.png" /></a></li>
+            <li class="share-popup-close">
+            <a href="#" 
+            onclick="javascript:$('#share-popup').css('display','none');" >
+            <img src="_resource/images/discover/share-popup-close.png" />
+            </a></li>
         </ul>
     </div>
     </div>
@@ -94,3 +98,4 @@
 
 </body>
 </html>
+<script src="_resource/js/discover/Discover.Popup.js"></script>
