@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    <%@ page import="model.Member,java.util.Date,java.text.SimpleDateFormat,java.text.DateFormat,
+    java.util.Calendar" 
+    %>
+    
+<% Member member = (Member) session.getAttribute("loginInfo"); 
+	%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,7 +29,10 @@ div.reg_form{background-color:white;}
 	    </center>
  	      
         <h2>버킷 등록하기</h2>
-         
+         <%DateFormat df = new SimpleDateFormat("YYYY-MM-dd");
+         Date today = Calendar.getInstance().getTime();
+         String reportDate = df.format(today);
+          %>
         <br/><br/> 
         <div class="reg_box">
         <br/>
@@ -33,15 +41,15 @@ div.reg_form{background-color:white;}
                 <input type="text" placeholder="버킷이름(50글자 이내)" name="bkName" maxlength="50">
                 </div>
                 <div class="email_box">
-                    <div class="input_box email_reg_email">
-                        <input type="text" placeholder="시작일" name="bkDate" maxlength="30" >
+                   <div class="input_box email_reg_email">
+                       <input type="text" placeholder="<%=reportDate%>" value="<%=reportDate  %>" name="bkDate" maxlength="30" readonly >
                     </div>
                     <div class="dot">/</div>
-                    <div class="input_box email_reg_email2">
-                        <input type="text" placeholder="업체 ID" name="cEmail" maxlength="20">
+                   <div class="input_box email_reg_email2">
+                        <input type="text" placeholder="<%=member.getmEmail()%>" value="<%=member.getmEmail()%>" name="cEmail" maxlength="20" readonly>
                     </div>
                     <select id="email_reg_select" class="email_reg_select" name="bkPurpose">
-                        <option>버킷 목적</option>
+                        <option>카테고리</option>
                         <option>Travel</option> <option>Sport</option> <option>Food</option>
                         <option>New Skill</option> <option>Culture</option> <option>Outdoor</option>
                         <option>Shopping</option> <option>Lifestyle</option>
@@ -78,7 +86,7 @@ div.reg_form{background-color:white;}
                 <div class="agree_box">
                 <h3> 
                 <input type="checkbox" name ="bkCheck">
-                       <span class="title">리뷰를 공개하시겠습니까?</span>
+                       <span class="title">버킷리스트를 모두에게 공개하시겠습니까?</span>
                     </h3>
                     <div class="table_box">
                         <table>

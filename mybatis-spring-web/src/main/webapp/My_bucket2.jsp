@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
     <meta charset="UTF-8">
 	
-    <link rel="shortcut icon" type="image/x-icon" href="_resource/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="_resource/_web/images/favicon.ico.png">
  
     <link href="_resource/css/common.css" rel="stylesheet" />
     <script>
@@ -16,6 +16,7 @@
 	}
    </script>
    <script src="https://apis.google.com/js/client.js?onload=load_google"></script>
+
 <link href="_resource/css/mypage.css" rel="stylesheet" />
 <title>Lifeplus Bucket List : 나의 버킷 리스트</title><!-- 2017-03-29 -->
 
@@ -53,18 +54,14 @@
                     <div class="h-members-btns">
                     	<!-- 2017-03-13 -->
                         <div class="h-members-sns-btns">
-                            <a href="https://www.facebook.com/lifeplus.h/" class="fb" target="_blank" onclick='eventTrack("", "gnb_facebook");' >페이스북</a>
-                            <a href="https://www.instagram.com/lifeplus_h/" class="insta" target="_blank" onclick='eventTrack("", "gnb_instagram");'>인스타그램</a>
-							<a href="https://www.lifeplus.co.kr" class="lifeplus" target="_blank" onclick='eventTrack("", "gnb_lifeplus");'><img src="_resource/images/gnb/gnb_txt_lifeplus.png"" alt="lifeplus" /></a>
+							<a href="Main" class="lifeplus" target="_blank" onclick='eventTrack("", "gnb_lifeplus");'><img src="_resource/_web/images/favicon.ico.png" alt="Grab" /></a>
                         </div>
                         <!-- //2017-03-13 -->
                         <div class="h-members-login-btns">
                             
-                            <a href="/member/logout.do" class="login">로그아웃</a>
-                            <a href="/ln/member/member_info.do" class="regist">회원정보관리</a>
-                            
-                            
-                            
+                            <a href="Logout" class="login">로그아웃</a>
+                            <a href="Main_info" class="regist">회원정보관리</a>
+                                       
                         </div>
                     </div>
                 </div>

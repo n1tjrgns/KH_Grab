@@ -51,6 +51,9 @@ public class BucketSessionRepository  extends AbstractRepository {
 			if(bl.getPhotoURL()==null) {
 				bl.setPhotoURL("img\\lego.png");
 			}
+			if(bl.getBkSort()==null) {
+				bl.setBkSort("CB");
+			}
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			try {
 			

@@ -105,7 +105,7 @@
 	
 	<insert id="InsertBucket" parameterType="Bucketlist" >
 		INSERT INTO bucket_request
-	   	VALUES(#{bkName},#{cEmail},#{bkContent},#{bkMax},#{bkPurpose},#{bkDate},#{bkDue},'업체버킷',#{bkCheck},#{photoURL})
+	   	VALUES(#{bkName},#{cEmail},#{bkContent},#{bkMax},#{bkPurpose},#{bkDate},#{bkDue},#{bkSort},#{bkCheck},#{photoURL})
 	</insert>
 	
 	<select id="selectReservList" parameterType="Reservation"

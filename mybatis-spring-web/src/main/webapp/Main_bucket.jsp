@@ -10,13 +10,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
  
 <title>Grab</title>
-<meta property="og:url" content="https://localhost/Grap_UI/">
-<meta property="og:title" content="Grab (추억 한 그랩)">
-<meta property="og:type" content="website">
-<meta property="og:image" content="_resource/image/logo.jpg">
-<meta property="og:description" content="당신의 추억을 그랩하세요">
-<meta name="description" content="당신의 추억을 그랩하세요">
-<link rel="shortcut icon" type="image/x-icon" href="https://www.lifeplus.co.kr/_resource/_web/images/favicon2.ico?1" />
+<link rel="shortcut icon" type="image/x-icon" href="_resource/_web/images/favicon.ico.png">
 <link rel="stylesheet" type="text/css" href="_resource/_web/css/common.css">
 <script src="_resource/js/vendor/jquery-1.9.1.min.js"></script>
 <script src="_resource/js/vendor/TweenMax.min.js"></script>

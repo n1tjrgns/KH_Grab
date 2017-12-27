@@ -10,6 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>GRAB</title>
+<link rel="shortcut icon" type="image/x-icon" href="_resource/_web/images/favicon.ico.png">
 <link rel="stylesheet" type="text/css"
 	href="_resource/_web/css/common.css">
 <link rel="stylesheet" type="text/css"

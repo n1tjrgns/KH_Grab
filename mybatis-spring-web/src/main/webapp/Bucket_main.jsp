@@ -88,13 +88,9 @@ isLogin = true;
     </div>
 </div>
 <div class="pop_bg"></div>
- 
- 
         <div class="dumpBannerBox"></div>
         <div id="facebook-banner" class="fixed-group">
-            <a href="https://www.lifeplus.co.kr/lifeplusxlcd/" class="banner-copy" target="_blank" onclick='eventTrack("", "clublibday_banner_head");'><!-- 20171109 -->
-                    
-            </a>
+       
             <a href="#" class="close-btn"><img src="_resource/images/common/banner-close-btn.png"></a>
         </div>
         <div id="header" class="fixed-group">
@@ -104,26 +100,17 @@ isLogin = true;
                     <div class="h-members-btns">
                     	<!-- 2017-03-13 -->
                         <div class="h-members-sns-btns">
-                            <a href="https://www.facebook.com/lifeplus.h/" class="fb" target="_blank" onclick='eventTrack("", "gnb_facebook");' >페이스북</a>
-                            <a href="https://www.instagram.com/lifeplus_h/" class="insta" target="_blank" onclick='eventTrack("", "gnb_instagram");'>인스타그램</a>
+                       
 							<a href="Main" class="lifeplus" target="_blank" onclick='eventTrack("", "gnb_lifeplus");'><img src="_resource/_web/images/favicon.ico.png" alt="Grab" /></a>
                         </div>
                         <!-- //2017-03-13 -->
-                       <div class="h-members-login-btns">
-                            
-                         <!--    <a href="javascript:login.showPop('pop_login');" class="login" onclick="eventTrack(&quot;&quot;, &quot;gnb_login&quot;);">로그인</a>
-                            <a href="/member/register.do" class="regist" onclick="eventTrack(&quot;&quot;, &quot;gnb_register&quot;);">회원가입</a>
- 							-->                            
+                       <div class="h-members-login-btns">                        
                             <a href="Logout" class="login">로그아웃</a>
-                            <a href="Main_info" class="regist">회원정보관리</a>
-                            
-                            
-                            
+                            <a href="Main_info" class="regist">회원정보관리</a>    
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="h-menu-box">
                 <a href="Bucket_main" class="h-logo">
                     <span>
@@ -131,23 +118,8 @@ isLogin = true;
                  
                     </span>
                 </a>
-              
          </div>
         </div>
-
-
-<script>
-function goMyBucket(){
-	
-	if(!isLogin){
-		login.showPop('pop_login',"","http://www.lifeplusbucket.com/ln/mypage/bucket.do");
-	}else{
-		location.href="/ln/mypage/bucket.do";
-	}
-}
-</script>
-
-
 
 <div id="h-empty-box"></div>
 <div id="md-discover">
