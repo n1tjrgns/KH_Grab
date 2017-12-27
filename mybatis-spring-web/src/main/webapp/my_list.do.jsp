@@ -112,7 +112,7 @@ function  completeBucket(bkName,mEmail,resCheck){
 					error : function( e ) {
 						
 						//alert("조회 오류\n"+JSON.stringify(e));
-						alert("완료되었습니다.(질문하기)");
+						alert("완료되었습니다.");
 						location.reload();
 					}
 				}
@@ -141,7 +141,7 @@ function  deleteRes(bkName,mEmail){
 					error : function( e ) {
 						
 						//alert("조회 오류\n"+JSON.stringify(e));
-						alert("완료되었습니다.(질문하기)");
+						alert("완료되었습니다.");
 						location.reload();
 					}
 				}

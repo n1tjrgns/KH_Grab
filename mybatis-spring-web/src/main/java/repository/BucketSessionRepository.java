@@ -35,6 +35,13 @@ public class BucketSessionRepository  extends AbstractRepository {
 			
 		}
 		
+		public List<Reservation_Bucketlist> selectReservList_Mmypage(Reservation reservation) {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".selectReservList_Mmypage";
+										
+			return sqlSession.selectList(statment,reservation);
+		}
+		
 		
 		public Integer InsertBucket(Bucketlist bl) {
 			System.out.println("selectBucketlist_one:"+bl.getBkName());
@@ -202,8 +209,10 @@ public class BucketSessionRepository  extends AbstractRepository {
 				}finally {
 					sqlSession.close();
 				}
-	
 		}
+
+	
+		
 		
 }
 		

@@ -41,6 +41,16 @@ public class BucketController {
 			return "list_container";
 		}
 		
+		@RequestMapping(value="/Bucket_main_mypage.do", method = RequestMethod.POST)
+		public String handleStep2_3(Model model, Reservation reservation2) {
+			List<Reservation_Bucketlist> reservation = bucketRepository.selectReservList_Mmypage(reservation2);
+			model.addAttribute("reservation",reservation);
+			System.out.println(reservation.size()+" 개 출력 완료");
+			
+			return "Main_myReser.do";//jsp 페이지임.
+		}
+		
+		
 		@RequestMapping(value="/discover/library_detail_popup.do", method = RequestMethod.POST)
 		public String handleStep3(Model model,Bucketlist bucketlist_take) {
 			if(bucketlist_take!=null) {

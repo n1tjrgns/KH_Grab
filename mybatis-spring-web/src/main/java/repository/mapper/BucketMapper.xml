@@ -84,6 +84,17 @@
 	   	WHERE bk_purpose=#{search}
 	</select>
 	
+	
+	
+	<select id="selectReservList_Mmypage" parameterType="Reservation"
+	resultMap="BaseResultMap3">
+	SELECT 
+   			*	
+	   		FROM Reservation  r, Bucket_request b
+	   	  	WHERE r.bk_name=b.bk_name AND r.m_email= #{mEmail} 
+	</select>
+	
+	
 	<select id="selectBucketOne" parameterType="Bucketlist" 
 	resultMap="BaseResultMap">
 	SELECT *
@@ -137,7 +148,7 @@
 
 	<delete id="delteReservList_mypage" parameterType="Reservation">
 	 DELETE FROM Reservation
-            WHERE m_email=#{mEmail} AND trim(bk_Name)=#{bkName}
+            WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
 	</delete>
 	
 	<insert id="InsertBucket_Review" parameterType="Bucket_Review" >
@@ -169,8 +180,8 @@
 	</select>
 	
 	<delete id="selectBucket_Review_mypage_delete" parameterType="Bucket_Review">
-	ON DELETE CASCADE FROM Bucket_Review 
-            WHERE m_email=#{mEmail} AND trim(bk_Name)=#{bkName}
+	DELETE FROM Bucket_Review 
+            WHERE m_email=#{mEmail} AND bk_Name=#{bkName}
 	</delete>
 	
 </mapper>

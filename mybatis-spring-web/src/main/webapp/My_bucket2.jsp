@@ -19,8 +19,6 @@
 <link href="_resource/css/mypage.css" rel="stylesheet" />
 <title>Lifeplus Bucket List : 나의 버킷 리스트</title><!-- 2017-03-29 -->
 
-
-
 <script>
     var resourcePath = "_resource";
     var webDomain = "http://www.lifeplusbucket.com";

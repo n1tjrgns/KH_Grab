@@ -54,7 +54,7 @@
             <li class="share-popup-img">
                 
                 <div class="share-popup-contents">
-                    <img src="_resource/images/discover/library/share-popup-sample.png"  id="SNS_SHARE_IMAGE"/>
+                    <img src="img/bg.jpg"  id="SNS_SHARE_IMAGE"/>
                     <div class="share-popup-dimmed"></div>
                     <div class="share-popup-contents-copy">
                         <p class="en" id="SNS_SHARE_CTGR">${bucket_Review.bkrvTitle}</p>
@@ -85,7 +85,7 @@
                     카카오스토리 공유
                 </a>
             </li>
-            <li class="share-popup-close"><a href="#" onclick="javascript:$('#share-popup').css('display','none');location.reload();" ><img src="_resource/images/discover/share-popup-close.png" /></a></li>
+            <li class="share-popup-close"><a href="#" onclick="javascript:$('#share-popup').css('display','none');top.document.location.reload();" ><img src="_resource/images/discover/share-popup-close.png" /></a></li>
         </ul>
     </div>
     </div>

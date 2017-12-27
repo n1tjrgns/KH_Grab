@@ -76,7 +76,7 @@
 
 <script>
 	function deleteRes(mEmail,bkName){
-		$.ajax( //내 리뷰 상세내역을 불러온다.
+		$.ajax( //리뷰를 삭제한다.
 				{	
 					url:"Bucket_main_review_mypage_delete",
 					dataType:"html",
@@ -106,7 +106,9 @@
 					data: {"mEmail" : mEmail,"bkName" : bkName},
 					success:function( data ) {	
 						$("#contents2").html(data);
-						$("#popups").css("display","block");		
+						$("#contents2").css("display","block");
+						$("#popups").css("display","block");
+						
 	 				},
 					error : function( e ) {
 						alert("리뷰 조회 오류\n"+e.error);

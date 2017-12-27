@@ -209,7 +209,7 @@ function review_list(){
 				type:"POST",
 				async:true,
 				success:function( data ) {
-					alert("리뷰 출력 완료:");
+					//alert("리뷰 출력 완료:");
 					$("#contents3").html(data);
 		           $self.listUpdateReset(prevListLen);
 				   $self.listUpdateReset(0); // 초기화 안하니 sessionstroage 후 하얗게 뜸
@@ -331,7 +331,7 @@ function review_list(){
     <div class="bucket-list-close-btn">
 	    <a href="#"><img src="_resource/images/discover/bucket-list-closebtn.png" alt="[X]" /></a></div>
 	    <div class="bucket-floating-menu">
-	    <a href="#" onclick='eventTrack("", "discover_btn_board");'><div class="over-mot"></div>
+	    <a href="#" onclick='calllist("member");'><div class="over-mot"></div>
 	    <img src="_resource/images/discover/floating-icon.png" alt="icon!" /></a></div>
 		</div>
 	</div>
@@ -351,88 +351,33 @@ function review_list(){
     </div>
 </div>
 
-<div id="popups" class="fixed-group">
+<div id="popmain" class="fixed-group">
 
-    <div id="person-bucket-popup" class="person-bucket-popup popup-group">
-        <div class="person-bucket-container">
-             
-        </div>
-    </div>
-    
-
-    
-    <div id="featured-gate-popup" class="featured-gate-popup popup-group">
-        <div class="gate-popup-box">
-            <div class="gate-bg"><img src="_resource/images/discover/featured/popup/img-bg.png" alt="" /></div>
-            <div class="gate-container">
-
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <div id="featured-detail-popup" class="featured-detail-popup popup-group">
-        <div class="f-detail-popup-box">
-            <div class="f-detail-bg"><img src="_resource/images/discover/featured/popup/img-bg.png" alt="" /></div>
-            <div class="f-detail-container">
-
-            </div>
-        </div>
-    </div>
-    
-
-    <div id="share-popup" class="share-popup popup-group">
-     	<input type="hidden" id="SNS_SHARE_KEY">
-     	<input type="hidden" id="SNS_SHARE_MEM_KEY" value="20171205B000010261">
-     	<input type="hidden" id="SAVE_SNS_SHARE_KEY">
-     	<input type="hidden" id="SAVE_SNS_SHARE_CTGR">
-     	<input type="hidden" id="SAVE_SNS_SHARE_TEXT">
-     	<input type="hidden" id="SAVE_SNS_SHARE_IMAGE">
-     	<!--  바로 여기 지금 이순간 -->
-        <ul class="share-popup-ul">
-            <li class="share-popup-title"><span>채 홍기</span> 님이<br> 작성한 리뷰 입니다.</li>
-            <li class="share-popup-info"><span>ㆍ</span> 아래 이미지가 GRAB에 공유됩니다.</li>
-            <li class="share-popup-img">
-                
-                <div class="share-popup-contents">
-                    <img src="_resource/images/discover/library/share-popup-sample.png"  id="SNS_SHARE_IMAGE"/>
-                    <div class="share-popup-dimmed"></div>
-                    <div class="share-popup-contents-copy">
-                        <p class="en" id="SNS_SHARE_CTGR">SPORTS</p>
-                        	<span  id="SNS_SHARE_TEXT">하와이에서 서핑 마스터하기</span>
-                    </div>
-                </div>
-            </li>
-            <li class="share-popup-btns">
-                <a href="#" class="share-fb">
-                    <div>
-                        <img src="_resource/images/discover/etc/fb-icon.png" />
-                        <img src="_resource/images/discover/etc/fb-icon_on.png" class="on" />
-                    </div>
-                    페이스북 공유
-                </a>
-                <a href="#" class="share-tw">
-                    <div>
-                        <img src="_resource/images/discover/etc/tw-icon.png" />
-                        <img src="_resource/images/discover/etc/tw-icon_on.png" class="on" />
-                    </div>
-                    트위터 공유
-                </a>
-                <a href="#" class="share-ks">
-                    <div>
-                        <img src="_resource/images/discover/etc/ks-icon.png" />
-                        <img src="_resource/images/discover/etc/ks-icon_on.png" class="on" />
-                    </div>
-                    카카오스토리 공유
-                </a>
-            </li>
-            <li class="share-popup-close"><a href="#"><img src="_resource/images/discover/share-popup-close.png" /></a></li>
-        </ul>
-    </div>
-  
-   
 </div>
+
+<script>
+function calllist(mEmail){
+	$.ajax( // 상세정보를 팝업시킨다.
+			{
+				url:"Bucket_main_mypage.do",
+				dataType:"html",
+				type:"POST",
+				async:true,
+				data:"mEmail="+ mEmail,
+				success:function( data ) {
+		            $(".lists-container").html(data);
+		            $self.listUpdateReset(prevListLen);
+					$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸
+                    $(".simple_loading").hide();
+ 				},
+				error : function( e ) {
+					//alert("조회 오류\n"+e.error);
+				}
+			}
+		);	 
+}
+
+</script>
 
 
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>
@@ -491,27 +436,7 @@ function eventAJAX(num){
 }
 </script>
 
-<script>
-	function transfer(mEmail,bkName){
-		$.ajax( //내 리뷰 상세내역을 불러온다.
-				{	
-					url:"Bucket_main_review_mypage_detail",
-					dataType:"html",
-					type:"POST",
-					async:true,
-					data: {"mEmail" : mEmail,"bkName" : bkName},
-					success:function( data ) {	
-						$("#contents2").html(data);
-						$("#popups").css("display","block");		
-	 				},
-					error : function( e ) {
-						alert("리뷰 조회 오류\n"+e.error);
-					}
-				}
-			);	
-		
-	}
-</script>
+
 <script>
 
 function popup_to_buc(buck_recode){
