@@ -196,7 +196,11 @@
 	<input type="hidden" name="m_post" value="<%=member.getmPost() %>" />
 	<input type="hidden" name="m_addr" value="<%=member.getmAddr() %>" />
 	<input type="hidden" name="m_addr_d" value="<%=member.getmAddr_d() %>" />
-	
+	<%
+		System.out.println(member.getmPost());
+		System.out.println(member.getmAddr());
+		System.out.println(member.getmAddr_d());
+	%>
 	
 	
 	<div class="pagenation">

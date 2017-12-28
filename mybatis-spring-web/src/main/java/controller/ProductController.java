@@ -17,15 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.util.FileCopyUtils;
 
 import model.BuyList;
 import model.BuyProduct;
+import model.JoinBuyListABuyProduct;
 import model.Member;
 import model.Payment;
 import model.Product;
 import repository.BuyListSessionRepository;
 import repository.BuyProductSessionRepository;
+import repository.JoinBuyListABuyProductRepository;
 import repository.PaymentSessionRepository;
 import repository.ProductSessionRepository;
 
@@ -44,7 +45,8 @@ public class ProductController {
 	@Autowired
 	BuyListSessionRepository buyListSessionRepository;
 	
-	
+	@Autowired
+	JoinBuyListABuyProductRepository joinBuyListABuyProductRepository;
 	//마이바티스와 DB 정보를 받아서  
 	//정보들
 	
@@ -82,6 +84,7 @@ public class ProductController {
 		model.addAttribute("buyType",buyType);
 		return "pay";
 	}
+	
 	@RequestMapping(value="/shop_payment2")
 	public String shopStep3_1(HttpServletRequest httpServletRequest, Model model) {
 		return "pay2";
@@ -154,7 +157,8 @@ public class ProductController {
 		HttpSession session = httpServletRequest.getSession(false);
 		int qty = 0;
 		String total_price = httpServletRequest.getParameter("p_totalprice"); //총 금액
-		String m_email = httpServletRequest.getParameter("member_email"); //회원이메일
+		Member member = (Member) session.getAttribute("loginInfo");
+		String m_email = member.getmEmail(); //회원이메일
 		String prodName = null;
 		//BuyNum 최대값 출력
 		int maxBuyNum = buyProductSessionRepository.selectMaxBuyNum().getBuyNum() + 1;
@@ -204,7 +208,10 @@ public class ProductController {
 		ArrayList<Product> list = null;
 		int qty = 0;
 		String total_price = httpServletRequest.getParameter("p_totalprice"); //총 금액
-		String m_email = httpServletRequest.getParameter("member_email"); //회원이메일
+		Member member = (Member) session.getAttribute("loginInfo");
+		
+		
+		String m_email = member.getmEmail(); //회원이메일
 		String prodName = null;
 		//BuyNum 최대값 출력
 		int maxBuyNum = buyProductSessionRepository.selectMaxBuyNum().getBuyNum() + 1;
@@ -293,7 +300,6 @@ public class ProductController {
 		System.out.println("file name:"+file.getName());
 		System.out.println("file path:"+file.getOriginalFilename());
 		String savedName = member.getmEmail()+"_"+product_name+"."+ext;
-		//String uploadPath = "C:\\Users\\user1\\git\\KH_Grab\\mybatis-spring-web\\src\\main\\webapp\\img\\product\\";
 		System.out.println("저장이름:"+savedName);
 		System.out.println("지금위치:"+uploadPath);
 		// 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
@@ -380,6 +386,18 @@ public class ProductController {
 		return "deleteProductResult";
 	}
 	
+	
+	@RequestMapping(value="/BoughtList")
+	public String shopStep12(HttpServletRequest httpServletRequest, Model model) {
+		HttpSession session = httpServletRequest.getSession(false);
+		Member member = (Member) session.getAttribute("loginInfo");
+
+		List<JoinBuyListABuyProduct> joinBuyListABuyProduct = joinBuyListABuyProductRepository.selectBuyProductListEmail(member.getmEmail());
+		
+		
+		model.addAttribute("joinBuyListABuyProduct", joinBuyListABuyProduct);
+		return "boughtList";
+	}
 	
 	
 }

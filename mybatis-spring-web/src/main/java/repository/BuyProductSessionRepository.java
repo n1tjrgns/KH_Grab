@@ -1,14 +1,12 @@
 package repository;
 
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import model.BuyProduct;
-import model.Comment;
 
 
 @Repository
@@ -38,5 +36,5 @@ public class BuyProductSessionRepository extends AbstractRepository {
 		}
 	}
 	
-
+	
 }
