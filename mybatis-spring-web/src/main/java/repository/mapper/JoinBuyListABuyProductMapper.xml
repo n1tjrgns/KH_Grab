@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="repository.mapper.JoinBuyListABuyProductMapper">
+	<cache />
+
+	<resultMap type="JoinBuyListABuyProduct" id="BaseResultMap">
+		<!-- id : primary, key 속성명, jdbcType : 데이터베이스 자료형 -->
+		<result column="buy_date" jdbcType="DATE" property="buyDate" />
+		<result column="prod_name" jdbcType="VARCHAR" property="prodName" />
+		<result column="b_quantity" jdbcType="VARCHAR" property="bQuantity" />
+		<result column="total_price" jdbcType="VARCHAR" property="totalPrice" />
+	</resultMap>
+	
+	
+	<select id="selectProductEmailByCondition" parameterType="JoinBuyListABuyProduct"
+		resultMap="BaseResultMap">
+		SELECT
+			buy_date, prod_name, b_quantity, total_price
+		FROM
+			buy_product, buy_list 
+		where
+			buy_product.buy_num = buy_list.buy_num and m_email = #{value}
+		ORDER BY buy_date DESC
+	</select>
+
+	
+</mapper>

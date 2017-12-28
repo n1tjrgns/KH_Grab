@@ -11,7 +11,6 @@ import model.Product;
 public class ProductSessionRepository extends AbstractRepository {
 
 	private final String nameSpace = "repository.mapper.ProductMapper";
-	private final String nameSpace2 = "repository.mapper.BuyProductMapper";
 
 	public List<Product> selectProductList() {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
@@ -24,6 +23,7 @@ public class ProductSessionRepository extends AbstractRepository {
 		String statment = nameSpace + ".selectProductByCondition";
 		return sqlSession.selectOne(statment, p_name);
 	}
+	
 	
 	public List<Product> selectCompanyProductList(String p_email) {
 		SqlSession sqlSession = this.getSqlSessionFactory().openSession();

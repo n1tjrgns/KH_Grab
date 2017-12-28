@@ -16,6 +16,10 @@
 		<result column="recei_addr" jdbcType="VARCHAR" property="receiAddr" />
 		<result column="m_email" jdbcType="VARCHAR" property="mEmail" />
 	</resultMap>
+	
+	
+	
+	
 
 	<select id="selectMaxBuyNumByCondition" parameterType="BuyProduct"
 		resultMap="BaseResultMap">
@@ -34,6 +38,5 @@
 		 (buy_num, buy_date, total_price, how_deliver, receiver, recei_addr, m_email)
 		VALUES (#{buyNum},#{buyDate},#{totalPrice},#{howDeliver},#{receiver},#{receiAddr},#{mEmail})
 	</insert>
-
 
 </mapper>

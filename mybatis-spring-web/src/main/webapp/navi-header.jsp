@@ -76,6 +76,7 @@
 					%>
 					<div class="sub_link mot3">
 						<a href="ShoppingBasket" onclick="" class="sub_a mot2">Shopping Basket</a>
+						<a href="BoughtList" onclick="" class="sub_a mot2">Bought List</a>
 					</div>
 						
 					<%}
