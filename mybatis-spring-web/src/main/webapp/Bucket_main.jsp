@@ -284,15 +284,11 @@ function review_list(){
 	<div id="list-container" class="use_gpu">
 				<ul class="lists-container">
         			<li>
-        			<a href="javascript:alert('알럿')"> <img
+        			<a href="javascript:alert('알럿');"> <img
 							src="_resource/images/discover/bucket-list-none-image.png"
 							alt="??!#!@#!@#!@#!@#" />
 					</a></li>
-					<li>
-					<a href="javascript:Popup.$keyValue='I0117';Popup.detailPopupShowHide(true);"><img
-							src="http://images.hwlife.hscdn.com//library/i0117_thumb.jpg"
-							alt="??!#!@#!@#!@#!@#"></a>
-					</li>
+				
 				 </ul>
 				</div>
 
@@ -320,7 +316,7 @@ function review_list(){
     <div class="bucket-list-close-btn">
 	    <a href="#"><img src="_resource/images/discover/bucket-list-closebtn.png" alt="[X]" /></a></div>
 	    <div class="bucket-floating-menu">
-	    <a href="#" onclick='calllist("member");'><div class="over-mot"></div>
+	    <a href="#" onclick='calllist("<%=member.getmEmail()%>");'><div class="over-mot"></div>
 	    <img src="_resource/images/discover/floating-icon.png" alt="icon!" /></a></div>
 		</div>
 	</div>
