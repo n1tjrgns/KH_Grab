@@ -182,6 +182,7 @@
 		String arr[] = member.getmTel().split("-");
 		ProductSessionRepository psr = new ProductSessionRepository();
 		Product product = (Product)request.getAttribute("product");
+		String pic = product.getProdPic().substring(product.getProdPic().length()-3, product.getProdPic().length()); 
 		ArrayList<Product> list = null;
 		int totalPrice = 0;
 	%>
@@ -247,7 +248,7 @@
 					<tr>
 						<td class="td_product">
 							<div class="connect_img">
-								<img src="./img/property_1.jpg" />
+								<img src=".\\img\\product\\<%=product.getcEmail()%>_<%=product.getProdName()%>.<%=pic%>" />
 							</div>
 							<div class="article_info connect_info">
 								<div class="box_product">
