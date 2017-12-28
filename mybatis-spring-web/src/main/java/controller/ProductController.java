@@ -300,7 +300,6 @@ public class ProductController {
 		System.out.println("file name:"+file.getName());
 		System.out.println("file path:"+file.getOriginalFilename());
 		String savedName = member.getmEmail()+"_"+product_name+"."+ext;
-		//String uploadPath = "C:\\Users\\user1\\git\\KH_Grab\\mybatis-spring-web\\src\\main\\webapp\\img\\product\\";
 		System.out.println("저장이름:"+savedName);
 		System.out.println("지금위치:"+uploadPath);
 		// 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사

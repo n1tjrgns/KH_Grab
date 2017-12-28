@@ -52,6 +52,7 @@
 		ArrayList<Product> list = null;
 		int totalPrice=0;
 		list = (ArrayList)session.getAttribute("productList");
+		
 	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->
@@ -116,11 +117,12 @@
 					<%
 						for(int i=0; i<list.size();i++){
 						totalPrice += list.get(i).getProdPrice();
+						String pic = list.get(i).getProdPic().substring(list.get(i).getProdPic().length()-3, list.get(i).getProdPic().length());
 					%>
 					<tr>
 						<td class="td_product">
 							<div class="connect_img">
-								<img src="./img/property_1.jpg" />
+								<img src="./img/product/<%=list.get(i).getcEmail()%>_<%=list.get(i).getProdName()%>.<%=pic%>" />
 							</div>
 							<div class="article_info connect_info">
 								<div class="box_product">

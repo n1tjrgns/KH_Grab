@@ -12,19 +12,21 @@
 		<result column="prod_name" jdbcType="VARCHAR" property="prodName" />
 		<result column="b_quantity" jdbcType="VARCHAR" property="bQuantity" />
 		<result column="total_price" jdbcType="VARCHAR" property="totalPrice" />
+		<result column="prod_pic" jdbcType="VARCHAR" property="prodPic" />
+		<result column="c_email" jdbcType="VARCHAR" property="cEmail" />
+		
 	</resultMap>
 	
 	
 	<select id="selectProductEmailByCondition" parameterType="JoinBuyListABuyProduct"
 		resultMap="BaseResultMap">
 		SELECT
-			buy_date, prod_name, b_quantity, total_price
+			bp.buy_date, bl.prod_name, bl.b_quantity, bp.total_price, pd.prod_pic, pd.C_EMAIL
 		FROM
-			buy_product, buy_list 
+			buy_product bp, buy_list bl,  product pd
 		where
-			buy_product.buy_num = buy_list.buy_num and m_email = #{value}
+			bp.buy_num = bl.buy_num and bl.PROD_NAME = pd.PROD_NAME and bp.m_email = #{value}
 		ORDER BY buy_date DESC
 	</select>
 
-	
 </mapper>

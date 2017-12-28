@@ -88,11 +88,7 @@ function confirm(){
 		 
 		System.out.println("product.getProdPic()"+product.getProdPic());
 		String arr[] = member.getmTel().split("-");
-		String pic = product.getProdPic();
-		System.out.println("pic:"+pic);
-		int idx = pic.indexOf("."); 
-		String form = pic.substring(idx+1);
-		System.out.println("확장자:"+form);
+		String pic = product.getProdPic().substring(product.getProdPic().length()-3, product.getProdPic().length()); 
 	%>
 	<!-- 컨텐츠 영역 -->
 	<!--page nation -->
@@ -173,7 +169,7 @@ function confirm(){
 					<ul class="box_receiver_info">
 						<li class="cell_discount_tit">사진</li>
 						<li class="cell_discount_detail box_memo">
-  							<img id="blah" src="./img/product/<%=product.getcEmail()%>_<%=product.getProdName()%>.<%=form%>" alt="your image" width="300px"/>
+  							<img id="blah" src="./img/product/<%=product.getcEmail()%>_<%=product.getProdName()%>.<%=pic%>" alt="your image" width="300px"/>
 						</li>
 					</ul>
 					<!--물품 정보-->

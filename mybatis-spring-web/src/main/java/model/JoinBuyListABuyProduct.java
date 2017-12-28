@@ -9,6 +9,12 @@ public class JoinBuyListABuyProduct {
 	private String prodName;
 	private int bQuantity;
 	private String totalPrice;
+	private String prodPic;
+	private String cEmail;
+
+
+
+
 	private List<JoinBuyListABuyProduct> JoinBuyListABuyProducts;
 	
 	public List<JoinBuyListABuyProduct> getJoinBuyListABuyProducts() {
@@ -19,11 +25,13 @@ public class JoinBuyListABuyProduct {
 		JoinBuyListABuyProducts = joinBuyListABuyProducts;
 	}
 
-	public JoinBuyListABuyProduct(Date buyDate, String prodName, int bQuantity, String totalPrice) {
+	public JoinBuyListABuyProduct(Date buyDate, String prodName, int bQuantity, String totalPrice, String prodPic, String cEmail) {
 		this.buyDate = buyDate;
 		this.prodName = prodName;
 		this.bQuantity = bQuantity;
 		this.totalPrice = totalPrice;
+		this.prodPic = prodPic;
+		this.cEmail = cEmail;
 	}
 
 	public JoinBuyListABuyProduct() {
@@ -61,5 +69,20 @@ public class JoinBuyListABuyProduct {
 	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	public String getProdPic() {
+		return prodPic;
+	}
 
+	public void setProdPic(String prodPic) {
+		this.prodPic = prodPic;
+	}
+
+	public String getcEmail() {
+		return cEmail;
+	}
+
+	public void setcEmail(String cEmail) {
+		this.cEmail = cEmail;
+	}
 }

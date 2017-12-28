@@ -102,11 +102,12 @@
 						for(int i=0; i<joinBuyListABuyProduct.size();i++){
 							Date from = joinBuyListABuyProduct.get(i).getBuyDate();
 							SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");
+							String pic = joinBuyListABuyProduct.get(i).getProdPic().substring(joinBuyListABuyProduct.get(i).getProdPic().length()-3, joinBuyListABuyProduct.get(i).getProdPic().length()); 
 					%>
 					<tr>
 						<td class="td_product" width="30%">
 							<div class="connect_img">
-								<img src="./img/property_1.jpg" />
+								<img src=".\\img\\product\\<%=joinBuyListABuyProduct.get(i).getcEmail()%>_<%=joinBuyListABuyProduct.get(i).getProdName()%>.<%=pic%>" />
 							</div>
 							<div class="article_info connect_info">
 								<div class="box_product">
@@ -115,17 +116,13 @@
 								</div>
 							</div></td>
 						<td width="50%"><strong><%=joinBuyListABuyProduct.get(i).getProdName()%></strong></td>
-						
 						<td class="price" width="10%"><strong><%=joinBuyListABuyProduct.get(i).getbQuantity()%>개</strong></td>
 						<td rowspan="1" width="10%"><strong><%=joinBuyListABuyProduct.get(i).getTotalPrice()%> 원</strong>
 					</tr>
 					<%} %>
 					</form>
 				</tbody>
-					
-						
 			</table>
-
 			</div>
 			<%} %>
 		</div>

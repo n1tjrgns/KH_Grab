@@ -47,9 +47,7 @@
 	<%
 		System.out.println("p_name(web) : " + request.getParameter("p_name"));
 		Product product = (Product)request.getAttribute("product");
-		System.out.println("이름:" + product.getProdName());
-		System.out.println("가격:" + product.getProdPrice());
-		System.out.println("재고:" + product.getProdStock());
+		String pic = product.getProdPic().substring(product.getProdPic().length()-3, product.getProdPic().length()); 
 	%>
 	<jsp:include page="navi-header.jsp"></jsp:include>
 	<div>
@@ -68,7 +66,7 @@
 			<table style="width: 80%;">
 				<tr>
 					<td style="width: 40%;"><img class="imgsize"
-						src='<%=product.getProdPic() %>' /></td>
+						src=".\\img\\product\\<%=product.getcEmail()%>_<%=product.getProdName()%>.<%=pic%>" /></td>
 					<td style="width: 40%;">
 						<!-- Datos del vendedor y titulo del producto -->
 						<h2><%=product.getProdName()%></h2>

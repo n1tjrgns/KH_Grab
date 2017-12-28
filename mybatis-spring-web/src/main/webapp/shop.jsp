@@ -29,11 +29,10 @@
 		System.out.println("List num : "+ products.size());
 		String src = request.getSession().getServletContext().getRealPath("/");
 		
-		String pic[][] = new String[products.size()][2];
+		String pic= null;
 		for(int i=0; i<products.size();i++){
-			int idx = products.get(i).getProdPic().indexOf("."); 
-			pic[i][1] = products.get(i).getProdPic().substring(idx+1);
-			System.out.println(products.get(i).getcEmail()+"_"+products.get(i).getProdName()+"."+pic[i][1]);
+			pic = products.get(i).getProdPic().substring(products.get(i).getProdPic().length()-3, products.get(i).getProdPic().length()); 
+			System.out.println(products.get(i).getcEmail()+"_"+products.get(i).getProdName()+"."+pic);
 		}
 	%>
 <!-- 	<section class="search">
@@ -77,11 +76,11 @@
 				<input type="hidden" name="p_name" value=''>
 			<%
 				for(int i=0; i<products.size();i++){
-					System.out.println("img src=img/product/"+products.get(i).getcEmail()+"_"+products.get(i).getProdName()+"."+pic[i][1]);
+					System.out.println("img src=img/product/"+products.get(i).getcEmail()+"_"+products.get(i).getProdName()+"."+pic);
 			%>
 				<li>
 					<a href="#" onclick="document.getElementById('contentForm').p_name.value='<%= products.get(i).getProdName()%>';contentForm.submit();">
-						<img src="img\\product\\<%=products.get(i).getcEmail()%>_<%=products.get(i).getProdName()%>.<%=pic[i][1]%>" alt="" title="" class="property_img"/>
+						<img src=".\\img\\product\\<%=products.get(i).getcEmail()%>_<%=products.get(i).getProdName()%>.<%=pic%>" alt="" title="" class="property_img"/>
 					<!--<span class="price">$2500</span> -->
 					<div class="property_details">
 						<h1>
