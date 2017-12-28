@@ -162,11 +162,17 @@ public class ProductController {
       String m_email = member.getmEmail(); //회원이메일
       String prodName = null;
       //BuyNum 최대값 출력
-      int maxBuyNum = buyProductSessionRepository.selectMaxBuyNum().getBuyNum() + 1;
+      int maxBuyNum = 0;
+
+      maxBuyNum = buyProductSessionRepository.selectMaxBuyNum().getBuyNum() + 1;
+
       System.out.println("maxBuyNum:"+maxBuyNum);
 
       //PayNum 최대값 출력
-      int maxPayNum = paymentSessionRepository.selectMaxPayNum().getBuyNum() + 1;
+      int maxPayNum = 0;
+
+      maxPayNum = paymentSessionRepository.selectMaxPayNum().getBuyNum() + 1;
+
       System.out.println("maxPayNum:"+maxPayNum);
       
       String howPay = httpServletRequest.getParameter("kyejae"); //결제방법
@@ -197,10 +203,7 @@ public class ProductController {
       System.out.println("listResult:"+listResult);
       model.addAttribute("result", listResult);
       
-      Product product = productSessionRepository.selectProduct(prodName);
-      product.setProdStock(product.getProdStock() - qty);
-      int result = productSessionRepository.updateProduct(product);
-      
+     
       session.removeAttribute("productList");
       
       return "payComplete";
@@ -255,10 +258,7 @@ public class ProductController {
          listResult +=temp;
          model.addAttribute("result", listResult);
          
-         Product product = productSessionRepository.selectProduct(prodName);
-         product.setProdStock(product.getProdStock() - qty);
-         int result = productSessionRepository.updateProduct(product);
-      }
+       }
       
       session.removeAttribute("productList");
 

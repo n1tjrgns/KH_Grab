@@ -49,6 +49,8 @@
 		</where>
 	</select>
 	
+	
+	
 	<insert id="insertProductByCondition" parameterType="Product">
 		INSERT INTO
 			product(prod_name, prod_category, prod_stock, prod_content,	prod_price, prod_pic, c_email)
