@@ -172,6 +172,13 @@ public class CommentController {
 		return "CS_write_a";
 	}
 	
+	@RequestMapping(value="CS_add", method = RequestMethod.POST)
+	public String csInsert1(CustomService customservice, Model model) {
+		
+		
+		return "redirect:CS_write.jsp";
+	}
+	
 	@RequestMapping(value="CS_delete", method = RequestMethod.POST)
 	public String csDelete(CustomService customservice, Model model) {
 		System.out.println("customservice.getCsSort()"+customservice.getCsSort());

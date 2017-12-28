@@ -119,6 +119,20 @@
 					</ul>
 				</div>
 			</form>
+			
+			<form name="frm" method="post" action="CS_add">
+			<% if(member != null){
+								String ad = member.getmAuthority(); 
+							
+								if(ad.equals("admin")){%>
+								
+								<input type="submit" value="[추가]">
+									
+									
+								<%}else{
+							}
+							}%>
+			</form>
 		</div>
 
 		 <div class="noti_text_container">
@@ -142,16 +156,15 @@
 								<input name="csNum" type="hidden" value="${cslist.csNum}">
 								<li class="no2"><a href="#"><span class="num "><em>${status.index+1}</em></span>
 										<span class="title">　　　　　　　${cslist.csTitle}</span> <span
-										class="date">${cslist.csDate}</span></a>
-							
+										class="date">${cslist.csDate}</span></a>							
 									<div class="content">${cslist.csContent}</div>
-								
-							 
+
 							<% if(member != null){
 								String ad = member.getmAuthority(); 
 							
 								if(ad.equals("admin")){%>
 									<input type="submit" value="[삭제]"></li>
+									
 								<%}else{
 							}
 							}%>
@@ -162,6 +175,19 @@
 				</div>
 			</form>
 			
+			<form name="frm" method="post" action="CS_add">
+			<% if(member != null){
+								String ad = member.getmAuthority(); 
+							
+								if(ad.equals("admin")){%>
+								
+								<input type="submit" value="[추가]">
+									
+									
+								<%}else{
+							}
+							}%>
+			</form>
 		</div>
       
 		<div class=mail_text_container>
