@@ -158,6 +158,7 @@ public class ProductController {
 		int qty = 0;
 		String total_price = httpServletRequest.getParameter("p_totalprice"); //총 금액
 		Member member = (Member) session.getAttribute("loginInfo");
+		
 		String m_email = member.getmEmail(); //회원이메일
 		String prodName = null;
 		//BuyNum 최대값 출력
@@ -195,7 +196,11 @@ public class ProductController {
 		listResult = temp;
 		System.out.println("listResult:"+listResult);
 		model.addAttribute("result", listResult);
-			
+		
+		Product product = productSessionRepository.selectProduct(prodName);
+		product.setProdStock(product.getProdStock() - qty);
+		int result = productSessionRepository.updateProduct(product);
+		
 		session.removeAttribute("productList");
 		
 		return "payComplete";
@@ -249,7 +254,12 @@ public class ProductController {
 			int temp = buyListSessionRepository.insertBuyList(buyList);
 			listResult +=temp;
 			model.addAttribute("result", listResult);
+			
+			Product product = productSessionRepository.selectProduct(prodName);
+			product.setProdStock(product.getProdStock() - qty);
+			int result = productSessionRepository.updateProduct(product);
 		}
+		
 		session.removeAttribute("productList");
 
 		return "payComplete";
