@@ -32,7 +32,7 @@
                         <ul>                  
                             <li class="desc" >
 								<a href="#" >
-									<img src="${bucket_Review.bkrvPhoto}" alt="사진없음"  style="opacity: 1;background-color:#ddf;">
+									<img src="${bucket_Review.bkrvPhoto}" alt="사진없음"  style="width:274px;height:274px; opacity: 1;background-color:#93daff;">
 									<p class="en travel">${bucket_Review.bkName}</p>
 									<span>${bucket_Review.bkrvTitle}</span>
 									<br/><span>평점 : ${bucket_Review.bkrvScore}</span>
@@ -40,7 +40,7 @@
 									 <p class="en travel">작성일  : ${bucket_Review.bkrvDate}</p>
 								</a>
 								<div class="btn_ico"> 
-								 <a href="javascript:Popup.sharePopupShowHide(true);" onclick="transfer('${bucket_Review.mEmail}','${bucket_Review.bkName}');" class="btn_share mot2">리뷰 상세 보기
+								 <a href="javascript:Popup.sharePopupShowHide(true);" onclick="transfer('${bucket_Review.mEmail}','${bucket_Review.bkName}');" class="btn_share mot2"><h3>[리뷰 상세 보기]</h3>
 								 </a><br/>
 								<br/>                               	
                                

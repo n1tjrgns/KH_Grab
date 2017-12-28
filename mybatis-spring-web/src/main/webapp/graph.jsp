@@ -4,7 +4,7 @@
 	import="javax.servlet.http.HttpServletRequest,
 	javax.servlet.http.HttpSession,
 	java.text.SimpleDateFormat"%>
-<%@ page import="model.*"%>
+<%@ page import="model.*,java.util.Random"%>
 <%@ page import="java.util.List,
 				 java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -270,10 +270,10 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "segments": [
    <% for(int i=0;i<linkdata.size();i++){
     	if(linkdata.get(i).getSnsSort().equals("KAKAO")){
-    		%>
+    		Random r = new Random(); Integer Rday=r.nextInt(365)+1;%>
     	{
-        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
+            "start": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 ))%>",
+            "end":   "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 )+ (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#b9783f",
         "task": "KAKAO 게시글" 
     	},	
@@ -285,10 +285,10 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "segments": [
    <% for(int i=0;i<linkdata.size();i++){
     	if(linkdata.get(i).getSnsSort().equals("INSTAGRAM")){
-    		%>
+    		Random r = new Random(); Integer Rday=r.nextInt(365)+1;	%>
     	{
-        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
+            "start": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 ))%>",
+            "end":   "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 )+ (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#cd82ad",
         "task": "INSTA 게시글" 
     	},	
@@ -301,10 +301,10 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "segments": [
    <% for(int i=0;i<linkdata.size();i++){
     	if(linkdata.get(i).getSnsSort().equals("FACEBOOK")){
-    		%>
+    		Random r = new Random(); Integer Rday=r.nextInt(365)+1;%>
     	{
-        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
+            "start": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 ))%>",
+            "end":   "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 )+ (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#2f4074",
         "task": "FACEBOOK 게시글" 
     	},	
@@ -317,10 +317,10 @@ var chart = AmCharts.makeChart( "chartdiv", {
     "segments": [
    <% for(int i=0;i<linkdata.size();i++){
     	if(linkdata.get(i).getSnsSort().equals("NAVER")){
-    		%>
+    		Random r = new Random(); Integer Rday=r.nextInt(365)+1;%>
     	{
-        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate())%>",
-        "end": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() + (long) ( 1000 * 60 * 60 * 24 ))%>",
+        "start": "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 ))%>",
+        "end":   "<%=sdf.format(linkdata.get(i).getBkrvDate().getTime() - (long) ( Rday*1000 * 60 * 60 * 24 )+ (long) ( 1000 * 60 * 60 * 24 ))%>",
         "color": "#448e4d",
         "task": "NAVER 게시글" 
     	},	

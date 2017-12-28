@@ -102,6 +102,17 @@
 	   	
 	</select>
 	
+	<select id="takeLinkDataNum" parameterType="Bucket_Review" 
+	resultType="integer">
+	SELECT BKRV_NUM
+	   	FROM bucket_review
+	   	WHERE bk_name= #{bkName} AND C_EMAIL= #{cEmail} AND m_EMAIL= #{mEmail} AND TO_CHAR(BKRV_CONTENT)=#{bkrvContent} 	
+	</select>
+	
+	<insert id="InsertLinkData" parameterType="Bucket_Review" >
+		INSERT INTO Link_data
+	   	VALUES(LD_SEQ.NEXTVAL,#{bkrvNum},'GRAB','http://localhost:8088/mybatis-spring-web/Bucket_mypage_wish')
+	</insert>
 	
 	<insert id="InsertBucket" parameterType="Bucketlist" >
 		INSERT INTO bucket_request

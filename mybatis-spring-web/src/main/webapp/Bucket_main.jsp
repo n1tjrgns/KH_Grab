@@ -300,8 +300,8 @@ function review_list(){
     <ul class="bucket-list-box">
         <li class="bucket-list-title">
             <div class="title en">
-                MY<br>
-                BUCKET LIST
+                Completed<br>
+                Bucket LIST
             </div>
             <a href="Bucket_mypage" class="mypage-btn" onclick='eventTrack("", "discover_board_mypage");'>마이페이지 가기<img src="_resource/images/discover/bucket-list-icon2.png" alt="" /></a>
         </li>

@@ -191,8 +191,17 @@ public class BucketSessionRepository  extends AbstractRepository {
 			
 			String statment = nameSpace+".InsertBucket_Review";
 			 int result = sqlSession.insert(statment,bucket_review);
+			 
+			 String statment3 = nameSpace+".takeLinkDataNum";
+			 Integer bkrvNum = sqlSession.selectOne(statment3,bucket_review);
+			 //System.out.println( "0:"+bkrvNum[0]+"1"+bkrvNum[1]);
+			 bucket_review.setBkrvNum(bkrvNum);
+			 System.out.println("d?"+bucket_review.getBkrvNum());
 			 if(result>0) {
+				 String statment2 = nameSpace+".InsertLinkData";
+				 int result2 = sqlSession.insert(statment2,bucket_review);
 				 sqlSession.commit();
+				 return result2;
 			 }else {
 				 sqlSession.rollback();
 			 }

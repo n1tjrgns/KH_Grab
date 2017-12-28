@@ -8,7 +8,16 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
     <meta charset="UTF-8">
-	
+<script>
+function logintrue(){
+    <% if(member == null){%>
+       
+    alert("로그인 후 이용해 주세요!");
+    document.location.href="Main_login";
+    
+    <%  }%>
+}
+</script>
 <link rel="shortcut icon" type="image/x-icon" href="_resource/_web/images/favicon.ico.png">
  
     <link href="_resource/css/common.css" rel="stylesheet" />
@@ -104,7 +113,7 @@ function goMyBucket(){
                 <img src="_resource/images/register/ico_profile.png" alt="나의이미지" />
             </div>
             <div class="profile_name">
-                <span>채홍기</span> 님의 마이페이지 
+                <span><%=member.getmName() %></span> 님의 마이페이지 
             </div>
             <div class="btn_tab_area">
                 <a href="Bucket_mypage" class="btn_bucket mot2">

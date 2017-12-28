@@ -93,7 +93,7 @@ function goMyBucket(){
                 <img src="_resource/images/register/ico_profile.png" alt="나의이미지" />
             </div>
             <div class="profile_name">
-                <span>채홍기</span> 님의 마이페이지 
+                <span><%=member.getmName() %></span> 님의 마이페이지 
                 
             </div>
             <div class="btn_tab_area">
@@ -348,7 +348,7 @@ function regisList2(mEmail,NY){
      	<input type="hidden" id="SAVE_SNS_SHARE_IMAGE">
      	
         <ul class="share-popup-ul">
-            <li class="share-popup-title"><span>채홍기</span> 님의<br> 버킷리스트 리뷰를 작성해보세요!</li>
+            <li class="share-popup-title"><span><%=member.getmName() %></span> 님의<br> 버킷리스트 리뷰를 작성해보세요!</li>
             <li class="share-popup-info"><span>ㆍ</span> 아래 내역은 공개시 리뷰로 등록됩니다.</li>
             <li class="share-popup-img">
                 
@@ -361,6 +361,7 @@ function regisList2(mEmail,NY){
                        <input type="hidden" name="cEmail" id="cEmail" value="">
                        <input type="hidden" name="mEmail" id="mEmail" value="member">
                        <input type="hidden" name="bkName" id="bkName" value="">
+                       <input type="hidden" name="bkrvNum" id="bkrvNum" value="">
                        	제목 : <input name ="bkrvTitle" type="text" size="50"/> <br/>
                  		<span  id="SNS_SHARE_TEXT">	내용 : <textarea cols="55" rows="15" name="bkrvContent"> </textarea> <br/></span>
                       <p>평점 : 
