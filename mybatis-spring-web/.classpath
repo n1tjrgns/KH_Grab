@@ -33,5 +33,6 @@
 	<classpathentry kind="lib" path="C:/Java/mybatis-3.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/Java/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="C:/Java/smtp.jar"/>
+	<classpathentry kind="lib" path="C:/Java/javax.mail-api-1.5.6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
