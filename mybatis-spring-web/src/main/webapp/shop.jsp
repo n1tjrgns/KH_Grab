@@ -92,7 +92,7 @@
                </a>
             </li>
          <%} %> 
-         </form>
+         </form> 
          <%
             ArrayList<Product> list = (ArrayList)session.getAttribute("productList");
             if(list == null){
