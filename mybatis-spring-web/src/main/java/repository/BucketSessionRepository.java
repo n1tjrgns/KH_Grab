@@ -224,9 +224,16 @@ public class BucketSessionRepository  extends AbstractRepository {
 		public List<Bucket_Review> selectBucket_Review_mypage(Bucket_Review bucket_Review) {
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			String statment = nameSpace+".Bucket_main_review_mypage";
-										
 			return sqlSession.selectList(statment,bucket_Review);
 		}
+		
+		
+		public List<Bucket_Review> Bucket_main_review_compage(Bucket_Review bucket_Review) {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".Bucket_main_review_compage";
+			return sqlSession.selectList(statment,bucket_Review);
+		}
+		
 		
 		public List<Bucket_Review> selectBucket_Review_mypage_detail(Bucket_Review bucket_Review) {
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
@@ -250,6 +257,14 @@ public class BucketSessionRepository  extends AbstractRepository {
 					sqlSession.close();
 				}
 		}
+		
+		public List<Reservation_Bucketlist> Bucket_regerst(Bucket_Review bucket_Review) {
+			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			String statment = nameSpace+".Bucket_regerst";
+										
+			return sqlSession.selectList(statment,bucket_Review);
+		}
+		
 		
 		public Integer Bucket_reviewCheck_update(Bucket_Review bucket_Review) {
 			Integer YN=0;

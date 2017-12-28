@@ -145,7 +145,8 @@ function goMyBucket(){
 
 
 <script>
-
+var mEmail="<%=member.getmEmail()%>";
+<% if(member.getmAuthority().equals("member")){%>
 function regisList(mEmail){
 
 	$.ajax( //전체 리스트를 불러온다.
@@ -170,10 +171,38 @@ function regisList(mEmail){
 			}
 		);	      
 } 
-var mEmail="<%=member.getmEmail()%>";
-var mAuth="<%=member.getmAuthority()%>";
  window.onload= function() { regisList(mEmail);
  setBtns();};
+ <% }else{%>
+ 
+ function regisList(mEmail){
+
+		$.ajax( //등록자의 예약목록을 불러다.
+				{
+					url:"Bucket_regerst.do",
+					dataType:"html",
+					type:"POST",
+					async:true,
+					data:"mEmail="+ mEmail,
+					success:function( data ) {
+						//alert("성공\n");
+						$(".list_none").css("display","none");
+						$(".list_box_ul").css("display","block");
+			            $(".list_box_ul").html(data);
+			     
+			            $self.listUpdateReset(prevListLen);
+						$self.listUpdateReset(0);	 // 초기화 안하니 sessionstroage 후 하얗게 뜸   
+	 				},
+					error : function( e ) {
+						alert("조회 오류\n"+e.error);
+					}
+				}
+			);	      
+	} 
+ window.onload= function() { regisList(mEmail);
+ setBtns();};
+ <% }%>
+ 
 </script>
 <script>
 

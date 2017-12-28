@@ -159,7 +159,7 @@ function goMyBucket(){
  
  
 <script>
-function my_review_list(mEmail){
+function my_review_list(mEmail,AT){
 	//alert(category);
 	$.ajax( //내 리뷰를 불러온다.
 			{	
@@ -167,7 +167,7 @@ function my_review_list(mEmail){
 				dataType:"html",
 				type:"POST",
 				async:true,
-				data: "mEmail="+mEmail,
+				data: {"mEmail":mEmail,"cEmail":AT},
 				success:function( data ) {
 					//alert("리뷰 출력 완료:");
 					$(".list_box_ul").html(data);
@@ -182,7 +182,8 @@ function my_review_list(mEmail){
 		);	      
 }
 
-window.onload= function() { my_review_list("<%=member.getmEmail()%>");}
+window.onload= function() { my_review_list("<%=member.getmEmail()%>","<%=member.getmAuthority()%>");
+}
 </script>
  
 <script src="_resource/js/vendor/jquery-1.11.3.min.js"></script>

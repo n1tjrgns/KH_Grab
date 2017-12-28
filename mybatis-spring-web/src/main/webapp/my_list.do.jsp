@@ -4,6 +4,10 @@
     <%@page import="model.*,org.springframework.context.*" %>
     <%@page import="org.springframework.context.support.*" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+    <%@ page import="model.Member" %>
+        
+<% Member member = (Member) session.getAttribute("loginInfo"); 
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,6 +32,8 @@
                             <div class="list_date en">${reservation.regDate }</div>
                             <div class="title"> ${reservation.bkName }</div>
 							<div class="mouse_lock" style="display: none;"></div>
+                           
+                           <% if(member.getmAuthority().equals("member")){ %>
                            <c:if test="${reservation.resCheck=='N'}">
                             <a href="javascript:completeBucket('${reservation.bkName }','${reservation.mEmail }','${reservation.cEmail }','Y');"  class="btn_complete  mot2">완료하기</a>
                             </c:if>
@@ -39,6 +45,7 @@
                  	      <c:if test="${reservation.resCheck=='Y'}">리뷰쓰기 <a href="javascript:Popup.sharePopupShowHide(true);" onclick="transfer('${reservation.bkName}','${reservation.cEmail}');" class="btn_share mot2"></a></c:if>
                                삭제하기 <a href="javascript:deleteRes('${reservation.mEmail}','${reservation.bkName}');"  class="btn_delete mot2"></a>
                             </div>
+                            <%} %>
                             </form>
                         </div>
                     </div>
@@ -64,7 +71,7 @@ function showPopup_Personlist(bkName){
 				data:{"bkName" : bkName, "mEmail" : mEmail,"pagenum":pagenum
 					},
 				success:function( data ) {
-			       alert("리스트 불러오기성공");
+			       //alert("리스트 불러오기성공");
 			       $(".detail-popup").css("display","none");
 			       $(".detail-popup").css("display","block");
 			       $(".real").html(data);

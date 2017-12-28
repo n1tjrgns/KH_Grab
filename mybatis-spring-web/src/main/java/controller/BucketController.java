@@ -117,6 +117,13 @@ public class BucketController {
 			return "my_list.do";//jsp 페이지임.
 		}
 		
+		@RequestMapping(value="/Bucket_regerst.do", method = RequestMethod.POST)
+		public String handleStep10_6(Model model,Bucket_Review bucket_Review2) {
+			List<Reservation_Bucketlist> reservation=bucketRepository.Bucket_regerst(bucket_Review2);
+			model.addAttribute("reservation",reservation);
+			return "my_list.do";
+		}
+		
 		@RequestMapping(value="/ln/member/completeBucket.do", method = RequestMethod.GET)
 		public String handleStep7_2(Model model, Reservation reservation) {
 			System.out.println(reservation.getBkName()+"개 변경완료");
@@ -175,7 +182,13 @@ public class BucketController {
 		
 		@RequestMapping(value="/Bucket_main_review_mypage", method = RequestMethod.POST)
 		public String handleStep10_2(Model model,Bucket_Review bucket_Review2) {
-			List<Bucket_Review> bucket_Review=bucketRepository.selectBucket_Review_mypage(bucket_Review2);
+			List<Bucket_Review> bucket_Review=null;
+			if(bucket_Review2.getcEmail().equals("member")){
+				bucket_Review=bucketRepository.selectBucket_Review_mypage(bucket_Review2);
+			}else {
+				bucket_Review=bucketRepository.Bucket_main_review_compage(bucket_Review2);
+			}
+		
 			System.out.println("Bucket_main_review:"+bucket_Review.size());
 			
 			for(int i=0; i<bucket_Review.size();i++) {
@@ -228,6 +241,8 @@ public class BucketController {
 			}
 			model.addAttribute("result",YN);
 			return "UpdateResult";
-		}	
-			
+		}
+		
+		
+		
 }

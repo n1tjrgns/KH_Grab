@@ -102,6 +102,16 @@
 	   	
 	</select>
 	
+	<select id="Bucket_regerst" parameterType="Reservation"
+	resultMap="BaseResultMap3">
+	SELECT 
+   			*	
+	   		FROM Reservation  r, Bucket_request b
+	   	  	WHERE r.bk_name=b.bk_name AND r.c_email= #{mEmail} 
+	</select>
+	
+	
+	
 	<select id="takeLinkDataNum" parameterType="Bucket_Review" 
 	resultType="integer">
 	SELECT BKRV_NUM
@@ -191,7 +201,14 @@
 	   	FROM Bucket_Review 
 	   	WHERE m_email=#{mEmail}
 	</select>
+	<select id="Bucket_main_review_compage"  parameterType="Bucket_Review"
+	 resultMap="BaseResultMap4">
 	
+	    	SELECT 
+   			*
+	   	FROM Bucket_Review 
+	   	WHERE c_email=#{mEmail}
+	</select>
 	<select id="selectBucket_Review_mypage_detail"  parameterType="Bucket_Review"
 	  resultMap="BaseResultMap4">
 	SELECT 

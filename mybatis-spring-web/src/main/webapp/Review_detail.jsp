@@ -4,6 +4,11 @@
     <%@page import="model.*,org.springframework.context.*" %>
     <%@page import="org.springframework.context.support.*" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    <%@ page import="model.Member" %>
+        
+<% Member member = (Member) session.getAttribute("loginInfo"); 
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,7 +70,7 @@
                 
             </li>
             
-            <c:if test="${bucket_Review.mEmail eq 'member'}">
+            <c:if test="${bucket_Review.bkrvCheck eq 'N'}">
             <li class="share-popup-btns">
                 <a href="#" onclick="YN_update('${bucket_Review.bkrvNum}','${bucket_Review.bkrvCheck}');" class="share-fb">
                     리뷰 공유
