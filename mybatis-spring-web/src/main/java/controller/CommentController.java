@@ -63,7 +63,7 @@ public class CommentController {
 		model.addAttribute("comment",new Comment());
 		return "login";
 	}
-	
+	/*
 	@RequestMapping(value="/Main_login_regist1", method = RequestMethod.GET)
 	public String handleStep7_1(Model model) {
 		model.addAttribute("comment",new Comment());
@@ -76,7 +76,7 @@ public class CommentController {
 		return "registerEnter";
 	}
 	 
-	/*@RequestMapping(value="/Main_login_find", method = RequestMethod.GET)
+	@RequestMapping(value="/Main_login_find", method = RequestMethod.GET)
 	public String handleStep8(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "findPw";

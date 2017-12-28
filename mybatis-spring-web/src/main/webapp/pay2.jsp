@@ -179,10 +179,8 @@
 <div class="right_area page_order_form">
 	<%
 		Member member = (Member)session.getAttribute("loginInfo");
+		ArrayList<Product> list = (ArrayList)session.getAttribute("productList");
 		String arr[] = member.getmTel().split("-");
-		ProductSessionRepository psr = new ProductSessionRepository();
-		Product product = (Product)request.getAttribute("product");
-		ArrayList<Product> list = null;
 		int totalPrice = 0;
 	%>
 	<!-- 컨텐츠 영역 -->
@@ -206,7 +204,7 @@
 	</div>
 	<!--//page nation -->
 
-	<form action="paying" name="payForm" id="payForm" method="post" >
+	<form action="paying2" name="payForm" id="payForm" method="post" >
 		<!--article-title-->
 		<div class="article-title">
 			<h2 class="title-page">
@@ -240,6 +238,10 @@
 					</tr>
 				</thead>
 				<tbody>
+					<%
+						for(int i=0; i<list.size();i++){
+						totalPrice += list.get(i).getProdPrice();
+					%>
 					<tr>
 						<td class="td_product">
 							<div class="connect_img">
@@ -247,16 +249,17 @@
 							</div>
 							<div class="article_info connect_info">
 								<div class="box_product">
-									<span class="list_info"> <%=product.getProdName()%>
+									<span class="list_info"> <%=list.get(i).getProdName()%>
 									</span>
 								</div>
 							</div></td>
-						<td><strong><%=product.getProdStock()%>개</strong></td>
+						<td><strong><%=list.get(i).getProdStock()%>개</strong></td>
 						
-						<td class="price"><strong><%=product.getProdPrice()%>
-								원</strong></td>
+						<td class="price"><strong><%=list.get(i).getProdPrice()%>원</strong></td>
 						<td rowspan="1"><strong>무료</strong>
 					</tr>
+					<%}
+					%>
 				</tbody>
 			</table>
 			<div class="cell_order_form">
@@ -274,7 +277,7 @@
 				<div class="cell_order_price total_price_wrap">
 					<ul class="cell_order_totalPrice">
 						<li class="total_title">총 상품 금액</li>
-						<li class="total_price" id="total_prd_amt"><%= product.getProdPrice()%>	원</li>
+						<li class="total_price" id="total_prd_amt"><%=totalPrice%>원</li>
 					</ul>
 				</div>
 				<!--//결제금액-->
@@ -478,10 +481,10 @@
 		</div>
 		<!--// 컨텐츠 영역 -->
 		<!-- 회원의 구매 정보 -->
-				<input type="hidden" name="p_totalprice" value="<%=product.getProdStock() * product.getProdPrice()%>" />
-				
-				<input type="hidden" name="prod_name" value="<%=product.getProdName()%>" />
-				<input type="hidden" name="qty" value="<%=product.getProdStock()%>" />
+
+				<input type="hidden" name="member_email" value="<%=member.getmEmail() %>" />
+				<input type="hidden" name="p_totalprice" value="<%=totalPrice%>" />
+
 		<!-- 회원의 구매 정보 끝-->
 				
 	</form>

@@ -47,4 +47,46 @@
 			</if>
 		</where>
 	</delete>
+	
+		<insert id="insertRegisterByCondition" parameterType="Member">
+		INSERT INTO member(
+		m_email,
+		m_pw,
+		m_name,
+		m_tel,
+		m_birth,
+		m_gen,
+		m_Postnum,
+		m_addr,
+		m_addr_detail,
+		m_attendcount,
+        m_authority)
+		VALUES(#{mEmail},#{mPw},#{mName},#{mTel},#{mBirth},#{mGen},#{mPost},#{mAddr},#{mAddr_d},0,'member')
+	</insert>
+	
+	 <insert id="insertRegisterEnterByCondition" parameterType="Member">
+		INSERT INTO member(
+		m_email,
+		m_name,
+		m_pw,
+		m_tel,
+		m_birth,
+		m_license,
+		m_Postnum,
+		m_addr,
+		m_addr_detail,
+		m_attendcount,
+        m_authority,
+        m_gen
+        )
+		VALUES(#{mName},#{mEmail},#{mPw},#{mTel},#{mBirth},#{mLicense},#{mPost},#{mAddr},#{mAddr_d},0,'company','g')
+	</insert>
+
+ 	
+ 	<update id="updateinfoByCondition" parameterType="Member">
+ 		UPDATE member
+		set m_tel = #{mTel} 			 
+        where m_email = #{mEmail}
+ 	</update>
+	
 </mapper>

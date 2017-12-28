@@ -23,7 +23,7 @@ public class Product {
 		this.prodStock = prodStock;
 		this.prodContent = prodContent;
 		this.prodPrice = prodPrice;
-		this.prodPrice = prodPrice;
+		this.prodPic = prodPic;
 		this.cEmail = cEmail;
 	}
 

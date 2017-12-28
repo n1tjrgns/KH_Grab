@@ -34,6 +34,7 @@
       <mapper resource="repository/mapper/CommentMapper.xml"/>
       <mapper resource="repository/mapper/ProductMapper.xml"/>
       <mapper resource="repository/mapper/PwmailMapper.xml"/>
+      <mapper resource="repository/mapper/PaymentMapper.xml"/>
       <mapper resource="repository/mapper/CsMapper.xml"/>
         <mapper resource="repository/mapper/LoginMapper.xml"/>
         <mapper resource="repository/mapper/GraphMapper.xml"/>

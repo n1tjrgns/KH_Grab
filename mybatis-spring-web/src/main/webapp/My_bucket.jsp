@@ -171,6 +171,7 @@ function regisList(mEmail){
 		);	      
 } 
 var mEmail="<%=member.getmEmail()%>";
+var mAuth="<%=member.getmAuthority()%>";
  window.onload= function() { regisList(mEmail);
  setBtns();};
 </script>

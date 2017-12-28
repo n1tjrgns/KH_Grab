@@ -20,24 +20,27 @@
 	<select id="selectProductListByCondition" parameterType="Product"
 		resultMap="BaseResultMap">
 		SELECT
-			prod_name,
-			prod_category,
-			prod_price,
-			prod_pic
+			*
 		FROM product
-		
 	</select>
 	
+	<select id="selectCompanyProductListByCondition" parameterType="Product"
+		resultMap="BaseResultMap">
+		SELECT
+			*
+		FROM product
+		<where>
+			<if test="value != null">
+				c_email = #{value}
+			</if>
+		</where>
+	</select>
+	
+
 	<select id="selectProductByCondition" parameterType="Product"
 		resultMap="BaseResultMap">
 		SELECT
-			prod_name,
-			prod_category,
-			prod_stock,
-			prod_content,
-			prod_price,
-			prod_pic,
-			c_email
+			*
 		FROM product
 		<where>
 			<if test="value != null">
@@ -45,32 +48,21 @@
 			</if>
 		</where>
 	</select>
-
-
-	<insert id="insertCommentByCondition" parameterType="Comment">
-		INSERT INTO comment1(comment_no,
-		user_id,
-		comment_content,
-		reg_date)
-		VALUES(#{commentNo},#{userId},#{commentContent},#{regDate})
+	
+	<insert id="insertProductByCondition" parameterType="Product">
+		INSERT INTO
+			product(prod_name, prod_category, prod_stock, prod_content,	prod_price, prod_pic, c_email)
+		VALUES
+			(#{prodName},#{prodCategory},#{prodStock},#{prodContent},#{prodPrice},#{prodPic},#{cEmail})
 	</insert>
 
-	<update id="updateCommentByCondition" parameterType="Comment">
-		UPDATE comment1
-		<set>
-			<if test="commentContent !=null">
-				comment_content=#{commentContent},
-			</if>
-			<if test="commentContent !=null">
-				user_id=#{userId},
-			</if>
-			<if test="commentContent !=null">
-				reg_date=#{regDate}
-			</if>
-		</set>
+
+	<delete id="deleteProductByCondition" parameterType="Product">
+		DELETE from
+			product
 		<where>
-			comment_no =#{commentNo}
+			prod_name=#{prodName}
 		</where>
-	</update>
+	</delete>
 
 </mapper>
