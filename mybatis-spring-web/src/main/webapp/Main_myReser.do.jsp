@@ -12,7 +12,7 @@
 </head>
 <body>
 	<c:forEach var="reservation" items="${reservation}" varStatus="status">
-	 <li><a href="#"><img src="${reservation.photoURL}" alt="ㅌ" /></a></li>             
+	 <li><a href="#"><img src="${reservation.photoURL}" alt="사진 없음"  /></a></li>             
 	</c:forEach>
  </body>
  </html>

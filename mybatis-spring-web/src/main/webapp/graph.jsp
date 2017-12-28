@@ -91,7 +91,7 @@
 		
 		<div class="section_service">
 		<div id="chartdefault">
-				<img src="_resource/_web/images/common/graphDefault.PNG" class="graphDefault" alt="graphDefault">
+				<img src="_resource/_web/images/common/graphDefault.png" class="graphDefault" alt="graphDefault">
 		</div>
 		
 <%
@@ -129,7 +129,7 @@
            
                <ul class="reg_ul">
                    <li>
-                       <a href="javascript:loginSns('facebook','login');" class="btn_facebook mot3" onclick='eventTrack("", "login_btn_facebook");'>
+                       <a href="https://www.facebook.com/" class="btn_facebook mot3" onclick='eventTrack("", "login_btn_facebook");'>
                            <span class="ico mot3"></span>
                            <span class="txt"><span class="bold">페이스북</span>으로 회원연동</span>
                            <span class="cursor mot3"></span>
@@ -137,14 +137,14 @@
                    </li>
                    <li>
                     <div id="naver_id_login" style="display:none;"></div>
-                       <a href="javascript:loginSns('naver','login');"  class="btn_naver mot3" onclick='eventTrack("", "login_btn_naver");'>
+                       <a href="https://www.naver.com/"  class="btn_naver mot3" onclick='eventTrack("", "login_btn_naver");'>
                            <span class="ico mot3"></span>
                            <span class="txt"><span class="bold">네이버</span>로 회원연동</span>
                            <span class="cursor mot3"></span>
                        </a>
                    </li>
                    <li>                     
-                       <a href="javascript:loginSns('kakao','login');" class="btn_kakao mot3" onclick='eventTrack("", "login_btn_kakao");'>
+                       <a href="https://www.kakaocorp.com/service/KakaoTalk?lang=ko" class="btn_kakao mot3" onclick='eventTrack("", "login_btn_kakao");'>
                            <span class="ico mot3"></span>
                            <span class="txt"><span class="bold">카카오</span>로 회원연동</span>
                            <span class="cursor mot3"></span>
@@ -178,6 +178,7 @@
 				되어있는 회원님이 게시한 글들을 모아서<br/> 한눈에 볼 수 있도록 서비스를 제공합니다. <br/>SNS 연동 기능을 통해 여러 글들을
 				모아보고 날짜를 통해 검색해보세요.</h6></div>
 		</div>
+		<% if(session.getAttribute("loginInfo") != null){%>
 		<div id="urlBoard">
 		<table class="urlBoard">
 		    <thead>
@@ -200,6 +201,7 @@
 			
 		
 			</div>
+			<% }%>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -324,7 +326,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
     	},	
     <%}//if%>
     	
- <% }//for%>
+ <% }%>
    ]
 
   } ],

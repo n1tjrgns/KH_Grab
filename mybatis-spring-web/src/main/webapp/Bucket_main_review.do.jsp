@@ -26,13 +26,13 @@
             	
             <div id="search-result-library" style="display:block;" >
                 <div class="search-result-library-title en">LIBRARY <span id="search-result-library-title-cnt">${fn:length(bucket_Review)}</span></div>
-                <div class="search-result-library-contents">
+                <div class="search-result-library-contents" style="overflow:scroll;">
 					 <c:forEach var="bucket_Review" items="${bucket_Review}" varStatus="status">
-					<div class="search-library-contents ">
+					<div class="search-library-contents  " >
                         <ul>                  
                             <li class="desc" >
 								<a href="#" >
-									<img src="${bucket_Review.bkrvPhoto}" alt="${bucket_Review.bkrvPhoto}">
+									<img src="${bucket_Review.bkrvPhoto}" alt="사진없음"  style="opacity: 1;background-color:#ddf;">
 									<p class="en travel">${bucket_Review.bkName}</p>
 									<span>${bucket_Review.bkrvTitle}</span>
 									<br/><span>평점 : ${bucket_Review.bkrvScore}</span>

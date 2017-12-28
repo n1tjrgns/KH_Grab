@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.Member" %>
+        
+<% Member member = (Member) session.getAttribute("loginInfo"); 
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <head>
@@ -105,13 +109,13 @@ function goMyBucket(){
 			<div class="list_tab">
 				<ul class="list_ul">
 					<li>
-						<a href="javascript:regisList('member');" class="first active mot2">전체</a>
+						<a href="javascript:regisList('<%=member.getmEmail()%>');" class="first active mot2">전체</a>
 					</li>
 					<li>
-						<a href="javascript:regisList2('member','N');" class="mot2">예약 중</a>
+						<a href="javascript:regisList2('<%=member.getmEmail()%>','N');" class="mot2">예약 중</a>
 					</li>
 					<li>
-						<a href="javascript:regisList2('member','Y');" class="mot2">수행 완료</a>
+						<a href="javascript:regisList2('<%=member.getmEmail()%>','Y');" class="mot2">수행 완료</a>
 					</li>
 				</ul>
 			</div>
@@ -141,8 +145,8 @@ function goMyBucket(){
 
 
 <script>
-var mEmail='member';
- function regisList(mEmail){
+
+function regisList(mEmail){
 
 	$.ajax( //전체 리스트를 불러온다.
 			{
@@ -166,6 +170,7 @@ var mEmail='member';
 			}
 		);	      
 } 
+var mEmail="<%=member.getmEmail()%>";
  window.onload= function() { regisList(mEmail);
  setBtns();};
 </script>
