@@ -101,12 +101,12 @@ public class CommentController {
 		return "changePw";
 	}*/
 	
-	/*@RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
+	@RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
 	public String handleStep11(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "memberDrop";
 	}
-	
+	/*
 	@RequestMapping(value="/Buket_mypage_complite", method = RequestMethod.GET)
 	public String handleStep12_1(Model model) {
 		model.addAttribute("comment",new Comment());

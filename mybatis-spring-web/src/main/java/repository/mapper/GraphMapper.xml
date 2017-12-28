@@ -20,5 +20,20 @@
 		SELECT ld.sns_sort, ld.sns_url, br.bkrv_date 
 		FROM LINK_DATA ld, bucket_review br, member m 
 		WHERE ld.bkrv_num = br.bkrv_num	AND br.m_email=m.m_email AND m.m_email=#{mEmail}
+		ORDER BY sns_sort desc
+	</select>
+	<select id="orderBySnsSelectLinkdataBymEmail" parameterType="String"
+	resultMap="LinkdataResultMap">
+		SELECT ld.sns_sort, ld.sns_url, br.bkrv_date 
+		FROM LINK_DATA ld, bucket_review br, member m 
+		WHERE ld.bkrv_num = br.bkrv_num	AND br.m_email=m.m_email AND m.m_email=#{mEmail}
+		ORDER BY ld.sns_sort ASC
+	</select>
+	<select id="orderByDateSelectLinkdataBymEmail" parameterType="String"
+	resultMap="LinkdataResultMap">
+		SELECT ld.sns_sort, ld.sns_url, br.bkrv_date 
+		FROM LINK_DATA ld, bucket_review br, member m 
+		WHERE ld.bkrv_num = br.bkrv_num	AND br.m_email=m.m_email AND m.m_email=#{mEmail}
+		ORDER BY br.bkrv_date ASC
 	</select>
 </mapper>

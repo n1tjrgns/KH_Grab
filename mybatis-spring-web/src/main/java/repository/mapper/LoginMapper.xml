@@ -88,5 +88,12 @@
 		set m_tel = #{mTel} 			 
         where m_email = #{mEmail}
  	</update>
+ 	
+ 	<update id="updateChangePwByCondition" parameterType="Member">
+       UPDATE member
+      set m_pw = #{mPw}           
+        where m_email = #{mEmail}
+    </update>
+ 	
 	
 </mapper>

@@ -20,4 +20,16 @@ public class GraphSessionRepository extends AbstractRepository{
 		
 		return sqlSession.selectList(statment,mEmail);
 	}
+	
+	public List<Linkdata> orderBySns(String mEmail, String orderby) {
+		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		String statment = nameSpace+".orderBySnsSelectLinkdataBymEmail";
+		return sqlSession.selectList(statment,mEmail);
+	}
+	
+	public List<Linkdata> orderByDate(String mEmail, String orderby) {
+		SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+		String statment = nameSpace+".orderByDateSelectLinkdataBymEmail";
+		return sqlSession.selectList(statment,mEmail);
+	}
 }

@@ -180,27 +180,7 @@
 		</div>
 		<% if(session.getAttribute("loginInfo") != null){%>
 		<div id="urlBoard">
-		<table class="urlBoard">
-		    <thead>
-		    <tr>
-		        <th scope="cols">종류</th>
-		        <th scope="cols">날짜</th>
-		        <th scope="cols">URL</th>
-		    </tr>
-		    </thead>
-		    <tbody>
-		    <c:forEach var="linkdata" items="${linkdata}" varStatus="status">
-		    <tr>
-		        <td>${linkdata.snsSort}</td>
-		        <td><fmt:formatDate value="${linkdata.bkrvDate}" type="both" pattern="yyyy-MM-dd"/></td>
-		        <td><a href="#" onclick="openSnsUrl('${linkdata.snsUrl}');">${linkdata.snsUrl}</a></td>
-		    </tr>		    
-		    </c:forEach>
-		    </tbody>
-		</table>
-			
-		
-			</div>
+		</div>
 			<% }%>
 		</div>
 	</div>
@@ -208,6 +188,27 @@
 		function openSnsUrl(URL){
 			window.open(URL,"sns새 창","width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 		}
+		
+		function ajaxOrderBy(orderby){
+			//alert("ajaxOrderBy");
+			$.ajax( 
+					{	
+						url:"ajaxOrderBy",
+						dataType:"html",
+						type:"GET",
+						async:true,
+						data:"orderby="+ orderby,
+						success:function( data ) {
+						//	alert("success");
+							$("#urlBoard").html(data);
+		 				},
+						error : function( e ) {
+							//alert("조회 오류\n");
+						}
+					}
+				);	      
+		}		
+				window.onload=function(){ajaxOrderBy("sns")};
 	</script>
 	
 	<!-- section-service -->

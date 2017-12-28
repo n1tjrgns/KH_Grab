@@ -29,6 +29,10 @@ public class MemberController {
 		return "register2";
 	}
 	
+	
+	
+	
+	
 	@RequestMapping(value = "/Main_login_regist1", method =  RequestMethod.POST)
 	public String insrtStep1(HttpServletRequest httpServletRequest, Model model) {
 		String mName = httpServletRequest.getParameter("mName");
@@ -106,22 +110,40 @@ public class MemberController {
 		return "main";
 		
 	}
-//////////비번찾기
-	@RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.GET)
-	public String handleStep14(HttpServletRequest httpServletRequest,Model model) {
-		String mPw = httpServletRequest.getParameter("mPw");
-		HttpSession session = httpServletRequest.getSession();
-		Member member = (Member)session.getAttribute("loginInfo");
-		member.setmPw(mPw);
-		return "changePw";
-		
-	}
+
 	
-	@RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.POST)
-	public String handleStep4(Model model,Member member) {
-		model.addAttribute("member",member);
-		return "main";
-	}
+	 @RequestMapping(value="/MemberDelete", method = RequestMethod.POST)
+	   public String deleteMember(Member member ,Model model, HttpServletRequest request) {
+	      HttpSession session = request.getSession();
+	      Member deletemember = (Member) session.getAttribute("loginInfo");
+	      System.out.println("deletemember.getmPw() : " + deletemember.getmEmail());
+	      System.out.println("deletemember.getmPw() : " + deletemember.getmPw());
+	      System.out.println("request.getParameter(\"mPw\") : " + request.getParameter("mPw"));
+	      if (deletemember.getmPw().equals(request.getParameter("mPw"))) {
+	         Integer result=memberSessionRepository.deleteMember(deletemember);
+	         session.invalidate();
+	         model.addAttribute("result",result);
+	         System.out.println(result);
+	      }
+	      
+	      return "redirect:/Main";
+	   }
+	
+	   @RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.GET)
+	   public String handleStep145(HttpServletRequest httpServletRequest,Model model) {
+	      return "changePw";      
+	   }
+	   
+	   
+	   @RequestMapping(value="/Main_mypage_changePw", method = RequestMethod.POST)
+	   public String handleStep4(HttpServletRequest httpServletRequest,Model model) {
+	      String mPw = httpServletRequest.getParameter("mPw");
+	      HttpSession session = httpServletRequest.getSession();   
+	      Member member = (Member)session.getAttribute("loginInfo");
+	      member.setmPw(mPw);
+	      memberSessionRepository.updateChangePwUpdate(member);
+	      return "main";
+	   }
 	
 	
 	

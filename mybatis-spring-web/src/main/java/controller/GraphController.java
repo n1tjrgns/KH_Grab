@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Bucketlist;
 import model.Linkdata;
 import model.Member;
 import repository.GraphSessionRepository;
@@ -35,6 +36,26 @@ public class GraphController {
 		
 		}
 		return "graph";
-		
 	}
+	
+	@RequestMapping(value="/ajaxOrderBy", method = RequestMethod.GET)
+	public String handleStep2(Model model, HttpServletRequest request, String orderby) {
+		HttpSession session = request.getSession();
+		Member member = (Member)session.getAttribute("loginInfo");
+		String mEmail = member.getmEmail();
+		if(member.getmEmail()!=null && orderby.equals("sns")) {
+			List<Linkdata> linkdata=graphSessionRepository.orderBySns(mEmail,orderby);
+			model.addAttribute("linkdata",linkdata);
+			request.setAttribute("linkdata", linkdata);		
+			System.out.println(linkdata.size());
+		}else if(member.getmEmail()!=null && orderby.equals("date")) {			
+			List<Linkdata> linkdata=graphSessionRepository.orderByDate(mEmail,orderby);
+			model.addAttribute("linkdata",linkdata);
+			request.setAttribute("linkdata", linkdata);	
+			System.out.println(linkdata.size());
+		}
+		return "graphsort";
+	}
+	
+	
 }
