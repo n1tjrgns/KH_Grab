@@ -60,7 +60,7 @@
         </div>
         <div class="btn_area mt40">
             <a href="#" class="btn_click btn_member_leave mot2" onclick="MemberDelete.submit();">탈 퇴</a>
-            <a href="/ln/member/member_info.do" class="btn_cancel mot2"  onclick='eventTrack("", "member_leave_btn_cancel");'>취 소</a>
+            <a href="Main_info" class="btn_cancel mot2"  onclick='eventTrack("", "member_leave_btn_cancel");'>취 소</a>
         </div>
     </div>
     <div class="pop_layer pop_complete pop_leave_complete">

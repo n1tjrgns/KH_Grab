@@ -44,6 +44,7 @@ public class BucketSessionRepository  extends AbstractRepository {
 		
 		
 		public Integer InsertBucket(Bucketlist bl) {
+			 int result=0;
 			System.out.println("selectBucketlist_one:"+bl.getBkName());
 			if(bl.getBkCheck()==null) {
 				bl.setBkCheck("no");
@@ -58,16 +59,18 @@ public class BucketSessionRepository  extends AbstractRepository {
 			try {
 			
 			String statment = nameSpace+".InsertBucket";
-			 int result = sqlSession.insert(statment,bl);
+			 result = sqlSession.insert(statment,bl);
 			 if(result>0) {
 				 sqlSession.commit();
+				
 			 }else {
 				 sqlSession.rollback();
 			 }
-			 return result;
 			}finally {
 				sqlSession.close();
+				
 			}
+			return result;
 		}
 		
 		public Integer InsertReserv(Reservation rv) {
@@ -119,7 +122,8 @@ public class BucketSessionRepository  extends AbstractRepository {
 		public Integer updateReservList_mypage(Reservation reservation) {
 			System.out.println(reservation.getBkName()+"updateReservList_mypage"+reservation.getResCheck());
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
-			try {Integer result=0;
+			Integer result=0;
+			try {
 			if(reservation.getResCheck()=="Y")
 			{String statment = nameSpace+".deleteReservList_mypage";
 			 result = sqlSession.delete(statment,reservation);
@@ -133,51 +137,54 @@ public class BucketSessionRepository  extends AbstractRepository {
 			 }else {
 				 sqlSession.rollback();
 			 }
-			 return result;
+			 
 			}finally {
 				sqlSession.close();
 			}
-		
+			return result;
 			
 		}
 		
 		
 		public Integer InsertMemberList_mypage(Reservation reservation) {
 			System.out.println(reservation.getBkName()+"updateReservList_mypage"+reservation.getResCheck());
+			Integer result=0;
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			try {
 				
 			String statment = nameSpace+".InsertMemberList_mypage";
-			Integer result = sqlSession.insert(statment,reservation);
+			result = sqlSession.insert(statment,reservation);
 			if(result>0) {
 				 sqlSession.commit();
 			 }else {
 				 sqlSession.rollback();
 			 }
-			 return result;
+			 
 			}finally {
 				sqlSession.close();
 			}
+			return result;
 		}
 		
 		
 		public Integer delteReservList_mypage(Reservation reservation) {
 			System.out.println(reservation.getBkName()+"delete2"+reservation.getmEmail());
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			Integer result=0;
 			try {
 				
 			String statment = nameSpace+".delteReservList_mypage";
-			Integer result = sqlSession.delete(statment,reservation);
+			 result = sqlSession.delete(statment,reservation);
 			if(result>0) {
 				 sqlSession.commit();
 			 }else {
 				 sqlSession.rollback();
 			 }
-			 return result;
+			
 			}finally {
 				sqlSession.close();
 			}
-		
+			 return result;
 			
 		}
 		
@@ -186,11 +193,12 @@ public class BucketSessionRepository  extends AbstractRepository {
 			if(bucket_review.getBkrvCheck()==null) {
 				bucket_review.setBkrvCheck("N");
 			}
+			int result=0,result2=0;
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
 			try {
 			
 			String statment = nameSpace+".InsertBucket_Review";
-			 int result = sqlSession.insert(statment,bucket_review);
+			  result = sqlSession.insert(statment,bucket_review);
 			 
 			 String statment3 = nameSpace+".takeLinkDataNum";
 			 Integer bkrvNum = sqlSession.selectOne(statment3,bucket_review);
@@ -199,17 +207,18 @@ public class BucketSessionRepository  extends AbstractRepository {
 			 System.out.println("d?"+bucket_review.getBkrvNum());
 			 if(result>0) {
 				 String statment2 = nameSpace+".InsertLinkData";
-				 int result2 = sqlSession.insert(statment2,bucket_review);
+				 result2 = sqlSession.insert(statment2,bucket_review);
 				 sqlSession.commit();
-				 return result2;
+				 
 			 }else {
 				 sqlSession.rollback();
+				 return result;
 			 }
-			 return result;
+			
 			}finally {
 				sqlSession.close();
 			}
-			
+			return result2;
 			
 			
 		}
@@ -244,18 +253,20 @@ public class BucketSessionRepository  extends AbstractRepository {
 		
 		public Integer selectBucket_Review_mypage_delete(Bucket_Review bucket_Review) {
 			SqlSession sqlSession = this.getSqlSessionFactory().openSession();
+			int result=0;
 			try {
 				String statment = nameSpace+".selectBucket_Review_mypage_delete";
-				 int result = sqlSession.delete(statment,bucket_Review);
+				  result = sqlSession.delete(statment,bucket_Review);
 				 if(result>0) {
 					 sqlSession.commit();
 				 }else {
 					 sqlSession.rollback();
 				 }
-				 return result;
+				 
 				}finally {
 					sqlSession.close();
 				}
+			return result;
 		}
 		
 		public List<Reservation_Bucketlist> Bucket_regerst(Bucket_Review bucket_Review) {

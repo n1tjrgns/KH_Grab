@@ -51,17 +51,6 @@ isLogin = true;
 
 <script>
 	var isLogin = true;
-    var resourcePath = "_resource";
-    var webDomain = "http://localhost:8088/Grap_UI"; 
-    var domainName = "lifeplusbucket.com"; 
-    var fbAppId = "803062869828098";
-    var nvAppId = "MLj0oi23BbB6Z9PdGctD";
-    var kaAppId = "54fdc94fb5308e67bf208e2863485e71";
-    var kaAppSecret = "cd1307a27870955ff42db477f3945923";
-    var kaAppSecret = "U_2RigbPTb";
-    var sslDomain = "https://www.lifeplusbucket.com";
-    document.domain="localhost:8088/Grap_UI";
-
 </script>
 <script> var isMainAlready = true; </script>
 
@@ -185,7 +174,9 @@ function search_list(category){
 </script>
 
 <script>//처음에 데이터 불러옴.
-window.onload = function() { search_list('All'); };
+window.onload = function() { search_list('All');
+eventAJAX("1");
+};
 </script>
 
 <script>
@@ -423,7 +414,6 @@ function eventAJAX(num){
 
 
 <script>
-
 function popup_to_buc(buck_recode){
 	$.ajax( // 상세정보를 팝업시킨다.
 			{
@@ -445,7 +435,6 @@ function popup_to_buc(buck_recode){
 			}
 		);	      
 }
-
 </script>
 
 <script>

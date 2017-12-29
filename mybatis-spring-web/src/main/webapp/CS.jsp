@@ -24,12 +24,12 @@
 
 <title>GRAB</title>
 <link rel="stylesheet" type="text/css"
-   href="_resource/_web/css/common.css">
-<script src="_resource/js/vendor/jquery-1.9.1.min.js"></script>
-<script src="_resource/js/vendor/TweenMax.min.js"></script>
-<script src="_resource/_web/js/common.js"></script>
+   href="cscs/_web/css/common.css">
+<script src="cscs/js/vendor/jquery-1.9.1.min.js"></script>
+<script src="cscs/js/vendor/TweenMax.min.js"></script>
+<script src="cscs/_web/js/common.js"></script>
 <link rel="stylesheet" type="text/css"
-   href="_resource/_web/css/notification.css">
+   href="cscs/_web/css/notification.css">
 <script>
    var rootDomain = "https://www.lifeplus.co.kr/"; //구독하기 도메인
    var resourceDomain = "https://www.lifeplus.co.kr";
@@ -157,7 +157,7 @@
                         <li class="no2"><a href="#"><span class="num "><em>${status.index+1}</em></span>
                               <span class="title">　　　　　　　${cslist.csTitle}</span> <span
                               class="date">${cslist.csDate}</span></a>                     
-                           <div class="content">${cslist.csContent}</div>
+                           <div class="content" style="display:block;">${cslist.csContent}</div>
 
                      <% if(member != null){
                         String ad = member.getmAuthority(); 
@@ -271,7 +271,7 @@
       </script>
    </div>
    <jsp:include page="navi-footer.jsp"></jsp:include>
-   <script src="_resource/_web/js/faq.js"></script>
+   <script src="cscs/_web/js/faq.js"></script>
 </body>
 </html>
 <%

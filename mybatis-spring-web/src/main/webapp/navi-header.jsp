@@ -113,7 +113,7 @@
                   <div class="border2"></div>
                   <div class="border3"></div>
                   <div class="border4"></div>
-                  <a href="Main_mypage" onclick="" class="sub_a mot2">MY PAGE</a>
+                  <a href="Main_info" onclick="" class="sub_a mot2">MY PAGE</a>
                </div></li>
             <%
                }

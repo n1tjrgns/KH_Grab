@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="_resource/_web/cs
+<link href="cscs/_web/cs
 
 s/common.css" rel="stylesheet" />
-<link href="_resource/_web/css/register.css" rel="stylesheet" />
+<link href="cscs/_web/css/register.css" rel="stylesheet" />
     <script>
 	function load_google() {
 	    gapi.client.setApiKey('AIzaSyBySGWNccSTO9XHnlay_kpBHAWUO1-d3L4');
@@ -25,20 +25,6 @@ s/common.css" rel="stylesheet" />
 
 <jsp:include page="navi-header.jsp"/>
 
-<script>
-	var isLogin = false;
-    var resourcePath = "/_resource";
-    var webDomain = "http://www.lifeplusbucket.com"; 
-    var domainName = "lifeplusbucket.com"; 
-    var fbAppId = "803062869828098";
-    var nvAppId = "MLj0oi23BbB6Z9PdGctD";
-    var kaAppId = "54fdc94fb5308e67bf208e2863485e71";
-    var kaAppSecret = "cd1307a27870955ff42db477f3945923";
-    var kaAppSecret = "U_2RigbPTb";
-    var sslDomain = "https://www.lifeplusbucket.com";
-    document.domain="lifeplusbucket.com";
-
-</script>
 <script> var isMainAlready = true; </script>
 <script>
 function loginInputCheck(){

@@ -75,12 +75,12 @@ public class CommentController {
 		model.addAttribute("comment",new Comment());
 		return "registerEnter";
 	}
-	 
+	 */
 	@RequestMapping(value="/Main_login_find", method = RequestMethod.GET)
 	public String handleStep8(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "findPw";
-	}*/
+	}
 	
 	
 	/*@RequestMapping(value="/Main_info", method = RequestMethod.GET)
@@ -99,8 +99,8 @@ public class CommentController {
 	public String handleStep10(Model model) {
 		model.addAttribute("comment",new Comment());
 		return "changePw";
-	}*/
-	
+	}
+	*/
 	@RequestMapping(value="/Main_mypage_drop", method = RequestMethod.GET)
 	public String handleStep11(Model model) {
 		model.addAttribute("comment",new Comment());
@@ -152,7 +152,9 @@ public class CommentController {
 		for(int i=0; i<cslist.size();i++) {
 			System.out.println(cslist.get(i).getCsNum());
 		cslist.get(i).setCsDate( cslist.get(i).getCsDate().substring(0, 10) );
-    
+		String csContent = cslist.get(i).getCsContent();
+	      csContent = csContent.replace("\r\n","<br>");
+	      cslist.get(i).setCsContent(csContent);
 		}
 		model.addAttribute("cslist",cslist);
 		System.out.println("cslist222 : "+cslist.get(0).getCsTitle());

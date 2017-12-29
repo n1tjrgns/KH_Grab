@@ -98,7 +98,7 @@ function goMyBucket(){
             </div>
             <div class="btn_tab_area">
                 <a href="Bucket_mypage" class="btn_bucket active mot2">
-                    버킷리스트 <span></span>
+                    예약&수행 <span></span>
                 </a>
                 <a href="Bucket_mypage_wish" class="btn_wish mot2">
                     버킷 리뷰 <span></span>

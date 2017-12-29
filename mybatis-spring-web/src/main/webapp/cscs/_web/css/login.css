@@ -1,0 +1,144 @@
+@charset "utf-8";
+@import "../css/fonts/myriad/font.css";
+@import "../css/fonts/notosans/font.css";
+/* reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form,
+label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, textarea, button,
+article, aside, canvas, details, embed, figure, figcaption, footer, header, menu,
+nav, output, ruby, section, summary, time, mark, audio, video
+{ margin:0;padding:0;border:0;}
+article, aside, details, figcaption, figure, footer, header, menu, nav, section { display: block;}
+html {height:100%;}
+body {font-size:12px;line-height:18px;font-family:'dotum';background:#fff;/*height:100%;*/}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: '';content:none;}
+table {border-collapse:collapse;border-spacing:0;}
+a {text-decoration:none;color:#231815;}
+a:hover {text-decoration:none;}
+legend, caption, hr {display:none;}
+em {font-style:normal;}
+img {vertical-align:top;}
+input {vertical-align:middle;-webkit-appearance: none;-webkit-border-radius:0;border-radius:0;}
+input[type=text]::-ms-clear {display:none;}
+
+body {min-width: 1200px;}
+
+/* 로그인 팝업 */
+.reg_ul {width:280px;margin:64px auto}
+.reg_ul li {margin-bottom:10px;}
+.reg_ul li a {width:209px;height:52px;padding-left:69px;display:block;border:1px solid #ddd;font-size:14px;color:#333;line-height:57px;border-radius:52px;position:relative;}
+.reg_ul li a .bold {font-weight:900;}
+.reg_ul li a .ico {width:54px;height:54px;position:absolute;left:-1px;top:-1px;border-radius:54px;z-index:1;}
+.reg_ul li a .txt {position:relative;z-index:2;}
+.reg_ul li a .cursor {width:5px;height:9px;position:absolute;right:23px;top:23px;background:url('../images/register/ico_cursor_off.png') no-repeat 0 0;z-index:3;}
+.reg_ul li a:hover {color:#fff;}
+.reg_ul li a:hover .cursor {background:url('../images/register/ico_cursor_on.png') no-repeat 0 0;}
+.reg_ul li a:hover .ico {width:280px;}
+.reg_ul li a.btn_facebook .ico {background:url('../images/register/ico_facebook.png') no-repeat 20px center #3b5998;}
+.reg_ul li a.btn_naver .ico {background:url('../images/register/ico_naver.png') no-repeat 18px center #2db400;}
+.reg_ul li a.btn_kakao .ico {background:url('../images/register/ico_kakao.png') no-repeat 16px 18px #ffce3d;}
+.reg_ul li a.btn_insta .ico {background:url('https://www.lifeplus.co.kr/_resource/_web/images/common/ico_link_instagram.png') no-repeat 16px 18px #FFC8FF;}
+.reg_ul li a.btn_grab .ico {background:url('../images/register/loffff.png') no-repeat 16px 18px #EB0000;}
+.reg_ul li a.btn_email .ico {background:url('../images/register/ico_email_off.png') no-repeat 17px 20px #eee;}
+.reg_ul li a.btn_email:hover .ico {background:url('../images/register/ico_email_on.png') no-repeat 17px 20px #00c5bc;}
+
+h1{position:absolute;top:15%;left:43%;}
+.pop_login {width:756px;position:absolute;top:30%;left:30%;}
+
+.login_box {padding:20px 0 33px 0;overflow:hidden;border-bottom:1px solid #ebebeb;}
+.howtouseTitle {line-height:200%}
+
+.pop_login .login_box .email_box {width:348px;float:left;position:relative;}
+.pop_login .login_box .email_box .input_area {width:280px;margin:0 auto 9px;}
+.pop_login .login_box .email_box .input_area .input_box {width:278px;height:43px;border:1px solid #d9d9d9;background:#fafafa;overflow:hidden;}
+.pop_login .login_box .email_box .input_area .input_box input {width:100%;height:43px;line-height:43px;background:#fafafa;text-indent:15px;font-size:14px;color:#333;}
+.pop_login .login_box .email_box .input_area .input_box.email {margin-bottom:-44px;border-radius:3px 3px 0 0;}
+.pop_login .login_box .email_box .input_area .input_box.password {margin-left:300px;border-radius:0 0 5px 5px;}
+.pop_login .login_box .email_box .btn_login {width:280px;height:54px;line-height:56px;font-size:18px;color:#fff;text-align:center;background:#EB3232;font-weight:900;display:block;border-radius:3px;margin:0 auto 15px;}
+.pop_login .login_box .email_box .btn_link {width:280px;margin:0 auto;}
+.pop_login .login_box .email_box .btn_link a {height:112px;display:inline-block;font-size:11px;color:#666;line-height:14px;vertical-align:top;position:relative;}
+.pop_login .login_box .email_box .btn_link .btn_email_save {height:12px;padding-left:20px;background:url('../images/register/ico_check_small.png') no-repeat 0 0;overflow:hidden;}
+.pop_login .login_box .email_box .btn_link .btn_email_save.active {background-position-y:-12px;}
+.pop_login .login_box .email_box .btn_link .btn_login_info {height:12px;padding:0 11px 0 23px;background:url('../images/register/ico_check_small.png') no-repeat 0 0;overflow:hidden;margin-left:16px;}
+.pop_login .login_box .email_box .btn_link .btn_login_info:before {content:'';width:1px;height:12px;background:#bcbcbc;position:absolute;right:0;top:0;}
+.pop_login .login_box .email_box .btn_link .btn_login_info.active {background-position-y:-12px;}
+.pop_login .login_box .email_box .btn_link .btn_pw_find {margin-left:7px;}
+.pop_login .login_box .email_box .btn_link .btn_pw_find:before {content:'';width:1px;height:12px;background:#bcbcbc;display: inline-block; margin-right:10px; vertical-align: top;}
+.pop_login .login_box .email_box .btn_link .btn_register {margin-left:7px;}
+.pop_login .login_box .email_box .btn_link .btn_register:before {content:'';width:1px;height:12px;background:#bcbcbc;display: inline-block; margin-right:10px; vertical-align: top;}
+
+.use_gpu{
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+}
+
+#kakao-login-btn iframe {width:220px !important;height:49px !important;}
+
+
+
+::-webkit-scrollbar { width: 5px; height:5px; }
+::-webkit-scrollbar-track { background-color:  #eaeaea; border-left: 1px solid #ccc;  }
+::-webkit-scrollbar-thumb { background-color: #10ccc3; }
+::-webkit-scrollbar-thumb:hover { background-color: #0ea59d; }
+
+
+.simple_loading {
+    position:absolute;
+    top:50%;
+    left:50%;
+    width: 70px;
+    text-align: center;
+    margin-left:-35px;
+}
+
+.simple_loading > div {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.simple_loading .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.simple_loading .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    } 40% {
+          -webkit-transform: scale(1.0);
+          transform: scale(1.0);
+      }
+}
