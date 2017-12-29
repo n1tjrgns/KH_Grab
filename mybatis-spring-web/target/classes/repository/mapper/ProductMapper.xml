@@ -49,7 +49,32 @@
 		</where>
 	</select>
 	
-	
+	<update id="updateProductByCondition" parameterType="Product">
+		UPDATE product
+			<set >
+				<if test="prodCategory !=null">
+					prod_category=#{prodCategory},
+				</if>
+				<if test="prodStock !=null">
+					prod_stock=#{prodStock},
+				</if>
+				<if test="prodContent !=null">
+					prod_content=#{prodContent},
+				</if>
+				<if test="prodPrice !=null">
+					prod_price=#{prodPrice},
+				</if>
+				<if test="prodPic !=null">
+					"prod_pic"=#{prodPic},
+				</if>
+				<if test="cEmail !=null">
+					"c_email"=#{cEmail},
+				</if>
+			</set>
+			<where>
+				prod_name =#{prodName}
+			</where>
+	</update>
 	
 	<insert id="insertProductByCondition" parameterType="Product">
 		INSERT INTO
