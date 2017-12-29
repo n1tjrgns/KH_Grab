@@ -46,7 +46,7 @@ public class PwmailController {
 		System.out.println("result : " + result);
 		try {
 			if(result>=1) {
-				mailing(member);
+				//mailing(member);
 			}else {
 				return "mail";
 			}
@@ -59,7 +59,7 @@ public class PwmailController {
 	}
 	
 	
-	
+	/*
 		public void mailing(Member member) {
 			String username = member.getmName();
 			String email = member.getmEmail();
@@ -108,5 +108,5 @@ public class PwmailController {
 			e.printStackTrace();
 			
 		}
-	}
+	}*/
 }
